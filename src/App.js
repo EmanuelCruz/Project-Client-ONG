@@ -7,7 +7,6 @@ import LoginFormComponent from "./component/LoginFormComponent";
 function App() {
   return (
     <div className="App">
-      <LoginFormComponent />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />

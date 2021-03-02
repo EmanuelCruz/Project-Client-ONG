@@ -60,7 +60,6 @@ const LoginFormComponent = withFormik({
   },
   handleSubmit: (values) => {
     const USER_LOGIN = values;
-    console.log(USER_LOGIN);
     //TODO:Conection to Backend (POST)
   },
   validationSchema: Yup.object().shape({
