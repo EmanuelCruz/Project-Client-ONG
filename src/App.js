@@ -1,6 +1,6 @@
 import React from "react";
-import HeaderComponent from "./screen/header/HeaderComponent";
-import AboutUsComponent from "./screen/aboutUs/AboutUsComponent";
+import HeaderScreen from "./screen/header/HeaderScreen";
+import AboutUsScreen from "./screen/aboutUs/AboutUsScreen";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
@@ -10,10 +10,10 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="/nosotros">
-            <AboutUsComponent />
+            <AboutUsScreen />
           </Route>
           <Route path="/">
-            <HeaderComponent />
+            <HeaderScreen />
           </Route>
         </Switch>
       </div>
