@@ -1,6 +1,6 @@
 import React from "react";
-import HeaderComponent from "./component/header/HeaderComponent";
-import AboutUsComponent from "./component/aboutUs/AboutUsComponent";
+import HeaderComponent from "./screen/header/HeaderComponent";
+import AboutUsComponent from "./screen/aboutUs/AboutUsComponent";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
