@@ -2,10 +2,6 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
-//Email y Contraseña para autenticarse. Ambos campos son obligatorios y deben ser validados desde el lado del cliente.
-//Contraseña debe tener al menos 6 caracteres.
-//Vamos a utilizar formik para validar los campos. Al no disponer aún del servicio de peticiones HTTP, solamente almacenar los campos completados en //un objeto (para posteriormente enviarlo)
-
 function LoginFormBody(props) {
   const { touched, errors } = props;
   return (
