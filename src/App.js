@@ -1,7 +1,6 @@
 import React from "react";
-import { Counter } from "./features/counter/Counter";
-import Header from "./features/header/Header";
-import AboutUs from "./features/aboutUs/AboutUs";
+import HeaderComponent from "./component/header/HeaderComponent";
+import AboutUsComponent from "./component/aboutUs/AboutUsComponent";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
@@ -11,10 +10,10 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="/nosotros">
-            <AboutUs />
+            <AboutUsComponent />
           </Route>
           <Route path="/">
-            <Header />
+            <HeaderComponent />
           </Route>
         </Switch>
       </div>
