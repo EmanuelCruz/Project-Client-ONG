@@ -2,7 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const organizationSlice = createSlice({
     name: "organization",
-    initialState: {},
+    initialState: {
+        data: {
+            name: "Mi organizacion",
+            image: "mi_logo.png",
+            phone: "12345678",
+            address: "direccion 123",
+            welcomeText: "Bienvenidos",
+        },
+    },
 
     reducers: {},
 });
