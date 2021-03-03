@@ -1,6 +1,13 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
+import {
+  NOT_VALID_EMAIL,
+  EMAIL_REQUIRED,
+  PASSWORD_REQUIRED,
+  PASSWORD_MIN_LENGHT_NUMBER,
+  PASSWORD_MIN_LENGHT,
+} from "../const/const";
 
 function LoginFormBody(props) {
   const { touched, errors } = props;
@@ -59,12 +66,10 @@ const LoginFormComponent = withFormik({
     //TODO:Conection to Backend (POST)
   },
   validationSchema: Yup.object().shape({
-    email: Yup.string()
-      .email("El email no es valido")
-      .required("Se requiere email"),
+    email: Yup.string().email(NOT_VALID_EMAIL).required(EMAIL_REQUIRED),
     password: Yup.string()
-      .min(6, "La longitud minima es de 6 caracteres")
-      .required("Se requiere contraseña"),
+      .min(PASSWORD_MIN_LENGHT_NUMBER, PASSWORD_MIN_LENGHT)
+      .required(PASSWORD_REQUIRED),
   }),
 })(LoginFormBody);
 
