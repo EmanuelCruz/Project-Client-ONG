@@ -16,3 +16,5 @@ export const organizationSlice = createSlice({
 });
 
 export default organizationSlice.reducer;
+
+export const organizationSelector = (state) => state.organization.data;
