@@ -1,9 +1,9 @@
 import React from 'react'
-import CompanyInfo from './CompanyInfo'
-import Copyright from './Copyright'
 import './Footer.css'
-import SocialMedia from './SocialMedia'
-import WebLinks from './WebLinks'
+import CompanyInfo from './Columns/CompanyInfo'
+import Copyright from './Columns/Copyright'
+import SocialMedia from './Columns/SocialMedia'
+import WebLinks from './Columns/WebLinks'
 
 function Footer({ companyName, webLinks }) {
   return (
