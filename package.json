@@ -13,12 +13,18 @@
     "react-loader-spinner": "^4.0.0",
     "react-redux": "^7.1.3",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "react-scripts": "3.4.3",
     "yup": "^0.32.9"
 =======
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"
 >>>>>>> c13ad625a00858f02aee7e8079245e1f5c318226
+=======
+    "react-scripts": "3.4.3",
+    "sweetalert2": "^10.15.5",
+    "react-router-dom": "^5.2.0"
+>>>>>>> a5296ce0e4067bcbcbe06c06d42e8208c6239209
   },
   "scripts": {
     "start": "react-scripts start",
