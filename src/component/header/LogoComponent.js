@@ -1,7 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { organizationSelector } from "./slice/organizationSlice";
 
 export default function LogoComponent() {
     const data = useSelector(organizationSelector);
 
-    return <div>Logo</div>;
+    console.log("Data Organization: ", data);
+    return <div>{data.image}</div>;
 }
