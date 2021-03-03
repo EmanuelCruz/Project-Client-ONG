@@ -5,7 +5,7 @@ import Copyright from './Columns/Copyright'
 import SocialMedia from './Columns/SocialMedia'
 import WebLinks from './Columns/WebLinks'
 
-function Footer({ companyName, webLinks }) {
+function Footer() {
   return (
     <div class="footer-dark">
       <footer>
