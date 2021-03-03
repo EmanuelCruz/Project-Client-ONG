@@ -68,7 +68,7 @@ const LoginFormComponent = withFormik({
   validationSchema: Yup.object().shape({
     email: Yup.string().email(NOT_VALID_EMAIL).required(EMAIL_REQUIRED),
     password: Yup.string()
-      .min(PASSWORD_MIN_LENGHT_NUMBER, PASSWORD_MIN_LENGHT)
+      .min(PASSWORD_MIN_LENGHT_NUMBER, PASSWORD_MIN_LENGHT_WARNING)
       .required(PASSWORD_REQUIRED),
   }),
 })(LoginFormBody);
