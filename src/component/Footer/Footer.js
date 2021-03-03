@@ -11,8 +11,8 @@ function Footer({ companyName, webLinks }) {
       <footer>
         <div class="container">
           <div class="row">
-            <CompanyInfo companyName={companyName} />
-            <WebLinks webLinks={webLinks} />
+            <CompanyInfo companyName={'ONG Alkemy'} />
+            <WebLinks webLinks={['Home', 'About', 'Contact']} />
             <SocialMedia />
           </div>
           <Copyright />
