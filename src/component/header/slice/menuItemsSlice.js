@@ -16,3 +16,5 @@ export const menuItemsSlice = createSlice({
 });
 
 export default menuItemsSlice.reducer;
+
+export const itemsSelector = (state) => state.menuItems.items;
