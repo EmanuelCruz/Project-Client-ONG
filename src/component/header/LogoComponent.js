@@ -1,10 +1,24 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { organizationSelector } from "./slice/organizationSlice";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchData, organizationSelector } from "./slice/organizationSlice";
+import { Link } from "react-router-dom";
 
 export default function LogoComponent() {
-    const data = useSelector(organizationSelector);
+    const dispatch = useDispatch();
+    const { data, loading, hasErrors } = useSelector(organizationSelector);
 
-    console.log("Data Organization: ", data);
-    return <div>{data.image}</div>;
+    useEffect(() => {
+        dispatch(fetchData());
+    }, [dispatch]);
+
+    const renderData = () => {
+        if (loading) return <p>Loading logo...</p>;
+        if (hasErrors) return <p>Cannot display logo...</p>;
+
+        return data.map((info, index) => {
+            return <img src={info.image} />;
+        });
+    };
+
+    return <div>{renderData()}</div>;
 }
