@@ -2,7 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const menuItemsSlice = createSlice({
     name: "menuItems",
-    initialState: {},
+    initialState: {
+        items: [
+            { texto: "Inicio", ruta: "/" },
+            { texto: "Nostros", ruta: "/nosotros" },
+            { texto: "Actividades", ruta: "/actividades" },
+            { texto: "Novedades", ruta: "/novedades" },
+            { texto: "Contacto", ruta: "/contacto" },
+        ],
+    },
 
     reducers: {},
 });
