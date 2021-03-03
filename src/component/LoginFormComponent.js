@@ -6,7 +6,7 @@ import {
   EMAIL_REQUIRED,
   PASSWORD_REQUIRED,
   PASSWORD_MIN_LENGHT_NUMBER,
-  PASSWORD_MIN_LENGHT,
+  PASSWORD_MIN_LENGHT_WARNING ,
 } from "../const/const";
 
 function LoginFormBody(props) {
