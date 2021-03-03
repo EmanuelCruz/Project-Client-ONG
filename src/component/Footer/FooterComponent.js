@@ -5,7 +5,7 @@ import Copyright from './Columns/Copyright'
 import SocialMedia from './Columns/SocialMedia'
 import WebLinks from './Columns/WebLinks'
 
-function Footer() {
+function FooterComponent() {
   return (
     <div class="footer-dark">
       <footer>
@@ -22,4 +22,4 @@ function Footer() {
   )
 }
 
-export default Footer
+export default FooterComponent
