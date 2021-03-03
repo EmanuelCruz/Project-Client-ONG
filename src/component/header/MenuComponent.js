@@ -1,20 +1,35 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { itemsSelector } from "./slice/menuItemsSlice";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchItems, itemsSelector } from "./slice/menuItemsSlice";
+import { Link } from "react-router-dom";
 
 export default function MenuComponent() {
-    const items = useSelector(itemsSelector);
+    const dispatch = useDispatch();
+    const { items, loading, hasErrors } = useSelector(itemsSelector);
 
-    console.log("Items: ", items);
+    useEffect(() => {
+        dispatch(fetchItems());
+    }, [dispatch]);
+
+    const renderItems = () => {
+        if (loading) return <p>Loading items...</p>;
+        if (hasErrors) return <p>Cannot display items...</p>;
+
+        return items.map((item, index) => {
+            let to = item.ruta;
+            return (
+                <div key={index}>
+                    <Link className="" to={to}>
+                        {item.texto}
+                    </Link>
+                </div>
+            );
+        });
+    };
+
     return (
         <div>
-            <ul>
-                <li>{items[0].texto}</li>
-                <li>{items[1].texto}</li>
-                <li>{items[2].texto}</li>
-                <li>{items[3].texto}</li>
-                <li>{items[4].texto}</li>
-            </ul>
+            <ul>{renderItems()}</ul>
         </div>
     );
 }
