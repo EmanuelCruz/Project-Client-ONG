@@ -37,7 +37,7 @@ const SignupForm = () => (
       initialValues={{ email: "", firstName: "", lastName: "", password: "" }}
       validationSchema={schema}
       onSubmit={(values) => {
-        console.log(values);
+        // console.log(values);
       }}
     >
       {({ errors, touched }) => (
