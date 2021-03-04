@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const URL_ORGANIZACION_DATA_PUBLIC = "http://organization/1/public"; //TODO: Agregar url para obtener los datos
+const URL_ORGANIZACION_DATA_PUBLIC = "http://localhost:3002/items";
 
 export const menuItemsSlice = createSlice({
     name: "menuItems",

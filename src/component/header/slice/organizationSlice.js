@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const URL_ORGANIZACION_DATA_PUBLIC = "http://organization/1/public"; //TODO: Agregar url para obtener los datos
+const URL_ORGANIZACION_DATA_PUBLIC = "http://localhost:3001/data"; //TODO: Agregar url para obtener los datos
 
 export const organizationSlice = createSlice({
     name: "organization",
