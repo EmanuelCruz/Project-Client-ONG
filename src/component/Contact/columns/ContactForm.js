@@ -28,7 +28,6 @@ export const ContactForm = () => {
       setFormData({ name: '', email: '', message: '' });
       setIsLoaded(true);
       setIsMessageSend(true);
-      console.log(formData); // datos del formulario
     }, 1000);
 
     setTimeout(() => {
