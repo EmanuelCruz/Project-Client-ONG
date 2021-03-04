@@ -1,16 +1,13 @@
 import React from "react";
-import LogoComponent from "./LogoComponent";
-import MenuComponent from "./MenuComponent";
+import LogoComponent from "./Logo/LogoComponent";
+import MenuComponent from "./Menu/MenuComponent";
+import "./Header.css";
 
-const UsersList = () => {
+export default function HeaderComponent() {
     return (
-        <div>
-            <div>
-                <LogoComponent></LogoComponent>
-                <MenuComponent></MenuComponent>
-            </div>
+        <div className="header">
+            <LogoComponent></LogoComponent>
+            <MenuComponent></MenuComponent>
         </div>
     );
-};
-
-export default UsersList;
+}
