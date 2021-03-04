@@ -2,9 +2,8 @@ import React from "react";
 import HeaderScreen from "./screen/header/HeaderScreen";
 import AboutUsScreen from "./screen/aboutUs/AboutUsScreen";
 import ProfileScreen from "./screen/profile/ProfileScreen";
+import SingUpScreen from "./screen/singUp";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import logo from "./logo.svg";
-import { Counter } from "./features/counter/Counter";
 import "./App.css";
 
 function App() {
@@ -17,6 +16,9 @@ function App() {
           </Route>
           <Route path="/profile">
             <ProfileScreen />
+          </Route>
+          <Route path="/singup">
+            <SingUpScreen />
           </Route>
           <Route path="/">
             <HeaderScreen />

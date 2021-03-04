@@ -1,50 +1,63 @@
 import React from "react";
-import { useFormik } from "formik";
+import { Formik, Form, Field } from "formik";
+import * as yup from "yup";
 
-const SignupForm = () => {
-    const formik = useFormik({
-        initialValues: { email: "", name: '', lastname: '', password: '' },
-        onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
-        }
-    });
-    return (
-        <form onSubmit={formik.handleSubmit}>
-            <label htmlFor="email">Email Address</label>
-            <input
-                id="email"
-                name="email"
-                type="email"
-                onChange={formik.handleChange}
-                value={formik.values.email}
-            />
+const schema = yup.object().shape({
+  email: yup.string().email("Correo inválido").required("Requerido"),
+  password: yup.string().min(6, "Mínimo 6 caracteres").required("Requerido"),
+  firstName: yup
+    .string()
+    .min(2, "Debe tener al menos 2 caracteres")
+    .required("Requerido"),
+  lastName: yup
+    .string()
+    .min(2, "Debe tener al menos 2 caracteres")
+    .required("Requerido"),
+});
+
+const SignupForm = () => (
+  <>
+    <h2>SingUp</h2>
+    <Formik
+      initialValues={{ email: "", firstName: "", lastName: "", password: "" }}
+      validationSchema={schema}
+      onSubmit={(values) => {
+        console.log(values);
+      }}
+    >
+      {({ errors, touched }) => (
+        <Form className={"container"}>
+          <div className={"form-group"}>
+            <label htmlFor="firstName">First Name</label>
+            <Field name="firstName" className={"form-control"} />
+            {errors.firstName && touched.firstName ? (
+              <div>{errors.firstName}</div>
+            ) : null}
+          </div>
+          <div className={"form-group"}>
+            <label htmlFor="lastName">Last Name</label>
+            <Field name="lastName" className={"form-control"} />
+            {errors.lastName && touched.lastName ? (
+              <div>{errors.lastName}</div>
+            ) : null}
+          </div>
+          <div className={"form-group"}>
+            <label htmlFor="email">E-mail</label>
+            <Field name="email" type="email" className={"form-control"} />
+            {errors.email && touched.email ? <div>{errors.email}</div> : null}
+          </div>
+          <div className={"form-group"}>
             <label htmlFor="password">Password</label>
-            <input
-                id="password"
-                name="password"
-                type="password"
-                onChange={formik.handleChange}
-                value={formik.values.password}
-            />
-            <label htmlFor="name">First Name</label>
-            <input
-                id="name"
-                name="name"
-                type="name"
-                onChange={formik.handleChange}
-                value={formik.values.name}
-            />
-            <label htmlFor="lastname">Last Name</label>
-            <input
-                id="lastname"
-                name="lastname"
-                type="lastname"
-                onChange={formik.handleChange}
-                value={formik.values.lastname}
-            />
-            <button type="submit">Singup</button>
-        </form>
-    );
-};
+            <Field name="password" type="password" className={"form-control"} />
+            {errors.password && touched.password ? (
+              <div>{errors.password}</div>
+            ) : null}
+          </div>
+          <button type="submit">Submit</button>
+        </Form>
+      )}
+    </Formik>
+  </>
+);
 
 export default SignupForm;
