@@ -1,4 +1,5 @@
 import React from "react";
+import "./SignupComponent.css";
 import { Formik, Form, Field } from "formik";
 import * as yup from "yup";
 import {
@@ -29,7 +30,8 @@ const schema = yup.object().shape({
 });
 
 const SignupForm = () => (
-  <>
+  <div className={"w-50 mx-auto"}>
+    {/*TODO: Responsive*/}
     <h2>SingUp</h2>
     <Formik
       initialValues={{ email: "", firstName: "", lastName: "", password: "" }}
@@ -41,36 +43,48 @@ const SignupForm = () => (
       {({ errors, touched }) => (
         <Form className={"container"}>
           <div className={"form-group"}>
-            <label htmlFor="firstName">First Name</label>
+            <label htmlFor="firstName">
+              First Name{" "}
+              {errors.firstName && touched.firstName ? (
+                <small>{errors.firstName}</small>
+              ) : null}
+            </label>
             <Field name="firstName" className={"form-control"} />
-            {errors.firstName && touched.firstName ? (
-              <div>{errors.firstName}</div>
-            ) : null}
           </div>
           <div className={"form-group"}>
-            <label htmlFor="lastName">Last Name</label>
+            <label htmlFor="lastName">
+              Last Name{" "}
+              {errors.lastName && touched.lastName ? (
+                <small>{errors.lastName}</small>
+              ) : null}
+            </label>
             <Field name="lastName" className={"form-control"} />
-            {errors.lastName && touched.lastName ? (
-              <div>{errors.lastName}</div>
-            ) : null}
           </div>
           <div className={"form-group"}>
-            <label htmlFor="email">E-mail</label>
+            <label htmlFor="email">
+              E-mail{" "}
+              {errors.email && touched.email ? (
+                <small>{errors.email}</small>
+              ) : null}
+            </label>
             <Field name="email" type="email" className={"form-control"} />
-            {errors.email && touched.email ? <div>{errors.email}</div> : null}
           </div>
           <div className={"form-group"}>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">
+              Password{" "}
+              {errors.password && touched.password ? (
+                <small>{errors.password}</small>
+              ) : null}
+            </label>
             <Field name="password" type="password" className={"form-control"} />
-            {errors.password && touched.password ? (
-              <div>{errors.password}</div>
-            ) : null}
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit" className={"d-block w-100"}>
+            Submit
+          </button>
         </Form>
       )}
     </Formik>
-  </>
+  </div>
 );
 
 export default SignupForm;
