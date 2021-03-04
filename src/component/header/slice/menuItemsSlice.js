@@ -45,7 +45,7 @@ export function fetchItems() {
             const response = await fetch(URL_ORGANIZACION_DATA_PUBLIC);
             const data = await response.json();
 
-            dispatch(getItemsSuccess(data.meals));
+            dispatch(getItemsSuccess(data));
         } catch (error) {
             dispatch(getItemsFailure());
         }
