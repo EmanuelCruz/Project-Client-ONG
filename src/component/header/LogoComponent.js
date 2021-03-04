@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData, organizationSelector } from "./slice/organizationSlice";
-import { Link } from "react-router-dom";
 
 export default function LogoComponent() {
     const dispatch = useDispatch();
