@@ -1,6 +1,8 @@
 import React from 'react';
 import { ContactComponent } from '../../component/Contact/ContactComponent';
 
-export const ContactScreen = () => {
+const ContactScreen = () => {
   return <ContactComponent />;
 };
+
+export default ContactScreen;
