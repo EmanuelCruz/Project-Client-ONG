@@ -1,18 +1,31 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import * as yup from "yup";
+import {
+  NOT_VALID_EMAIL,
+  REQUIRED,
+  PASSWORD_MIN_LENGHT_NUMBER,
+  PASSWORD_MIN_LENGHT_WARNING,
+  NAME_MIN_LENGTH_WARNING,
+  NAME_MIN_LENGTH_NUMBER,
+  LASTNAME_MIN_LENGTH_WARNING,
+  LASTNAME_MIN_LENGTH_NUMBER,
+} from "../../const/const";
 
 const schema = yup.object().shape({
-  email: yup.string().email("Correo inválido").required("Requerido"),
-  password: yup.string().min(6, "Mínimo 6 caracteres").required("Requerido"),
+  email: yup.string().email(NOT_VALID_EMAIL).required(REQUIRED),
+  password: yup
+    .string()
+    .min(PASSWORD_MIN_LENGHT_NUMBER, PASSWORD_MIN_LENGHT_WARNING)
+    .required(REQUIRED),
   firstName: yup
     .string()
-    .min(2, "Debe tener al menos 2 caracteres")
-    .required("Requerido"),
+    .min(NAME_MIN_LENGTH_NUMBER, NAME_MIN_LENGTH_WARNING)
+    .required(REQUIRED),
   lastName: yup
     .string()
-    .min(2, "Debe tener al menos 2 caracteres")
-    .required("Requerido"),
+    .min(LASTNAME_MIN_LENGTH_NUMBER, LASTNAME_MIN_LENGTH_WARNING)
+    .required(REQUIRED),
 });
 
 const SignupForm = () => (
