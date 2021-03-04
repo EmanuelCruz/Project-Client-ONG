@@ -1,6 +1,6 @@
 import React from "react";
 import LogoComponent from "./LogoComponent";
-import MenuComponent from "./menuComponent";
+import MenuComponent from "./MenuComponent";
 
 const UsersList = () => {
     return (
