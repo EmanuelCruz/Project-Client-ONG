@@ -18,3 +18,12 @@ export const PASSWORD_MIN_LENGHT_WARNING =
   "La longitud minima es de 6 caracteres";
 export const PASSWORD_MIN_LENGHT_NUMBER = 6;
 export const PASSWORD_REQUIRED = "Se requiere contraseña";
+
+//Form SignUp
+export const REQUIRED = "Campo requerido.";
+export const NAME_MIN_LENGTH_WARNING =
+  "El nombre debe tener al menos 2 caracteres";
+export const NAME_MIN_LENGTH_NUMBER = 2;
+export const LASTNAME_MIN_LENGTH_WARNING =
+  "El apellido debe tener al menos 2 caracteres";
+export const LASTNAME_MIN_LENGTH_NUMBER = 2;
