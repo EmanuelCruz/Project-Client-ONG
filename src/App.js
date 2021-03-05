@@ -6,8 +6,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import logo from "./logo.svg";
 import { Counter } from "./features/counter/Counter";
 import "./App.css";
-import FooterComponent from "./component/Footer/FooterComponent";
-import SliderComponent from "./component/Slider/SliderComponent";
 
 
 
@@ -24,8 +22,6 @@ function App() {
           </Route>
           <Route path="/">
             <HeaderScreen />
-            <SliderComponent />
-            <FooterComponent />
           </Route>
         </Switch>
       </div>
