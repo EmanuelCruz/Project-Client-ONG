@@ -2,7 +2,7 @@ import React from 'react'
 
 function Copyright() {
     return (
-        <p class="copyright">ONG Alkemy © 2021</p>
+        <p className="copyright">ONG Alkemy © 2021</p>
     )
 }
 

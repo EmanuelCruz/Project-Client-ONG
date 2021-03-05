@@ -7,10 +7,10 @@ import WebLinks from './Columns/WebLinks'
 
 function FooterComponent() {
   return (
-    <div class="footer-dark">
+    <div className="footer-dark">
       <footer>
-        <div class="container">
-          <div class="row">
+        <div className="container">
+          <div className="row">
             <CompanyInfo companyName={'ONG Alkemy'} />
             <WebLinks webLinks={['Home', 'About', 'Contact']} />
             <SocialMedia />
