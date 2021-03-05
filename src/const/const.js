@@ -26,3 +26,12 @@ export const MAIN_URL = 'http://localhost:3000/';
 export const USERS_URL = 'http://localhost:3000/users';
 // get organizations
 export const ORGANIZATIONS_URL = 'http://localhost:3000/organizations';
+
+//Form SignUp
+export const REQUIRED = 'Campo requerido.';
+export const NAME_MIN_LENGTH_WARNING =
+  'El nombre debe tener al menos 2 caracteres';
+export const NAME_MIN_LENGTH_NUMBER = 2;
+export const LASTNAME_MIN_LENGTH_WARNING =
+  'El apellido debe tener al menos 2 caracteres';
+export const LASTNAME_MIN_LENGTH_NUMBER = 2;

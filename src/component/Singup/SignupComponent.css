@@ -1,0 +1,9 @@
+
+label > small {
+    color: darkred;
+    font-style: italic;
+}
+
+.form-group {
+    text-align: left;
+}
