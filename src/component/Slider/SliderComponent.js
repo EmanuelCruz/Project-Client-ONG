@@ -3,7 +3,7 @@ import { sliderImages } from './SliderImagesData'
 import Arrows from './Arrows'
 import Dots from './Dots'
 import SliderContent from './SliderContent'
-import './slider.css'
+import './Slider.css'
 
 const slidersLength = sliderImages.length - 1
 
