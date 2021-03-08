@@ -5,7 +5,7 @@ import ProfileScreen from './screen/profile/ProfileScreen';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import ContactScreen from './screen/contact/ContactScreen';
-import SingUpScreen from './screen/singUp';
+import SignUpScreen from './screen/signUp';
 
 function App() {
   return (
@@ -21,8 +21,8 @@ function App() {
           <Route path="/profile">
             <ProfileScreen />
           </Route>
-          <Route path="/singup">
-            <SingUpScreen />
+          <Route path="/signup">
+            <SignUpScreen />
           </Route>
           <Route path="/">
             <HeaderScreen />
