@@ -22,10 +22,6 @@ export const PASSWORD_REQUIRED = 'Se requiere contraseña';
 // Querys API
 // main query
 export const MAIN_URL = 'http://localhost:3000/';
-// get users
-export const USERS_URL = 'http://localhost:3000/users';
-// get organizations
-export const ORGANIZATIONS_URL = 'http://localhost:3000/organizations';
 
 //Form SignUp
 export const REQUIRED = 'Campo requerido.';

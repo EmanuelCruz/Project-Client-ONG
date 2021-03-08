@@ -4,10 +4,10 @@ import { MAIN_URL } from '../../const/const';
 const getTokenLocalStorage = JSON.stringify(localStorage.getItem('token'));
 const AUTH_TOKEN = JSON.parse(getTokenLocalStorage) || '';
 
-const authAxios = axios.create({
+const apiServices = axios.create({
   baseURL: MAIN_URL,
 });
 
-authAxios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+apiServices.defaults.headers.common['Authorization'] = `Bearer ${AUTH_TOKEN}`;
 
-export default authAxios;
+export default apiServices;
