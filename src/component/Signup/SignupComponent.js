@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import "./SignupComponent.css";
 import { Formik, Form, Field } from "formik";
 import * as yup from "yup";
@@ -12,6 +13,9 @@ import {
   LASTNAME_MIN_LENGTH_WARNING,
   LASTNAME_MIN_LENGTH_NUMBER,
 } from "../../const/const";
+
+import { ErrorAlertComponent } from '../AlertComponent';
+import { register } from '../../services/querys/authService';
 
 const schema = yup.object().shape({
   email: yup.string().email(NOT_VALID_EMAIL).required(REQUIRED),
@@ -29,6 +33,14 @@ const schema = yup.object().shape({
     .required(REQUIRED),
 });
 
+const onSignupSubmit = (values) => {
+  register(values.firstName, values.lastName, values.email, values.password).then(res => {
+    let history = useHistory();
+    history.push('/');
+    window.location.reload();
+  }).catch(err => ErrorAlertComponent());
+};
+
 const SignupForm = () => (
   <div className={"w-50 mx-auto"}>
     {/*TODO: Responsive*/}
@@ -37,7 +49,7 @@ const SignupForm = () => (
       initialValues={{ email: "", firstName: "", lastName: "", password: "" }}
       validationSchema={schema}
       onSubmit={(values) => {
-        // console.log(values);
+        onSignupSubmit(values);
       }}
     >
       {({ errors, touched }) => (

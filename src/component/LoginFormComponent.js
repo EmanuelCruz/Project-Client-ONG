@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import {
@@ -8,6 +9,9 @@ import {
   PASSWORD_MIN_LENGHT_NUMBER,
   PASSWORD_MIN_LENGHT_WARNING,
 } from "../const/const";
+
+import { ErrorAlertComponent } from './AlertComponent';
+import { login } from '../services/querys/authService';
 
 function LoginFormBody(props) {
   const { touched, errors } = props;
@@ -64,6 +68,11 @@ const LoginFormComponent = withFormik({
   handleSubmit: (values) => {
     const USER_LOGIN = values;
     //TODO:Conection to Backend (POST)
+    login(USER_LOGIN.email, USER_LOGIN.password).then(res => {
+      let history = useHistory();
+      history.push('/');
+      window.location.reload();
+    }).catch(err => ErrorAlertComponent());
   },
   validationSchema: Yup.object().shape({
     email: Yup.string().email(NOT_VALID_EMAIL).required(EMAIL_REQUIRED),
