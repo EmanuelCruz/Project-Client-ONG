@@ -1,11 +1,12 @@
-import React from 'react';
-import HeaderScreen from './screen/header/HeaderScreen';
-import AboutUsScreen from './screen/aboutUs/AboutUsScreen';
-import ProfileScreen from './screen/profile/ProfileScreen';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import './App.css';
-import ContactScreen from './screen/contact/ContactScreen';
-import SingUpScreen from './screen/singUp';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import HomeScreen from "./screen/home/HomeScreen";
+import HeaderScreen from "./screen/header/HeaderScreen";
+import AboutUsScreen from "./screen/aboutUs/AboutUsScreen";
+import ProfileScreen from "./screen/profile/ProfileScreen";
+import ContactScreen from "./screen/contact/ContactScreen";
+import SingUpScreen from "./screen/singUp";
+import "./App.css";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           </Route>
           <Route path="/">
             <HeaderScreen />
+            <HomeScreen />
           </Route>
         </Switch>
       </div>
