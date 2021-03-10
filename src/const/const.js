@@ -31,3 +31,16 @@ export const NAME_MIN_LENGTH_NUMBER = 2;
 export const LASTNAME_MIN_LENGTH_WARNING =
   'El apellido debe tener al menos 2 caracteres';
 export const LASTNAME_MIN_LENGTH_NUMBER = 2;
+
+// Form Edit Organization
+
+export const objectIsEmpty = (obj) => {
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key))
+      return false
+  }
+  return true;
+}
+
+export const LOGO_MIN_LENGTH_WARNING =
+  'Debes subir una imagen.'
