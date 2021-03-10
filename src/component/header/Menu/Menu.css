@@ -1,19 +1,29 @@
 .menu {
-    width: 85%;
+  width: 85%;
 }
 
 .menu__ul {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    width: 80%;
-    height: 100%;
-    list-style: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: 100%;
+  list-style: none;
 }
 
 .menu__li {
-    padding: 20px 60px;
-    text-align: center;
+  padding: 20px 60px;
+  text-align: center;
+  color: #000;
+}
+
+.menu__li:hover {
+  color: #000;
+}
+
+.menu__li--active {
+  color: #777;
+  text-decoration: underline;
 }
