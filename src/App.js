@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import ContactScreen from './screen/contact/ContactScreen';
 import SingUpScreen from './screen/singUp';
+import EditOrganizationScreen from './screen/editOrganization/EditOrganizationScreen';
 
 function App() {
   return (
@@ -24,12 +25,14 @@ function App() {
           <Route path="/singup">
             <SingUpScreen />
           </Route>
+          <Route path="/backoffice/edit-organization">
+            <EditOrganizationScreen />
+          </Route>
           <Route path="/">
             <HeaderScreen />
           </Route>
         </Switch>
       </div>
-      ;
     </Router>
   );
 }
