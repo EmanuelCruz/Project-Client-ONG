@@ -11,6 +11,7 @@ import {
     Grid,
     Box,
 } from "@material-ui/core";
+import { REQUIRED } from "../../const/const";
 
 const InputWelcomeText = ({ label, ...props }) => {
     const [field, meta] = useField(props);
