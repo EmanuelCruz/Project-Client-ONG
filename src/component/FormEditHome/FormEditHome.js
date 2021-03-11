@@ -88,6 +88,7 @@ const FormEditHome = () => {
                     textoSlide3: "",
                 }}
                 enableReinitialize={true}
+                validationSchema={schema}
                 onSubmit={(values) => {
                     alert(JSON.stringify(values, null, 2)); //Codigo para ver los campos que se envian
                 }}
