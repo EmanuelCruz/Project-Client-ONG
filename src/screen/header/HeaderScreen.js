@@ -1,11 +1,12 @@
-import React from "react";
+import React from 'react';
+import HeaderComponent from '../../component/header/HeaderComponent';
 
-const HeaderComponent = () => {
+const HeaderScreen = () => {
   return (
     <div className="header">
-      <h3>This is the Header component</h3>
+      <HeaderComponent />
     </div>
   );
 };
 
-export default HeaderComponent;
+export default HeaderScreen;
