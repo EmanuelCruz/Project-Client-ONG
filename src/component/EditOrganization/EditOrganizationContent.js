@@ -1,27 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import "./EditOrganization.css";
 import NameInput from './Columns/NameInput';
 import LogoInput from './Columns/LogoInput';
 import SubmitButton from './Columns/SubmitButton'
 
-const EditOrganizationContent = () => {
-  const [defaultName, setDefaultName] = useState('')
-  const [defaultLogo, setDefaultLogo] = useState('')
-
-  const [newName, setNewName] = useState(defaultName)
-  const [newLogo, setNewLogo] = useState('')
-
-  const [nameInputOutlineColor, setNameInputOutlineColor] = useState('')
-  const [logoInputOutlineColor, setLogoInputOutlineColor] = useState('')
-
-  useEffect(() => {
-    setNewName(defaultName)
-  }, [defaultName])
-
-  useEffect(() => {
-    setDefaultName('defaultName')
-    setDefaultLogo('https://www.freepnglogos.com/uploads/vodafone-png-logo/vodafone-logo-clarify-business-development-16.png')
-  }, [])
+const EditOrganizationContent = ({ newName, setNewName, nameInputOutlineColor, newLogo, setNewLogo, logoInputOutlineColor, defaultLogo, setNameInputOutlineColor, setLogoInputOutlineColor }) => {
 
   return (
     <div className={"w-50 mx-auto"}>

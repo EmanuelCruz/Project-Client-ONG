@@ -10,6 +10,7 @@ const NameInput = ({ newName, newLogo, setNameInputOutlineColor, setLogoInputOut
     } else {
       setNameInputOutlineColor('red')
       setLogoInputOutlineColor('red')
+      {/* TO DO: PASS RESULTS TO THE BACKEND */ }
     }
   }
 

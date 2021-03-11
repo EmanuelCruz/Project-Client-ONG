@@ -14,10 +14,11 @@ const LogoInput = ({ newLogo, setNewLogo, logoInputOutlineColor, defaultLogo }) 
           style={{ borderColor: logoInputOutlineColor }}
           onChange={(event) => {
             setNewLogo(URL.createObjectURL(event.target.files[0]));
+            {/* TO DO: TRANSFORM UPLOADED IMAGE TO URL */ }
           }} />
-        {newLogo ? <img style={{ maxWidth: '130px' }} src={newLogo} title="Nuevo logo" alt=""></img>
+        {newLogo ? <img className="logo" src={newLogo} title="Nuevo logo" alt=""></img>
           :
-          <img style={{ maxWidth: '130px' }} src={defaultLogo} title="Logo actual" alt=""></img>}
+          <img className="logo" src={defaultLogo} title="Logo actual" alt=""></img>}
       </div>
     </>
   )
