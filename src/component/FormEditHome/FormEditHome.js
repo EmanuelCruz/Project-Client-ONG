@@ -14,6 +14,15 @@ import {
 
 const InputWelcomeText = ({ label, ...props }) => {
     const [field, meta] = useField(props);
+    const schema = Yup.object().shape({
+        welcomeText: Yup.string().required(REQUIRED),
+        slideImage1: Yup.mixed().required(REQUIRED),
+        textoSlide1: Yup.string().required(REQUIRED),
+        slideImage2: Yup.mixed().required(REQUIRED),
+        textoSlide2: Yup.string().required(REQUIRED),
+        slideImage3: Yup.mixed().required(REQUIRED),
+        textoSlide3: Yup.string().required(REQUIRED),
+    });
     return (
         <>
             <TextField
