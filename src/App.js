@@ -7,24 +7,25 @@ import HeaderScreen from "./screen/header/HeaderScreen";
 import HomeScreen from "./screen/home/HomeScreen";
 import ProfileScreen from "./screen/profile/ProfileScreen";
 import SingUpScreen from "./screen/singUp";
-import "./App.css";
 import EditOrganizationScreen from "./screen/editOrganization/EditOrganizationScreen";
+import "./App.css";
 
 function App() {
   return (
     <Router>
       <div className="App">
+        <HeaderScreen />
         <Switch>
-          <Route path="/contacto">
+          <Route exact path="/contacto">
             <ContactScreen />
           </Route>
-          <Route path="/nosotros">
+          <Route exact path="/nosotros">
             <AboutUsScreen />
           </Route>
-          <Route path="/profile">
+          <Route exact path="/profile">
             <ProfileScreen />
           </Route>
-          <Route path="/singup">
+          <Route exact path="/singup">
             <SingUpScreen />
           </Route>
           <Route exact path="/backoffice">
@@ -34,7 +35,6 @@ function App() {
             <EditOrganizationScreen />
           </Route>
           <Route exact path="/">
-            <HeaderScreen />
             <HomeScreen />
           </Route>
         </Switch>
