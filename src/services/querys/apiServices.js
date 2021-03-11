@@ -8,6 +8,8 @@ const apiServices = axios.create({
   baseURL: MAIN_URL,
 });
 
-apiServices.defaults.headers.common['Authorization'] = `Bearer ${AUTH_TOKEN}`;
+if (AUTH_TOKEN !== '') {
+  apiServices.defaults.headers.common['authorization'] = `Bearer ${AUTH_TOKEN}`;
+}
 
 export default apiServices;
