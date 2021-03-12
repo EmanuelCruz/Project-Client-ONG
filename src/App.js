@@ -1,14 +1,15 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import AboutUsScreen from './screen/aboutUs/AboutUsScreen';
-import BackOffice from './screen/backoffice/';
-import ContactScreen from './screen/contact/ContactScreen';
-import HeaderScreen from './screen/header/HeaderScreen';
-import HomeScreen from './screen/home/HomeScreen';
-import ProfileScreen from './screen/profile/ProfileScreen';
-import SignUpScreen from './screen/signUp/SignUpScreen';
-import NovedadesScreen from './screen/novedades/NovedadesScreen';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import AboutUsScreen from "./screen/aboutUs/AboutUsScreen";
+import BackOffice from "./screen/backoffice/";
+import ContactScreen from "./screen/contact/ContactScreen";
+import HeaderScreen from "./screen/header/HeaderScreen";
+import HomeScreen from "./screen/home/HomeScreen";
+import ProfileScreen from "./screen/profile/ProfileScreen";
+import SignUpScreen from "./screen/signUp";
+import EditOrganizationScreen from "./screen/editOrganization/EditOrganizationScreen";
+import NovedadesScreen from "./screen/novedades/NovedadesScreen";
+import "./App.css";
 
 function App() {
   return (
@@ -16,20 +17,23 @@ function App() {
       <div className="App">
         <HeaderScreen />
         <Switch>
-          <Route path="/contacto">
+          <Route exact path="/contacto">
             <ContactScreen />
           </Route>
-          <Route path="/nosotros">
+          <Route exact path="/nosotros">
             <AboutUsScreen />
           </Route>
-          <Route path="/profile">
+          <Route exact path="/profile">
             <ProfileScreen />
           </Route>
-          <Route path="/signup">
+          <Route exact path="/signup">
             <SignUpScreen />
           </Route>
-          <Route path="/backoffice">
+          <Route exact path="/backoffice">
             <BackOffice />
+          </Route>
+          <Route exact path="/backoffice/edit-organization">
+            <EditOrganizationScreen />
           </Route>
           <Route exact path="/novedades">
             <NovedadesScreen />

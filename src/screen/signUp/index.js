@@ -1,1 +1,1 @@
-export { default } from "./SingUpScreen";
+export { default } from "./SignUpScreen";

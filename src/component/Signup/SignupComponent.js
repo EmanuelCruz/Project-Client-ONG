@@ -32,7 +32,7 @@ const schema = yup.object().shape({
 const SignupForm = () => (
   <div className={"w-50 mx-auto"}>
     {/*TODO: Responsive*/}
-    <h2>SingUp</h2>
+    <h2>SignUp</h2>
     <Formik
       initialValues={{ email: "", firstName: "", lastName: "", password: "" }}
       validationSchema={schema}
