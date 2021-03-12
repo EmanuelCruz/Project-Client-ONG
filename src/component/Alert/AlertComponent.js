@@ -11,7 +11,7 @@ import {
   ERROR_TITLE,
   INFO_BUTTON,
   INFO_TITLE,
-} from '../const/const';
+} from '../../const/const';
 
 export const InfoAlertComponent = () => {
   Swal.fire({

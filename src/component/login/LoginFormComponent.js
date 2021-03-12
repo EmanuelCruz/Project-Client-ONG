@@ -7,7 +7,9 @@ import {
   PASSWORD_REQUIRED,
   PASSWORD_MIN_LENGHT_NUMBER,
   PASSWORD_MIN_LENGHT_WARNING,
+  SALT,
 } from "../const/const";
+import bcrypt from "bcryptjs";
 
 function LoginFormBody(props) {
   const { touched, errors } = props;
@@ -62,8 +64,14 @@ const LoginFormComponent = withFormik({
     };
   },
   handleSubmit: (values) => {
-    const USER_LOGIN = values;
-    //TODO:Conection to Backend (POST)
+    console.log(values.password);
+    bcrypt.genSalt(SALT, function (err, salt) {
+      bcrypt.hash(values.password, salt, function (err, hash) {
+        values.password = hash;
+        const USER_LOGIN = values;
+        //TODO:Conection to Backend (POST)
+      });
+    });
   },
   validationSchema: Yup.object().shape({
     email: Yup.string().email(NOT_VALID_EMAIL).required(EMAIL_REQUIRED),
