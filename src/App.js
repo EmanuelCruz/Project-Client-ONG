@@ -7,6 +7,7 @@ import HeaderScreen from './screen/header/HeaderScreen';
 import HomeScreen from './screen/home/HomeScreen';
 import ProfileScreen from './screen/profile/ProfileScreen';
 import SingUpScreen from './screen/singUp';
+import AdminUsersListScreen from './screen/adminUsersList/AdminUsersListScreen'
 import './App.css';
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route exact path="/backoffice">
             <BackOffice />
+          </Route>
+          <Route exact path="/backoffice/users">
+            <AdminUsersListScreen />
           </Route>
           <Route exact path="/">
             <HomeScreen />
