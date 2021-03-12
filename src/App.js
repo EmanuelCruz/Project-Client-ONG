@@ -1,14 +1,15 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import AboutUsScreen from './screen/aboutUs/AboutUsScreen';
-import BackOffice from './screen/backoffice/';
-import ContactScreen from './screen/contact/ContactScreen';
-import HeaderScreen from './screen/header/HeaderScreen';
-import HomeScreen from './screen/home/HomeScreen';
-import ProfileScreen from './screen/profile/ProfileScreen';
-import SingUpScreen from './screen/singUp';
-import AdminUsersListScreen from './screen/adminUsersList/AdminUsersListScreen'
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import AboutUsScreen from "./screen/aboutUs/AboutUsScreen";
+import BackOffice from "./screen/backoffice/";
+import ContactScreen from "./screen/contact/ContactScreen";
+import HeaderScreen from "./screen/header/HeaderScreen";
+import HomeScreen from "./screen/home/HomeScreen";
+import ProfileScreen from "./screen/profile/ProfileScreen";
+import SingUpScreen from "./screen/singUp";
+import EditOrganizationScreen from "./screen/editOrganization/EditOrganizationScreen";
+import AdminUsersListScreen from "./screen/adminUsersList/AdminUsersListScreen";
+import "./App.css";
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route exact path="/backoffice">
             <BackOffice />
+          </Route>
+          <Route exact path="/backoffice/edit-organization">
+            <EditOrganizationScreen />
           </Route>
           <Route exact path="/backoffice/users">
             <AdminUsersListScreen />
