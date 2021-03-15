@@ -42,7 +42,6 @@ const BackOfficeNewsComponent = () => {
       try {
         const response = await apiServices.get("/news");
         const { data } = response;
-        console.log(data);
         setNewsData(data);
       } catch (err) {
         throw err;
