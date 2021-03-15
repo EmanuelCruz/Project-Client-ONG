@@ -7,8 +7,10 @@ import HeaderScreen from "./screen/header/HeaderScreen";
 import HomeScreen from "./screen/home/HomeScreen";
 import ProfileScreen from "./screen/profile/ProfileScreen";
 import SingUpScreen from "./screen/singUp";
+import NewsComponent from "./component/News/NewsComponent";
 import EditOrganizationScreen from "./screen/editOrganization/EditOrganizationScreen";
 import BackOfficeNewsScreen from "./screen/news/BackOfficeNewsScreen";
+import AdminUsersListScreen from "./screen/adminUsersList/AdminUsersListScreen";
 import "./App.css";
 
 function App() {
@@ -37,6 +39,9 @@ function App() {
           </Route>
           <Route exact path="/backoffice/news">
             <BackOfficeNewsScreen />
+          </Route>
+          <Route exact path="/backoffice/users">
+            <AdminUsersListScreen />
           </Route>
           <Route exact path="/">
             <HomeScreen />
