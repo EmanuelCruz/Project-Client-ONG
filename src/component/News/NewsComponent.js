@@ -1,36 +1,9 @@
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { SERVER_URL } from "../../const/const";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import {
-  makeStyles,
-  Button,
-  TextField,
-  MenuItem,
-  Container,
-} from "@material-ui/core/";
-
-const useStyles = makeStyles((theme) => ({
-  table: {
-    minWidth: 650,
-  },
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: "100%",
-    },
-  },
-  button: {
-    display: "inline",
-    marginTop: theme.spacing(2),
-  },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-    display: "block",
-  },
-}));
+import { Button, TextField, MenuItem, Container } from "@material-ui/core/";
+import { UpgradeNews, CreateNews } from "../../services/querys/newsServices";
+import useStyles from "./NewsMaterialStyles";
 
 const categoriesMock = [
   { id: 1, category: "Policiales" },
@@ -79,38 +52,20 @@ function NewsComponent({ toModifyNews }) {
   };
 
   const handleSubmit = () => {
-    //Post Condition
     if (!news.id) {
       for (const property in news) {
         formData.append(property, news[property]);
       }
       setFormData(formData);
-      axios
-        .post(SERVER_URL + "/news", formData)
-        .then(function () {
-          clearForm();
-        })
-        .catch(function (err) {
-          console.log(err);
-        });
+      if (CreateNews(formData)) {
+        clearForm();
+      }
     } else {
-      //Patch condition
       for (const property in news) {
         formData.append(property, news[property]);
       }
       setFormData(formData);
-      axios
-        .patch(SERVER_URL + "/news/" + news.id, formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
-        .then(function () {
-          clearForm();
-        })
-        .catch(function (err) {
-          console.log(err);
-        });
+      UpgradeNews(formData, news.id);
     }
   };
 
