@@ -8,6 +8,7 @@ import HomeScreen from "./screen/home/HomeScreen";
 import ProfileScreen from "./screen/profile/ProfileScreen";
 import SingUpScreen from "./screen/singUp";
 import EditOrganizationScreen from "./screen/editOrganization/EditOrganizationScreen";
+import BackOfficeNewsScreen from "./screen/news/BackOfficeNewsScreen";
 import "./App.css";
 
 function App() {
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route exact path="/backoffice/edit-organization">
             <EditOrganizationScreen />
+          </Route>
+          <Route exact path="/backoffice/news">
+            <BackOfficeNewsScreen />
           </Route>
           <Route exact path="/">
             <HomeScreen />
