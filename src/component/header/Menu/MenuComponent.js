@@ -17,8 +17,8 @@ export default function MenuComponent() {
       ruta: '/profile',
     },
     {
-      texto: 'Singup',
-      ruta: '/singup',
+      texto: 'Signup',
+      ruta: '/signup',
     },
     {
       texto: 'Contacto',
