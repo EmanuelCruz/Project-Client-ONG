@@ -34,6 +34,7 @@ export const LASTNAME_MIN_LENGTH_WARNING =
 export const LASTNAME_MIN_LENGTH_NUMBER = 2;
 
 // Form Edit Organization
+export const LOGO_MIN_LENGTH_WARNING = "Debes subir una imagen.";
 
-export const LOGO_MIN_LENGTH_WARNING =
-  'Debes subir una imagen.'
+// News Component
+export const SERVER_URL = ""; // Complete with server url
