@@ -92,7 +92,6 @@ function NewsComponent({ toModifyNews }) {
         })
         .catch(function (err) {
           console.log(err);
-          clearForm();
         });
     } else {
       //Patch condition
@@ -107,8 +106,7 @@ function NewsComponent({ toModifyNews }) {
           },
         })
         .then(function () {
-          setNews({});
-          setEmptyFields(true);
+          clearForm();
         })
         .catch(function (err) {
           console.log(err);
