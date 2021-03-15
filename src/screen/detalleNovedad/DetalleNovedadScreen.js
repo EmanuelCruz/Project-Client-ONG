@@ -20,6 +20,7 @@ export default function DetalleNovedadScreen({ match }) {
     let { id } = match.params;
 
     const [detalleNovedad, setDetalleNovedad] = useState({});
+
     useEffect(() => {
         async function fetchMyAPI() {
             let response = await axios.get(`${URL_API}${id}`);
@@ -29,29 +30,43 @@ export default function DetalleNovedadScreen({ match }) {
     }, [detalleNovedad, id]);
 
     return (
-        <Container maxWidth="lg" className={classes.root}>
-            <Grid container spacing={5}>
-                <Grid item xs={12}>
+        <>
+            {detalleNovedad ? (
+                <Container maxWidth="lg" className={classes.root}>
+                    <Grid container spacing={5}>
+                        <Grid item xs={12}>
+                            <Typography
+                                align="left"
+                                variant="h1"
+                                className={classes.title}
+                            >
+                                {detalleNovedad.name}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={9} className={classes.content}>
+                            <img
+                                src={detalleNovedad.image}
+                                alt="Imagen de la novedad"
+                                className={classes.image}
+                            />
+                            <p>{detalleNovedad.content}</p>
+                        </Grid>
+                        <Grid item xs={3} className={classes.links}>
+                            <NovedadesRecientes />
+                        </Grid>
+                    </Grid>
+                </Container>
+            ) : (
+                <Container maxWidth="lg" className={classes.root}>
                     <Typography
-                        align="left"
-                        variant="h1"
+                        align="center"
+                        variant="h5"
                         className={classes.title}
                     >
-                        {detalleNovedad.name}
+                        News Not Found
                     </Typography>
-                </Grid>
-                <Grid item xs={9} className={classes.content}>
-                    <img
-                        src={detalleNovedad.image}
-                        alt="Imagen de la novedad"
-                        className={classes.image}
-                    />
-                    <p>{detalleNovedad.content}</p>
-                </Grid>
-                <Grid item xs={3} className={classes.links}>
-                    <NovedadesRecientes />
-                </Grid>
-            </Grid>
-        </Container>
+                </Container>
+            )}
+        </>
     );
 }
