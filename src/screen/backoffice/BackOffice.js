@@ -4,6 +4,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import { makeStyles } from "@material-ui/core/styles";
 import ProfileScreen from "../profile/ProfileScreen";
+import NewsComponent from "../../component/News/NewsComponent";
 import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
@@ -19,13 +20,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const newsMock = {
+  id: 1,
+  title: "Soy un titulo Mock",
+  image: new Blob(),
+  content: "<h1>Soy un mock </h1>",
+  category: "Policiales",
+};
+
 export default function BackOffice() {
   const [activeDashboard, setActiveDashboard] = useState(<ProfileScreen />);
+  const [toModifyNews, setToModifyNews] = useState(newsMock);
   const classes = useStyles();
 
   //This is a real implementation
   const viewProfile = () => {
     setActiveDashboard(<ProfileScreen />);
+  };
+
+  const CreateNews = () => {
+    setActiveDashboard(<NewsComponent toModifyNews={{}} />);
+  };
+
+  const EditNews = () => {
+    setActiveDashboard(<NewsComponent toModifyNews={toModifyNews} />);
   };
 
   //This is an example of implementation
@@ -51,8 +69,8 @@ export default function BackOffice() {
           <Paper className={classes.paper}>
             <MenuList>
               <MenuItem onClick={viewProfile}>Perfil</MenuItem>
-              <MenuItem onClick={viewExample}>Mi Cuenta</MenuItem>
-              <MenuItem onClick={viewExample}>Crear Post</MenuItem>
+              <MenuItem onClick={CreateNews}>Crear Post</MenuItem>
+              <MenuItem onClick={EditNews}>Editar Post</MenuItem>
               <MenuItem onClick={viewExample}>Rol</MenuItem>
               <MenuItem onClick={viewExample}>Desloguearse</MenuItem>
             </MenuList>

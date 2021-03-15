@@ -6,9 +6,10 @@ import ContactScreen from "./screen/contact/ContactScreen";
 import HeaderScreen from "./screen/header/HeaderScreen";
 import HomeScreen from "./screen/home/HomeScreen";
 import ProfileScreen from "./screen/profile/ProfileScreen";
-import SignUpScreen from "./screen/signUp";
+import SingUpScreen from "./screen/singUp";
+import NewsComponent from "./component/News/NewsComponent";
 import EditOrganizationScreen from "./screen/editOrganization/EditOrganizationScreen";
-import NovedadesScreen from "./screen/novedades/NovedadesScreen";
+import AdminUsersListScreen from "./screen/adminUsersList/AdminUsersListScreen";
 import "./App.css";
 
 function App() {
@@ -35,8 +36,8 @@ function App() {
           <Route exact path="/backoffice/edit-organization">
             <EditOrganizationScreen />
           </Route>
-          <Route exact path="/novedades">
-            <NovedadesScreen />
+          <Route exact path="/backoffice/users">
+            <AdminUsersListScreen />
           </Route>
           <Route exact path="/">
             <HomeScreen />
