@@ -11,45 +11,51 @@ import NewsComponent from "./component/News/NewsComponent";
 import EditOrganizationScreen from "./screen/editOrganization/EditOrganizationScreen";
 import AdminUsersListScreen from "./screen/adminUsersList/AdminUsersListScreen";
 import NovedadesScreen from "./screen/novedades/NovedadesScreen";
+import DetalleNovedadScreen from "./screen/detalleNovedad/DetalleNovedadScreen";
 import "./App.css";
 
 function App() {
-  return (
-    <Router>
-      <div className="App">
-        <HeaderScreen />
-        <Switch>
-          <Route exact path="/contacto">
-            <ContactScreen />
-          </Route>
-          <Route exact path="/nosotros">
-            <AboutUsScreen />
-          </Route>
-          <Route exact path="/profile">
-            <ProfileScreen />
-          </Route>
-          <Route exact path="/signup">
-            <SignUpScreen />
-          </Route>
-          <Route exact path="/backoffice">
-            <BackOffice />
-          </Route>
-          <Route exact path="/backoffice/edit-organization">
-            <EditOrganizationScreen />
-          </Route>
-          <Route exact path="/backoffice/users">
-            <AdminUsersListScreen />
-          </Route>
-          <Route exact path="/novedades">
-            <NovedadesScreen />
-          </Route>
-          <Route exact path="/">
-            <HomeScreen />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  );
+    return (
+        <Router>
+            <div className="App">
+                <HeaderScreen />
+                <Switch>
+                    <Route exact path="/contacto">
+                        <ContactScreen />
+                    </Route>
+                    <Route exact path="/nosotros">
+                        <AboutUsScreen />
+                    </Route>
+                    <Route exact path="/profile">
+                        <ProfileScreen />
+                    </Route>
+                    <Route exact path="/signup">
+                        <SignUpScreen />
+                    </Route>
+                    <Route exact path="/backoffice">
+                        <BackOffice />
+                    </Route>
+                    <Route exact path="/backoffice/edit-organization">
+                        <EditOrganizationScreen />
+                    </Route>
+                    <Route exact path="/backoffice/users">
+                        <AdminUsersListScreen />
+                    </Route>
+                    <Route exact path="/novedades">
+                        <NovedadesScreen />
+                    </Route>
+                    <Route
+                        exact
+                        path="/novedad/:id"
+                        component={DetalleNovedadScreen}
+                    ></Route>
+                    <Route exact path="/">
+                        <HomeScreen />
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
