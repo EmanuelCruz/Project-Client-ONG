@@ -71,14 +71,15 @@ const BackOfficeNewsComponent = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {newsData.map((news) => (
-              <TableRowItem
-                key={news.name}
-                name={news.name}
-                image={news.image}
-                date={news.createdAt}
-              />
-            ))}
+            {!!newsData?.length &&
+              newsData.map((news) => (
+                <TableRowItem
+                  key={news.name}
+                  name={news.name}
+                  image={news.image}
+                  date={news.createdAt}
+                />
+              ))}
           </TableBody>
         </Table>
       </TableContainer>
