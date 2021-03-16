@@ -1,32 +1,21 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import NovedadesRecientes from "../../component/NovedadesRecientes/NovedadesRecientesComponent";
 import { Container, Grid, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-
-const myStyles = makeStyles((theme) => ({
-    root: {
-        marginTop: theme.spacing(2),
-    },
-    title: { margin: "20px 0" },
-    image: { maxWidth: "100%", maxHeight: "100%", marginBottom: 40 },
-    content: { marginTop: 60 },
-    links: { marginTop: 60 },
-}));
+import { getDetalleNovedad } from "../../services/querys/detalleNovedadServices";
+import myStyles from "./StylesDetalleNovedadScreen";
 
 export default function DetalleNovedadScreen({ match }) {
     const classes = myStyles();
-    const URL_API = "http://localhost:3000/news/";
     let { id } = match.params;
 
     const [detalleNovedad, setDetalleNovedad] = useState({});
 
     useEffect(() => {
-        async function fetchMyAPI() {
-            let response = await axios.get(`${URL_API}${id}`);
-            setDetalleNovedad(response.data[0]);
+        async function fetchData() {
+            const data = await getDetalleNovedad(id);
+            setDetalleNovedad(data);
         }
-        fetchMyAPI();
+        fetchData();
     }, [detalleNovedad, id]);
 
     return (
