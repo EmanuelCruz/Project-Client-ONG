@@ -1,20 +1,16 @@
 import React, { useState } from "react";
-import { List, ListSubheader, makeStyles } from "@material-ui/core";
+import { List, ListSubheader } from "@material-ui/core";
 import ItemNovedadesRecientes from "./Item/ItemNovedadesRecientesComponent";
+import myStyles from "./StylesNovedadesRecientesComponente";
+
 const ARRAY_NOVEDADES = [
     { id: 3, url: "/novedad/3" },
     { id: 2, url: "/novedad/2" },
     { id: 1, url: "/novedad/1" },
 ];
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: "100%",
-        maxWidth: 360,
-        backgroundColor: theme.palette.background.paper,
-    },
-}));
+
 export default function NovedadesRecientesComponent() {
-    const classes = useStyles();
+    const classes = myStyles();
     const [novedadesRecientes, setNovedadesRecientes] = useState(
         ARRAY_NOVEDADES
     );
