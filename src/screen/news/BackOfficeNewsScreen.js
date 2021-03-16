@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "@material-ui/core";
-import BackOfficeNewsComponent from "../../component/News/BackOfficeNewsComponent";
+import BackOfficeNewsComponent from "../../component/News/backOfficeNews/BackOfficeNewsComponent";
 
 const BackOfficeNewsScreen = () => {
   return (

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-  makeStyles,
   Paper,
   Table,
   TableBody,
@@ -12,47 +11,24 @@ import {
   Typography,
 } from "@material-ui/core";
 import TableRowItem from "./TableRowItem";
-import apiServices from "../../services/querys/apiServices";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(1),
-    display: "flex",
-    justifyContent: "center",
-  },
-  table: {
-    minWidth: 650,
-  },
-  tableCell: {
-    fontWeight: 600,
-    fontSize: "16px",
-  },
-  tableContainer: {
-    marginTop: "3rem",
-  },
-}));
+import useStyles from "../styles/MaterialUiStyles";
+import { getNews } from "../../../services/querys/newsServices";
 
 const BackOfficeNewsComponent = () => {
   const classes = useStyles();
   const [newsData, setNewsData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await apiServices.get("/news");
-        const { data } = response;
-        setNewsData(data);
-      } catch (err) {
-        throw err;
-      }
+    const fetchApi = async () => {
+      const data = await getNews();
+      setNewsData(data);
     };
-    fetchData();
+    fetchApi();
   }, []);
 
   return (
     <Paper className={classes.tableContainer}>
-      <Toolbar className={classes.root}>
+      <Toolbar className={classes.rootBackOffice}>
         <Typography variant="h4" className={classes.title}>
           Listado de Novedades
         </Typography>

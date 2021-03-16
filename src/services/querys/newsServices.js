@@ -1,5 +1,6 @@
 import axios from "axios";
 import { SERVER_URL } from "../../const/const";
+import apiServices from "./apiServices";
 
 function CreateNews(data) {
   axios
@@ -25,5 +26,14 @@ function UpgradeNews(data, id) {
       console.log(err);
     });
 }
+const getNews = async () => {
+  try {
+    const response = await apiServices.get("/news");
+    const { data } = response;
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
 
-export { CreateNews, UpgradeNews };
+export { CreateNews, UpgradeNews, getNews };

@@ -1,20 +1,8 @@
 import React from "react";
-import { Button, makeStyles, TableCell, TableRow } from "@material-ui/core";
+import { Button, TableCell, TableRow } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-
-const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-  tableButtons: {
-    [theme.breakpoints.down("sm")]: {
-      flexDirection: "column",
-    },
-    display: "flex",
-    justifyContent: "center",
-  },
-}));
+import useStyles from "../styles/MaterialUiStyles";
 
 const TableRowItem = ({ name, image, date }) => {
   const classes = useStyles();
@@ -28,7 +16,7 @@ const TableRowItem = ({ name, image, date }) => {
           variant="contained"
           color="primary"
           startIcon={<EditIcon />}
-          className={classes.button}
+          className={classes.buttonTableRow}
         >
           Editar
         </Button>
@@ -36,7 +24,7 @@ const TableRowItem = ({ name, image, date }) => {
           variant="contained"
           color="secondary"
           startIcon={<DeleteIcon />}
-          className={classes.button}
+          className={classes.buttonTableRow}
         >
           Eliminar
         </Button>
