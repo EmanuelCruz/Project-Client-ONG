@@ -5,6 +5,7 @@ import MenuList from "@material-ui/core/MenuList";
 import { makeStyles } from "@material-ui/core/styles";
 import ProfileScreen from "../profile/ProfileScreen";
 import NewsComponent from "../../component/News/NewsComponent";
+import ActivitiesComponent from "../../component/Activities/ActivitiesComponent";
 import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
@@ -28,9 +29,16 @@ const newsMock = {
   category: "Policiales",
 };
 
+const activitiesMock = {
+  id: 1,
+  name: "Soy Name Mock",
+  content: "<h1> Soy un Content Mock </h1>",
+};
+
 export default function BackOffice() {
   const [activeDashboard, setActiveDashboard] = useState(<ProfileScreen />);
   const [toModifyNews, setToModifyNews] = useState(newsMock);
+  const [toModifyActivities, setToModifyActivities] = useState(activitiesMock);
   const classes = useStyles();
 
   //This is a real implementation
@@ -44,6 +52,16 @@ export default function BackOffice() {
 
   const EditNews = () => {
     setActiveDashboard(<NewsComponent toModifyNews={toModifyNews} />);
+  };
+
+  const createActivities = () => {
+    setActiveDashboard(<ActivitiesComponent toModifyActivities={{}} />);
+  };
+
+  const editActivities = () => {
+    setActiveDashboard(
+      <ActivitiesComponent toModifyActivities={toModifyActivities} />
+    );
   };
 
   //This is an example of implementation
@@ -63,14 +81,15 @@ export default function BackOffice() {
         container
         direction="row"
         justify="center"
-        alignItems="center"
-      >
+        alignItems="center">
         <Grid item xs={12} sm={3}>
           <Paper className={classes.paper}>
             <MenuList>
               <MenuItem onClick={viewProfile}>Perfil</MenuItem>
               <MenuItem onClick={CreateNews}>Crear Post</MenuItem>
               <MenuItem onClick={EditNews}>Editar Post</MenuItem>
+              <MenuItem onClick={createActivities}>Crear Actividad</MenuItem>
+              <MenuItem onClick={editActivities}>Editar Actividad</MenuItem>
               <MenuItem onClick={viewExample}>Rol</MenuItem>
               <MenuItem onClick={viewExample}>Desloguearse</MenuItem>
             </MenuList>
