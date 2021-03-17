@@ -12,6 +12,7 @@ import EditOrganizationScreen from "./screen/editOrganization/EditOrganizationSc
 import BackOfficeNewsScreen from "./screen/news/BackOfficeNewsScreen";
 import AdminUsersListScreen from "./screen/adminUsersList/AdminUsersListScreen";
 import NovedadesScreen from "./screen/novedades/NovedadesScreen";
+import ActivitiesScreen from "./screen/activities/ActivitiesScreen";
 import "./App.css";
 
 function App() {
@@ -46,6 +47,9 @@ function App() {
           </Route>
           <Route exact path="/novedades">
             <NovedadesScreen />
+          </Route>
+          <Route exact path="/activities/:id" component={ActivitiesScreen}>
+            <ActivitiesScreen />
           </Route>
           <Route exact path="/">
             <HomeScreen />

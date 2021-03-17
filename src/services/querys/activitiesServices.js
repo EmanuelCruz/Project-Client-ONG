@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SERVER_URL_ACTIVITIES } from "../../const/const";
+import { SERVER_URL_ACTIVITIES, ERROR_PARAGRAPH } from "../../const/const";
 
 const createActivities = async (data) => {
   try {
@@ -23,4 +23,13 @@ const updateActivities = async (data, id) => {
   }
 };
 
-export { createActivities, updateActivities };
+const getActivityById = async (id) => {
+  try {
+    const response = await axios.get(`${SERVER_URL_ACTIVITIES}/${id}`);
+    return response.data;
+  } catch (err) {
+    return ERROR_PARAGRAPH;
+  }
+};
+
+export { createActivities, updateActivities, getActivityById };
