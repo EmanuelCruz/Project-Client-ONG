@@ -38,3 +38,6 @@ export const LOGO_MIN_LENGTH_WARNING = "Debes subir una imagen.";
 
 // News Component
 export const SERVER_URL = ""; // Complete with server url
+
+// Activities Component
+export const SERVER_URL_ACTIVITIES = ""; // Complete with server url activities
