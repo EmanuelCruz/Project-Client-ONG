@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
-import LoaderComponent from '../../LoaderComponent';
+import React, { useState } from "react";
+import LoaderComponent from "../../loader/LoaderComponent";
+import { createNewContact } from "../../../services/querys/contactsService";
 
 export const ContactForm = () => {
   const [isLoaded, setIsLoaded] = useState(true);
   const [isMessageSend, setIsMessageSend] = useState(false);
 
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
   const { name, email, message } = formData;
@@ -20,12 +21,15 @@ export const ContactForm = () => {
     });
   };
 
+  //* Send form data to API for create a new contact *
+  createNewContact(formData);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoaded(false);
 
     setTimeout(() => {
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: "", email: "", message: "" });
       setIsLoaded(true);
       setIsMessageSend(true);
     }, 1000);

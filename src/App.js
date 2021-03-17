@@ -1,35 +1,67 @@
-import React from 'react';
-import HeaderScreen from './screen/header/HeaderScreen';
-import AboutUsScreen from './screen/aboutUs/AboutUsScreen';
-import ProfileScreen from './screen/profile/ProfileScreen';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import './App.css';
-import ContactScreen from './screen/contact/ContactScreen';
-import SignUpScreen from './screen/signUp';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import AboutUsScreen from "./screen/aboutUs/AboutUsScreen";
+import BackOffice from "./screen/backoffice/";
+import ContactScreen from "./screen/contact/ContactScreen";
+import HeaderScreen from "./screen/header/HeaderScreen";
+import HomeScreen from "./screen/home/HomeScreen";
+import ProfileScreen from "./screen/profile/ProfileScreen";
+import SignUpScreen from "./screen/signUp";
+import NewsComponent from "./component/News/NewsComponent";
+import EditOrganizationScreen from "./screen/editOrganization/EditOrganizationScreen";
+import BackOfficeNewsScreen from "./screen/news/BackOfficeNewsScreen";
+import AdminUsersListScreen from "./screen/adminUsersList/AdminUsersListScreen";
+import NovedadesScreen from "./screen/novedades/NovedadesScreen";
+import DetalleNovedadScreen from "./screen/detalleNovedad/DetalleNovedadScreen";
+import ActivitiesScreen from "./screen/activities/ActivitiesScreen";
+import "./App.css";
 
 function App() {
   return (
     <Router>
       <div className="App">
+        <HeaderScreen />
         <Switch>
-          <Route path="/contacto">
+          <Route exact path="/contacto">
             <ContactScreen />
           </Route>
-          <Route path="/nosotros">
+          <Route exact path="/nosotros">
             <AboutUsScreen />
           </Route>
-          <Route path="/profile">
+          <Route exact path="/profile">
             <ProfileScreen />
           </Route>
-          <Route path="/signup">
+          <Route exact path="/signup">
             <SignUpScreen />
           </Route>
-          <Route path="/">
-            <HeaderScreen />
+          <Route exact path="/backoffice">
+            <BackOffice />
+          </Route>
+          <Route exact path="/backoffice/edit-organization">
+            <EditOrganizationScreen />
+          </Route>
+          <Route exact path="/backoffice/news">
+            <BackOfficeNewsScreen />
+          </Route>
+          <Route exact path="/backoffice/users">
+            <AdminUsersListScreen />
+          </Route>
+          <Route exact path="/novedades">
+            <NovedadesScreen />
+          </Route>
+          <Route
+            exact
+            path="/novedad/:id"
+            component={DetalleNovedadScreen}
+          ></Route>
+          <Route exact path="/activities/:id" component={ActivitiesScreen}>
+            <ActivitiesScreen />
+          </Route>
+          <Route exact path="/">
+            <HomeScreen />
           </Route>
         </Switch>
       </div>
-      ;
     </Router>
   );
 }
