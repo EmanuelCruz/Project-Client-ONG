@@ -9,6 +9,7 @@ import ProfileScreen from "./screen/profile/ProfileScreen";
 import SignUpScreen from "./screen/signUp";
 import NewsComponent from "./component/News/NewsComponent";
 import EditOrganizationScreen from "./screen/editOrganization/EditOrganizationScreen";
+import BackOfficeNewsScreen from "./screen/news/BackOfficeNewsScreen";
 import AdminUsersListScreen from "./screen/adminUsersList/AdminUsersListScreen";
 import NovedadesScreen from "./screen/novedades/NovedadesScreen";
 import "./App.css";
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route exact path="/backoffice/edit-organization">
             <EditOrganizationScreen />
+          </Route>
+          <Route exact path="/backoffice/news">
+            <BackOfficeNewsScreen />
           </Route>
           <Route exact path="/backoffice/users">
             <AdminUsersListScreen />

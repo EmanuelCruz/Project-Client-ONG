@@ -3,7 +3,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import React, { useState, useEffect } from "react";
 import { Button, TextField, MenuItem, Container } from "@material-ui/core/";
 import { UpgradeNews, CreateNews } from "../../services/querys/newsServices";
-import useStyles from "./NewsMaterialStyles";
+import useStyles from "./styles/MaterialUiStyles";
 
 const categoriesMock = [
   { id: 1, category: "Policiales" },
