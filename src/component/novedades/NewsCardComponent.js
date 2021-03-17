@@ -20,7 +20,7 @@ function NewsCardComponent({news}) {
                 <CardMedia component="img" image={news.image} />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        {news.title}
+                        {news.name}
                     </Typography>
                 </CardContent>
             </CardActionArea>
