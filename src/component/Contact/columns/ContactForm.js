@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import LoaderComponent from "../../loader/LoaderComponent";
+import { createNewContact } from "../../../services/querys/contactsService";
 
 export const ContactForm = () => {
   const [isLoaded, setIsLoaded] = useState(true);
@@ -19,6 +20,9 @@ export const ContactForm = () => {
       [target.name]: target.value,
     });
   };
+
+  //* Send form data to API for create a new contact *
+  createNewContact(formData);
 
   const handleSubmit = (e) => {
     e.preventDefault();
