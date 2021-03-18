@@ -68,12 +68,12 @@ const LoginFormComponent = withFormik({
     };
   },
   handleSubmit: (values) => {
-    console.log(values.password);
     bcrypt.genSalt(SALT, function (err, salt) {
       bcrypt.hash(values.password, salt, function (err, hash) {
         values.password = hash;
         const USER_LOGIN = values;
         //TODO:Conection to Backend (POST)
+
       });
     });
   },
