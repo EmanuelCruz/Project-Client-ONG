@@ -5,6 +5,6 @@ export const login = (email, password) => {
     return apiServices.post(API_LOGIN_URL, {email, password});
 };
 
-export const register = (name, last_name, email, password) => {
-    return apiServices.post(API_REGISTER_URL, {name, last_name, email, password});
+export const register = (firstName, lastName, email, password) => {
+    return apiServices.post(API_REGISTER_URL, {firstName, lastName, email, password});
 };

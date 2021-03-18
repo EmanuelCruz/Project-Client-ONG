@@ -14,7 +14,7 @@ import {
   LASTNAME_MIN_LENGTH_NUMBER,
 } from "../../const/const";
 
-import { ErrorAlertComponent } from '../AlertComponent';
+import { ErrorAlertComponent } from '../Alert/AlertComponent';
 import { register } from '../../services/querys/authService';
 
 const schema = yup.object().shape({
@@ -33,70 +33,72 @@ const schema = yup.object().shape({
     .required(REQUIRED),
 });
 
-const onSignupSubmit = (values) => {
-  register(values.firstName, values.lastName, values.email, values.password).then(res => {
-    let history = useHistory();
-    history.push('/');
-    window.location.reload();
-  }).catch(err => ErrorAlertComponent());
-};
+const SignupForm = () => {
 
-const SignupForm = () => (
-  <div className={"w-50 mx-auto"}>
-    {/*TODO: Responsive*/}
-    <h2>SignUp</h2>
-    <Formik
-      initialValues={{ email: "", firstName: "", lastName: "", password: "" }}
-      validationSchema={schema}
-      onSubmit={(values) => {
-        onSignupSubmit(values);
-      }}
-    >
-      {({ errors, touched }) => (
-        <Form className={"container"}>
-          <div className={"form-group"}>
-            <label htmlFor="firstName">
-              First Name{" "}
-              {errors.firstName && touched.firstName ? (
-                <small>{errors.firstName}</small>
-              ) : null}
-            </label>
-            <Field name="firstName" className={"form-control"} />
-          </div>
-          <div className={"form-group"}>
-            <label htmlFor="lastName">
-              Last Name{" "}
-              {errors.lastName && touched.lastName ? (
-                <small>{errors.lastName}</small>
-              ) : null}
-            </label>
-            <Field name="lastName" className={"form-control"} />
-          </div>
-          <div className={"form-group"}>
-            <label htmlFor="email">
-              E-mail{" "}
-              {errors.email && touched.email ? (
-                <small>{errors.email}</small>
-              ) : null}
-            </label>
-            <Field name="email" type="email" className={"form-control"} />
-          </div>
-          <div className={"form-group"}>
-            <label htmlFor="password">
-              Password{" "}
-              {errors.password && touched.password ? (
-                <small>{errors.password}</small>
-              ) : null}
-            </label>
-            <Field name="password" type="password" className={"form-control"} />
-          </div>
-          <button type="submit" className={"d-block w-100"}>
-            Submit
-          </button>
-        </Form>
-      )}
-    </Formik>
-  </div>
-);
+  let history = useHistory();
+  const onSignupSubmit = (values) => {
+    register(values.firstName, values.lastName, values.email, values.password).then(res => {
+      history.push('/');
+    }).catch(err => ErrorAlertComponent());
+  };
+  
+  return (
+    <div className={"w-50 mx-auto"}>
+      {/*TODO: Responsive*/}
+      <h2>SignUp</h2>
+      <Formik
+        initialValues={{ email: "", firstName: "", lastName: "", password: "" }}
+        validationSchema={schema}
+        onSubmit={(values) => {
+          onSignupSubmit(values);
+        }}
+      >
+        {({ errors, touched }) => (
+          <Form className={"container"}>
+            <div className={"form-group"}>
+              <label htmlFor="firstName">
+                First Name{" "}
+                {errors.firstName && touched.firstName ? (
+                  <small>{errors.firstName}</small>
+                ) : null}
+              </label>
+              <Field name="firstName" className={"form-control"} />
+            </div>
+            <div className={"form-group"}>
+              <label htmlFor="lastName">
+                Last Name{" "}
+                {errors.lastName && touched.lastName ? (
+                  <small>{errors.lastName}</small>
+                ) : null}
+              </label>
+              <Field name="lastName" className={"form-control"} />
+            </div>
+            <div className={"form-group"}>
+              <label htmlFor="email">
+                E-mail{" "}
+                {errors.email && touched.email ? (
+                  <small>{errors.email}</small>
+                ) : null}
+              </label>
+              <Field name="email" type="email" className={"form-control"} />
+            </div>
+            <div className={"form-group"}>
+              <label htmlFor="password">
+                Password{" "}
+                {errors.password && touched.password ? (
+                  <small>{errors.password}</small>
+                ) : null}
+              </label>
+              <Field name="password" type="password" className={"form-control"} />
+            </div>
+            <button type="submit" className={"d-block w-100"}>
+              Submit
+            </button>
+          </Form>
+        )}
+      </Formik>
+    </div>
+  )
+};
 
 export default SignupForm;
