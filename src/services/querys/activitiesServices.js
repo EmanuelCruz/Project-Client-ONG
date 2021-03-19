@@ -34,9 +34,8 @@ const getActivityById = async (id) => {
 
 const deleteActivity = async (id) => {
   try {
-    // const response = await axios.delete(`${MAIN_URL}${SERVER_URL_ACTIVITIES}/${id}`);
-    // return response.data;
-    return {message: "delete success"}
+    const response = await axios.delete(`${MAIN_URL}${SERVER_URL_ACTIVITIES}/${id}`);
+    return response.data;
   } catch (err) {
     return err;
   }
