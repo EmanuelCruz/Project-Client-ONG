@@ -5,7 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { Edit } from "@material-ui/icons";
 import ButtonDeleteActivity from '../ButtonDeleteActivity/ButtonDeleteActivityComponent'
 
-function BackOfficeActivitiesItem({activity}) {
+function BackOfficeActivitiesItem({activity ,handleDeleteActivity}) {
 
     return (
         <TableRow>
@@ -16,7 +16,7 @@ function BackOfficeActivitiesItem({activity}) {
                 <IconButton color="primary" component="span">
                     <Edit />
                 </IconButton>
-                <ButtonDeleteActivity id={activity.id}/>
+                <ButtonDeleteActivity activity={activity} handleDeleteActivity={handleDeleteActivity}/>
             </TableCell>
         </TableRow>
     )
