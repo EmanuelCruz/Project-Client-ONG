@@ -51,7 +51,7 @@ export const ConfirmAlertComponent = () => {
   });
 };
 
-export const ConfirmAlertDeleteActivtyComponent = (id) => {
+export const ConfirmAlertDeleteActivtyComponent = () => {
   return Swal.fire({
     title: DELETE_CONFIRM_TITLE,
     text: CONFIRM_PARAGRAPH,
