@@ -1,5 +1,4 @@
 import Swal from 'sweetalert2';
-import {deleteActivity} from '../../services/querys/activitiesServices'
 
 import {
   CONFIRM_BUTTON_CANCEL,
@@ -53,7 +52,7 @@ export const ConfirmAlertComponent = () => {
 };
 
 export const ConfirmAlertDeleteActivtyComponent = (id) => {
-  Swal.fire({
+  return Swal.fire({
     title: DELETE_CONFIRM_TITLE,
     text: CONFIRM_PARAGRAPH,
     icon: 'warning',
@@ -62,11 +61,6 @@ export const ConfirmAlertDeleteActivtyComponent = (id) => {
     cancelButtonColor: '#d33',
     confirmButtonText: CONFIRM_BUTTON,
     cancelButtonText: CONFIRM_BUTTON_CANCEL,
-  }).then((result) => {
-    if (result.isConfirmed) {
-      deleteActivity(id)
-      Swal.fire(CONFIRM, CONFIRM_IS_CONFIRMED, CONFIRM_SUCCESS);
-    }
   });
 };
 
