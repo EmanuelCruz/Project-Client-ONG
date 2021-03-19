@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SERVER_URL_ACTIVITIES, ERROR_PARAGRAPH,MAIN_URL } from "../../const/const";
+import { SERVER_URL_ACTIVITIES, ERROR_PARAGRAPH,MAIN_URL, ACTIVITIES } from "../../const/const";
 
 const createActivities = async (data) => {
   try {
