@@ -1,4 +1,6 @@
 import Swal from 'sweetalert2';
+import {deleteActivity} from '../../services/querys/activitiesServices'
+
 import {
   CONFIRM_BUTTON_CANCEL,
   CONFIRM_BUTTON,
@@ -11,6 +13,7 @@ import {
   ERROR_TITLE,
   INFO_BUTTON,
   INFO_TITLE,
+  DELETE_CONFIRM_TITLE,
 } from '../../const/const';
 
 export const InfoAlertComponent = () => {
@@ -48,3 +51,22 @@ export const ConfirmAlertComponent = () => {
     }
   });
 };
+
+export const ConfirmAlertDeleteActivtyComponent = (id) => {
+  Swal.fire({
+    title: DELETE_CONFIRM_TITLE,
+    text: CONFIRM_PARAGRAPH,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: CONFIRM_BUTTON,
+    cancelButtonText: CONFIRM_BUTTON_CANCEL,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      deleteActivity(id)
+      Swal.fire(CONFIRM, CONFIRM_IS_CONFIRMED, CONFIRM_SUCCESS);
+    }
+  });
+};
+
