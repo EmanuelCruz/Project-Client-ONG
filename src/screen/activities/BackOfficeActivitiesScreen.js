@@ -1,6 +1,5 @@
 import React, { useState ,useEffect } from 'react';
 import BackOfficeActivitiesList from "../../component/BackOfficeActivities/BackOfficeActivitiesList";
-import {ACTIVITIES} from '../../const/const'
 
 function BackOfficeActivitiesScreen() {
 
