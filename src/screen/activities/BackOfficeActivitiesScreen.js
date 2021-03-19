@@ -25,7 +25,6 @@ function BackOfficeActivitiesScreen() {
     return (
         <div className="container w-50">
             <BackOfficeActivitiesList activities={activities}  handleDeleteActivity={handleDeleteActivity}/>
-            {console.log(activities)}
         </div>
     )
 }
