@@ -14,6 +14,7 @@ import AdminUsersListScreen from "./screen/adminUsersList/AdminUsersListScreen";
 import NovedadesScreen from "./screen/novedades/NovedadesScreen";
 import DetalleNovedadScreen from "./screen/detalleNovedad/DetalleNovedadScreen";
 import ActivitiesScreen from "./screen/activities/ActivitiesScreen";
+import LoginFormComponent from "./component/login/LoginFormComponent";
 import "./App.css";
 
 function App() {
@@ -56,6 +57,9 @@ function App() {
           ></Route>
           <Route exact path="/activities/:id" component={ActivitiesScreen}>
             <ActivitiesScreen />
+          </Route>
+          <Route exact path="/login">
+            <LoginFormComponent />
           </Route>
           <Route exact path="/">
             <HomeScreen />
