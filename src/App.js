@@ -14,6 +14,7 @@ import NovedadesScreen from "./screen/novedades/NovedadesScreen";
 import DetalleNovedadScreen from "./screen/detalleNovedad/DetalleNovedadScreen";
 import ActivitiesScreen from "./screen/activities/ActivitiesScreen";
 import BackOfficeActivitiesScreen from "./screen/activities/BackOfficeActivitiesScreen";
+import BackOfficeContactsScreen from "./screen/backofficeContacts/BackOfficeContactsScreen";
 import "./App.css";
 
 function App() {
@@ -48,6 +49,9 @@ function App() {
           </Route>
           <Route exact path="/backoffice/activities">
             <BackOfficeActivitiesScreen />
+          </Route>
+          <Route exact path="/backoffice/contacts">
+            <BackOfficeContactsScreen/>
           </Route>
           <Route exact path="/novedades">
             <NovedadesScreen />
