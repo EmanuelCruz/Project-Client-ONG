@@ -1,5 +1,6 @@
 import axios from "axios";
 import { SERVER_URL_CONTACTS } from "../../const/const";
+import apiServices from './apiServices'
 
 const createNewContact = async (data) => {
   try {
@@ -10,4 +11,13 @@ const createNewContact = async (data) => {
   }
 };
 
-export { createNewContact };
+const getContacts = async () => {
+  try {
+    const response = await apiServices.get("/contacts");
+    return response.data;
+  } catch (err) {
+    return err;
+  }
+};
+
+export { createNewContact, getContacts };
