@@ -21,7 +21,6 @@ const BackOficceContactsComponent = () => {
   useEffect(() => {
     const fetchApi = async () => {
       const data = await getContacts();
-      console.log(data);
       setContactsData(data);
     };
     fetchApi();
@@ -38,12 +37,12 @@ const BackOficceContactsComponent = () => {
         <Table className={classes.table}>
           <TableHead>
             <TableRow>
-              <TableCell className={classes.tableCell}>nombre</TableCell>
-              <TableCell className={classes.tableCell}>celular</TableCell>
-              <TableCell className={classes.tableCell}>email</TableCell>
-              <TableCell className={classes.tableCell}>message</TableCell>
+              <TableCell className={classes.tableCell}>Nombre</TableCell>
+              <TableCell className={classes.tableCell}>Celular</TableCell>
+              <TableCell className={classes.tableCell}>Email</TableCell>
+              <TableCell className={classes.tableCell}>Mensaje</TableCell>
               <TableCell className={classes.tableCell}>
-                fecha de eliminación
+                Fecha de eliminación
               </TableCell>
             </TableRow>
           </TableHead>
