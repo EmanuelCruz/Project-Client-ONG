@@ -3,7 +3,6 @@ import Swal from "sweetalert2";
 import EditIcon from "@material-ui/icons/Edit";
 import useStyles from "../styles/MaterialUiStyles";
 import DeleteIcon from "@material-ui/icons/Delete";
-import apiServices from "../../../services/querys/apiServices";
 import { Button, TableCell, TableRow } from "@material-ui/core";
 import { ConfirmAlertComponent } from "../../Alert/AlertComponent";
 import {
@@ -11,16 +10,18 @@ import {
   CONFIRM_SUCCESS,
   CONFIRM,
 } from "../../../const/const";
+import { deleteNews } from "../../../services/querys/newsServices";
 
-const TableRowItem = ({ news, setNewsData }) => {
+const TableRowItem = ({ news, newsData, setNewsData }) => {
   const classes = useStyles();
-
   const { id, name, image, createdAt } = news;
 
   const handleDelete = (idNew) => {
     ConfirmAlertComponent().then(async (result) => {
       if (result.isConfirmed) {
         Swal.fire(CONFIRM, CONFIRM_IS_CONFIRMED, CONFIRM_SUCCESS);
+        deleteNews(idNew);
+        setNewsData(newsData.filter((n) => n.id !== idNew));
       }
     });
   };

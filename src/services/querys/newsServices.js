@@ -26,6 +26,7 @@ function UpgradeNews(data, id) {
       console.log(err);
     });
 }
+
 const getNews = async () => {
   try {
     const response = await apiServices.get("/news");
@@ -36,4 +37,13 @@ const getNews = async () => {
   }
 };
 
-export { CreateNews, UpgradeNews, getNews };
+const deleteNews = (id) => {
+  apiServices
+    .delete(`/news/${id}`)
+    .then((res) => res.data)
+    .catch((err) => {
+      err.response ? console.log(err.response.data) : console.log(err.message);
+    });
+};
+
+export { CreateNews, UpgradeNews, getNews, deleteNews };
