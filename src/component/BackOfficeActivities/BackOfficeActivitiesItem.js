@@ -2,9 +2,10 @@ import React from 'react';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import IconButton from '@material-ui/core/IconButton';
-import { Edit, Delete } from "@material-ui/icons";
+import { Edit } from "@material-ui/icons";
+import ButtonDeleteActivity from '../ButtonDeleteActivity/ButtonDeleteActivityComponent'
 
-function BackOfficeActivitiesItem({activity}) {
+function BackOfficeActivitiesItem({activity ,handleDeleteActivity}) {
 
     return (
         <TableRow>
@@ -15,9 +16,7 @@ function BackOfficeActivitiesItem({activity}) {
                 <IconButton color="primary" component="span">
                     <Edit />
                 </IconButton>
-                <IconButton color="secondary" component="span">
-                    <Delete />
-                </IconButton>
+                <ButtonDeleteActivity activity={activity} handleDeleteActivity={handleDeleteActivity}/>
             </TableCell>
         </TableRow>
     )
