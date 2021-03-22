@@ -32,7 +32,7 @@ const getNews = async () => {
     const { data } = response;
     return data;
   } catch (err) {
-    throw err;
+    console.log(err);
   }
 };
 

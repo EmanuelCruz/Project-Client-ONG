@@ -47,12 +47,12 @@ const BackOfficeNewsComponent = () => {
           </TableHead>
           <TableBody>
             {!!newsData?.length &&
-              newsData.map((news) => (
+              newsData.map((n) => (
                 <TableRowItem
-                  key={news.name}
-                  name={news.name}
-                  image={news.image}
-                  date={news.createdAt}
+                  key={n.id}
+                  news={n}
+                  newsData={newsData}
+                  setNewsData={setNewsData}
                 />
               ))}
           </TableBody>
