@@ -1,17 +1,15 @@
 import React from "react";
 import { TableCell, TableRow } from "@material-ui/core";
 
-const ContactsTable = () => {
+const ContactsTable = ({ contactData }) => {
+  const { name, phone, email, message, deletedAt } = contactData;
   return (
     <TableRow>
-      <TableCell>1</TableCell>
-      <TableCell>John</TableCell>
-      <TableCell>114444444</TableCell>
-      <TableCell>example@example.com</TableCell>
-      <TableCell>Example Message</TableCell>
-      <TableCell>2021-03-19</TableCell>
-      <TableCell>2021-03-19</TableCell>
-      <TableCell>2021-03-19</TableCell>
+      <TableCell>{name}</TableCell>
+      <TableCell>{phone}</TableCell>
+      <TableCell>{email}</TableCell>
+      <TableCell>{message}</TableCell>
+      <TableCell>{new Date(deletedAt).toISOString().substring(0, 10)}</TableCell>
     </TableRow>
   );
 };
