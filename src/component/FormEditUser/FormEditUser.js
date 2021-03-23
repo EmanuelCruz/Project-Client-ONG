@@ -22,11 +22,6 @@ const myUser = {
 const FormEditUser = () => {
     const classes = useStyles();
     const [user, setUser] = useState(myUser);
-    const handleChangeRoleId = (event) => {
-        const roleId = event.target.name;
-        setUser({ ...user, [roleId]: event.target.value });
-        console.log(user)
-    };
     return (
         <div>
             <Container maxWidth="sm">
@@ -45,46 +40,53 @@ const FormEditUser = () => {
                             alert(JSON.stringify(values, null, 2)); //Codigo para ver los campos que se envian
                         }}
                     >
-                        <Form className={classes.form}>
-                            <TextField
-                                label="Nombre"
-                                name="firstName"
-                                type="text"
-                                margin="normal"
-                                defaultValue={user.firstName}
-                                fullWidth
-                            />
-                            <TextField
-                                label="Apellido"
-                                name="lastName"
-                                type="text"
-                                margin="normal"
-                                defaultValue={user.lastName}
-                                fullWidth
-                            />
-                            <FormControl fullWidth>
-                                <InputLabel id="select-label">Rol</InputLabel>
-                                <Select
-                                    labelId="select-label"
-                                    id="select"
-                                    defaultValue={user.roleId}
-                                    onChange={handleChangeRoleId}
-                                    align="left"
+                        {(props) => (
+                            <Form className={classes.form}>
+                                <TextField
+                                    label="Nombre"
+                                    name="firstName"
+                                    type="text"
+                                    margin="normal"
+                                    defaultValue={user.firstName}
+                                    onChange={props.handleChange}
+                                    fullWidth
+                                />
+                                <TextField
+                                    label="Apellido"
+                                    name="lastName"
+                                    type="text"
+                                    margin="normal"
+                                    defaultValue={user.lastName}
+                                    onChange={props.handleChange}
+                                    fullWidth
+                                />
+                                <FormControl fullWidth>
+                                    <InputLabel id="select-label">
+                                        Rol
+                                    </InputLabel>
+                                    <Select
+                                        name="roleId"
+                                        labelId="select-label"
+                                        id="select"
+                                        defaultValue={user.roleId}
+                                        onChange={props.handleChange}
+                                        align="left"
+                                    >
+                                        <MenuItem value={1}>Admin</MenuItem>
+                                        <MenuItem value={2}>Standard</MenuItem>
+                                    </Select>
+                                </FormControl>
+                                <Button
+                                    className={classes.button}
+                                    type="submit"
+                                    variant="contained"
+                                    color="primary"
+                                    fullWidth
                                 >
-                                    <MenuItem value={1}>Admin</MenuItem>
-                                    <MenuItem value={2}>Standard</MenuItem>
-                                </Select>
-                            </FormControl>
-                            <Button
-                                className={classes.button}
-                                type="submit"
-                                variant="contained"
-                                color="primary"
-                                fullWidth
-                            >
-                                Submit
-                            </Button>
-                        </Form>
+                                    Submit
+                                </Button>
+                            </Form>
+                        )}
                     </Formik>
                 </Paper>
             </Container>
