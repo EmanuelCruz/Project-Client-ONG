@@ -60,6 +60,7 @@ const FormEditUser = () => {
                                     onChange={props.handleChange}
                                     fullWidth
                                 />
+                                {props.errors.firstName && <p id="feedback">{props.errors.firstName}</p>}
                                 <TextField
                                     label="Apellido"
                                     name="lastName"
@@ -69,6 +70,7 @@ const FormEditUser = () => {
                                     onChange={props.handleChange}
                                     fullWidth
                                 />
+                                {props.errors.lastName && <p id="feedback">{props.errors.lastName}</p>}
                                 <FormControl fullWidth>
                                     <InputLabel id="select-label">
                                         Rol
@@ -85,6 +87,7 @@ const FormEditUser = () => {
                                         <MenuItem value={2}>Standard</MenuItem>
                                     </Select>
                                 </FormControl>
+                                {props.errors.roleId && <p id="feedback">{props.errors.roleId}</p>}
                                 <Button
                                     className={classes.button}
                                     type="submit"
