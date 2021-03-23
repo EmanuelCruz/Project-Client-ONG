@@ -1,0 +1,95 @@
+import React, { useState } from "react";
+import { Formik, Form, useField } from "formik";
+import {
+    Container,
+    FormControl,
+    InputLabel,
+    Button,
+    TextField,
+    Typography,
+    Paper,
+    Select,
+    MenuItem,
+} from "@material-ui/core";
+import useStyles from "./FormEditUserStyles";
+
+const myUser = {
+    firstName: "Emanuel",
+    lastName: "Cruz",
+    roleId: 1,
+};
+
+const FormEditUser = () => {
+    const classes = useStyles();
+    const [user, setUser] = useState(myUser);
+    const handleChangeRoleId = (event) => {
+        const roleId = event.target.name;
+        setUser({ ...user, [roleId]: event.target.value });
+        console.log(user)
+    };
+    return (
+        <div>
+            <Container maxWidth="sm">
+                <Paper style={{ padding: 16 }} elevation={3}>
+                    <Typography variant="h6" align="center">
+                            Formulario de Edición de Usuario
+                    </Typography>
+                    <Formik
+                        initialValues={{
+                            firstName: user.firstName,
+                            lastName: user.lastName,
+                            roleId: user.roleId,
+                        }}
+                        enableReinitialize={true}
+                        onSubmit={(values) => {
+                            alert(JSON.stringify(values, null, 2)); //Codigo para ver los campos que se envian
+                        }}
+                    >
+                        <Form className={classes.form}>
+                            <TextField
+                                label="Nombre"
+                                name="firstName"
+                                type="text"
+                                margin="normal"
+                                defaultValue={user.firstName}
+                                fullWidth
+                            />
+                            <TextField
+                                label="Apellido"
+                                name="lastName"
+                                type="text"
+                                margin="normal"
+                                defaultValue={user.lastName}
+                                fullWidth
+                            />
+                            <FormControl fullWidth>
+                                <InputLabel id="select-label">Rol</InputLabel>
+                                <Select
+                                    labelId="select-label"
+                                    id="select"
+                                    defaultValue={user.roleId}
+                                    onChange={handleChangeRoleId}
+                                    align="left"
+                                >
+                                    <MenuItem value={1}>Admin</MenuItem>
+                                    <MenuItem value={2}>Standard</MenuItem>
+                                </Select>
+                            </FormControl>
+                            <Button
+                                className={classes.button}
+                                type="submit"
+                                variant="contained"
+                                color="primary"
+                                fullWidth
+                            >
+                                Submit
+                            </Button>
+                        </Form>
+                    </Formik>
+                </Paper>
+            </Container>
+        </div>
+    );
+};
+
+export default FormEditUser;
