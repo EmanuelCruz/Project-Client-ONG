@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form } from "formik";
 import {
     Container,
@@ -18,18 +18,55 @@ import { REQUIRED } from "../../const/const";
 const myUser = {
     firstName: "Emanuel",
     lastName: "Cruz",
-    roleId: 1,
+    email: "emanuelcruz@gmail.com",
 };
+const myRoleId = 1; //Change this to display different forms
 
 const schema = Yup.object().shape({
     firstName: Yup.string().required(REQUIRED),
     lastName: Yup.string().required(REQUIRED),
-    roleId: Yup.number().min(1).max(2)
+    email: Yup.string().email().required(REQUIRED),
+    roleId: Yup.number().min(1).max(2),
 });
 
 const FormEditUser = () => {
     const classes = useStyles();
     const [user, setUser] = useState(myUser);
+    const [roleId, setRoleId] = useState(myRoleId);
+    function showInputForAdmin(props) {
+    return (<div>
+        <FormControl fullWidth margin="normal">
+            <InputLabel id="select-label">Rol</InputLabel>
+            <Select
+                name="roleId"
+                labelId="select-label"
+                id="select"
+                defaultValue={roleId}
+                onChange={props.handleChange}
+                align="left"
+            >
+                <MenuItem value={1}>Admin</MenuItem>
+                <MenuItem value={2}>Standard</MenuItem>
+            </Select>
+        </FormControl>
+        {props.errors.roleId && <p id="feedback">{props.errors.roleId}</p>}
+    </div>);
+    }
+    function showInputForUserStandard(props) {
+        return(<div>
+            <TextField
+                label="Email"
+                name="email"
+                type="text"
+                margin="normal"
+                defaultValue={user.email}
+                onChange={props.handleChange}
+                fullWidth
+            />
+            {props.errors.email && <p id="feedback">{props.errors.email}</p>}
+        </div>)
+    }
+
     return (
         <div>
             <Container maxWidth="sm">
@@ -41,7 +78,8 @@ const FormEditUser = () => {
                         initialValues={{
                             firstName: user.firstName,
                             lastName: user.lastName,
-                            roleId: user.roleId,
+                            email: user.email,
+                            roleId: roleId,
                         }}
                         enableReinitialize={true}
                         validationSchema={schema}
@@ -60,7 +98,11 @@ const FormEditUser = () => {
                                     onChange={props.handleChange}
                                     fullWidth
                                 />
-                                {props.errors.firstName && <p id="feedback">{props.errors.firstName}</p>}
+                                {props.errors.firstName && (
+                                    <p id="feedback">
+                                        {props.errors.firstName}
+                                    </p>
+                                )}
                                 <TextField
                                     label="Apellido"
                                     name="lastName"
@@ -70,24 +112,12 @@ const FormEditUser = () => {
                                     onChange={props.handleChange}
                                     fullWidth
                                 />
-                                {props.errors.lastName && <p id="feedback">{props.errors.lastName}</p>}
-                                <FormControl fullWidth>
-                                    <InputLabel id="select-label">
-                                        Rol
-                                    </InputLabel>
-                                    <Select
-                                        name="roleId"
-                                        labelId="select-label"
-                                        id="select"
-                                        defaultValue={user.roleId}
-                                        onChange={props.handleChange}
-                                        align="left"
-                                    >
-                                        <MenuItem value={1}>Admin</MenuItem>
-                                        <MenuItem value={2}>Standard</MenuItem>
-                                    </Select>
-                                </FormControl>
-                                {props.errors.roleId && <p id="feedback">{props.errors.roleId}</p>}
+                                {props.errors.lastName && (
+                                    <p id="feedback">{props.errors.lastName}</p>
+                                )}
+                                {roleId === 1
+                                    ? showInputForAdmin(props)
+                                    : showInputForUserStandard(props)}
                                 <Button
                                     className={classes.button}
                                     type="submit"
