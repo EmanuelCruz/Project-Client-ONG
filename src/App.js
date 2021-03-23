@@ -58,6 +58,7 @@ function App() {
           <Route exact path="/activities/:id" component={ActivitiesScreen}>
             <ActivitiesScreen />
           </Route>
+          {/* The /login route is a placeholder, since there is no Login Screen */}
           <Route exact path="/login">
             <LoginFormComponent />
           </Route>
