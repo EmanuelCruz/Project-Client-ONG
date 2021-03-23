@@ -13,6 +13,7 @@ import {
 } from "@material-ui/core";
 import * as Yup from "yup";
 import useStyles from "./FormEditUserStyles";
+import { REQUIRED } from "../../const/const";
 
 const myUser = {
     firstName: "Emanuel",
@@ -43,6 +44,7 @@ const FormEditUser = () => {
                             roleId: user.roleId,
                         }}
                         enableReinitialize={true}
+                        validationSchema={schema}
                         onSubmit={(values) => {
                             alert(JSON.stringify(values, null, 2)); //Codigo para ver los campos que se envian
                         }}
