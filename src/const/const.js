@@ -10,6 +10,7 @@ export const ERROR_PARAGRAPH = "¡Algo salió mal!";
 export const ERROR_TITLE = "Oops...";
 export const INFO_BUTTON = "Genial!";
 export const INFO_TITLE = "Información importante";
+export const DELETE_CONFIRM_TITLE = "¿Quiere eliminar esta actividad?"
 
 //Form Login
 export const NOT_VALID_EMAIL = "El email no es valido";
@@ -44,7 +45,7 @@ export const LOGO_MIN_LENGTH_WARNING = "Debes subir una imagen.";
 export const SERVER_URL = ""; // Complete with server url
 
 // Activities Component
-export const SERVER_URL_ACTIVITIES = ""; // Complete with server url activities
+export const SERVER_URL_ACTIVITIES = "activities"; // Complete with server url activities
 
 // Contacts component
 export const SERVER_URL_CONTACTS = ""; // Complete with server url contacts

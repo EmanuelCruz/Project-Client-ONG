@@ -10,18 +10,18 @@ import {
   Toolbar,
   Typography,
 } from "@material-ui/core";
-import TableRowItem from "./TableRowItem";
-import useStyles from "../styles/MaterialUiStyles";
-import { getNews } from "../../../services/querys/newsServices";
+import useStyles from "./styled/MaterialUiStyles";
+import ContactsTable from "./components/ContactsTable";
+import { getContacts } from "../../services/querys/contactsService";
 
-const BackOfficeNewsComponent = () => {
+const BackOficceContactsComponent = () => {
   const classes = useStyles();
-  const [newsData, setNewsData] = useState([]);
+  const [contactsData, setContactsData] = useState([]);
 
   useEffect(() => {
     const fetchApi = async () => {
-      const data = await getNews();
-      setNewsData(data);
+      const data = await getContacts();
+      setContactsData(data);
     };
     fetchApi();
   }, []);
@@ -30,7 +30,7 @@ const BackOfficeNewsComponent = () => {
     <Paper className={classes.tableContainer}>
       <Toolbar className={classes.rootBackOffice}>
         <Typography variant="h4" className={classes.title}>
-          Listado de Novedades
+          Contactos
         </Typography>
       </Toolbar>
       <TableContainer>
@@ -38,22 +38,18 @@ const BackOfficeNewsComponent = () => {
           <TableHead>
             <TableRow>
               <TableCell className={classes.tableCell}>Nombre</TableCell>
-              <TableCell className={classes.tableCell}>Imagen</TableCell>
+              <TableCell className={classes.tableCell}>Celular</TableCell>
+              <TableCell className={classes.tableCell}>Email</TableCell>
+              <TableCell className={classes.tableCell}>Mensaje</TableCell>
               <TableCell className={classes.tableCell}>
-                Fecha de creación
+                Fecha de eliminación
               </TableCell>
-              <TableCell></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {!!newsData?.length &&
-              newsData.map((n) => (
-                <TableRowItem
-                  key={n.id}
-                  news={n}
-                  newsData={newsData}
-                  setNewsData={setNewsData}
-                />
+            {!!contactsData?.length &&
+              contactsData.map((news) => (
+                <ContactsTable key={news.id} contactData={news} />
               ))}
           </TableBody>
         </Table>
@@ -62,4 +58,4 @@ const BackOfficeNewsComponent = () => {
   );
 };
 
-export default BackOfficeNewsComponent;
+export default BackOficceContactsComponent;

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SERVER_URL_ACTIVITIES, ERROR_PARAGRAPH } from "../../const/const";
+import { SERVER_URL_ACTIVITIES, ERROR_PARAGRAPH,MAIN_URL } from "../../const/const";
 
 const createActivities = async (data) => {
   try {
@@ -32,4 +32,13 @@ const getActivityById = async (id) => {
   }
 };
 
-export { createActivities, updateActivities, getActivityById };
+const deleteActivity = async (id) => {
+  try {
+    const response = await axios.delete(`${MAIN_URL}${SERVER_URL_ACTIVITIES}/${id}`);
+    return response.data;
+  } catch (err) {
+    return err;
+  }
+};
+
+export { createActivities, updateActivities, getActivityById ,deleteActivity };
