@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Formik, Form, useField } from "formik";
+import { Formik, Form } from "formik";
 import {
     Container,
     FormControl,
@@ -11,6 +11,7 @@ import {
     Select,
     MenuItem,
 } from "@material-ui/core";
+import * as Yup from "yup";
 import useStyles from "./FormEditUserStyles";
 
 const myUser = {
@@ -18,6 +19,12 @@ const myUser = {
     lastName: "Cruz",
     roleId: 1,
 };
+
+const schema = Yup.object().shape({
+    firstName: Yup.string().required(REQUIRED),
+    lastName: Yup.string().required(REQUIRED),
+    roleId: Yup.number().min(1).max(2)
+});
 
 const FormEditUser = () => {
     const classes = useStyles();
