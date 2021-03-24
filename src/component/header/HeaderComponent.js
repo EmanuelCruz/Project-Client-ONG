@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { AppBar } from "@material-ui/core";
 import useStyles from "./HeaderComponentStyles";
-import DisplayDesktop from './DisplayDesktop/DisplayDesktop'
-import DisplayMobile from './DisplayMobile/DisplayMobile'
+import DisplayDesktop from './DisplayDesktop/DisplayDesktopComponent'
+import DisplayMobile from './DisplayMobile/DisplayMobileComponent'
 
 function HeaderComponent() {
     const classes = useStyles();

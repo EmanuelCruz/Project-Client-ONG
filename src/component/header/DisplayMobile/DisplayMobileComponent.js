@@ -5,9 +5,9 @@ import {
     Drawer,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import useStyles from "./DisplayMobileStyles";
-import LogoComponent from "../Logo/LogoComponent";
-import MenuComponent from '../Menu/MenuComponent';
+import useStyles from "./DisplayMobileComponentStyles";
+import Logo from "../Logo/LogoComponent";
+import Menu from '../Menu/MenuComponent';
 
 export default function DisplayMobile({handleDrawerOpen,handleDrawerClose,drawerOpen}) {
     const classes = useStyles();
@@ -33,10 +33,10 @@ export default function DisplayMobile({handleDrawerOpen,handleDrawerClose,drawer
                 }}
             >
                 <div className={classes.drawerContainer}>
-                    <MenuComponent/>
+                    <Menu/>
                 </div>
             </Drawer>
-            <LogoComponent />
+            <Logo />
         </Toolbar>
     );
 }

@@ -8,6 +8,9 @@ const useStyles = makeStyles((theme) => ({
     drawerContainer: {
         width: "40vw",
         padding: "20px 0px",
+        "@media (max-width: 425px)": {
+            width: "60vw",
+        },
     },
 }));
 
