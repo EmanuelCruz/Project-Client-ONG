@@ -24,6 +24,10 @@ export const SALT = 10;
 // Querys API
 // main query
 export const MAIN_URL = "http://localhost:3000/";
+// auth login
+export const API_LOGIN_URL = "/auth/login";
+// auth register
+export const API_REGISTER_URL = "/auth/register";
 
 //Form SignUp
 export const REQUIRED = "Campo requerido.";
