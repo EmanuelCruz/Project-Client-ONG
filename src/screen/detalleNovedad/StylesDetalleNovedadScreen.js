@@ -2,11 +2,11 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const myStyles = makeStyles((theme) => ({
     root: {
-        marginTop: theme.spacing(2),
+        marginTop: theme.spacing(3),
     },
-    title: { margin: "20px 0" },
+    title: { margin: "5px 0" },
     image: { maxWidth: "100%", maxHeight: "100%", marginBottom: 40 },
-    content: { marginTop: 60 },
+    content: { marginTop: 20 },
     links: { marginTop: 60 },
 }));
 
