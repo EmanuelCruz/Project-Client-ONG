@@ -47,4 +47,4 @@ export const SERVER_URL_ACTIVITIES = "activities"; // Complete with server url a
 export const SERVER_URL_CONTACTS = ""; // Complete with server url contacts
 
 // Members in about us component
-export const SERVER_URL_MEMBERS = ""; // Complete with server url members
+export const SERVER_URL_MEMBERS = "members"; // Complete with server url members
