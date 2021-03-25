@@ -38,6 +38,7 @@ const SignupForm = () => {
   let history = useHistory();
   const onSignupSubmit = (values) => {
     register(values.firstName, values.lastName, values.email, values.password).then(res => {
+      localStorage.setItem('token', res.data.token);
       history.push('/');
     }).catch(err => ErrorAlertComponent());
   };
