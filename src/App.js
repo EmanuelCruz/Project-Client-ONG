@@ -13,8 +13,10 @@ import AdminUsersListScreen from "./screen/adminUsersList/AdminUsersListScreen";
 import NovedadesScreen from "./screen/novedades/NovedadesScreen";
 import DetalleNovedadScreen from "./screen/detalleNovedad/DetalleNovedadScreen";
 import ActivitiesScreen from "./screen/activities/ActivitiesScreen";
+import LoginFormComponent from "./component/login/LoginFormComponent";
 import BackOfficeActivitiesScreen from "./screen/activities/BackOfficeActivitiesScreen";
 import BackOfficeContactsScreen from "./screen/backofficeContacts/BackOfficeContactsScreen";
+import TestimonialsList from "./screen/testimonials/TestimonialsList";
 import "./App.css";
 
 function App() {
@@ -51,7 +53,10 @@ function App() {
             <BackOfficeActivitiesScreen />
           </Route>
           <Route exact path="/backoffice/contacts">
-            <BackOfficeContactsScreen/>
+            <BackOfficeContactsScreen />
+          </Route>
+          <Route exact path="/backoffice/testimonios">
+            <BackOffice activeScreen={<TestimonialsList />} />
           </Route>
           <Route exact path="/novedades">
             <NovedadesScreen />
@@ -63,6 +68,10 @@ function App() {
           ></Route>
           <Route exact path="/activities/:id" component={ActivitiesScreen}>
             <ActivitiesScreen />
+          </Route>
+          {/* The /login route is a placeholder, since there is no Login Screen */}
+          <Route exact path="/login">
+            <LoginFormComponent />
           </Route>
           <Route exact path="/">
             <HomeScreen />

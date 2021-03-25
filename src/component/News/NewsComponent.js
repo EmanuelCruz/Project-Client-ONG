@@ -70,7 +70,7 @@ function NewsComponent({ toModifyNews }) {
   };
 
   const handleEmptyFields = () => {
-    if (!news.title || !news.content || !news.category) {
+    if (!news.name || !news.content || !news.category) {
       setEmptyFields(true);
     } else {
       setEmptyFields(false);
@@ -81,9 +81,9 @@ function NewsComponent({ toModifyNews }) {
     <Container>
       <form className={classes.root}>
         <TextField
-          id="title"
+          id="name"
           label="Titulo"
-          value={"" || news.title}
+          value={"" || news.name}
           onChange={changeHandler}
         />
         <CKEditor
@@ -123,7 +123,7 @@ function NewsComponent({ toModifyNews }) {
           helperText="Selecciona la categoria"
         >
           {categories.map((option) => (
-            <MenuItem key={option.id} value={option.category}>
+            <MenuItem key={option.id} value={option.id}>
               {option.category}
             </MenuItem>
           ))}
