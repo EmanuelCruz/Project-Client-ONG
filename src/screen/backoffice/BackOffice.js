@@ -7,6 +7,7 @@ import ProfileScreen from "../profile/ProfileScreen";
 import NewsComponent from "../../component/News/NewsComponent";
 import ActivitiesComponent from "../../component/Activities/ActivitiesComponent";
 import Grid from "@material-ui/core/Grid";
+import TestimonialsList from "../testimonials/TestimonialsList";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,8 +36,8 @@ const activitiesMock = {
   content: "<h1> Soy un Content Mock </h1>",
 };
 
-export default function BackOffice() {
-  const [activeDashboard, setActiveDashboard] = useState(<ProfileScreen />);
+export default function BackOffice({ activeScreen }) {
+  const [activeDashboard, setActiveDashboard] = useState(activeScreen);
   const [toModifyNews, setToModifyNews] = useState(newsMock);
   const [toModifyActivities, setToModifyActivities] = useState(activitiesMock);
   const classes = useStyles();
@@ -64,6 +65,11 @@ export default function BackOffice() {
     );
   };
 
+  const viewTestimonial = () => {
+    //Tiene cargado un mock de ejemplo borrarlo en la screen
+    setActiveDashboard(<TestimonialsList />);
+  };
+
   //This is an example of implementation
   const viewExample = () => {
     setActiveDashboard(
@@ -81,7 +87,8 @@ export default function BackOffice() {
         container
         direction="row"
         justify="center"
-        alignItems="center">
+        alignItems="center"
+      >
         <Grid item xs={12} sm={3}>
           <Paper className={classes.paper}>
             <MenuList>
@@ -91,6 +98,7 @@ export default function BackOffice() {
               <MenuItem onClick={createActivities}>Crear Actividad</MenuItem>
               <MenuItem onClick={editActivities}>Editar Actividad</MenuItem>
               <MenuItem onClick={viewExample}>Rol</MenuItem>
+              <MenuItem onClick={viewTestimonial}>Testimoniales</MenuItem>
               <MenuItem onClick={viewExample}>Desloguearse</MenuItem>
             </MenuList>
           </Paper>
