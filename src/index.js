@@ -6,6 +6,7 @@ import store from "./app/store";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 import { CssBaseline } from "@material-ui/core";
+import "bootstrap/dist/css/bootstrap.css";
 
 ReactDOM.render(
     <React.StrictMode>
