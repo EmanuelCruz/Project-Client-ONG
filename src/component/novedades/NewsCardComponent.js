@@ -11,7 +11,7 @@ function NewsCardComponent({news}) {
     const history = useHistory();
 
     const onClickCard = () => {
-        history.push(`/novedades/${news.id}`);
+        history.push(`/novedad/${news.id}`);
     };
 
     return(

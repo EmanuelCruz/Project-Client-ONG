@@ -10,7 +10,7 @@ export const ERROR_PARAGRAPH = "¡Algo salió mal!";
 export const ERROR_TITLE = "Oops...";
 export const INFO_BUTTON = "Genial!";
 export const INFO_TITLE = "Información importante";
-export const DELETE_CONFIRM_TITLE = "¿Quiere eliminar esta actividad?"
+export const DELETE_CONFIRM_TITLE = "¿Quiere eliminar esta actividad?";
 
 //Form Login
 export const NOT_VALID_EMAIL = "El email no es valido";
@@ -24,6 +24,10 @@ export const SALT = 10;
 // Querys API
 // main query
 export const MAIN_URL = "http://localhost:3000/";
+// auth login
+export const API_LOGIN_URL = "/auth/login";
+// auth register
+export const API_REGISTER_URL = "/auth/register";
 
 //Form SignUp
 export const REQUIRED = "Campo requerido.";
@@ -46,15 +50,24 @@ export const SERVER_URL_ACTIVITIES = "activities"; // Complete with server url a
 // Contacts component
 export const SERVER_URL_CONTACTS = ""; // Complete with server url contacts
 
+// Members in about us component
+export const SERVER_URL_MEMBERS = "members"; // Complete with server url members
+
 // Path Profile
 export const PATH_BACKOFFICE_PROFILE = "/profile"
+
 // Path News
 export const PATH_BACKOFFICE_NEWS = "/backoffice/news"
+
 // Path Activities
 export const PATH_BACKOFFICE_ACTIVITIES = "/backoffice/activities"
+
 // Path Users
 export const PATH_BACKOFFICE_USERS = "/backoffice/users"
+
 // Path Contacts
 export const PATH_BACKOFFICE_CONTACTS = "/backoffice/contacts"
+
 // Path Edith Organization
 export const PATH_BACKOFFICE_EDITH_ORGANIZATION = "/backoffice/edit-organization"
+

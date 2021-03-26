@@ -7,6 +7,7 @@ import NewsComponent from "../../component/News/NewsComponent";
 import ActivitiesComponent from "../../component/Activities/ActivitiesComponent";
 import Grid from "@material-ui/core/Grid";
 import useStyles from "./BackOfficeStyles";
+import Typography from "@material-ui/core/Typography";
 import {
     PATH_BACKOFFICE_ACTIVITIES,
     PATH_BACKOFFICE_CONTACTS,
@@ -26,7 +27,7 @@ import BackOfficeNewsScreen from "../news/BackOfficeNewsScreen";
 import AdminUsersListScreen from "../adminUsersList/AdminUsersListScreen";
 import BackOfficeActivitiesScreen from "../activities/BackOfficeActivitiesScreen";
 import BackOfficeContactsScreen from "../backofficeContacts/BackOfficeContactsScreen";
-import { Typography } from "@material-ui/core";
+import TestimonialsList from "../testimonials/TestimonialsList";
 
 const newsMock = {
     id: 1,
@@ -144,6 +145,16 @@ export default function BackOffice() {
                     Editar Actividad
                 </NavLink>
             </MenuItem>
+            <MenuItem className={classes.menuItem}>
+                <NavLink
+                    className={classes.navLink}
+                    exact
+                    key="Testimoniales"
+                    to="/backoffice/testimonios"
+                >
+                    Testimoniales
+                </NavLink>
+            </MenuItem>
         </div>
     );
 
@@ -229,6 +240,13 @@ export default function BackOffice() {
                                             toModifyActivities={
                                                 toModifyActivities
                                             }
+                                        />
+                                    </Route>
+                                    <Route
+                                        exact
+                                        path="/backoffice/testimonios"
+                                    >
+                                        <TestimonialsList
                                         />
                                     </Route>
                                 </Switch>

@@ -16,17 +16,17 @@ export default function DetalleNovedadScreen({ match }) {
             setDetalleNovedad(data);
         }
         fetchData();
-    }, [detalleNovedad, id]);
+    }, [id]);
 
     return (
         <>
             {detalleNovedad ? (
                 <Container maxWidth="lg" className={classes.root}>
-                    <Grid container spacing={5}>
+                    <Grid container spacing={3}>
                         <Grid item xs={12}>
                             <Typography
                                 align="left"
-                                variant="h1"
+                                variant="h3"
                                 className={classes.title}
                             >
                                 {detalleNovedad.name}
@@ -38,7 +38,7 @@ export default function DetalleNovedadScreen({ match }) {
                                 alt="Imagen de la novedad"
                                 className={classes.image}
                             />
-                            <p>{detalleNovedad.content}</p>
+                            <Typography variant="body1" align="left">{detalleNovedad.content}</Typography>
                         </Grid>
                         <Grid item xs={3} className={classes.links}>
                             <NovedadesRecientes />
