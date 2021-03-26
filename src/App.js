@@ -29,29 +29,11 @@ function App() {
           <Route exact path="/nosotros">
             <AboutUsScreen />
           </Route>
-          <Route exact path="/profile">
-            <ProfileScreen />
-          </Route>
           <Route exact path="/signup">
             <SignUpScreen />
           </Route>
           <Route exact path="/backoffice">
             <BackOffice />
-          </Route>
-          <Route exact path="/backoffice/edit-organization">
-            <EditOrganizationScreen />
-          </Route>
-          <Route exact path="/backoffice/news">
-            <BackOfficeNewsScreen />
-          </Route>
-          <Route exact path="/backoffice/users">
-            <AdminUsersListScreen />
-          </Route>
-          <Route exact path="/backoffice/activities">
-            <BackOfficeActivitiesScreen />
-          </Route>
-          <Route exact path="/backoffice/contacts">
-            <BackOfficeContactsScreen/>
           </Route>
           <Route exact path="/novedades">
             <NovedadesScreen />
