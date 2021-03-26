@@ -8,8 +8,8 @@ import { COMPANY_NAME } from '../../const/const';
 
 function FooterComponent() {
   return (
-    <div className="footer-dark">
-      <footer>
+    <footer>
+      <div className="footer-dark">
         <div className="container">
           <div className="row">
             <CompanyInfo companyName={COMPANY_NAME} />
@@ -18,8 +18,8 @@ function FooterComponent() {
           </div>
           <Copyright />
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
   )
 }
 
