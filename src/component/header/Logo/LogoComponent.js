@@ -16,12 +16,13 @@ export default function LogoComponent() {
   const renderLogo = () => {
     return organization.map((data) => {
       return (
-        <img
+        <a href="/"><img
           src={data.image}
           className="logo__imagen"
           alt="logo"
           key={data.name}
         />
+        </a>
       );
     });
   };
