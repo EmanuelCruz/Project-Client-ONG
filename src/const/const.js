@@ -53,6 +53,8 @@ export const SERVER_URL_CONTACTS = ""; // Complete with server url contacts
 // Members in about us component
 export const SERVER_URL_MEMBERS = "members"; // Complete with server url members
 
+// Categories API route
+export const SERVER_URL_CATEGORIES = "categories";
 // Path Profile
 export const PATH_BACKOFFICE_PROFILE = "/profile"
 

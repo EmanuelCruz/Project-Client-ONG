@@ -18,6 +18,7 @@ import LoginFormComponent from "./component/login/LoginFormComponent";
 import BackOfficeActivitiesScreen from "./screen/activities/BackOfficeActivitiesScreen";
 import BackOfficeContactsScreen from "./screen/backofficeContacts/BackOfficeContactsScreen";
 import TestimonialsList from "./screen/testimonials/TestimonialsList";
+import BackOfficeCategoriesScreen from "./screen/categories/BackOfficeCategoriesScreen";
 import "./App.css";
 
 function App() {
@@ -47,6 +48,27 @@ function App() {
                 </Route>
                 <Route exact path="/backoffice">
                   <BackOffice />
+                </Route>
+                <Route exact path="/backoffice/edit-organization">
+                  <EditOrganizationScreen />
+                </Route>
+                <Route exact path="/backoffice/news">
+                  <BackOfficeNewsScreen />
+                </Route>
+                <Route exact path="/backoffice/users">
+                  <AdminUsersListScreen />
+                </Route>
+                <Route exact path="/backoffice/activities">
+                  <BackOfficeActivitiesScreen />
+                </Route>
+                <Route exact path="/backoffice/contacts">
+                  <BackOfficeContactsScreen />
+                </Route>
+                <Route exact path="/backoffice/testimonios">
+                  <BackOffice activeScreen={<TestimonialsList />} />
+                </Route>
+                <Route exact path="/backoffice/categories">
+                  <BackOfficeCategoriesScreen />
                 </Route>
                 <Route exact path="/novedades">
                   <NovedadesScreen />
