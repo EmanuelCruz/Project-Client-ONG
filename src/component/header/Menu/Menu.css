@@ -18,13 +18,16 @@
   text-align: center;
   color: rgba(0, 0, 0, 0.5);
   font-weight: 500;
+  transition: 0.4s;
 }
 
 .menu__li:hover {
   color: rgba(0, 0, 0, 0.7);
+  background-color: rgb(250, 207, 213);
   text-decoration: none;
 }
 
 .menu__li--active {
   color: rgba(0, 0, 0, 0.9);
+  font-weight: 600;
 }

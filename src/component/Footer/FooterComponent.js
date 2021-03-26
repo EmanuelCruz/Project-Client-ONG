@@ -1,9 +1,10 @@
-import React from 'react'
-import './Footer.css'
-import CompanyInfo from './Columns/CompanyInfo'
-import Copyright from './Columns/Copyright'
-import SocialMedia from './Columns/SocialMedia'
-import WebLinks from './Columns/WebLinks'
+import React from 'react';
+import './Footer.css';
+import CompanyInfo from './Columns/CompanyInfo';
+import Copyright from './Columns/Copyright';
+import SocialMedia from './Columns/SocialMedia';
+import WebLinks from './Columns/WebLinks';
+import { COMPANY_NAME } from '../../const/const';
 
 function FooterComponent() {
   return (
@@ -11,7 +12,7 @@ function FooterComponent() {
       <footer>
         <div className="container">
           <div className="row">
-            <CompanyInfo companyName={'ONG Alkemy'} />
+            <CompanyInfo companyName={COMPANY_NAME} />
             <WebLinks webLinks={['Home', 'About', 'Contact']} />
             <SocialMedia />
           </div>
