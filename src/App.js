@@ -48,24 +48,6 @@ function App() {
                 <Route exact path="/backoffice">
                   <BackOffice />
                 </Route>
-                <Route exact path="/backoffice/edit-organization">
-                  <EditOrganizationScreen />
-                </Route>
-                <Route exact path="/backoffice/news">
-                  <BackOfficeNewsScreen />
-                </Route>
-                <Route exact path="/backoffice/users">
-                  <AdminUsersListScreen />
-                </Route>
-                <Route exact path="/backoffice/activities">
-                  <BackOfficeActivitiesScreen />
-                </Route>
-                <Route exact path="/backoffice/contacts">
-                  <BackOfficeContactsScreen />
-                </Route>
-                <Route exact path="/backoffice/testimonios">
-                  <BackOffice activeScreen={<TestimonialsList />} />
-                </Route>
                 <Route exact path="/novedades">
                   <NovedadesScreen />
                 </Route>
