@@ -55,3 +55,21 @@ export const SERVER_URL_MEMBERS = "members"; // Complete with server url members
 
 // Categories API route
 export const SERVER_URL_CATEGORIES = "categories";
+// Path Profile
+export const PATH_BACKOFFICE_PROFILE = "/profile"
+
+// Path News
+export const PATH_BACKOFFICE_NEWS = "/backoffice/news"
+
+// Path Activities
+export const PATH_BACKOFFICE_ACTIVITIES = "/backoffice/activities"
+
+// Path Users
+export const PATH_BACKOFFICE_USERS = "/backoffice/users"
+
+// Path Contacts
+export const PATH_BACKOFFICE_CONTACTS = "/backoffice/contacts"
+
+// Path Edith Organization
+export const PATH_BACKOFFICE_EDITH_ORGANIZATION = "/backoffice/edit-organization"
+

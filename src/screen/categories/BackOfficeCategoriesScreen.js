@@ -13,7 +13,7 @@ function BackOfficeCategoriesScreen() {
     }, []);
 
     return (
-        <div className="container w-25">
+        <div className="container mt-5 pt-5 w-25">
             <h1>Categories</h1>
             {categories.map((category) => (
                 <CategoriesCardComponent key={category.id} category={category} />
