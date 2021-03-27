@@ -16,7 +16,7 @@ export default function LogoComponent() {
   const renderLogo = () => {
     return organization.map((data) => {
       return (
-        <a href="/"><img
+        <a href="/" key={data.name}><img
           src={data.image}
           className="logo__imagen"
           alt="logo"
