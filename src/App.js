@@ -19,6 +19,7 @@ import BackOfficeActivitiesScreen from "./screen/activities/BackOfficeActivities
 import BackOfficeContactsScreen from "./screen/backofficeContacts/BackOfficeContactsScreen";
 import TestimonialsList from "./screen/testimonials/TestimonialsList";
 import FooterScreen from "./screen/footer/FooterScreen";
+import BackOfficeCategoriesScreen from "./screen/categories/BackOfficeCategoriesScreen";
 import "./App.css";
 
 const routes = [
@@ -38,6 +39,7 @@ const routes = [
   { path: '/novedad/:id', Component: DetalleNovedadScreen },
   { path: '/activities/:id', Component: ActivitiesScreen },
   { path: '/login', Component: LoginFormComponent },
+  { path: '/backoffice/categories', Component: BackOfficeCategoriesScreen },
 ]
 
 function App() {
