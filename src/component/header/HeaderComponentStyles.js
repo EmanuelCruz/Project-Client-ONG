@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme) => ({
         "@media (max-width: 900px)": {
             paddingLeft: 0,
         },
+        position: 'relative',
     }
 }));
 
