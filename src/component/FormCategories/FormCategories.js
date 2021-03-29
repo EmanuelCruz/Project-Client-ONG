@@ -9,7 +9,6 @@ import useStyles from "./FormCategoriesStyles";
 export default function FormCategories({dataCategory}) {
     const classes = useStyles();
     const [category, setCategory] = useState(dataCategory)
-    const [formData, setFormData] = useState(new FormData())
     const [emptyFields, setEmptyFields] = useState(true);
 
     useEffect(() => {
@@ -26,19 +25,10 @@ export default function FormCategories({dataCategory}) {
 
     const handleSubmit = () => {
         if (!category.id) {
-            for (const property in category) {
-                formData.append(property, category[property]);
-            }
-            setFormData(formData);
-            if (createCategory(formData)) {
-                clearForm();
-            }
+            createCategory(category)
+            clearForm();
         } else {
-            for (const property in category) {
-                formData.append(property, category[property]);
-            }
-            setFormData(formData);
-            updateCategory(formData, category.id);
+            updateCategory(category);
         }
     }
 

@@ -15,10 +15,10 @@ const createCategory = async (data) => {
     }
 };
 
-const updateCategory = async (data, id) => {
+const updateCategory = async (data) => {
     try {
         const response = await axios.patch(
-            `${MAIN_URL}${SERVER_URL_CATEGORIES}/${id}`,
+            `${MAIN_URL}${SERVER_URL_CATEGORIES}/${data.id}`,
             data
         );
         return response.data;
