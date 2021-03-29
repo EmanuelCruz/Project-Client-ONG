@@ -1,10 +1,9 @@
-@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css");
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
 
 .footer-dark {
   padding:50px 0;
-  color:#f0f9ff;
-  background-color:#282d32;
+  color:#282d32;
+  background-color:whitesmoke;
 }
 
 .footer-dark h3 {
@@ -30,6 +29,10 @@
 
 .footer-dark ul a:hover {
   opacity:0.8;
+}
+
+.bi {
+  color: rgb(41, 40, 40);
 }
 
 @media (max-width:767px) {
@@ -95,6 +98,7 @@
   text-align: center;
 }
 
-  .company-logo {
+.company-logo {
     max-width: 130px;
-  }
+    max-height: 80px;
+}
