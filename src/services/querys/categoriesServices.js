@@ -1,4 +1,4 @@
-import { SERVER_URL_CATEGORIES } from "../../const/const";
+import { MAIN_URL, SERVER_URL_CATEGORIES } from "../../const/const";
 import apiServices from "./apiServices";
 import axios from "axios";
 
@@ -8,7 +8,7 @@ const getCategories = () => {
 
 const createCategory = async (data) => {
     try {
-        const response = await axios.post(SERVER_URL_CATEGORIES, data);
+        const response = await axios.post(`${MAIN_URL}${SERVER_URL_CATEGORIES}`, data);
         return response.data;
     } catch (err) {
         return err;
@@ -18,7 +18,7 @@ const createCategory = async (data) => {
 const updateCategory = async (data, id) => {
     try {
         const response = await axios.patch(
-            `${SERVER_URL_CATEGORIES}/${id}`,
+            `${MAIN_URL}${SERVER_URL_CATEGORIES}/${id}`,
             data
         );
         return response.data;
