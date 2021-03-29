@@ -29,16 +29,19 @@ const routes = [
   { path: '/profile', Component: ProfileScreen },
   { path: '/signup', Component: SignUpScreen },
   { path: '/backoffice', Component: BackOffice },
+  { path: '/novedades', Component: NovedadesScreen },
+  { path: '/novedad/:id', Component: DetalleNovedadScreen },
+  { path: '/activities/:id', Component: ActivitiesScreen },
+  { path: '/login', Component: LoginFormComponent },
+]
+
+const backOfficeRoutes = [
   { path: '/backoffice/edit-organization', Component: EditOrganizationScreen },
   { path: '/backoffice/news', Component: BackOfficeNewsScreen },
   { path: '/backoffice/users', Component: AdminUsersListScreen },
   { path: '/backoffice/activities', Component: BackOfficeActivitiesScreen },
   { path: '/backoffice/contacts', Component: BackOfficeContactsScreen },
   { path: '/backoffice/testimonios', Component: TestimonialsList },
-  { path: '/novedades', Component: NovedadesScreen },
-  { path: '/novedad/:id', Component: DetalleNovedadScreen },
-  { path: '/activities/:id', Component: ActivitiesScreen },
-  { path: '/login', Component: LoginFormComponent },
   { path: '/backoffice/categories', Component: BackOfficeCategoriesScreen },
 ]
 
@@ -56,6 +59,11 @@ function App() {
                   exit={{ opacity: 0 }}>
                   <Component />
                 </motion.div>
+              </Route>
+            ))}
+            {backOfficeRoutes.map(({ path, Component }) => (
+              <Route key={path} exact path={path}>
+                <Component />
               </Route>
             ))}
           </AnimatePresence>
