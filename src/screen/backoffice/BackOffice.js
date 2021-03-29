@@ -155,6 +155,26 @@ export default function BackOffice() {
                     Testimoniales
                 </NavLink>
             </MenuItem>
+            <MenuItem className={classes.menuItem}>
+                <NavLink
+                    className={classes.navLink}
+                    exact
+                    key="Crear Categoria"
+                    to="/backoffice/create-category"
+                >
+                    Crear Categoría
+                </NavLink>
+            </MenuItem>
+            <MenuItem className={classes.menuItem}>
+                <NavLink
+                    className={classes.navLink}
+                    exact
+                    key="Editar Categoria"
+                    to="/backoffice/edit-category"
+                >
+                    Editar Categoría
+                </NavLink>
+            </MenuItem>
         </div>
     );
 
@@ -248,6 +268,16 @@ export default function BackOffice() {
                                     >
                                         <TestimonialsList
                                         />
+                                    </Route>
+                                    <Route
+                                        exact
+                                        path="/backoffice/create-category"
+                                    >
+                                    </Route>
+                                    <Route
+                                        exact
+                                        path="/backoffice/edit-category"
+                                    >
                                     </Route>
                                 </Switch>
                             </Paper>
