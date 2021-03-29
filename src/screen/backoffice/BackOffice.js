@@ -28,6 +28,7 @@ import AdminUsersListScreen from "../adminUsersList/AdminUsersListScreen";
 import BackOfficeActivitiesScreen from "../activities/BackOfficeActivitiesScreen";
 import BackOfficeContactsScreen from "../backofficeContacts/BackOfficeContactsScreen";
 import TestimonialsList from "../testimonials/TestimonialsList";
+import FormCategories from "../../component/FormCategories/FormCategories";
 
 const newsMock = {
     id: 1,
@@ -42,6 +43,12 @@ const activitiesMock = {
     name: "Soy Name Mock",
     content: "<h1> Soy un Content Mock </h1>",
 };
+
+const categoryMock = {
+    id: 1,
+    name: "Category Name",
+    description: "Category Description"
+}
 
 const myRoleId = 1;
 
@@ -195,7 +202,8 @@ export default function BackOffice() {
                                 <Typography>Menu Administrador</Typography>
                             ) : (
                                 <Typography>Menu Usuario</Typography>
-                            )} {/* it's just a test */}
+                            )}{" "}
+                            {/* it's just a test */}
                             <Paper className={classes.paper}>
                                 <MenuList>
                                     <MenuItem className={classes.menuItem}>
@@ -262,22 +270,20 @@ export default function BackOffice() {
                                             }
                                         />
                                     </Route>
-                                    <Route
-                                        exact
-                                        path="/backoffice/testimonios"
-                                    >
-                                        <TestimonialsList
-                                        />
+                                    <Route exact path="/backoffice/testimonios">
+                                        <TestimonialsList />
                                     </Route>
                                     <Route
                                         exact
                                         path="/backoffice/create-category"
                                     >
+                                        <FormCategories dataCategory={{}}/>
                                     </Route>
                                     <Route
                                         exact
                                         path="/backoffice/edit-category"
                                     >
+                                        <FormCategories dataCategory={categoryMock}/>
                                     </Route>
                                 </Switch>
                             </Paper>
