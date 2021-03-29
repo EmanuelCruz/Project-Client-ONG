@@ -27,9 +27,11 @@ const useStyles = makeStyles((theme) => ({
         textalign: "center",
         color: "rgba(0, 0, 0, 0.5)",
         fontweight: "500",
+        transition: "0.4s",
         "&:hover": {
             color: "rgba(0, 0, 0, 0.7)",
             textDecoration: "none",
+            backgroundColor: "rgb(250, 207, 213)",
         },
         "@media (max-width: 900px)": {
             width: "100%",

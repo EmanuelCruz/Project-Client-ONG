@@ -6,11 +6,16 @@ import store from "./app/store";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 import { CssBaseline } from "@material-ui/core";
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import "bootstrap/dist/css/bootstrap.css";
+import theme from "./style/theme";
 
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
-            <CssBaseline />
+            <MuiThemeProvider theme={theme}>
+                <CssBaseline />
+            </MuiThemeProvider>
             <App />
         </Provider>
     </React.StrictMode>,
