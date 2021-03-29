@@ -8,7 +8,6 @@ import {
   ERROR_TITLE,
   INFO_BUTTON,
   INFO_TITLE,
-  DELETE_CONFIRM_TITLE,
 } from "../../const/const";
 
 export const InfoAlertComponent = () => {
@@ -43,9 +42,9 @@ export const ConfirmAlertComponent = () => {
   });
 };
 
-export const ConfirmAlertDeleteActivtyComponent = () => {
+export const ConfirmAlertDeleteButtonComponent = (title) => {
   return Swal.fire({
-    title: DELETE_CONFIRM_TITLE,
+    title: title,
     text: CONFIRM_PARAGRAPH,
     icon: "warning",
     showCancelButton: true,

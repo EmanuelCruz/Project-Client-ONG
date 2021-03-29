@@ -10,7 +10,8 @@ export const ERROR_PARAGRAPH = "¡Algo salió mal!";
 export const ERROR_TITLE = "Oops...";
 export const INFO_BUTTON = "Genial!";
 export const INFO_TITLE = "Información importante";
-export const DELETE_CONFIRM_TITLE = "¿Quiere eliminar esta actividad?";
+export const DELETE_CONFIRM_TITLE_ACTIVITY = "¿Quiere eliminar esta actividad?";
+export const DELETE_CONFIRM_TITLE_CATEGORY = "¿Quiere eliminar esta categoría?";
 
 //Form Login
 export const NOT_VALID_EMAIL = "El email no es valido";
