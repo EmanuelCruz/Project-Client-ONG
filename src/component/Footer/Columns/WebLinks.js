@@ -5,9 +5,9 @@ function WebLinks({ webLinks }) {
         <div className="col-md-4 column item">
             <h3>Links</h3>
             <ul>
-                {webLinks.map((webLink, index) => (
-                    <li key={`wl-${index}`}><a href="#">{webLink}</a></li>
-                ))}
+                <li key={`wl-home`}><a href="/">Home</a></li>
+                <li key={`wl-about`}><a href="/nosotros">About</a></li>
+                <li key={`wl-contact`}><a href="/contacto">Contact</a></li>
             </ul>
         </div>
     )
