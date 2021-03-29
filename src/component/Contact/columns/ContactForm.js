@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LoaderComponent from "../../loader/LoaderComponent";
 import { createNewContact } from "../../../services/querys/contactsService";
+import { Button, TextField, Typography } from "@material-ui/core";
 
 export const ContactForm = () => {
   const [isLoaded, setIsLoaded] = useState(true);
@@ -21,9 +22,6 @@ export const ContactForm = () => {
     });
   };
 
-  //* Send form data to API for create a new contact *
-  createNewContact(formData);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoaded(false);
@@ -37,57 +35,69 @@ export const ContactForm = () => {
     setTimeout(() => {
       setIsMessageSend(false);
     }, 2000);
+
+    //* Send form data to API for create a new contact *
+    createNewContact(formData);
   };
 
   return (
     <div className="col-sm-6 mt-5">
-      <h2>Contacto</h2>
+      <Typography variant="h2">Contacto</Typography>
       <form className="text-left" onSubmit={handleSubmit} id="contact">
         <div className="form-group">
-          <label htmlFor="name">Nombre:</label>
-          <input
+          <TextField
             autoComplete="off"
-            className="form-control"
+            color="secondary"
+            fullWidth
             id="name"
+            label="Nombre"
             name="name"
             onChange={handleInputChange}
-            placeholder="Ingresar su nombre"
             required
             type="text"
             value={name}
+            variant="outlined"
           />
         </div>
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
+          <TextField
             autoComplete="off"
-            className="form-control"
+            color="secondary"
+            fullWidth
             id="email"
+            label="email"
             name="email"
             onChange={handleInputChange}
-            placeholder="example@gmail.com"
             required
             type="email"
             value={email}
+            variant="outlined"
           />
         </div>
         <div className="form-group">
-          <label htmlFor="message">Mensaje:</label>
-          <textarea
+          <TextField
             autoComplete="off"
-            className="form-control"
+            color="secondary"
+            fullWidth
             id="message"
+            label="Mensaje"
+            multiline
             name="message"
             onChange={handleInputChange}
-            placeholder="Escriba su mensaje.."
             required
-            rows="5"
+            rows={5}
             value={message}
+            variant="outlined"
           />
         </div>
-        <button type="submit" className="btn btn-info form-control">
+        <Button
+          type="submit"
+          variant="contained"
+          fullWidth={true}
+          color="secondary"
+        >
           Enviar
-        </button>
+        </Button>
       </form>
       <div className="mt-5">
         <LoaderComponent isLoaded={isLoaded} />
