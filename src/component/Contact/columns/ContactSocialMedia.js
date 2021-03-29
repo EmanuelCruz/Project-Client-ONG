@@ -6,16 +6,18 @@ import {
   ListItemText,
   Typography,
 } from "@material-ui/core";
+import EmailIcon from "@material-ui/icons/Email";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
-import EmailIcon from "@material-ui/icons/Email";
 import useStyles from "../ContactStyled";
 
 export const ContactSocialMedia = () => {
   const classes = useStyles();
   return (
     <div className="col-sm-6 text-left mt-5">
-      <Typography variant="h2">Datos de Contacto</Typography>
+      <Typography variant="h2" className={classes.title}>
+        Datos de Contacto
+      </Typography>
       <List component="nav" aria-label="main mailbox folders">
         <ListItem
           button

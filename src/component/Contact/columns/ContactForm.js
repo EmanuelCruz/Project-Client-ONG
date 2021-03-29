@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import LoaderComponent from "../../loader/LoaderComponent";
-import { createNewContact } from "../../../services/querys/contactsService";
 import { Button, TextField, Typography } from "@material-ui/core";
+import { createNewContact } from "../../../services/querys/contactsService";
+import LoaderComponent from "../../loader/LoaderComponent";
+import useStyles from "../ContactStyled";
 
 export const ContactForm = () => {
   const [isLoaded, setIsLoaded] = useState(true);
   const [isMessageSend, setIsMessageSend] = useState(false);
+  const classes = useStyles();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -26,15 +28,18 @@ export const ContactForm = () => {
     e.preventDefault();
     setIsLoaded(false);
 
-    setTimeout(() => {
-      setFormData({ name: "", email: "", message: "" });
-      setIsLoaded(true);
-      setIsMessageSend(true);
-    }, 1000);
+    async function getSetTime() {
+      setTimeout(() => {
+        setFormData({ name: "", email: "", message: "" });
+        setIsLoaded(true);
+        setIsMessageSend(true);
+      }, 1000);
 
-    setTimeout(() => {
-      setIsMessageSend(false);
-    }, 2000);
+      setTimeout(() => {
+        setIsMessageSend(false);
+      }, 2000);
+    }
+    getSetTime();
 
     //* Send form data to API for create a new contact *
     createNewContact(formData);
@@ -42,7 +47,9 @@ export const ContactForm = () => {
 
   return (
     <div className="col-sm-6 mt-5">
-      <Typography variant="h2">Contacto</Typography>
+      <Typography variant="h2" className={classes.title}>
+        Contacto
+      </Typography>
       <form className="text-left" onSubmit={handleSubmit} id="contact">
         <div className="form-group">
           <TextField
