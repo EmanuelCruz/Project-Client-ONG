@@ -28,6 +28,7 @@ import AdminUsersListScreen from "../adminUsersList/AdminUsersListScreen";
 import BackOfficeActivitiesScreen from "../activities/BackOfficeActivitiesScreen";
 import BackOfficeContactsScreen from "../backofficeContacts/BackOfficeContactsScreen";
 import TestimonialsList from "../testimonials/TestimonialsList";
+import BackOfficeCategoriesScreen from "../categories/BackOfficeCategoriesScreen";
 
 const newsMock = {
     id: 1,
@@ -155,6 +156,16 @@ export default function BackOffice() {
                     Testimoniales
                 </NavLink>
             </MenuItem>
+            <MenuItem className={classes.menuItem}>
+                <NavLink
+                    className={classes.navLink}
+                    exact
+                    key="Categorias"
+                    to="/backoffice/categories"
+                >
+                    Categorías
+                </NavLink>
+            </MenuItem>
         </div>
     );
 
@@ -247,6 +258,13 @@ export default function BackOffice() {
                                         path="/backoffice/testimonios"
                                     >
                                         <TestimonialsList
+                                        />
+                                    </Route>
+                                    <Route
+                                        exact
+                                        path="/backoffice/categories"
+                                    >
+                                        <BackOfficeCategoriesScreen
                                         />
                                     </Route>
                                 </Switch>
