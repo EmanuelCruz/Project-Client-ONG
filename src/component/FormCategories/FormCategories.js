@@ -9,6 +9,8 @@ import useStyles from "./FormCategoriesStyles";
 export default function FormCategories({dataCategory}) {
     const classes = useStyles();
     const [category, setCategory] = useState(dataCategory)
+    const [modifiedName, setModifiedName] = useState(false)
+    const [modifiedDescription, setModifiedDescription] = useState(false)
     const [emptyFields, setEmptyFields] = useState(true);
 
     useEffect(() => {
@@ -28,7 +30,12 @@ export default function FormCategories({dataCategory}) {
             createCategory(category)
             clearForm();
         } else {
-            updateCategory(category);
+            if (modifiedName && modifiedDescription) {
+                updateCategory(category, category.id);
+            } else {
+                modifiedName && updateCategory(category.name, category.id);
+                modifiedDescription && updateCategory(category.description, category.id);
+            }
         }
     }
 
@@ -43,6 +50,7 @@ export default function FormCategories({dataCategory}) {
     const changeHandler = (event) => {
         category[event.target.id] = event.target.value;
         setCategory({ ...category });
+        event.target.id === "name" ? setModifiedName(true) : setModifiedDescription(true)
     };
 
     return (
