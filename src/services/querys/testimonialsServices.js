@@ -45,9 +45,21 @@ function testimonialUpdate(id) {
     });
 }
 
+function getATestimonial(id) {
+  return axios
+    .get(SERVER_URL + "/testimonials/" + id)
+    .then((response) => {
+      return response;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 export {
   testimonialsServices,
   testimonialDelete,
   testimonialCreate,
   testimonialUpdate,
+  getATestimonial,
 };

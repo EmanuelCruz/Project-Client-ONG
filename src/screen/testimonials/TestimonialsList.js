@@ -11,7 +11,9 @@ import { Container } from "@material-ui/core";
 import {
   testimonialsServices,
   testimonialDelete,
+  getATestimonial,
 } from "../../services/querys/testimonialsServices";
+import testimonialsComponentForm from "../../component/testimonials/testimonialsComponentForm";
 
 const testimonialMock = [
   {
@@ -64,8 +66,9 @@ function TestimonialsList() {
     await testimonialDelete(id);
   };
 
-  const handleEdit = (id) => {
-    //TODO: handle edit
+  const handleEdit = async (id) => {
+    let testimonialToModify = await getATestimonial(id);
+    //<testimonialsComponentForm toModifyTestimonial={testimonialToModify} />;
   };
 
   return (
