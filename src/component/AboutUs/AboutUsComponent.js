@@ -19,7 +19,7 @@ const AboutUsComponent = () => {
       {members?.map((member) => (
         <div className="aboutUsComponent__data" key={member.id}>
           <p className="aboutUsComponent__field"> Name: {member.name}</p>
-          <div className="aboutUsComponent__field"> Image: {member.image}</div>
+          <div className="aboutUsComponent__field"> Image: <img src={member.image} /></div>
         </div>
       ))}
     </div>
