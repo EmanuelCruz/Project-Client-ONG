@@ -28,6 +28,7 @@ import AdminUsersListScreen from "../adminUsersList/AdminUsersListScreen";
 import BackOfficeActivitiesScreen from "../activities/BackOfficeActivitiesScreen";
 import BackOfficeContactsScreen from "../backofficeContacts/BackOfficeContactsScreen";
 import TestimonialsList from "../testimonials/TestimonialsList";
+import FormCategories from "../../component/FormCategories/FormCategories";
 import BackOfficeCategoriesScreen from "../categories/BackOfficeCategoriesScreen";
 
 const newsMock = {
@@ -43,6 +44,12 @@ const activitiesMock = {
     name: "Soy Name Mock",
     content: "<h1> Soy un Content Mock </h1>",
 };
+
+const categoryMock = {
+    id: 1,
+    name: "name",
+    description: "description",
+}
 
 const myRoleId = 1;
 
@@ -160,6 +167,26 @@ export default function BackOffice() {
                 <NavLink
                     className={classes.navLink}
                     exact
+                    key="Crear Categoria"
+                    to="/backoffice/create-category"
+                >
+                    Crear Categoría
+                </NavLink>
+            </MenuItem>
+            <MenuItem className={classes.menuItem}>
+                <NavLink
+                    className={classes.navLink}
+                    exact
+                    key="Editar Categoria"
+                    to="/backoffice/edit-category"
+                >
+                    Editar Categoría
+                </NavLink>
+            </MenuItem>
+            <MenuItem className={classes.menuItem}>
+                <NavLink
+                    className={classes.navLink}
+                    Editar Categoría
                     key="Categorias"
                     to="/backoffice/categories"
                 >
@@ -186,7 +213,8 @@ export default function BackOffice() {
                                 <Typography>Menu Administrador</Typography>
                             ) : (
                                 <Typography>Menu Usuario</Typography>
-                            )} {/* it's just a test */}
+                            )}{" "}
+                            {/* it's just a test */}
                             <Paper className={classes.paper}>
                                 <MenuList>
                                     <MenuItem className={classes.menuItem}>
@@ -253,12 +281,20 @@ export default function BackOffice() {
                                             }
                                         />
                                     </Route>
+                                    <Route exact path="/backoffice/testimonios">
+                                        <TestimonialsList />
+                                    </Route>
                                     <Route
                                         exact
-                                        path="/backoffice/testimonios"
+                                        path="/backoffice/create-category"
                                     >
-                                        <TestimonialsList
-                                        />
+                                        <FormCategories dataCategory={{}}/>
+                                    </Route>
+                                    <Route
+                                        exact
+                                        path="/backoffice/edit-category"
+                                    >
+                                        <FormCategories dataCategory={categoryMock}/>
                                     </Route>
                                     <Route
                                         exact
