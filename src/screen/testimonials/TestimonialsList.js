@@ -68,7 +68,9 @@ function TestimonialsList() {
 
   const handleEdit = async (id) => {
     let testimonialToModify = await getATestimonial(id);
-    //<testimonialsComponentForm toModifyTestimonial={testimonialToModify} />;
+    return (
+      <testimonialsComponentForm toModifyTestimonial={testimonialToModify} />
+    );
   };
 
   return (

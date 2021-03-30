@@ -1,7 +1,8 @@
 import React from 'react';
-import './Logo.css';
+import useStyles from './LogoComponentStyles';
 
 export default function LogoComponent() {
+  const classes = useStyles();
   const organization = [
     {
       name: 'nombre organizacion',
@@ -16,15 +17,16 @@ export default function LogoComponent() {
   const renderLogo = () => {
     return organization.map((data) => {
       return (
-        <img
+        <a href="/" key={data.name}><img
           src={data.image}
-          className="logo__imagen"
+          className={classes.imagenLogo}
           alt="logo"
           key={data.name}
         />
+        </a>
       );
     });
   };
 
-  return <div className="logo">{renderLogo()}</div>;
+  return <div className={classes.logo}>{renderLogo()}</div>;
 }

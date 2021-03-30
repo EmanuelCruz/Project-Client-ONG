@@ -6,7 +6,7 @@ import {
   testimonialUpdate,
   testimonialCreate,
 } from "../../services/querys/testimonialsServices";
-import useStyles from "./styles/MaterialUiStyles";
+import useStyles from "../../style/materialUiStyle";
 
 function TestimonialComponent({ toModifyTestimonial }) {
   const classes = useStyles();

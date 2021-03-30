@@ -8,6 +8,10 @@ const useStyles = makeStyles((theme) => ({
   inline: {
     display: "inline",
   },
+  button: {
+    variant: "contained",
+    color: "primary",
+  },
 }));
 
 export default useStyles;

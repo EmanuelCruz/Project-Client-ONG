@@ -1,3 +1,4 @@
 import BackOffice from "./BackOffice";
+import { withRouter } from "react-router-dom";
 
-export default BackOffice;
+export default withRouter(BackOffice);
