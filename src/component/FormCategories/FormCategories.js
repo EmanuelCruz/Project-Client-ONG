@@ -29,6 +29,7 @@ export default function FormCategories({dataCategory}) {
         if (!category.id) {
             createCategory(category)
             clearForm();
+            alert("Se creo la categoría");
         } else {
             if (modifiedName && modifiedDescription) {
                 updateCategory(category, category.id);
@@ -36,6 +37,7 @@ export default function FormCategories({dataCategory}) {
                 modifiedName && updateCategory(category.name, category.id);
                 modifiedDescription && updateCategory(category.description, category.id);
             }
+            alert("Se actualizo la categoría");
         }
     }
 
