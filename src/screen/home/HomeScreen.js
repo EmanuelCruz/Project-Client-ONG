@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import SliderComponent from "./../../component/Slider/SliderComponent";
-import { welcomeTitle, welcomeMessage } from './HomeMessages';
 
 const HomeScreen = () => {
-  const [welcomeHomeTitle, setWelcomeHomeTitle] = useState(welcomeTitle);
-  const [welcomeHomeMessage, setWelcomeHomeMessage] = useState(welcomeMessage);
+  const [welcomeHomeTitle, setWelcomeHomeTitle] = useState('welcomeTitle');
+  const [welcomeHomeMessage, setWelcomeHomeMessage] = useState('welcomeMessage');
   const [news, setNews] = useState({
     news: {
       one: "",
