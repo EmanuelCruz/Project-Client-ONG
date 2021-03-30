@@ -46,8 +46,8 @@ const activitiesMock = {
 
 const categoryMock = {
     id: 1,
-    name: "Category Name",
-    description: "Category Description"
+    name: "name",
+    description: "description",
 }
 
 const myRoleId = 1;
