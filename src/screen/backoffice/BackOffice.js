@@ -29,6 +29,7 @@ import BackOfficeActivitiesScreen from "../activities/BackOfficeActivitiesScreen
 import BackOfficeContactsScreen from "../backofficeContacts/BackOfficeContactsScreen";
 import TestimonialsList from "../testimonials/TestimonialsList";
 import FormCategories from "../../component/FormCategories/FormCategories";
+import BackOfficeCategoriesScreen from "../categories/BackOfficeCategoriesScreen";
 
 const newsMock = {
     id: 1,
@@ -182,6 +183,16 @@ export default function BackOffice() {
                     Editar Categoría
                 </NavLink>
             </MenuItem>
+            <MenuItem className={classes.menuItem}>
+                <NavLink
+                    className={classes.navLink}
+                    Editar Categoría
+                    key="Categorias"
+                    to="/backoffice/categories"
+                >
+                    Categorías
+                </NavLink>
+            </MenuItem>
         </div>
     );
 
@@ -284,6 +295,13 @@ export default function BackOffice() {
                                         path="/backoffice/edit-category"
                                     >
                                         <FormCategories dataCategory={categoryMock}/>
+                                    </Route>
+                                    <Route
+                                        exact
+                                        path="/backoffice/categories"
+                                    >
+                                        <BackOfficeCategoriesScreen
+                                        />
                                     </Route>
                                 </Switch>
                             </Paper>

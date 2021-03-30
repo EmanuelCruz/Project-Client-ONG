@@ -20,6 +20,17 @@ const updateCategory = async (data, id) => {
         const response = await axios.patch(
             `${MAIN_URL}${SERVER_URL_CATEGORIES}/${id}`,
             data
+            );
+        return response.data;
+    } catch (err) {
+        return err;
+    }
+};
+
+const deleteCategory = async (id) => {
+    try {
+        const response = await axios.delete(
+            `${MAIN_URL}${SERVER_URL_CATEGORIES}/${id}`
         );
         return response.data;
     } catch (err) {
@@ -30,5 +41,6 @@ const updateCategory = async (data, id) => {
 export {
     getCategories,
     createCategory,
-    updateCategory
+    updateCategory,
+    deleteCategory
 };
