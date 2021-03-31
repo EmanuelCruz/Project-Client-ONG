@@ -13,6 +13,10 @@ export default function MenuComponent() {
             ruta: "/nosotros",
         },
         {
+            texto: "Actividades",
+            ruta: "/activities/1"
+        },
+        {
             texto: "Profile",
             ruta: "/profile",
         },
