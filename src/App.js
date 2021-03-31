@@ -20,15 +20,15 @@ import BackOfficeContactsScreen from "./screen/backofficeContacts/BackOfficeCont
 import TestimonialsList from "./screen/testimonials/TestimonialsList";
 import FooterScreen from "./screen/footer/FooterScreen";
 import BackOfficeCategoriesScreen from "./screen/categories/BackOfficeCategoriesScreen";
+import ProtectedAdminRoute from "./component/ProtectedRoutes/ProtectedAdminRoute";
+import ProtectedUserRoute from "./component/ProtectedRoutes/ProtectedUserRoute";
 import "./App.css";
 
 const routes = [
   { path: '/', Component: HomeScreen },
   { path: '/contacto', Component: ContactScreen },
   { path: '/nosotros', Component: AboutUsScreen },
-  { path: '/profile', Component: ProfileScreen },
   { path: '/signup', Component: SignUpScreen },
-  { path: '/backoffice', Component: BackOffice },
   { path: '/novedades', Component: NovedadesScreen },
   { path: '/novedad/:id', Component: DetalleNovedadScreen },
   { path: '/activities/:id', Component: ActivitiesScreen },
@@ -43,6 +43,14 @@ const backOfficeRoutes = [
   { path: '/backoffice/contacts', Component: BackOfficeContactsScreen },
   { path: '/backoffice/testimonios', Component: TestimonialsList },
   { path: '/backoffice/categories', Component: BackOfficeCategoriesScreen },
+]
+
+const adminRoutes = [
+  { path: '/backoffice', Component: BackOffice },
+]
+
+const userRoutes = [
+  { path: '/profile', Component: ProfileScreen },
 ]
 
 function App() {
@@ -62,9 +70,13 @@ function App() {
               </Route>
             ))}
             {backOfficeRoutes.map(({ path, Component }) => (
-              <Route key={path} exact path={path}>
-                <Component />
-              </Route>
+              <ProtectedAdminRoute path={path} component={Component} isAdmin={false} />
+            ))}
+            {adminRoutes.map(({ path, Component }) => (
+              <ProtectedAdminRoute path={path} component={Component} isAdmin={false} />
+            ))}
+            {userRoutes.map(({ path, Component }) => (
+              <ProtectedUserRoute path={path} component={Component} isAuth={false} />
             ))}
           </AnimatePresence>
         </Switch>
