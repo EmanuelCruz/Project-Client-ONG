@@ -9,7 +9,7 @@ function NovedadesScreen() {
   useEffect(() => {
     const fetchApi = async () => {
       const data = await getNews();
-      setNovedades(data);
+      setNovedades(data.sort((a,b) => {return new Date(b.createdAt) - new Date(a.createdAt);}));
     };
     fetchApi();
   }, []);

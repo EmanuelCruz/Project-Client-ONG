@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import NovedadesRecientes from "../../component/NovedadesRecientes/NovedadesRecientesComponent";
 import { Container, Grid, Typography } from "@material-ui/core";
 import { getDetalleNovedad } from "../../services/querys/detalleNovedadServices";
 import myStyles from "./StylesDetalleNovedadScreen";
 
-export default function DetalleNovedadScreen({ match }) {
+export default function DetalleNovedadScreen() {
     const classes = myStyles();
-    let { id } = match.params;
+    const { id } = useParams();
 
     const [detalleNovedad, setDetalleNovedad] = useState({});
 
