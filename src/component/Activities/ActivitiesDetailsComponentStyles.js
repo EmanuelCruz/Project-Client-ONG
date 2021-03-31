@@ -34,9 +34,9 @@ const useStyles = makeStyles((theme) => ({
             backgroundSize: "100% 100%",
             height: "400px",
         },
-        "@media (min-width: 900px)": {
+        "@media (min-width: 1280px)": {
             backgroundSize: "100% 100%",
-            height: "500px",
+            height: "430px",
         },
     },
 }));
