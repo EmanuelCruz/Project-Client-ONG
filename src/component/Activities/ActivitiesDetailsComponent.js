@@ -6,7 +6,6 @@ import {
     Card,
     CardMedia,
     Grid,
-    makeStyles,
     Typography,
 } from "@material-ui/core";
 import useStyles from './ActivitiesDetailsComponentStyles'
