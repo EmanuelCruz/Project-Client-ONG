@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { List, ListSubheader } from "@material-ui/core";
 import ItemNovedadesRecientes from "./Item/ItemNovedadesRecientesComponent";
+import { getNews } from "../../services/querys/newsServices";
 import myStyles from "./StylesNovedadesRecientesComponente";
 
 const ARRAY_NOVEDADES = [
@@ -11,14 +12,23 @@ const ARRAY_NOVEDADES = [
 
 export default function NovedadesRecientesComponent() {
     const classes = myStyles();
-    const [novedadesRecientes, setNovedadesRecientes] = useState(
-        ARRAY_NOVEDADES
-    );
+    const [novedadesRecientes, setNovedadesRecientes] = useState([]);
+    
+    useEffect(() => {
+        const fetchApi = async () => {
+            const data = await getNews();
+            setNovedadesRecientes(data
+                .sort((a,b) => {return new Date(b.createdAt) - new Date(a.createdAt);})
+                .slice(0, 3));
+        };
+        fetchApi();
+    }, []);
+
     const listarItems = novedadesRecientes.map((novedad) => {
         return (
             <ItemNovedadesRecientes
                 id={novedad.id}
-                url={novedad.url}
+                url={`/novedad/${novedad.id}`}
                 key={novedad.id}
             />
         );

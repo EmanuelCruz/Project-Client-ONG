@@ -39,6 +39,9 @@ export default function DetalleNovedadScreen() {
                                 alt="Imagen de la novedad"
                                 className={classes.image}
                             />
+                            {
+                                //TODO: Fix html tags
+                            }
                             <Typography variant="body1" align="left">{detalleNovedad.content}</Typography>
                         </Grid>
                         <Grid item xs={3} className={classes.links}>
