@@ -21,6 +21,10 @@ export default function MenuComponent() {
             ruta: "/signup",
         },
         {
+            texto: "Novedades",
+            ruta: "/novedades"
+        },
+        {
             texto: "Contacto",
             ruta: "/contacto",
         },

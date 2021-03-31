@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import NewsCardComponent from "../../component/novedades/NewsCardComponent";
+import NewsGridComponent from "../../component/novedades/NewsGridComponent";
 import { getNews } from "../../services/querys/newsServices";
+import Typography from '@material-ui/core/Typography';
 
 function NovedadesScreen() {
   const [novedades, setNovedades] = useState([]);
 
-  //TODO: Obtain News from endpoint
   useEffect(() => {
     const fetchApi = async () => {
       const data = await getNews();
@@ -15,11 +15,11 @@ function NovedadesScreen() {
   }, []);
 
   return (
-    <div className="container">
-      <h1>Novedades</h1>
-      {novedades.map((news) => (
-        <NewsCardComponent key={news.name} news={news} />
-      ))}
+    <div className="container mt-5">
+      <Typography className="mt-2 mb-5" variant="h2" component="h2" align="left">
+        Novedades
+      </Typography>
+      <NewsGridComponent novedades={novedades} />
     </div>
   );
 }
