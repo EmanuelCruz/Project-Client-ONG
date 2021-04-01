@@ -7,8 +7,8 @@ export const ContactComponent = () => {
   return (
     <div className="container">
       <div className="row">
-        <ContactSocialMedia />
         <ContactForm />
+        <ContactSocialMedia />
       </div>
     </div>
   );
