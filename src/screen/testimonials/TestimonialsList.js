@@ -11,9 +11,8 @@ import { Container } from "@material-ui/core";
 import {
   testimonialsServices,
   testimonialDelete,
-  getATestimonial,
 } from "../../services/querys/testimonialsServices";
-import testimonialsComponentForm from "../../component/testimonials/testimonialsComponentForm";
+import { useHistory } from "react-router-dom";
 
 const testimonialMock = [
   {
@@ -49,12 +48,13 @@ const testimonialMock = [
 function TestimonialsList() {
   const [testimonials, setTestimonials] = useState([]);
   const classes = useStyles();
+  let history = useHistory();
 
   useEffect(() => {
     const fetchTestimonials = async () => {
       let testimonial = await testimonialsServices();
       if (testimonial) {
-        setTestimonials(testimonial);
+        setTestimonials(testimonial.data);
       } else {
         setTestimonials(testimonialMock);
       }
@@ -67,10 +67,7 @@ function TestimonialsList() {
   };
 
   const handleEdit = async (id) => {
-    let testimonialToModify = await getATestimonial(id);
-    return (
-      <testimonialsComponentForm toModifyTestimonial={testimonialToModify} />
-    );
+    history.push("/backoffice/edit-testimonial/" + id);
   };
 
   return (

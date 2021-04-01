@@ -23,9 +23,9 @@ function testimonialDelete(id) {
     });
 }
 
-function testimonialCreate() {
+function testimonialCreate(data) {
   return axios
-    .post(SERVER_URL + "/testimonials")
+    .post(SERVER_URL + "/testimonials", data)
     .then((response) => {
       return response;
     })
@@ -34,9 +34,9 @@ function testimonialCreate() {
     });
 }
 
-function testimonialUpdate(id) {
+function testimonialUpdate(data, id) {
   return axios
-    .patch(SERVER_URL + "/testimonials/" + id)
+    .patch(SERVER_URL + "/testimonials/" + id, data)
     .then((response) => {
       return response;
     })

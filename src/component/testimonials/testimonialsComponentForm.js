@@ -1,25 +1,48 @@
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import React, { useState, useEffect } from "react";
-import { Button, TextField, MenuItem, Container } from "@material-ui/core/";
+import { Button, TextField, Container } from "@material-ui/core/";
 import {
   testimonialUpdate,
   testimonialCreate,
+  getATestimonial,
 } from "../../services/querys/testimonialsServices";
 import useStyles from "../../style/materialUiStyle";
+import { useHistory, useParams } from "react-router-dom";
+import {
+  TESTIMONIAL_UPDATE_SUCCES,
+  TESTIMONIAL_CREATE_SUCCESS,
+} from "../../const/const";
+import Alert from "@material-ui/lab/Alert";
 
-function TestimonialComponent({ toModifyTestimonial }) {
+function TestimonialComponentForm() {
   const classes = useStyles();
-  const [testimonials, setTestimonials] = useState(toModifyTestimonial);
-  const [img, setImg] = useState(toModifyTestimonial.image);
+  const [testimonials, setTestimonials] = useState([]);
+  const [img, setImg] = useState();
   const [formData, setFormData] = useState(new FormData());
   const [emptyFields, setEmptyFields] = useState(true);
+  let { id } = useParams();
+  let history = useHistory();
 
   useEffect(() => {
     handleEmptyFields();
   }, [testimonials]);
 
-  const changeHandler = (event) => {
+  useEffect(() => {
+    if (id) {
+      const fetchTestimonial = async (id) => {
+        const testimonial = await getATestimonial(id);
+        setTestimonials(testimonial.data[0]);
+        setImg(testimonial.data[0].image);
+      };
+      fetchTestimonial(id);
+      if (!testimonials.content) {
+        fetchTestimonial(id);
+      }
+    }
+  }, []);
+
+  const titleHandler = (event) => {
     testimonials[event.target.id] = event.target.value;
     setTestimonials({ ...testimonials });
   };
@@ -48,6 +71,8 @@ function TestimonialComponent({ toModifyTestimonial }) {
       setFormData(formData);
       if (testimonialCreate(formData)) {
         clearForm();
+        alert(TESTIMONIAL_CREATE_SUCCESS);
+        history.push("/backoffice/testimonios");
       }
     } else {
       for (const property in testimonials) {
@@ -55,11 +80,13 @@ function TestimonialComponent({ toModifyTestimonial }) {
       }
       setFormData(formData);
       testimonialUpdate(formData, testimonials.id);
+      alert(TESTIMONIAL_UPDATE_SUCCES);
+      history.push("/backoffice/testimonios");
     }
   };
 
   const handleEmptyFields = () => {
-    if (!testimonials.name || !testimonials.content || !testimonials.category) {
+    if (!testimonials.name || !testimonials.content) {
       setEmptyFields(true);
     } else {
       setEmptyFields(false);
@@ -73,7 +100,7 @@ function TestimonialComponent({ toModifyTestimonial }) {
           id="name"
           label="Titulo"
           value={"" || testimonials.name}
-          onChange={changeHandler}
+          onChange={titleHandler}
         />
         <CKEditor
           editor={ClassicEditor}
@@ -92,28 +119,32 @@ function TestimonialComponent({ toModifyTestimonial }) {
             setTestimonials({ ...testimonials });
           }}
         />
-
         <img src={img} />
-        <Button
-          className={classes.button}
-          variant="contained"
-          component="label"
-        >
-          Agregar Imagen
-          <input type="file" onChange={handleImg} id="image" hidden />
-        </Button>
-        <Button
-          className={classes.button}
-          variant="contained"
-          component="label"
-          onClick={handleSubmit}
-          disabled={emptyFields}
-        >
-          {!testimonials.id ? "Crear" : "Modificar"}
-        </Button>
+        <div>
+          <Button
+            className={classes.button}
+            variant="contained"
+            component="label"
+          >
+            Agregar Imagen
+            <input type="file" onChange={handleImg} id="image" hidden />
+          </Button>
+        </div>
+
+        <div>
+          <Button
+            className={classes.button}
+            variant="contained"
+            component="label"
+            onClick={handleSubmit}
+            disabled={emptyFields}
+          >
+            {!testimonials.id ? "Crear" : "Modificar"}
+          </Button>
+        </div>
       </form>
     </Container>
   );
 }
 
-export default TestimonialComponent;
+export default TestimonialComponentForm;
