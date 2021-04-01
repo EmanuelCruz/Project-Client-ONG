@@ -4,12 +4,6 @@ import ItemNovedadesRecientes from "./Item/ItemNovedadesRecientesComponent";
 import { getNews } from "../../services/querys/newsServices";
 import myStyles from "./StylesNovedadesRecientesComponente";
 
-const ARRAY_NOVEDADES = [
-    { id: 3, url: "/novedad/3" },
-    { id: 2, url: "/novedad/2" },
-    { id: 1, url: "/novedad/1" },
-];
-
 export default function NovedadesRecientesComponent() {
     const classes = myStyles();
     const [novedadesRecientes, setNovedadesRecientes] = useState([]);
@@ -26,11 +20,7 @@ export default function NovedadesRecientesComponent() {
 
     const listarItems = novedadesRecientes.map((novedad) => {
         return (
-            <ItemNovedadesRecientes
-                id={novedad.id}
-                url={`/novedad/${novedad.id}`}
-                key={novedad.id}
-            />
+            <ItemNovedadesRecientes novedad={novedad} />
         );
     });
     return (

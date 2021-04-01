@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import NovedadesRecientes from "../../component/NovedadesRecientes/NovedadesRecientesComponent";
 import { Container, Grid, Typography } from "@material-ui/core";
 import { getDetalleNovedad } from "../../services/querys/detalleNovedadServices";
+import NovedadesRecientes from "../../component/NovedadesRecientes/NovedadesRecientesComponent";
 import myStyles from "./StylesDetalleNovedadScreen";
 
 export default function DetalleNovedadScreen() {
@@ -39,10 +39,8 @@ export default function DetalleNovedadScreen() {
                                 alt="Imagen de la novedad"
                                 className={classes.image}
                             />
-                            {
-                                //TODO: Fix html tags
-                            }
-                            <Typography variant="body1" align="left">{detalleNovedad.content}</Typography>
+                            <Typography variant="body1" align="left" dangerouslySetInnerHTML={{ __html: detalleNovedad.content }}>
+                            </Typography>
                         </Grid>
                         <Grid item xs={3} className={classes.links}>
                             <NovedadesRecientes />
