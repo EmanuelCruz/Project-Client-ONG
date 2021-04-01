@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     menuButton: {
+        height: "60px",
         padding: "20px 40px",
         textalign: "center",
         color: "rgba(0, 0, 0, 0.5)",
@@ -50,6 +51,9 @@ const useStyles = makeStyles((theme) => ({
             flexDirection: "column",
             width: "100%",
         },
+    },
+    nested: {
+        paddingLeft: theme.spacing(4),
     },
 }));
 

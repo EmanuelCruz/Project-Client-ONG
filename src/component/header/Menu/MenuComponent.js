@@ -34,14 +34,14 @@ const myItems = [
     },
 ];
 
-export default function MenuComponent() {
+export default function MenuComponent({drawerOpen}) {
     const classes = useStyles();
     const [items, setItems] = useState(myItems);
 
     const renderItems = () => {
         return items.map((item, index) =>
             item.name === "Actividades" ? (
-                <DropDawnActivitiesComponente item={item} />
+                <DropDawnActivitiesComponente item={item} drawerOpen={drawerOpen}/>
             ) : (
                 <NavLink
                     activeClassName={classes.menuButtonActive}
