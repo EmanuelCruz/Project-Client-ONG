@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import useStyles from './ItemListMenuComponentStyles'
-import { ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper, Button } from '@material-ui/core';
-import { Link, NavLink } from 'react-router-dom';
+import { MenuItem, Menu } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import { getAllActivities } from "../../../../services/querys/activitiesServices";
-import { MAIN_URL, SERVER_URL_ACTIVITIES } from "../../../../const/const";
+import { SERVER_URL_ACTIVITIES } from "../../../../const/const";
 
 export default function ItemListMenuComponent({item}) {
     const classes = useStyles();
@@ -17,41 +17,22 @@ export default function ItemListMenuComponent({item}) {
         fecthActivities();
     }, []);
 
-    const [open, setOpen] = useState(false);
-    const anchorRef = useRef(null);
-
-    const handleToggle = () => {
-        setOpen((prevOpen) => !prevOpen);
-    };
-
-    const handleClose = (event) => {
-        if (anchorRef.current && anchorRef.current.contains(event.target)) {
-            return;
-        }
-        setOpen(false);
-    };
-
-    function handleListKeyDown(event) {
-        if (event.key === "Tab") {
-            event.preventDefault();
-            setOpen(false);
+    const [anchorEl, setAnchorEl] = useState(null);
+    function handleClick(event) {
+        if (anchorEl !== event.currentTarget) {
+            setAnchorEl(event.currentTarget);
         }
     }
+    function handleClose() {
+        setAnchorEl(null);
+    }
 
-    // return focus to the button when we transitioned from !open -> open
-    const prevOpen = useRef(open);
-    useEffect(() => {
-        if (prevOpen.current === true && open === false) {
-            anchorRef.current.focus();
-        }
-        prevOpen.current = open;
-    }, [open]);
-
-    const renderMenuItem = () =>
+    const renderItemList = () =>
         activities.length !== 0 &&
         activities.map((activity, index, array) => (
-            <MenuItem key={index} onClick={handleClose}>
+            <MenuItem key={index}>
                 <Link
+                    onClick={handleClose}
                     className={classes.navLink}
                     exact
                     key={activity.name}
@@ -66,50 +47,30 @@ export default function ItemListMenuComponent({item}) {
         <div>
             <ul className={classes.menuUl}>
                 <Link
-                    ref={anchorRef}
-                    aria-controls={open ? "menu-list-grow" : undefined}
-                    aria-haspopup="true"
                     activeClassName={classes.menuButtonActive}
                     className={classes.menuButton}
                     exact
                     key={item.name}
-                    // to={item.path}
-                    onClick={handleToggle}
+                    aria-owns={anchorEl ? "simple-menu" : undefined}
+                    aria-haspopup="true"
+                    onClick={handleClick}
+                    onMouseOver={handleClick}
                 >
                     {item.name}
                 </Link>
-                <Popper
-                    open={open}
-                    anchorEl={anchorRef.current}
-                    role={undefined}
-                    transition
-                    disablePortal
-                >
-                    {({ TransitionProps, placement }) => (
-                        <Grow
-                            {...TransitionProps}
-                            style={{
-                                transformOrigin:
-                                    placement === "bottom"
-                                        ? "center top"
-                                        : "center bottom",
-                            }}
-                        >
-                            <Paper>
-                                <ClickAwayListener onClickAway={handleClose}>
-                                    <MenuList
-                                        autoFocusItem={open}
-                                        id="menu-list-grow"
-                                        onKeyDown={handleListKeyDown}
-                                    >
-                                        {renderMenuItem()}
-                                    </MenuList>
-                                </ClickAwayListener>
-                            </Paper>
-                        </Grow>
-                    )}
-                </Popper>
             </ul>
+            <Menu
+                anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+                transformOrigin={{ vertical: "top", horizontal: "left" }}
+                id="simple-menu"
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+                MenuListProps={{ onMouseLeave: handleClose }}
+                getContentAnchorEl={null}
+            >
+                {renderItemList()}
+            </Menu>
         </div>
     );
 }
