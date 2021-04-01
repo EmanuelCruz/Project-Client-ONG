@@ -1,27 +1,21 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-    menu: {
-        width: "85%",
-        "@media (max-width: 900px)": {
-            width: "100%",
-        },
+    paper: {
+        marginRight: theme.spacing(2),
+        background: "whitesmoke",
     },
-    menuUl: {
-        boxSizing: "border-box",
-        margin: 0,
-        padding: 0,
-        display: "flex",
-        flexDirection: "row",
-        width: "80%",
+    navLink: {
+        color: "rgba(0, 0, 0, 0.5)",
+        width: "100%",
+        textDecoration: "none",
         height: "100%",
-        listStyle: "none",
-        "@media (max-width: 900px)": {
-            flexDirection: "column",
-            width: "100%",
+        padding: "6px 16px",
+        "&:hover": {
+            textDecoration: "none",
+            color: "rgba(0, 0, 0, 0.5)",
         },
     },
-
     menuButton: {
         padding: "20px 40px",
         textalign: "center",
@@ -43,11 +37,19 @@ const useStyles = makeStyles((theme) => ({
     menuButtonActive: {
         color: "rgba(0, 0, 0, 0.9)",
     },
-    popover: {
-        pointerEvents: "none",
-    },
-    paper: {
-        padding: theme.spacing(1),
+    menuUl: {
+        boxSizing: "border-box",
+        margin: 0,
+        padding: 0,
+        display: "flex",
+        flexDirection: "row",
+        width: "80%",
+        height: "100%",
+        listStyle: "none",
+        "@media (max-width: 900px)": {
+            flexDirection: "column",
+            width: "100%",
+        },
     },
 }));
 
