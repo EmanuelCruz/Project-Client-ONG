@@ -48,22 +48,25 @@ const ActivitiesDetailsComponent = () => {
                 container
                 className={classes.gridDescription}
             >
-                <Grid item xs={12} wrap="nowrap">
-                    <Typography
-                        variant="body1"
-                        component="h3"
-                        dangerouslySetInnerHTML={{
-                            __html:
-                                activity.content +
-                                activity.content +
-                                activity.content +
-                                activity.content +
-                                activity.content +
-                                activity.content +
-                                activity.content,
-                        }}
-                    ></Typography>
-                </Grid>
+                <Grid
+                    item
+                    xs={12}
+                    wrap="nowrap"
+                    container
+                    direction="column"
+                    justify="flex-start"
+                    alignItems="flex-start"
+                    dangerouslySetInnerHTML={{
+                        __html:
+                            activity.content +
+                            activity.content +
+                            activity.content +
+                            activity.content +
+                            activity.content +
+                            activity.content +
+                            activity.content,
+                    }}
+                ></Grid>
             </Grid>
             <Grid
                 item
