@@ -6,7 +6,7 @@ import { getAllActivities } from "../../../../services/querys/activitiesServices
 import { SERVER_URL_ACTIVITIES } from "../../../../const/const";
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
 
-export default function ItemListMenuComponent({item, drawerOpen}) {
+export default function ItemListMenuComponent({ item, drawerOpen }) {
     const classes = useStyles();
     const [activities, setActivities] = useState([]);
     useEffect(() => {
@@ -29,7 +29,8 @@ export default function ItemListMenuComponent({item, drawerOpen}) {
     }
 
     const renderItemListDesktop = () =>
-        activities.length !== 0 &&
+        typeof activities === "object" &&
+        activities.length !== [] &&
         activities.map((activity, index) => (
             <MenuItem key={index}>
                 <Link
@@ -46,22 +47,23 @@ export default function ItemListMenuComponent({item, drawerOpen}) {
         ));
 
     const renderItemListMobile = () =>
-        activities.length !== 0 &&
-            activities.map((activity, index) => (
-                <ListItem
-                    button
-                    className={classes.nested}
-                    component={NavLink}
-                    to={`/${SERVER_URL_ACTIVITIES}/${activity.id}`}
-                    key={index}
-                >
-                    <ListItemText primary={activity.name} />
-                </ListItem>
-            ));
+        typeof activities === "object" &&
+        activities.length !== [] &&
+        activities.map((activity, index) => (
+            <ListItem
+                button
+                className={classes.nested}
+                component={NavLink}
+                to={`/${SERVER_URL_ACTIVITIES}/${activity.id}`}
+                key={index}
+            >
+                <ListItemText primary={activity.name} />
+            </ListItem>
+        ));
 
     const [open, setOpen] = useState(false);
     const handleClickList = () => {
-    setOpen(!open);
+        setOpen(!open);
     };
 
     return (
@@ -86,9 +88,7 @@ export default function ItemListMenuComponent({item, drawerOpen}) {
                 <>
                     <ul className={classes.menuUl}>
                         <Link
-                            activeClassName={classes.menuButtonActive}
                             className={classes.menuButton}
-                            exact
                             key={item.name}
                             aria-owns={anchorEl ? "simple-menu" : undefined}
                             aria-haspopup="true"
