@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import useStyles from './ItemListMenuComponentStyles'
+import useStyles from './DropDawnActivitiesComponentStyles'
 import { MenuItem, Menu } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { getAllActivities } from "../../../../services/querys/activitiesServices";

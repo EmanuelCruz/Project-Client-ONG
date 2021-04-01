@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import useStyles from './MenuComponentStyles'
-import ItemListMenuComponent from './ListActivities/ItemListMenuComponent'
-import { Popover  } from "@material-ui/core";
+import DropDawnActivitiesComponente from './DropDawnActivities/DropDawnActivitiesComponent'
 
 const myItems = [
     {
@@ -42,7 +41,7 @@ export default function MenuComponent() {
     const renderItems = () => {
         return items.map((item, index) =>
             item.name === "Actividades" ? (
-                <ItemListMenuComponent item={item} />
+                <DropDawnActivitiesComponente item={item} />
             ) : (
                 <NavLink
                     activeClassName={classes.menuButtonActive}
