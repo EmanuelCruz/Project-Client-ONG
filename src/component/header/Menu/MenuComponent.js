@@ -21,10 +21,6 @@ const myItems = [
     path: "/profile",
   },
   {
-    name: "Signup",
-    path: "/signup",
-  },
-  {
     name: "Novedades",
     path: "/novedades"
   },
@@ -35,6 +31,10 @@ const myItems = [
   {
     name: "Backoffice",
     path: "/backoffice",
+  },
+  {
+    name: "Login",
+    path: "/login",
   },
 ];
 
