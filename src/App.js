@@ -72,6 +72,7 @@ function App() {
                 path={path}
                 component={Component}
                 isAdmin={false}
+                key={`par-${path}`}
               />
             ))}
             {adminRoutes.map(({ path, Component }) => (
@@ -79,6 +80,7 @@ function App() {
                 path={path}
                 component={Component}
                 isAdmin={false}
+                key={`par-${path}`}
               />
             ))}
             {userRoutes.map(({ path, Component }) => (
@@ -86,6 +88,7 @@ function App() {
                 path={path}
                 component={Component}
                 isAuth={false}
+                key={`pur-${path}`}
               />
             ))}
           </AnimatePresence>

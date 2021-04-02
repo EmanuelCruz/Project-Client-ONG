@@ -17,7 +17,9 @@ const ProtectedAdminRoute = ({
           return (
             <>
               {setTimeout(() => {
-                props.history.push("/");
+                if (props.history.location.pathname.includes('backoffice')) {
+                  props.history.push("/")
+                }
               }, 5000)}
               <NotAllowedRedirect />
             </>
