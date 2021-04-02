@@ -33,7 +33,7 @@ export default function DisplayMobile({handleDrawerOpen,handleDrawerClose,drawer
                 }}
             >
                 <div className={classes.drawerContainer}>
-                    <Menu/>
+                    <Menu drawerOpen={drawerOpen}/>
                 </div>
             </Drawer>
             <Logo />

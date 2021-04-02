@@ -2,9 +2,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
     menu: {
-        width: "85%",
-        "@media (max-width: 900px)": {
-            width: "100%",
+        width: "100%",
+        "@media (min-width: 900px)": {
+            width: "85%",
         },
     },
     menuUl: {
@@ -12,13 +12,13 @@ const useStyles = makeStyles((theme) => ({
         margin: 0,
         padding: 0,
         display: "flex",
-        flexDirection: "row",
-        width: "80%",
+        flexDirection: "column",
+        width: "100%",
         height: "100%",
         listStyle: "none",
-        "@media (max-width: 900px)": {
-            flexDirection: "column",
-            width: "100%",
+        "@media (min-width: 900px)": {
+            flexDirection: "row",
+            width: "auto",
         },
     },
 
@@ -28,13 +28,14 @@ const useStyles = makeStyles((theme) => ({
         color: "rgba(0, 0, 0, 0.5)",
         fontweight: "500",
         transition: "0.4s",
+        width: "100%",
         "&:hover": {
             color: "rgba(0, 0, 0, 0.7)",
             textDecoration: "none",
             backgroundColor: "rgb(250, 207, 213)",
         },
-        "@media (max-width: 900px)": {
-            width: "100%",
+        "@media (min-width: 900px)": {
+            padding: "20px 0px",
         },
         "@media (min-width: 1441px)": {
             padding: "20px 80px",
