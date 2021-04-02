@@ -4,6 +4,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import useStyles from "../styles/MaterialUiStyles";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { Button, TableCell, TableRow } from "@material-ui/core";
+import Avatar from '@material-ui/core/Avatar';
 import { ConfirmAlertComponent } from "../../Alert/AlertComponent";
 import {
   CONFIRM_IS_CONFIRMED,
@@ -28,7 +29,9 @@ const TableRowItem = ({ news, newsData, setNewsData }) => {
   return (
     <TableRow>
       <TableCell>{name}</TableCell>
-      <TableCell>{image}</TableCell>
+      <TableCell>
+        <Avatar variant="square" src={image}></Avatar>
+      </TableCell>
       <TableCell>
         {new Date(createdAt).toISOString().substring(0, 10)}
       </TableCell>
