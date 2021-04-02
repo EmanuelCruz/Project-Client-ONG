@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { COMPANY_FACEBOOK_URL, COMPANY_INSTAGRAM_URL } from "../../../const/const";
 import { getOrganization } from "../../../services/querys/organizationServices";
 
 function SocialMedia({ id }) {
@@ -23,16 +24,10 @@ function SocialMedia({ id }) {
     <div className="col-md-4 column item">
       <h3>¡Seguinos en nuestras redes!</h3>
       <div className="col item social">
-        <a href="#">
+        <a href={COMPANY_FACEBOOK_URL}>
           <i className="bi bi-facebook">{facebookContact}</i>
         </a>
-        <a href="#">
-          <i className="bi bi-twitter">{twitterContact}</i>
-        </a>
-        <a href="#">
-          <i className="bi bi-linkedin">{linkedinContact}</i>
-        </a>
-        <a href="#">
+        <a href={COMPANY_INSTAGRAM_URL}>
           <i className="bi bi-instagram">{instagramContact}</i>
         </a>
       </div>
