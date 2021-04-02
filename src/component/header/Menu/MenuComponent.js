@@ -25,6 +25,10 @@ const myItems = [
         path: "/signup",
     },
     {
+        texto: "Novedades",
+        ruta: "/novedades"
+    },
+    {
         name: "Contacto",
         path: "/contacto",
     },

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import NovedadesRecientes from "../../component/NovedadesRecientes/NovedadesRecientesComponent";
+import { useParams } from "react-router-dom";
 import { Container, Grid, Typography } from "@material-ui/core";
 import { getDetalleNovedad } from "../../services/querys/detalleNovedadServices";
+import NovedadesRecientes from "../../component/NovedadesRecientes/NovedadesRecientesComponent";
 import myStyles from "./StylesDetalleNovedadScreen";
 
-export default function DetalleNovedadScreen({ match }) {
+export default function DetalleNovedadScreen() {
     const classes = myStyles();
-    let { id } = match.params;
+    const { id } = useParams();
 
     const [detalleNovedad, setDetalleNovedad] = useState({});
 
@@ -38,7 +39,8 @@ export default function DetalleNovedadScreen({ match }) {
                                 alt="Imagen de la novedad"
                                 className={classes.image}
                             />
-                            <Typography variant="body1" align="left">{detalleNovedad.content}</Typography>
+                            <Typography variant="body1" align="left" dangerouslySetInnerHTML={{ __html: detalleNovedad.content }}>
+                            </Typography>
                         </Grid>
                         <Grid item xs={3} className={classes.links}>
                             <NovedadesRecientes />

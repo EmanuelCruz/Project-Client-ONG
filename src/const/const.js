@@ -83,5 +83,8 @@ export const PATH_BACKOFFICE_USERS = "/backoffice/users";
 export const PATH_BACKOFFICE_CONTACTS = "/backoffice/contacts";
 
 // Path Edith Organization
-export const PATH_BACKOFFICE_EDITH_ORGANIZATION =
-  "/backoffice/edit-organization";
+export const PATH_BACKOFFICE_EDITH_ORGANIZATION = "/backoffice/edit-organization"
+
+// Path Novedad
+export const PATH_NOVEDAD = "/novedad/";
+
