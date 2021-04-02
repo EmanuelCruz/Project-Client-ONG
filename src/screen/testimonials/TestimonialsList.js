@@ -12,6 +12,7 @@ import {
   testimonialsServices,
   testimonialDelete,
 } from "../../services/querys/testimonialsServices";
+import { useHistory } from "react-router-dom";
 
 const testimonialMock = [
   {
@@ -47,12 +48,13 @@ const testimonialMock = [
 function TestimonialsList() {
   const [testimonials, setTestimonials] = useState([]);
   const classes = useStyles();
+  let history = useHistory();
 
   useEffect(() => {
     const fetchTestimonials = async () => {
       let testimonial = await testimonialsServices();
       if (testimonial) {
-        setTestimonials(testimonial);
+        setTestimonials(testimonial.data);
       } else {
         setTestimonials(testimonialMock);
       }
@@ -64,8 +66,8 @@ function TestimonialsList() {
     await testimonialDelete(id);
   };
 
-  const handleEdit = (id) => {
-    //TODO: handle edit
+  const handleEdit = async (id) => {
+    history.push("/backoffice/edit-testimonial/" + id);
   };
 
   return (

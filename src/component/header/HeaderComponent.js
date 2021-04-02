@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { AppBar } from "@material-ui/core";
 import useStyles from "./HeaderComponentStyles";
-import DisplayDesktop from './DisplayDesktop/DisplayDesktopComponent'
-import DisplayMobile from './DisplayMobile/DisplayMobileComponent'
+import DisplayDesktopComponent from './DisplayDesktop/DisplayDesktopComponent'
+import DisplayMobileComponent from './DisplayMobile/DisplayMobileComponent'
 
 function HeaderComponent() {
     const classes = useStyles();
@@ -32,7 +32,7 @@ function HeaderComponent() {
         const handleDrawerClose = () =>
             setState((prevState) => ({ ...prevState, drawerOpen: false }));
         return (
-            <DisplayMobile
+            <DisplayMobileComponent
                 handleDrawerOpen={handleDrawerOpen}
                 handleDrawerClose={handleDrawerClose}
                 drawerOpen={drawerOpen}
@@ -46,7 +46,7 @@ function HeaderComponent() {
                 {mobileView ? (
                     displayMobile()
                 ) : (
-                    <DisplayDesktop/>
+                    <DisplayDesktopComponent/>
                 )}
             </AppBar>
         </>

@@ -25,33 +25,29 @@ import ProtectedUserRoute from "./component/ProtectedRoutes/ProtectedUserRoute";
 import "./App.css";
 
 const routes = [
-  { path: '/', Component: HomeScreen },
-  { path: '/contacto', Component: ContactScreen },
-  { path: '/nosotros', Component: AboutUsScreen },
-  { path: '/signup', Component: SignUpScreen },
-  { path: '/novedades', Component: NovedadesScreen },
-  { path: '/novedad/:id', Component: DetalleNovedadScreen },
-  { path: '/activities/:id', Component: ActivitiesScreen },
-  { path: '/login', Component: LoginFormComponent },
-]
+  { path: "/", Component: HomeScreen },
+  { path: "/contacto", Component: ContactScreen },
+  { path: "/nosotros", Component: AboutUsScreen },
+  { path: "/signup", Component: SignUpScreen },
+  { path: "/novedades", Component: NovedadesScreen },
+  { path: "/novedad/:id", Component: DetalleNovedadScreen },
+  { path: "/activities/:id", Component: ActivitiesScreen },
+  { path: "/login", Component: LoginFormComponent },
+];
 
 const backOfficeRoutes = [
-  { path: '/backoffice/edit-organization', Component: EditOrganizationScreen },
-  { path: '/backoffice/news', Component: BackOfficeNewsScreen },
-  { path: '/backoffice/users', Component: AdminUsersListScreen },
-  { path: '/backoffice/activities', Component: BackOfficeActivitiesScreen },
-  { path: '/backoffice/contacts', Component: BackOfficeContactsScreen },
-  { path: '/backoffice/testimonios', Component: TestimonialsList },
-  { path: '/backoffice/categories', Component: BackOfficeCategoriesScreen },
-]
+  { path: "/backoffice/edit-organization", Component: EditOrganizationScreen },
+  { path: "/backoffice/news", Component: BackOfficeNewsScreen },
+  { path: "/backoffice/users", Component: AdminUsersListScreen },
+  { path: "/backoffice/activities", Component: BackOfficeActivitiesScreen },
+  { path: "/backoffice/contacts", Component: BackOfficeContactsScreen },
+  { path: "/backoffice/testimonios", Component: TestimonialsList },
+  { path: "/backoffice/categories", Component: BackOfficeCategoriesScreen },
+];
 
-const adminRoutes = [
-  { path: '/backoffice', Component: BackOffice },
-]
+const adminRoutes = [{ path: "/backoffice", Component: BackOffice }];
 
-const userRoutes = [
-  { path: '/profile', Component: ProfileScreen },
-]
+const userRoutes = [{ path: "/profile", Component: ProfileScreen }];
 
 function App() {
   return (
@@ -62,27 +58,41 @@ function App() {
           <AnimatePresence>
             {routes.map(({ path, Component }) => (
               <Route key={path} exact path={path}>
-                <motion.div initial={{ opacity: 0 }}
+                <motion.div
+                  initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}>
+                  exit={{ opacity: 0 }}
+                >
                   <Component />
                 </motion.div>
               </Route>
             ))}
             {backOfficeRoutes.map(({ path, Component }) => (
-              <ProtectedAdminRoute path={path} component={Component} isAdmin={false} />
+              <ProtectedAdminRoute
+                path={path}
+                component={Component}
+                isAdmin={false}
+              />
             ))}
             {adminRoutes.map(({ path, Component }) => (
-              <ProtectedAdminRoute path={path} component={Component} isAdmin={false} />
+              <ProtectedAdminRoute
+                path={path}
+                component={Component}
+                isAdmin={false}
+              />
             ))}
             {userRoutes.map(({ path, Component }) => (
-              <ProtectedUserRoute path={path} component={Component} isAuth={false} />
+              <ProtectedUserRoute
+                path={path}
+                component={Component}
+                isAuth={false}
+              />
             ))}
           </AnimatePresence>
         </Switch>
         <FooterScreen />
       </div>
-    </Router >
+    </Router>
   );
 }
 

@@ -25,12 +25,21 @@ const updateActivities = async (data, id) => {
 
 const getActivityById = async (id) => {
   try {
-    const response = await axios.get(`${SERVER_URL_ACTIVITIES}/${id}`);
+    const response = await axios.get(`${MAIN_URL}${SERVER_URL_ACTIVITIES}/${id}`);
     return response.data;
   } catch (err) {
     return ERROR_PARAGRAPH;
   }
 };
+
+const getAllActivities = async ()=>{
+  try {
+    const response = await axios.get(`${MAIN_URL}${SERVER_URL_ACTIVITIES}`)
+    return response.data;
+  } catch (err) {
+    return ERROR_PARAGRAPH;
+  }
+}
 
 const deleteActivity = async (id) => {
   try {
@@ -41,4 +50,10 @@ const deleteActivity = async (id) => {
   }
 };
 
-export { createActivities, updateActivities, getActivityById ,deleteActivity };
+export {
+    createActivities,
+    updateActivities,
+    getActivityById,
+    deleteActivity,
+    getAllActivities,
+};
