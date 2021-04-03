@@ -71,7 +71,7 @@ function App() {
               <ProtectedAdminRoute
                 path={path}
                 component={Component}
-                isAdmin={false}
+                isAdmin={true}
                 key={`par-${path}`}
               />
             ))}
@@ -79,7 +79,7 @@ function App() {
               <ProtectedAdminRoute
                 path={path}
                 component={Component}
-                isAdmin={false}
+                isAdmin={true}
                 key={`par-${path}`}
               />
             ))}
@@ -87,7 +87,7 @@ function App() {
               <ProtectedUserRoute
                 path={path}
                 component={Component}
-                isAuth={false}
+                isAuth={true}
                 key={`pur-${path}`}
               />
             ))}
