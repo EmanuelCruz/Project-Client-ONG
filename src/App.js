@@ -71,21 +71,21 @@ function App() {
               <ProtectedAdminRoute
                 path={path}
                 component={Component}
-                isAdmin={true}
+                isAdmin={false}
               />
             ))}
             {adminRoutes.map(({ path, Component }) => (
               <ProtectedAdminRoute
                 path={path}
                 component={Component}
-                isAdmin={true}
+                isAdmin={false}
               />
             ))}
             {userRoutes.map(({ path, Component }) => (
               <ProtectedUserRoute
                 path={path}
                 component={Component}
-                isAuth={true}
+                isAuth={false}
               />
             ))}
           </AnimatePresence>
