@@ -8,6 +8,7 @@ import ActivitiesComponent from "../../component/Activities/ActivitiesComponent"
 import Grid from "@material-ui/core/Grid";
 import useStyles from "./BackOfficeStyles";
 import Typography from "@material-ui/core/Typography";
+import { Container } from "@material-ui/core/";
 import {
   PATH_BACKOFFICE_ACTIVITIES,
   PATH_BACKOFFICE_CONTACTS,
@@ -62,7 +63,7 @@ export default function BackOffice() {
   const [roleId, setRoleId] = useState(myRoleId);
   const classes = useStyles();
   const itemsForAdmin = (
-    <div>
+    <Container>
       <MenuItem className={classes.menuItem}>
         <NavLink
           className={classes.navLink}
@@ -204,13 +205,13 @@ export default function BackOffice() {
           Crear Testimonio
         </NavLink>
       </MenuItem>
-    </div>
+    </Container>
   );
 
   return (
-    <div className={classes.root}>
+    <Container className={classes.root}>
       <Router>
-        <div className={classes.root}>
+        <Container className={classes.root}>
           <Grid
             item
             xs={12}
@@ -299,8 +300,8 @@ export default function BackOffice() {
               </Paper>
             </Grid>
           </Grid>
-        </div>
+        </Container>
       </Router>
-    </div>
+    </Container>
   );
 }

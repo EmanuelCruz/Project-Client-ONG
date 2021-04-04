@@ -23,10 +23,18 @@ export const PASSWORD_REQUIRED = "Se requiere contraseña";
 export const SALT = 10;
 
 //Testimonial Forms
-export const TESTIMONIAL_UPDATE_SUCCES =
+export const TESTIMONIAL_UPDATE_SUCCESS =
   "Se actualizo correctamente, sera redirigido a la lista de testimonios";
 export const TESTIMONIAL_CREATE_SUCCESS =
   "Se creo correctamente, sera ridirigido a la lista de testimonios";
+export const TESTIMONIAL_CREATE_TITLE = "Se creo el testimonio correctamente";
+export const TESTIMONIAL_UPDATE_TITLE =
+  "Se actualizo el testimonio correctamente";
+
+//Testimonials List
+export const TESTIMONIAL_DELETE_SUCCESS =
+  "Se elimino el testimonio correctamente";
+export const TESTIMONIAL_DELETE_TITLE = "Eliminacion exitosa";
 
 // Querys API
 // main query
@@ -83,8 +91,8 @@ export const PATH_BACKOFFICE_USERS = "/backoffice/users";
 export const PATH_BACKOFFICE_CONTACTS = "/backoffice/contacts";
 
 // Path Edith Organization
-export const PATH_BACKOFFICE_EDITH_ORGANIZATION = "/backoffice/edit-organization"
+export const PATH_BACKOFFICE_EDITH_ORGANIZATION =
+  "/backoffice/edit-organization";
 
 // Path Novedad
 export const PATH_NOVEDAD = "/novedad/";
-
