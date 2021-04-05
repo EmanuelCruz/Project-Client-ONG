@@ -42,9 +42,9 @@ const SignupForm = () => {
       history.push('/');
     }).catch(err => ErrorAlertComponent());
   };
-  
+
   return (
-    <div className={"w-50 mx-auto"}>
+    <div className={"w-50 mx-auto"} style={{ marginTop: '20px' }}>
       {/*TODO: Responsive*/}
       <h2>SignUp</h2>
       <Formik
@@ -92,7 +92,7 @@ const SignupForm = () => {
               </label>
               <Field name="password" type="password" className={"form-control"} />
             </div>
-            <button type="submit" className={"d-block w-100"}>
+            <button type="submit" className={"d-block w-100 btn btn-delete"}>
               Submit
             </button>
           </Form>

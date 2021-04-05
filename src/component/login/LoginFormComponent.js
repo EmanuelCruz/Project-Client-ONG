@@ -12,6 +12,7 @@ import {
 
 import { ErrorAlertComponent } from '../Alert/AlertComponent';
 import { login } from '../../services/querys/authService';
+import NotRegisteredUser from "./NotRegisteredUser";
 
 const schema = Yup.object().shape({
   email: Yup.string().email(NOT_VALID_EMAIL).required(EMAIL_REQUIRED),
@@ -31,7 +32,7 @@ const LoginFormComponent = (props) => {
 
   return (
     <React.Fragment>
-      <div className="container">
+      <div className="container" style={{ marginTop: '20px' }}>
         <div className="login-wrapper">
           <h2>Iniciar Sesion</h2>
           <Formik
@@ -41,7 +42,7 @@ const LoginFormComponent = (props) => {
               onLoginSubmit(values);
             }}
           >
-            {({touched, errors}) => (
+            {({ touched, errors }) => (
               <Form className="form-container">
                 <div className="form-group">
                   <label htmlFor="email">Email</label>
@@ -70,6 +71,7 @@ const LoginFormComponent = (props) => {
                     </span>
                   )}
                 </div>
+                <NotRegisteredUser />
                 <button type="submit" className="btn btn-primary">
                   Ingresar
                 </button>

@@ -17,7 +17,9 @@ const ProtectedUserRoute = ({
           return (
             <>
               {setTimeout(() => {
-                props.history.push("/");
+                if (props.history.location.pathname.includes('profile')) {
+                  props.history.push("/")
+                }
               }, 5000)}
               <NotAllowedRedirect />
             </>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { COMPANY_FACEBOOK_URL, COMPANY_INSTAGRAM_URL } from "../../../const/const";
 import { getOrganization } from "../../../services/querys/organizationServices";
 
 function SocialMedia({ id }) {

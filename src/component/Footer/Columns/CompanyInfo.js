@@ -5,7 +5,7 @@ function CompanyInfo({ companyName }) {
     return (
         <div className="col-md-4 column item">
             <h3>{companyName}</h3>
-            <a href="/home">
+            <a href="/">
                 <img className="company-logo" src={COMPANY_LOGO} alt="" />
             </a>
         </div>
