@@ -6,6 +6,10 @@ import {
   ListItemText,
   Typography,
 } from "@material-ui/core";
+import {
+  COMPANY_FACEBOOK_URL,
+  COMPANY_INSTAGRAM_URL,
+} from "../../../const/const";
 import EmailIcon from "@material-ui/icons/Email";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
@@ -22,7 +26,7 @@ export const ContactSocialMedia = () => {
         <ListItem
           button
           component="a"
-          href="https://www.facebook.com/fundacionzonasgrises/"
+          href={COMPANY_FACEBOOK_URL}
           className={classes.link}
           target="_blank"
         >
@@ -35,7 +39,7 @@ export const ContactSocialMedia = () => {
         <ListItem
           button
           component="a"
-          href="https://www.instagram.com/fundacionzonasgrises/?hl=es"
+          href={COMPANY_INSTAGRAM_URL}
           className={classes.link}
           target="_blank"
         >
