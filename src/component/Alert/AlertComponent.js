@@ -8,6 +8,12 @@ import {
   ERROR_TITLE,
   INFO_BUTTON,
   INFO_TITLE,
+  TESTIMONIAL_UPDATE_SUCCESS,
+  TESTIMONIAL_CREATE_SUCCESS,
+  TESTIMONIAL_DELETE_SUCCESS,
+  TESTIMONIAL_CREATE_TITLE,
+  TESTIMONIAL_UPDATE_TITLE,
+  TESTIMONIAL_DELETE_TITLE,
 } from "../../const/const";
 
 export const InfoAlertComponent = () => {
@@ -52,5 +58,29 @@ export const ConfirmAlertDeleteButtonComponent = (title) => {
     cancelButtonColor: "#d33",
     confirmButtonText: CONFIRM_BUTTON,
     cancelButtonText: CONFIRM_BUTTON_CANCEL,
+  });
+};
+
+export const UpdateTestimonialSuccess = () => {
+  return Swal.fire({
+    title: TESTIMONIAL_UPDATE_TITLE,
+    text: TESTIMONIAL_UPDATE_SUCCESS,
+    icon: "success",
+  });
+};
+
+export const CreateTestimonialSuccess = () => {
+  return Swal.fire({
+    title: TESTIMONIAL_CREATE_TITLE,
+    text: TESTIMONIAL_CREATE_SUCCESS,
+    icon: "success",
+  });
+};
+
+export const DeleteTestimonialSucces = () => {
+  return Swal.fire({
+    title: TESTIMONIAL_DELETE_TITLE,
+    text: TESTIMONIAL_DELETE_SUCCESS,
+    icon: "success",
   });
 };

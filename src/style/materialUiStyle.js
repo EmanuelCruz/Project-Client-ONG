@@ -18,6 +18,11 @@ const useStyles = makeStyles((theme) => ({
     color: "primary",
   },
   media: {},
+  cardCenterStyle: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 }));
 
 export default useStyles;
