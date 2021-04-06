@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
 const News = () => {
 
   const [novedades, setNovedades] = useState([]);
+  const [lastNovedades, setLastNovedades] = useState([]);
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -53,6 +54,11 @@ const News = () => {
     };
     fetchApi();
   }, []);
+
+  useEffect(() => {
+    setLastNovedades(novedades.reverse())
+  }, [novedades])
+
   const classes = useStyles();
 
 
@@ -63,7 +69,7 @@ const News = () => {
         <main className={classes.main}>
           <Container className={classes.cardGrid} maxWidth="md">
             <Grid container spacing={4}>
-              {novedades.map((card) => (
+              {lastNovedades.map((card) => (
                 <Grid item key={card.id} xs={12} sm={6} md={4}>
                   <Card className={classes.card}>
                     <CardMedia
