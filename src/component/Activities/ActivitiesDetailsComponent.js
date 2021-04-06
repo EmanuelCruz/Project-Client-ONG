@@ -22,7 +22,7 @@ const ActivitiesDetailsComponent = () => {
         }
 
         fecthActivityById();
-    }, [activity, id]);
+    }, [id]);
 
     return (
         <Grid container className={classes.grid}>
