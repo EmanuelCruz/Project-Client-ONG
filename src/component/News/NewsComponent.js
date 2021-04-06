@@ -1,30 +1,42 @@
+import React, { useState, useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { Button, TextField, MenuItem, Container } from "@material-ui/core/";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import React, { useState, useEffect } from "react";
-import { Button, TextField, MenuItem, Container } from "@material-ui/core/";
 import { UpgradeNews, CreateNews } from "../../services/querys/newsServices";
+import { getDetalleNovedad } from "../../services/querys/detalleNovedadServices";
+import { getCategories } from "../../services/querys/categoriesServices";
 import useStyles from "./styles/MaterialUiStyles";
+import { PATH_BACKOFFICE_NEWS } from "../../const/const";
 
-const categoriesMock = [
-  { id: 1, category: "Policiales" },
-  { id: 2, category: "Otros" },
-  { id: 3, category: "Saraza" },
-  { id: 4, category: "Categoria indefinida" },
-];
-
-function NewsComponent({ toModifyNews }) {
+function NewsComponent() {
   const classes = useStyles();
   const [categories, setCategories] = useState([]);
-  const [news, setNews] = useState(toModifyNews);
-  const [img, setImg] = useState(toModifyNews.image);
+  const [news, setNews] = useState({});
+  const [img, setImg] = useState();
   const [formData, setFormData] = useState(new FormData());
   const [emptyFields, setEmptyFields] = useState(true);
 
+  const { id } = useParams();
+  const history = useHistory();
+
   useEffect(() => {
     handleEmptyFields();
-    setCategories(categoriesMock);
   }, [news]);
 
+  useEffect(() => {
+    getCategories().then(res => {
+      setCategories(res.data);
+      if (id) {
+        getDetalleNovedad(id).then(data => {
+          setNews(data);
+          setImg(data.image);
+        });
+      }
+    });
+  }, []);
+
+  //TODO: Fix handle category
   const handleCategory = (event) => {
     news[event.target.name] = event.target.value;
     setNews({ ...news });
@@ -52,13 +64,16 @@ function NewsComponent({ toModifyNews }) {
   };
 
   const handleSubmit = () => {
-    if (!news.id) {
+    if (!id) {
       for (const property in news) {
         formData.append(property, news[property]);
       }
       setFormData(formData);
-      if (CreateNews(formData)) {
+      const res = CreateNews(formData);
+      console.log(res);
+      if (res) {
         clearForm();
+        history.push(PATH_BACKOFFICE_NEWS);
       }
     } else {
       for (const property in news) {
@@ -70,7 +85,7 @@ function NewsComponent({ toModifyNews }) {
   };
 
   const handleEmptyFields = () => {
-    if (!news.name || !news.content || !news.category) {
+    if (!news.name || !news.content || !news.categoryId) {
       setEmptyFields(true);
     } else {
       setEmptyFields(false);
@@ -88,7 +103,7 @@ function NewsComponent({ toModifyNews }) {
         />
         <CKEditor
           editor={ClassicEditor}
-          data={!news.id ? "" : news.content}
+          data={"" || news.content}
           config={{
             removePlugins: [
               "ImageCaption",
@@ -114,17 +129,17 @@ function NewsComponent({ toModifyNews }) {
           <input type="file" onChange={handleImg} id="image" hidden />
         </Button>
         <TextField
-          id="category"
+          id="categoryId"
           select
           label="Categoria"
-          name="category"
-          value={"" || news.category}
+          name="categoryId"
+          value={0 || news.categoryId}
           onChange={handleCategory}
           helperText="Selecciona la categoria"
         >
           {categories.map((option) => (
             <MenuItem key={option.id} value={option.id}>
-              {option.category}
+              {option.name}
             </MenuItem>
           ))}
         </TextField>
@@ -135,7 +150,7 @@ function NewsComponent({ toModifyNews }) {
           onClick={handleSubmit}
           disabled={emptyFields}
         >
-          {!news.id ? "Crear" : "Modificar"}
+          {!id ? "Crear" : "Modificar"}
         </Button>
       </form>
     </Container>

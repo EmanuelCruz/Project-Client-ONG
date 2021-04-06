@@ -77,6 +77,16 @@ export default function BackOffice() {
         <NavLink
           className={classes.navLink}
           exact
+          key="Crear Post"
+          to="/backoffice/create-news"
+        >
+          Crear Post
+        </NavLink>
+      </MenuItem>
+      <MenuItem className={classes.menuItem}>
+        <NavLink
+          className={classes.navLink}
+          exact
           key="Actividades"
           to={PATH_BACKOFFICE_ACTIVITIES}
         >
@@ -111,26 +121,6 @@ export default function BackOffice() {
           to={PATH_BACKOFFICE_EDITH_ORGANIZATION}
         >
           Editar Organizacion
-        </NavLink>
-      </MenuItem>
-      <MenuItem className={classes.menuItem}>
-        <NavLink
-          className={classes.navLink}
-          exact
-          key="Crear Post"
-          to="/backoffice/create-news"
-        >
-          Crear Post
-        </NavLink>
-      </MenuItem>
-      <MenuItem className={classes.menuItem}>
-        <NavLink
-          className={classes.navLink}
-          exact
-          key="Editar Post"
-          to="/backoffice/edit-news"
-        >
-          Editar Post
         </NavLink>
       </MenuItem>
       <MenuItem className={classes.menuItem}>
@@ -264,10 +254,10 @@ export default function BackOffice() {
                     <BackOfficeContactsScreen />
                   </Route>
                   <Route exact path="/backoffice/create-news">
-                    <NewsComponent toModifyNews={{}} />
+                    <NewsComponent />
                   </Route>
-                  <Route exact path="/backoffice/edit-news">
-                    <NewsComponent toModifyNews={toModifyNews} />
+                  <Route exact path="/backoffice/edit-news/:id">
+                    <NewsComponent />
                   </Route>
                   <Route exact path="/backoffice/create-activities">
                     <ActivitiesComponent toModifyActivities={{}} />
