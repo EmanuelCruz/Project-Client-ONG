@@ -7,7 +7,6 @@ const createActivities = async (data) => {
     const content = data.get("content")
     const newData = {name, content}
     const response = await axios.post(`${MAIN_URL}${SERVER_URL_ACTIVITIES}`, newData);
-    console.log(response)
     return response.data;
   } catch (err) {
     return err;
