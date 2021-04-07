@@ -1,9 +1,11 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import EditIcon from "@material-ui/icons/Edit";
 import useStyles from "../styles/MaterialUiStyles";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { Button, TableCell, TableRow } from "@material-ui/core";
+import Avatar from '@material-ui/core/Avatar';
 import { ConfirmAlertComponent } from "../../Alert/AlertComponent";
 import {
   CONFIRM_IS_CONFIRMED,
@@ -15,6 +17,8 @@ import { deleteNews } from "../../../services/querys/newsServices";
 const TableRowItem = ({ news, newsData, setNewsData }) => {
   const classes = useStyles();
   const { id, name, image, createdAt } = news;
+
+  const history = useHistory();
 
   const handleDelete = (idNew) => {
     ConfirmAlertComponent().then(async (result) => {
@@ -28,7 +32,9 @@ const TableRowItem = ({ news, newsData, setNewsData }) => {
   return (
     <TableRow>
       <TableCell>{name}</TableCell>
-      <TableCell>{image}</TableCell>
+      <TableCell>
+        <Avatar variant="square" src={image}></Avatar>
+      </TableCell>
       <TableCell>
         {new Date(createdAt).toISOString().substring(0, 10)}
       </TableCell>
@@ -38,6 +44,7 @@ const TableRowItem = ({ news, newsData, setNewsData }) => {
           color="primary"
           startIcon={<EditIcon />}
           className={classes.buttonTableRow}
+          onClick={() => history.push(`/backoffice/edit-news/${id}`)}
         >
           Editar
         </Button>
