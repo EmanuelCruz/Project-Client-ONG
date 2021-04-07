@@ -1,160 +1,193 @@
-import React, { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import { Button, TextField, MenuItem, Container } from "@material-ui/core/";
+import React, { useState, useEffect, useRef } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import { Formik, Form, Field } from 'formik';
+import Swal from "sweetalert2";
+import { Button, MenuItem, Container } from "@material-ui/core/";
+import Box from '@material-ui/core/Box';
+import { TextField } from 'formik-material-ui';
+import * as Yup from 'yup';
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+
 import { UpgradeNews, CreateNews } from "../../services/querys/newsServices";
 import { getDetalleNovedad } from "../../services/querys/detalleNovedadServices";
 import { getCategories } from "../../services/querys/categoriesServices";
+import { ErrorAlertComponent } from '../Alert/AlertComponent';
+import { 
+  PATH_BACKOFFICE_NEWS, REQUIRED,
+  CONFIRM_IS_CONFIRMED, CONFIRM_SUCCESS, CONFIRM, } from "../../const/const";
 import useStyles from "./styles/MaterialUiStyles";
-import { PATH_BACKOFFICE_NEWS } from "../../const/const";
 
 function NewsComponent() {
-  const classes = useStyles();
-  const [categories, setCategories] = useState([]);
-  const [news, setNews] = useState({});
-  const [img, setImg] = useState();
-  const [formData, setFormData] = useState(new FormData());
-  const [emptyFields, setEmptyFields] = useState(true);
 
-  const { id } = useParams();
-  const history = useHistory();
+    const { id } = useParams();
+    const history = useHistory();
+    const formikRef = useRef();
 
-  useEffect(() => {
-    handleEmptyFields();
-  }, [news]);
+    const classes = useStyles();
 
-  useEffect(() => {
-    getCategories().then(res => {
-      setCategories(res.data);
-      if (id) {
-        getDetalleNovedad(id).then(data => {
-          setNews(data);
-          setImg(data.image);
-        });
-      }
+    const isCreating = !id;
+
+    const initialValues = {
+        name: '',
+        content: '',
+        image: undefined,
+        categoryId: 0
+    };
+
+    const validationSchema = Yup.object().shape({
+      name: Yup.string().required(REQUIRED),
+      content: Yup.string().required(REQUIRED),
+      categoryId: Yup.number().positive('Selecciona una categoria').required(REQUIRED)
     });
-  }, []);
 
-  //TODO: Fix handle category
-  const handleCategory = (event) => {
-    news[event.target.name] = event.target.value;
-    setNews({ ...news });
-  };
-
-  const changeHandler = (event) => {
-    news[event.target.id] = event.target.value;
-    setNews({ ...news });
-  };
-
-  const handleImg = (event) => {
-    setImg(URL.createObjectURL(event.target.files[0]));
-    const image = event.target.files[0];
-    formData.append("image", image);
-    setFormData(formData);
-  };
-
-  const clearForm = () => {
-    for (const property in news) {
-      news[property] = "";
-      setNews({ ...news });
-    }
-    setImg([]);
-    setEmptyFields(true);
-  };
-
-  const handleSubmit = () => {
-    if (!id) {
-      for (const property in news) {
-        formData.append(property, news[property]);
+    function onSubmit(fields, { setStatus, setSubmitting }) {
+      setStatus();
+      for (const property in fields) {
+        formData.append(property, fields[property]);
       }
       setFormData(formData);
-      const res = CreateNews(formData);
-      console.log(res);
-      if (res) {
-        clearForm();
-        history.push(PATH_BACKOFFICE_NEWS);
+      if (isCreating) {
+        formCreateNews(formData, setSubmitting);
+      } else {
+        formEditNews(id, formData, setSubmitting);
       }
-    } else {
-      for (const property in news) {
-        formData.append(property, news[property]);
-      }
-      setFormData(formData);
-      UpgradeNews(formData, news.id);
     }
-  };
 
-  const handleEmptyFields = () => {
-    if (!news.name || !news.content || !news.categoryId) {
-      setEmptyFields(true);
-    } else {
-      setEmptyFields(false);
+    function formCreateNews(formData, setSubmitting) {
+      CreateNews(formData).then(res => {
+        Swal.fire(CONFIRM, CONFIRM_IS_CONFIRMED, CONFIRM_SUCCESS).then(() => {
+          history.push(PATH_BACKOFFICE_NEWS);
+        });
+      }).catch(err => {
+        setSubmitting(false);
+        ErrorAlertComponent();
+      });
     }
-  };
 
-  return (
-    <Container>
-      <form className={classes.root}>
-        <TextField
-          id="name"
-          label="Titulo"
-          value={"" || news.name}
-          onChange={changeHandler}
-        />
-        <CKEditor
-          editor={ClassicEditor}
-          data={"" || news.content}
-          config={{
-            removePlugins: [
-              "ImageCaption",
-              "ImageStyle",
-              "ImageToolbar",
-              "MediaEmbed",
-            ],
-          }}
-          onChange={(event, editor) => {
-            const data = editor.getData();
-            news["content"] = data;
-            setNews({ ...news });
-          }}
-        />
+    function formEditNews(id, formData, setSubmitting) {
+      UpgradeNews(formData, id).then(res => {
+        Swal.fire(CONFIRM, CONFIRM_IS_CONFIRMED, CONFIRM_SUCCESS).then(() => {
+          history.push(PATH_BACKOFFICE_NEWS);
+        });
+      }).catch(err => {
+        setSubmitting(false);
+        ErrorAlertComponent();
+      });
+    }
 
-        <img src={img} />
-        <Button
-          className={classes.button}
-          variant="contained"
-          component="label"
-        >
-          Agregar Imagen
-          <input type="file" onChange={handleImg} id="image" hidden />
-        </Button>
-        <TextField
-          id="categoryId"
-          select
-          label="Categoria"
-          name="categoryId"
-          value={0 || news.categoryId}
-          onChange={handleCategory}
-          helperText="Selecciona la categoria"
-        >
-          {categories.map((option) => (
-            <MenuItem key={option.id} value={option.id}>
-              {option.name}
-            </MenuItem>
-          ))}
-        </TextField>
-        <Button
-          className={classes.button}
-          variant="contained"
-          component="label"
-          onClick={handleSubmit}
-          disabled={emptyFields}
-        >
-          {!id ? "Crear" : "Modificar"}
-        </Button>
-      </form>
-    </Container>
-  );
+    const handleImg = (event) => {
+      setImg(URL.createObjectURL(event.target.files[0]));
+      const image = event.target.files[0];
+      formikRef.current.setFieldValue("image", image);
+    };
+
+    const [img, setImg] = useState();
+    const [newsContent, setNewsContent] = useState("");
+    const [categories, setCategories] = useState([]);
+    const [formData, setFormData] = useState(new FormData());
+
+    useEffect(() => {
+      getCategories().then(res => {
+        setCategories(res.data);
+        if (!isCreating) {
+          getDetalleNovedad(id).then(data => {
+            for (let key in data) {
+              formikRef.current.setFieldValue(key, data[key]);
+            }
+            setImg(data.image);
+            setNewsContent(data.content);
+          });
+        }
+      });
+    }, []);
+
+    return (
+      <Container>
+        <Formik initialValues={initialValues} validationSchema={validationSchema}
+          onSubmit={onSubmit} innerRef={formikRef}>
+          {({submitForm, isSubmitting, touched, errors}) => (
+            <Form className="form-container">
+              <Box margin={2}>
+                <Field
+                  component={TextField}
+                  style ={{width: '100%'}}
+                  name="name"
+                  label="Titulo"
+                  helperText={touched.name && errors.name} />
+              </Box>
+              <Box margin={2}>
+                {errors.content &&
+                <div className={classes.error}>La Novedad requiere Contenido.</div>}
+                <CKEditor
+                  id="content"
+                  name="content"
+                  editor={ClassicEditor}
+                  data={newsContent}
+                  config={{
+                    removePlugins: [
+                    "ImageCaption",
+                    "ImageStyle",
+                    "ImageToolbar",
+                    "MediaEmbed",
+                    ],
+                  }}
+                  onChange={(event, editor) => {
+                    const data = editor.getData();
+                    formikRef.current.setFieldValue("content", data);
+                  }}
+                />
+              </Box>
+              <Box margin={1}>
+                <img src={img} className={classes.image} />
+              </Box>
+              <Box margin={1}>
+                <Button
+                  className={classes.button}
+                  variant="contained"
+                  component="label"
+                >
+                  Agregar Imagen
+                  <input type="file" onChange={handleImg} id="image" hidden />
+                </Button>
+              </Box>
+              <Box margin={1}>
+                <Field
+                  component={TextField}
+                  style ={{width: '50%'}}
+                  type="text"
+                  name="categoryId"
+                  label="Categoria"
+                  select
+                  variant="standard"
+                  helperText="Selecciona la categoria"
+                  error={touched.categoryId && errors.categoryId}
+                  margin="normal"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                >
+                  {categories.map((option) => (
+                    <MenuItem key={option.id} value={option.id}>
+                      {option.name}
+                    </MenuItem>
+                  ))}
+                </Field>
+              </Box>
+              <Box margin={1}>
+              <Button
+                variant="contained"
+                disabled={isSubmitting}
+                onClick={submitForm}
+              >
+                {!id ? "Crear" : "Modificar"}
+              </Button>
+            </Box>
+            </Form>
+          )}
+        </Formik>
+      </Container>
+    )
 }
 
 export default NewsComponent;

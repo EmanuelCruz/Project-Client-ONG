@@ -14,7 +14,7 @@ import AdminUsersListScreen from "./screen/adminUsersList/AdminUsersListScreen";
 import NovedadesScreen from "./screen/novedades/NovedadesScreen";
 import DetalleNovedadScreen from "./screen/detalleNovedad/DetalleNovedadScreen";
 import ActivitiesScreen from "./screen/activities/ActivitiesScreen";
-import LoginFormComponent from "./component/login/LoginFormComponent";
+import LoginScreen from "./screen/login/LoginScreen";
 import BackOfficeActivitiesScreen from "./screen/activities/BackOfficeActivitiesScreen";
 import BackOfficeContactsScreen from "./screen/backofficeContacts/BackOfficeContactsScreen";
 import TestimonialsList from "./screen/testimonials/TestimonialsList";
@@ -32,7 +32,7 @@ const routes = [
   { path: "/novedades", Component: NovedadesScreen },
   { path: "/novedad/:id", Component: DetalleNovedadScreen },
   { path: "/activities/:id", Component: ActivitiesScreen },
-  { path: "/login", Component: LoginFormComponent },
+  { path: "/login", Component: LoginScreen },
 ];
 
 const backOfficeRoutes = [
@@ -71,21 +71,24 @@ function App() {
               <ProtectedAdminRoute
                 path={path}
                 component={Component}
-                isAdmin={false}
+                isAdmin={true}
+                key={`par-${path}`}
               />
             ))}
             {adminRoutes.map(({ path, Component }) => (
               <ProtectedAdminRoute
                 path={path}
                 component={Component}
-                isAdmin={false}
+                isAdmin={true}
+                key={`par-${path}`}
               />
             ))}
             {userRoutes.map(({ path, Component }) => (
               <ProtectedUserRoute
                 path={path}
                 component={Component}
-                isAuth={false}
+                isAuth={true}
+                key={`pur-${path}`}
               />
             ))}
           </AnimatePresence>

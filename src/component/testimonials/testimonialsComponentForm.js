@@ -10,10 +10,9 @@ import {
 import useStyles from "../../style/materialUiStyle";
 import { useHistory, useParams } from "react-router-dom";
 import {
-  TESTIMONIAL_UPDATE_SUCCES,
-  TESTIMONIAL_CREATE_SUCCESS,
-} from "../../const/const";
-import Alert from "@material-ui/lab/Alert";
+  CreateTestimonialSuccess,
+  UpdateTestimonialSuccess,
+} from "../Alert/AlertComponent";
 
 function TestimonialComponentForm() {
   const classes = useStyles();
@@ -71,8 +70,10 @@ function TestimonialComponentForm() {
       setFormData(formData);
       if (testimonialCreate(formData)) {
         clearForm();
-        alert(TESTIMONIAL_CREATE_SUCCESS);
-        history.push("/backoffice/testimonios");
+        CreateTestimonialSuccess();
+        setTimeout(function () {
+          history.push("/backoffice/testimonios");
+        }, 3000);
       }
     } else {
       for (const property in testimonials) {
@@ -80,7 +81,7 @@ function TestimonialComponentForm() {
       }
       setFormData(formData);
       testimonialUpdate(formData, testimonials.id);
-      alert(TESTIMONIAL_UPDATE_SUCCES);
+      UpdateTestimonialSuccess();
       history.push("/backoffice/testimonios");
     }
   };

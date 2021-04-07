@@ -13,104 +13,100 @@ import {
   testimonialDelete,
 } from "../../services/querys/testimonialsServices";
 import { useHistory } from "react-router-dom";
-
-const testimonialMock = [
-  {
-    id: 1,
-    name: "Soy el testimonio 1",
-    content: "<h1>Soy un contenido testimonial</h1>",
-    image:
-      "https://alkemy-ong.s3.sa-east-1.amazonaws.com/image/1616111671995demon-slayer-mugen-train-colombia.jpeg",
-  },
-  {
-    id: 2,
-    name: "Soy el testimonio 2",
-    content: "<p>Soy un contenido no tan re piola la verdad</p>",
-    image:
-      "https://alkemy-ong.s3.sa-east-1.amazonaws.com/image/1616111671995demon-slayer-mugen-train-colombia.jpeg",
-  },
-  {
-    id: 3,
-    name: "Soy el testimonio 5",
-    content: "<p>Soy un contenido testimonial</p>",
-    image:
-      "https://alkemy-ong.s3.sa-east-1.amazonaws.com/image/1616111671995demon-slayer-mugen-train-colombia.jpeg",
-  },
-  {
-    id: 4,
-    name: "Soy el testimonio 31",
-    content: "<p>Soy un contenido testimonial</p>",
-    image:
-      "https://alkemy-ong.s3.sa-east-1.amazonaws.com/image/1616111671995demon-slayer-mugen-train-colombia.jpeg",
-  },
-];
+import Pagination from "@material-ui/lab/Pagination";
+import { DeleteTestimonialSucces } from "../../component/Alert/AlertComponent";
 
 function TestimonialsList() {
   const [testimonials, setTestimonials] = useState([]);
   const classes = useStyles();
   let history = useHistory();
+  const itemsPerPage = 4;
+  const [page, setPage] = useState(1);
+  const [noOfPages, setNoOfPages] = useState(0);
 
   useEffect(() => {
     const fetchTestimonials = async () => {
       let testimonial = await testimonialsServices();
-      if (testimonial) {
-        setTestimonials(testimonial.data);
-      } else {
-        setTestimonials(testimonialMock);
-      }
+      setTestimonials(testimonial.data);
+      setNoOfPages(Math.ceil(testimonial.data.length / itemsPerPage));
     };
     fetchTestimonials();
   }, []);
 
   const handleDelete = async (id) => {
-    await testimonialDelete(id);
+    await testimonialDelete(id).then(() => {
+      DeleteTestimonialSucces();
+    });
+    let testimonial = await testimonialsServices();
+    setTestimonials(testimonial.data);
+    setNoOfPages(Math.ceil(testimonial.data.length / itemsPerPage));
   };
 
   const handleEdit = async (id) => {
     history.push("/backoffice/edit-testimonial/" + id);
   };
 
+  const handlePagination = (event, value) => {
+    setPage(value);
+  };
+
   return (
     <Container>
-      {testimonials.map((testimonial) => (
-        <Card className={classes.root}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              alt="Imagen de testimonio"
-              height="140"
-              image={testimonial.image}
-              title={testimonial.name}
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                {testimonial.name}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                <div
-                  dangerouslySetInnerHTML={{ __html: testimonial.content }}
-                />
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions>
-            <Button
-              size="small"
-              color="primary"
-              onClick={() => handleEdit(testimonial.id)}
-            >
-              Editar
-            </Button>
-            <Button
-              size="small"
-              color="primary"
-              onClick={() => handleDelete(testimonial.id)}
-            >
-              Borrar
-            </Button>
-          </CardActions>
-        </Card>
-      ))}
+      {testimonials
+        .slice((page - 1) * itemsPerPage, page * itemsPerPage)
+        .map((testimonial) => (
+          <Card className={classes.root}>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                alt="Imagen de testimonio"
+                height="140"
+                image={testimonial.image}
+                title={testimonial.name}
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {testimonial.name}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: testimonial.content,
+                    }}
+                  />
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions className={classes.cardCenterStyle}>
+              <Button
+                size="small"
+                color="primary"
+                onClick={() => handleEdit(testimonial.id)}
+              >
+                Editar
+              </Button>
+              <Button
+                size="small"
+                color="primary"
+                onClick={() => handleDelete(testimonial.id)}
+              >
+                Borrar
+              </Button>
+            </CardActions>
+          </Card>
+        ))}
+      <Container className={classes.cardCenterStyle}>
+        <Pagination
+          count={noOfPages}
+          page={page}
+          onChange={handlePagination}
+          defaultPage={1}
+          color="primary"
+          size="large"
+          showFirstButton
+          showLastButton
+        />
+      </Container>
     </Container>
   );
 }
