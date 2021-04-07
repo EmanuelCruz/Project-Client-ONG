@@ -3,7 +3,7 @@ import { SERVER_URL_ACTIVITIES, ERROR_PARAGRAPH,MAIN_URL } from "../../const/con
 
 const createActivities = async (data) => {
   try {
-    const response = await axios.post(SERVER_URL_ACTIVITIES, data);
+    const response = await axios.post(`${MAIN_URL}${SERVER_URL_ACTIVITIES}`, data);
     return response.data;
   } catch (err) {
     return err;
