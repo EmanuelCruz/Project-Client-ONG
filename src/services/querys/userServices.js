@@ -18,4 +18,14 @@ const userAuth = async () => {
   }
 };
 
-export { userList, userAuth };
+const getUsers = async () => {
+  try {
+    const response = await apiServices.get("/users");
+    const { data } = response;
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { userList, userAuth, getUsers };

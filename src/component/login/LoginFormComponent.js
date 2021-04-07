@@ -72,7 +72,7 @@ const LoginFormComponent = (props) => {
                   )}
                 </div>
                 <NotRegisteredUser />
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-delete">
                   Ingresar
                 </button>
               </Form>

@@ -72,7 +72,7 @@ export const ContactForm = () => {
             color="secondary"
             fullWidth
             id="email"
-            label="email"
+            label="Email"
             name="email"
             onChange={handleInputChange}
             required
@@ -102,6 +102,7 @@ export const ContactForm = () => {
           variant="contained"
           fullWidth={true}
           color="secondary"
+          className="btn btn-delete"
         >
           Enviar
         </Button>
