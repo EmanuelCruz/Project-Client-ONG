@@ -6,12 +6,15 @@ import { connect } from 'react-redux';
 const LogoutScreen = (props) => {
   let history = useHistory();
   const logout = () => {
-    props.updateIsAuth(false)
-    history.push("/");
+    if (window.confirm('Deseas cerrar sesión?')) {
+      props.updateIsAuth(false)
+      history.push("/");
+    }
   }
   return (
     <div>
-      <button onClick={() => logout()}>Deslogear</button>
+      <h3 style={{ margin: '30px' }}>Cerrar sesión</h3>
+      <button className="btn btn-primary" onClick={() => logout()}>Deslogear</button>
     </div>
   )
 }
