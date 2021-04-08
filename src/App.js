@@ -22,6 +22,7 @@ import FooterScreen from "./screen/footer/FooterScreen";
 import BackOfficeCategoriesScreen from "./screen/categories/BackOfficeCategoriesScreen";
 import ProtectedAdminRoute from "./component/ProtectedRoutes/ProtectedAdminRoute";
 import ProtectedUserRoute from "./component/ProtectedRoutes/ProtectedUserRoute";
+import LogoutScreen from "./screen/logout/LogoutScreen";
 import "./App.css";
 
 const routes = [
@@ -33,6 +34,7 @@ const routes = [
   { path: "/novedad/:id", Component: DetalleNovedadScreen },
   { path: "/activities/:id", Component: ActivitiesScreen },
   { path: "/login", Component: LoginScreen },
+  { path: "/logout", Component: LogoutScreen },
 ];
 
 const backOfficeRoutes = [

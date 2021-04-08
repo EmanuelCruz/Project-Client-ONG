@@ -84,7 +84,6 @@ const LoginFormComponent = (props) => {
           </Formik>
         </div>
       </div>
-      <button onClick={() => props.updateIsAuth(false)}>Deslogear</button>
     </React.Fragment>
   );
 }
