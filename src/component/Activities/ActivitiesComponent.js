@@ -7,12 +7,16 @@ import {
   createActivities,
 } from "../../services/querys/activitiesServices";
 import useStyles from "./ActivitiesMaterialStyles";
+import { CreateActivitiesSuccess } from "../Alert/AlertComponent";
+import { useHistory } from "react-router";
 
 const ActivitiesComponent = ({ toModifyActivities }) => {
   const classes = useStyles();
   const [activities, setActivities] = useState(toModifyActivities);
+  const [img, setImg] = useState();
   const [formData, setFormData] = useState(new FormData());
   const [emptyFields, setEmptyFields] = useState(true);
+  let history = useHistory();
 
   useEffect(() => {
     handleEmptyFields();
@@ -23,12 +27,20 @@ const ActivitiesComponent = ({ toModifyActivities }) => {
     setActivities({ ...activities });
   };
 
+  const handleImg = (event) => {
+    setImg(URL.createObjectURL(event.target.files[0]));
+    const image = event.target.files[0];
+    formData.append("image", image);
+    setFormData(formData);
+  };
+
   const clearForm = () => {
     for (const property in activities) {
       activities[property] = "";
       setActivities({ ...activities });
     }
     setFormData(new FormData())
+    setImg([]);
     setEmptyFields(true);
   };
 
@@ -40,7 +52,10 @@ const ActivitiesComponent = ({ toModifyActivities }) => {
       setFormData(formData);
       if (createActivities(formData)) {
         clearForm();
-        alert("Se creo la actividad");
+        CreateActivitiesSuccess()
+        setTimeout(function () {
+          history.push("/backoffice/activities");
+        }, 3000);
       }
     } else {
       for (const property in activities) {
@@ -85,6 +100,17 @@ const ActivitiesComponent = ({ toModifyActivities }) => {
             setActivities({ ...activities });
           }}
         />
+        <img src={img} />
+        <div>
+          <Button
+            className={classes.button}
+            variant="contained"
+            component="label"
+          >
+            Agregar Imagen
+            <input type="file" onChange={handleImg} id="image" hidden />
+          </Button>
+        </div>
         <Button
           className={classes.button}
           variant="contained"

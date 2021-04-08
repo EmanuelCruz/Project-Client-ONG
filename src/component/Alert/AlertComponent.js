@@ -20,6 +20,8 @@ import {
   CATEGORIE_CREATE_SUCCESS,
   SUCCESS_TITLE,
   SUCCESS_PARAGRAPH,
+  ACTIVITY_CREATE_TITLE,
+  ACTIVITY_CREATE_SUCCESS,
 } from "../../const/const";
 
 export const InfoAlertComponent = () => {
@@ -99,6 +101,13 @@ export const DeleteTestimonialSucces = () => {
   });
 };
 
+export const CreateActivitiesSuccess = () => {
+  return Swal.fire({
+    title: ACTIVITY_CREATE_TITLE,
+    text: ACTIVITY_CREATE_SUCCESS,
+    icon: "success",
+  });
+};
 export const CreateCategorieSuccess = () => {
   return Swal.fire({
     title: CATEGORIE_CREATE_TITLE,
