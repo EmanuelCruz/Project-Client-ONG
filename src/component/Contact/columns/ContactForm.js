@@ -60,6 +60,7 @@ export const ContactForm = () => {
             label="Nombre"
             name="name"
             onChange={handleInputChange}
+            style={{ backgroundColor: 'white' }}
             required
             type="text"
             value={name}
@@ -72,9 +73,10 @@ export const ContactForm = () => {
             color="secondary"
             fullWidth
             id="email"
-            label="email"
+            label="Email"
             name="email"
             onChange={handleInputChange}
+            style={{ backgroundColor: 'white' }}
             required
             type="email"
             value={email}
@@ -91,6 +93,7 @@ export const ContactForm = () => {
             multiline
             name="message"
             onChange={handleInputChange}
+            style={{ backgroundColor: 'white' }}
             required
             rows={5}
             value={message}
@@ -102,6 +105,7 @@ export const ContactForm = () => {
           variant="contained"
           fullWidth={true}
           color="secondary"
+          className="btn btn-delete"
         >
           Enviar
         </Button>

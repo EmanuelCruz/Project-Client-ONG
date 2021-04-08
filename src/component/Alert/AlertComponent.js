@@ -14,6 +14,8 @@ import {
   TESTIMONIAL_CREATE_TITLE,
   TESTIMONIAL_UPDATE_TITLE,
   TESTIMONIAL_DELETE_TITLE,
+  SUCCESS_TITLE,
+  SUCCESS_PARAGRAPH,
 } from "../../const/const";
 
 export const InfoAlertComponent = () => {
@@ -32,6 +34,14 @@ export const ErrorAlertComponent = () => {
     icon: "error",
     title: ERROR_TITLE,
     text: ERROR_PARAGRAPH,
+  });
+};
+
+export const SuccessAlertComponent = () => {
+  return Swal.fire({
+    icon: "success",
+    title: SUCCESS_TITLE,
+    text: SUCCESS_PARAGRAPH,
   });
 };
 
