@@ -9,6 +9,8 @@ import {
   PASSWORD_MIN_LENGHT_NUMBER,
   PASSWORD_MIN_LENGHT_WARNING,
 } from "../../const/const";
+import { connect } from 'react-redux';
+import updateIsAuth from "../../store/isAuth/action";
 
 import { ErrorAlertComponent } from '../Alert/AlertComponent';
 import { login } from '../../services/querys/authService';
@@ -27,6 +29,8 @@ const LoginFormComponent = (props) => {
   const onLoginSubmit = (values) => {
     login(values.email, values.password).then(res => {
       history.push("/");
+      props.updateIsAuth(true)
+
     }).catch(err => ErrorAlertComponent());
   };
 
@@ -80,8 +84,9 @@ const LoginFormComponent = (props) => {
           </Formik>
         </div>
       </div>
+      <button onClick={() => props.updateIsAuth(false)}>Deslogear</button>
     </React.Fragment>
   );
 }
 
-export default LoginFormComponent;
+export default connect(null, { updateIsAuth })(LoginFormComponent);

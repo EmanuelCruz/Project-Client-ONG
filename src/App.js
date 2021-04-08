@@ -87,7 +87,6 @@ function App() {
               <ProtectedUserRoute
                 path={path}
                 component={Component}
-                isAuth={true}
                 key={`pur-${path}`}
               />
             ))}
