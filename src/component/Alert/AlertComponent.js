@@ -14,6 +14,10 @@ import {
   TESTIMONIAL_CREATE_TITLE,
   TESTIMONIAL_UPDATE_TITLE,
   TESTIMONIAL_DELETE_TITLE,
+  CATEGORIE_CREATE_TITLE,
+  CATEGORIE_UPDATE_TITLE,
+  CATEGORIE_UPDATE_SUCCESS,
+  CATEGORIE_CREATE_SUCCESS,
   SUCCESS_TITLE,
   SUCCESS_PARAGRAPH,
   ACTIVITY_CREATE_TITLE,
@@ -101,6 +105,21 @@ export const CreateActivitiesSuccess = () => {
   return Swal.fire({
     title: ACTIVITY_CREATE_TITLE,
     text: ACTIVITY_CREATE_SUCCESS,
+    icon: "success",
+  });
+};
+export const CreateCategorieSuccess = () => {
+  return Swal.fire({
+    title: CATEGORIE_CREATE_TITLE,
+    text: CATEGORIE_CREATE_SUCCESS,
+    icon: "success",
+  });
+};
+
+export const UpdateCategorieSuccess = () => {
+  return Swal.fire({
+    title: CATEGORIE_UPDATE_TITLE,
+    text: CATEGORIE_UPDATE_SUCCESS,
     icon: "success",
   });
 };
