@@ -33,7 +33,7 @@ const AboutUsComponent = () => {
           <img className={classes.image} src="https://www.upload.ee/image/13032154/IMG-5838__1_.JPG" />
         </div>
         <Typography className={`${classes.typography} ${classes.subtitle}`} variant="h5">Historia</Typography>
-        <Typography align="center" color="textSecondary" paragraph>
+        <Typography className={classes.paragraph} align="center" color="textSecondary" paragraph>
           La organización surge de todas las emergencias alimentarias que
           emergieron a partir de la pandemia. Con el hashtag
           CuarentenaSolidaria, Zonas Grises se unió a otras organizaciones para
@@ -49,7 +49,7 @@ const AboutUsComponent = () => {
       <hr />
       <div>
         <Typography className={`${classes.typography} ${classes.subtitle}`} variant="h5">Visión</Typography>
-        <Typography align="center" color="textSecondary" paragraph>
+        <Typography className={classes.paragraph} align="center" color="textSecondary" paragraph>
           Organización que tiene como fin brindar contención, ayuda y colaborar
           en estrategias para potenciar el desarrollo de poblaciones vulnerables
           del Cono urbano Bonaerense a través de estrategias integrales que
@@ -62,7 +62,7 @@ const AboutUsComponent = () => {
         <Typography className={`${classes.typography} ${classes.subtitle}`} variant="h5">Equipo:</Typography>
         <Team />
       </div>
-    </Container>
+    </Container >
   );
 };
 

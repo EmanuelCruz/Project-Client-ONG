@@ -24,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paragraph: {
-    textIndent: ".7rem",
+    width: '80%',
+    display: 'inline-block',
   },
   subtitle: {
     marginTop: "2rem",
