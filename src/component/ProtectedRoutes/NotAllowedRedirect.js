@@ -4,7 +4,7 @@ import HighlightOff from '@material-ui/icons/HighlightOff';
 
 const NotAllowedRedirect = () => {
   setTimeout(function () {
-    if (window.location.pathname === ('/profile')) {
+    if (window.location.pathname === ('/profile') || ('/backoffice')) {
       window.location.replace('/');
     }
   }, 5000);

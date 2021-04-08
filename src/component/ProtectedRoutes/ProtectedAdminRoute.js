@@ -7,20 +7,16 @@ const ProtectedAdminRoute = ({
   component: Component,
   ...rest
 }) => {
+
   return (
     <Route
       {...rest}
-      render={(props) => {
+      render={() => {
         if (isAdmin) {
           return <Component />;
         } else {
           return (
             <>
-              {setTimeout(() => {
-                if (props.history.location.pathname.includes('backoffice')) {
-                  props.history.push("/")
-                }
-              }, 5000)}
               <NotAllowedRedirect />
             </>
           );

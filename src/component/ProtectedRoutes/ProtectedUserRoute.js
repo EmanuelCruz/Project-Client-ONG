@@ -9,12 +9,10 @@ const ProtectedUserRoute = ({
   ...rest
 }) => {
 
-
-
   return (
     <Route
       {...rest}
-      render={(props) => {
+      render={() => {
         if (isAuth.isAuth) {
           return <Component />;
         } else {
