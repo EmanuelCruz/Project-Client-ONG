@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BackOfficeActivitiesList from "../../component/BackOfficeActivities/BackOfficeActivitiesList";
+import { getAllActivities } from '../../services/querys/activitiesServices';
 
 function BackOfficeActivitiesScreen() {
 
-    // Placeholder info, delete when endpoint implemented
-    let activities_temp = [
-        { id: 1, name: "Setup a list" },
-        { id: 2, name: "Get a job" },
-        { id: 3, name: "Go to meeting" },
-        { id: 4, name: "Have lunch" },
-    ];
-    // TODO: GET activities from endpoint
+    const [activities, setActivities] = useState([]);
 
-    const [activities, setActivities] = useState(activities_temp);
+    useEffect(() => {
+        const fetchApi = async () => {
+            const data = await getAllActivities();
+            setActivities(data);
+        };
+        fetchApi();
+    }, []);
 
     const handleDeleteActivity = (id) => {
         const newsActivities = activities.filter(

@@ -22,7 +22,7 @@ const ActivitiesDetailsComponent = () => {
         }
 
         fecthActivityById();
-    }, [activity, id]);
+    }, [id]);
 
     return (
         <Grid container className={classes.grid}>
@@ -57,14 +57,7 @@ const ActivitiesDetailsComponent = () => {
                     justify="flex-start"
                     alignItems="flex-start"
                     dangerouslySetInnerHTML={{
-                        __html:
-                            activity.content +
-                            activity.content +
-                            activity.content +
-                            activity.content +
-                            activity.content +
-                            activity.content +
-                            activity.content,
+                        __html: activity.content,
                     }}
                 ></Grid>
             </Grid>

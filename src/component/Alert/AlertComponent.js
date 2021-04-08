@@ -14,10 +14,15 @@ import {
   TESTIMONIAL_CREATE_TITLE,
   TESTIMONIAL_UPDATE_TITLE,
   TESTIMONIAL_DELETE_TITLE,
+<<<<<<< HEAD
   CATEGORIE_CREATE_TITLE,
   CATEGORIE_UPDATE_TITLE,
   CATEGORIE_UPDATE_SUCCESS,
   CATEGORIE_CREATE_SUCCESS,
+=======
+  SUCCESS_TITLE,
+  SUCCESS_PARAGRAPH,
+>>>>>>> a7fdbde9e8a3967eadda1cd8a9faf5268aa450e2
 } from "../../const/const";
 
 export const InfoAlertComponent = () => {
@@ -36,6 +41,14 @@ export const ErrorAlertComponent = () => {
     icon: "error",
     title: ERROR_TITLE,
     text: ERROR_PARAGRAPH,
+  });
+};
+
+export const SuccessAlertComponent = () => {
+  return Swal.fire({
+    icon: "success",
+    title: SUCCESS_TITLE,
+    text: SUCCESS_PARAGRAPH,
   });
 };
 

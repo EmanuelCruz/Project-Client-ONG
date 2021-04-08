@@ -19,7 +19,7 @@ function ProfileScreen() {
         }
     };
 
-    return(
+    return (
         <div>
             <h3>{user_data.name}'s Profile</h3>
             <ul className="container list">

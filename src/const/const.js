@@ -12,6 +12,8 @@ export const INFO_BUTTON = "Genial!";
 export const INFO_TITLE = "Información importante";
 export const DELETE_CONFIRM_TITLE_ACTIVITY = "¿Quiere eliminar esta actividad?";
 export const DELETE_CONFIRM_TITLE_CATEGORY = "¿Quiere eliminar esta categoría?";
+export const SUCCESS_TITLE = "Confirmado!"
+export const SUCCESS_PARAGRAPH = "¡Objeto creado con éxito!"
 
 //Form Login
 export const NOT_VALID_EMAIL = "El email no es valido";
@@ -71,7 +73,7 @@ export const SERVER_URL = "http://localhost:3000"; // Complete with server url
 export const SERVER_URL_ACTIVITIES = "activities"; // Complete with server url activities
 
 // Contacts component
-export const SERVER_URL_CONTACTS = ""; // Complete with server url contacts
+export const SERVER_URL_CONTACTS = "http://localhost:3000/contacts"; // Complete with server url contacts
 
 // Members in about us component
 export const SERVER_URL_MEMBERS = "members"; // Complete with server url members

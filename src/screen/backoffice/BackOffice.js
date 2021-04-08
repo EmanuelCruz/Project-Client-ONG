@@ -68,10 +68,30 @@ export default function BackOffice() {
         <NavLink
           className={classes.navLink}
           exact
+          key="Editar Organizacion"
+          to={PATH_BACKOFFICE_PROFILE}
+        >
+          Perfil
+        </NavLink>
+      </MenuItem>
+      <MenuItem className={classes.menuItem}>
+        <NavLink
+          className={classes.navLink}
+          exact
           key="Novedades"
           to={PATH_BACKOFFICE_NEWS}
         >
           Novedades
+        </NavLink>
+      </MenuItem>
+      <MenuItem className={classes.menuItem}>
+        <NavLink
+          className={classes.navLink}
+          exact
+          key="Crear Post"
+          to="/backoffice/create-news"
+        >
+          Crear Post
         </NavLink>
       </MenuItem>
       <MenuItem className={classes.menuItem}>
@@ -112,26 +132,6 @@ export default function BackOffice() {
           to={PATH_BACKOFFICE_EDITH_ORGANIZATION}
         >
           Editar Organizacion
-        </NavLink>
-      </MenuItem>
-      <MenuItem className={classes.menuItem}>
-        <NavLink
-          className={classes.navLink}
-          exact
-          key="Crear Post"
-          to="/backoffice/create-news"
-        >
-          Crear Post
-        </NavLink>
-      </MenuItem>
-      <MenuItem className={classes.menuItem}>
-        <NavLink
-          className={classes.navLink}
-          exact
-          key="Editar Post"
-          to="/backoffice/edit-news"
-        >
-          Editar Post
         </NavLink>
       </MenuItem>
       <MenuItem className={classes.menuItem}>
@@ -212,23 +212,13 @@ export default function BackOffice() {
           >
             <Grid item xs={12} sm={3}>
               {myRoleId === 1 ? (
-                <Typography>Menu Administrador</Typography>
+                <Typography style={{ margin: '10px' }}>Menu Administrador</Typography>
               ) : (
                 <Typography>Menu Usuario</Typography>
               )}{" "}
               {/* it's just a test */}
               <Paper className={classes.paper}>
                 <MenuList>
-                  <MenuItem className={classes.menuItem}>
-                    <NavLink
-                      className={classes.navLink}
-                      exact
-                      key="Editar Organizacion"
-                      to={PATH_BACKOFFICE_PROFILE}
-                    >
-                      Perfil
-                    </NavLink>
-                  </MenuItem>
                   {roleId === 1 && itemsForAdmin}
                 </MenuList>
               </Paper>
@@ -255,10 +245,10 @@ export default function BackOffice() {
                     <BackOfficeContactsScreen />
                   </Route>
                   <Route exact path="/backoffice/create-news">
-                    <NewsComponent toModifyNews={{}} />
+                    <NewsComponent />
                   </Route>
-                  <Route exact path="/backoffice/edit-news">
-                    <NewsComponent toModifyNews={toModifyNews} />
+                  <Route exact path="/backoffice/edit-news/:id">
+                    <NewsComponent />
                   </Route>
                   <Route exact path="/backoffice/create-activities">
                     <ActivitiesComponent toModifyActivities={{}} />

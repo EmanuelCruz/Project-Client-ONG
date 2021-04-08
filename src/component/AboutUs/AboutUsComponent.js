@@ -9,6 +9,8 @@ import {
 } from "@material-ui/core";
 import { getMembersList } from "../../services/querys/membersServices";
 import useStyles from "./styled/AboutStyles";
+import Team from "./Columns/Team";
+import Mision from "./Columns/Mision";
 
 const AboutUsComponent = () => {
   let [members, setMembers] = useState();
@@ -22,13 +24,16 @@ const AboutUsComponent = () => {
   }, []);
 
   return (
-    <Container className={classes.container}>
-      <Typography variant="h2" className={classes.title}>
+    <Container>
+      <Typography className={`${classes.typography} ${classes.title}`} variant="h2">
         Nosotros
       </Typography>
       <div>
-        <Typography variant="h5">Historia</Typography>
-        <Typography paragraph className={classes.paragraph}>
+        <div>
+          <img className='img-fluid' src="https://www.upload.ee/image/13032154/IMG-5838__1_.JPG" />
+        </div>
+        <Typography className={`${classes.typography} ${classes.subtitle}`} variant="h5">Historia</Typography>
+        <Typography className={classes.paragraph} align="center" color="textSecondary" paragraph>
           La organización surge de todas las emergencias alimentarias que
           emergieron a partir de la pandemia. Con el hashtag
           CuarentenaSolidaria, Zonas Grises se unió a otras organizaciones para
@@ -36,53 +41,15 @@ const AboutUsComponent = () => {
           barrios de Moreno.
         </Typography>
       </div>
+      <hr />
       <div>
-        <Typography variant="h5">Misión</Typography>
-        <Typography paragraph className={classes.paragraph}>
-          La organización tiene diversas lineas de acción:
-        </Typography>
-        <ul>
-          <li>
-            <Typography paragraph>Inserción laboral</Typography>
-          </li>
-          <li>
-            <Typography paragraph>
-              TSICG - Teach me something I can’t Google
-            </Typography>
-          </li>
-          <li>
-            <Typography paragraph>Facilitación de clases online</Typography>
-          </li>
-          <li>
-            <Typography paragraph>Talleres</Typography>
-          </li>
-          <li>
-            <Typography paragraph>
-              Desarrollo de habilidades socioemocionales
-            </Typography>
-          </li>
-        </ul>
-        <Typography paragraph className={classes.paragraph}>
-          Las campañas de recolección que suelen llevar a cabo son:
-        </Typography>
-        <ul>
-          <li>
-            <Typography paragraph>Cuarentena Solidaria</Typography>
-          </li>
-          <li>
-            <Typography paragraph>Día del Niño</Typography>
-          </li>
-          <li>
-            <Typography paragraph>Vuelta a Clases</Typography>
-          </li>
-          <li>
-            <Typography paragraph>Navidad</Typography>
-          </li>
-        </ul>
+        <Typography className={`${classes.typography} ${classes.subtitle}`} variant="h5">Misión</Typography>
+        <Mision />
       </div>
+      <hr />
       <div>
-        <Typography variant="h5">Visión</Typography>
-        <Typography paragraph className={classes.paragraph}>
+        <Typography className={`${classes.typography} ${classes.subtitle}`} variant="h5">Visión</Typography>
+        <Typography className={classes.paragraph} align="center" color="textSecondary" paragraph>
           Organización que tiene como fin brindar contención, ayuda y colaborar
           en estrategias para potenciar el desarrollo de poblaciones vulnerables
           del Cono urbano Bonaerense a través de estrategias integrales que
@@ -90,33 +57,12 @@ const AboutUsComponent = () => {
           foco en educación.
         </Typography>
       </div>
+      <hr />
       <div>
-        <Typography variant="h5">Equipo</Typography>
-        <div className={classes.containerTeam}>
-          {members?.map((member) => (
-            <Card key={member.id} className={classes.root}>
-              <CardActionArea>
-                <CardMedia
-                  className={classes.media}
-                  image={member.image}
-                  title={member.name}
-                />
-                <CardContent>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="h2"
-                    align="center"
-                  >
-                    {member.name}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          ))}
-        </div>
+        <Typography className={`${classes.typography} ${classes.subtitle}`} variant="h5">Equipo:</Typography>
+        <Team />
       </div>
-    </Container>
+    </Container >
   );
 };
 

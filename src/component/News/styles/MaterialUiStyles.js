@@ -44,6 +44,12 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
   },
+  error: {
+    color: "red"
+  },
+  image: {
+    width: "100%"
+  }
 }));
 
 export default useStyles;
