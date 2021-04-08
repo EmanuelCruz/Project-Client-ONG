@@ -16,6 +16,8 @@ import {
   TESTIMONIAL_DELETE_TITLE,
   SUCCESS_TITLE,
   SUCCESS_PARAGRAPH,
+  ACTIVITY_CREATE_TITLE,
+  ACTIVITY_CREATE_SUCCESS,
 } from "../../const/const";
 
 export const InfoAlertComponent = () => {
@@ -91,6 +93,14 @@ export const DeleteTestimonialSucces = () => {
   return Swal.fire({
     title: TESTIMONIAL_DELETE_TITLE,
     text: TESTIMONIAL_DELETE_SUCCESS,
+    icon: "success",
+  });
+};
+
+export const CreateActivitiesSuccess = () => {
+  return Swal.fire({
+    title: ACTIVITY_CREATE_TITLE,
+    text: ACTIVITY_CREATE_SUCCESS,
     icon: "success",
   });
 };
