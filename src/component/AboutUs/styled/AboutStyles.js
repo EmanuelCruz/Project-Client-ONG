@@ -1,12 +1,9 @@
 import { makeStyles } from "@material-ui/core/";
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    marginTop: "3rem",
-    textAlign: "left",
-  },
   title: {
     fontSize: "3em",
+    marginTop: ".7rem",
     marginBottom: ".7rem",
   },
   root: {
@@ -28,6 +25,18 @@ const useStyles = makeStyles((theme) => ({
   },
   paragraph: {
     textIndent: ".7rem",
+  },
+  subtitle: {
+    marginTop: "2rem",
+    marginBottom: "2rem",
+  },
+  image: {
+    width: "60%"
+  },
+  typography: {
+    fontFamily: [
+      '"Nunito"',
+    ].join(','),
   },
 }));
 

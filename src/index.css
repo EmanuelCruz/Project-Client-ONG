@@ -2,16 +2,10 @@
 
 body {
   margin: 0;
-  font-family: 'Nunito',
-    sans-serif !important;
+  font-family: 'Nunito', sans-serif !important;
     background-color: whitesmoke !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
 
 .btn-delete, .btn-info, .btn-danger {

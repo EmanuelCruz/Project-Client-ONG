@@ -68,6 +68,16 @@ export default function BackOffice() {
         <NavLink
           className={classes.navLink}
           exact
+          key="Editar Organizacion"
+          to={PATH_BACKOFFICE_PROFILE}
+        >
+          Perfil
+        </NavLink>
+      </MenuItem>
+      <MenuItem className={classes.menuItem}>
+        <NavLink
+          className={classes.navLink}
+          exact
           key="Novedades"
           to={PATH_BACKOFFICE_NEWS}
         >
@@ -222,23 +232,13 @@ export default function BackOffice() {
           >
             <Grid item xs={12} sm={3}>
               {myRoleId === 1 ? (
-                <Typography>Menu Administrador</Typography>
+                <Typography style={{ margin: '10px' }}>Menu Administrador</Typography>
               ) : (
                 <Typography>Menu Usuario</Typography>
               )}{" "}
               {/* it's just a test */}
               <Paper className={classes.paper}>
                 <MenuList>
-                  <MenuItem className={classes.menuItem}>
-                    <NavLink
-                      className={classes.navLink}
-                      exact
-                      key="Editar Organizacion"
-                      to={PATH_BACKOFFICE_PROFILE}
-                    >
-                      Perfil
-                    </NavLink>
-                  </MenuItem>
                   {roleId === 1 && itemsForAdmin}
                 </MenuList>
               </Paper>
