@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import useStyles from './MenuComponentStyles'
 import DropDawnActivitiesComponente from './DropDawnActivities/DropDawnActivitiesComponent'
+import HeaderItems from "./HeaderItems";
+import UsersItems from "./UsersItems";
 
 const myItems = [
   {
@@ -32,10 +34,6 @@ const myItems = [
     name: "Backoffice",
     path: "/backoffice",
   },
-  {
-    name: "Login",
-    path: "/login",
-  },
 ];
 
 export default function MenuComponent({ drawerOpen }) {
@@ -62,7 +60,10 @@ export default function MenuComponent({ drawerOpen }) {
 
   return (
     <div className={classes.menu}>
-      <ul className={classes.menuUl}>{renderItems()}</ul>
+      <ul className={classes.menuUl}>
+        <HeaderItems items={items} classes={classes} drawerOpen={drawerOpen} />
+        <UsersItems classes={classes} />
+      </ul>
     </div>
   );
 }
