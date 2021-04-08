@@ -28,6 +28,7 @@ const ActivitiesComponent = ({ toModifyActivities }) => {
       activities[property] = "";
       setActivities({ ...activities });
     }
+    setFormData(new FormData())
     setEmptyFields(true);
   };
 
@@ -39,6 +40,7 @@ const ActivitiesComponent = ({ toModifyActivities }) => {
       setFormData(formData);
       if (createActivities(formData)) {
         clearForm();
+        alert("Se creo la actividad");
       }
     } else {
       for (const property in activities) {
@@ -83,7 +85,6 @@ const ActivitiesComponent = ({ toModifyActivities }) => {
             setActivities({ ...activities });
           }}
         />
-
         <Button
           className={classes.button}
           variant="contained"
