@@ -8,7 +8,7 @@ const EditOrganizationContent = ({ newName, setNewName, nameInputOutlineColor, n
 
   return (
     <div className={"w-50 mx-auto"}>
-      <h2>Edit Organization</h2>
+      <h3>Editar organización:</h3>
       <div>
         <NameInput newName={newName} setNewName={setNewName} nameInputOutlineColor={nameInputOutlineColor}
         />

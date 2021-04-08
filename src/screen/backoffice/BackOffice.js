@@ -111,7 +111,7 @@ export default function BackOffice() {
           key="Users"
           to={PATH_BACKOFFICE_USERS}
         >
-          Users
+          Usuarios
         </NavLink>
       </MenuItem>
       <MenuItem className={classes.menuItem}>
