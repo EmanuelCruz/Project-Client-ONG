@@ -111,3 +111,6 @@ export const PATH_BACKOFFICE_EDITH_ORGANIZATION =
 
 // Path Novedad
 export const PATH_NOVEDAD = "/novedad/";
+
+export const ACTIVITY_CREATE_TITLE = "Se creo la actividad correctamente"
+export const ACTIVITY_CREATE_SUCCESS = "Se actualizo la actividad correctamente"

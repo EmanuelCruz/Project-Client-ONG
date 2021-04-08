@@ -14,15 +14,14 @@ import {
   TESTIMONIAL_CREATE_TITLE,
   TESTIMONIAL_UPDATE_TITLE,
   TESTIMONIAL_DELETE_TITLE,
-<<<<<<< HEAD
   CATEGORIE_CREATE_TITLE,
   CATEGORIE_UPDATE_TITLE,
   CATEGORIE_UPDATE_SUCCESS,
   CATEGORIE_CREATE_SUCCESS,
-=======
   SUCCESS_TITLE,
   SUCCESS_PARAGRAPH,
->>>>>>> a7fdbde9e8a3967eadda1cd8a9faf5268aa450e2
+  ACTIVITY_CREATE_TITLE,
+  ACTIVITY_CREATE_SUCCESS,
 } from "../../const/const";
 
 export const InfoAlertComponent = () => {
@@ -102,6 +101,13 @@ export const DeleteTestimonialSucces = () => {
   });
 };
 
+export const CreateActivitiesSuccess = () => {
+  return Swal.fire({
+    title: ACTIVITY_CREATE_TITLE,
+    text: ACTIVITY_CREATE_SUCCESS,
+    icon: "success",
+  });
+};
 export const CreateCategorieSuccess = () => {
   return Swal.fire({
     title: CATEGORIE_CREATE_TITLE,
