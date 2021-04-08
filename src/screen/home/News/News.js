@@ -56,13 +56,13 @@ const News = () => {
   }, []);
 
   useEffect(() => {
-    setLastNovedades(novedades.reverse())
+    setLastNovedades(novedades?.reverse())
   }, [novedades])
 
   const classes = useStyles();
 
 
-  if (novedades.length >= 1) {
+  if (novedades?.length >= 1) {
     return (
       <React.Fragment>
         <CssBaseline />

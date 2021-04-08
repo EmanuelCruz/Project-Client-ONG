@@ -13,7 +13,7 @@ function SliderComponent() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex(activeIndex === slidersLength ? 0 : activeIndex + 1)
-    }, 5000)
+    }, 500000)
     return () => clearInterval(interval)
   }, [activeIndex])
 

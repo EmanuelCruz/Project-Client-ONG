@@ -60,6 +60,7 @@ export const ContactForm = () => {
             label="Nombre"
             name="name"
             onChange={handleInputChange}
+            style={{ backgroundColor: 'white' }}
             required
             type="text"
             value={name}
@@ -75,6 +76,7 @@ export const ContactForm = () => {
             label="Email"
             name="email"
             onChange={handleInputChange}
+            style={{ backgroundColor: 'white' }}
             required
             type="email"
             value={email}
@@ -91,6 +93,7 @@ export const ContactForm = () => {
             multiline
             name="message"
             onChange={handleInputChange}
+            style={{ backgroundColor: 'white' }}
             required
             rows={5}
             value={message}

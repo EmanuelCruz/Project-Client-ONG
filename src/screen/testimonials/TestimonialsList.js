@@ -27,8 +27,8 @@ function TestimonialsList() {
   useEffect(() => {
     const fetchTestimonials = async () => {
       let testimonial = await testimonialsServices();
-      setTestimonials(testimonial.data);
-      setNoOfPages(Math.ceil(testimonial.data.length / itemsPerPage));
+      setTestimonials(testimonial?.data);
+      setNoOfPages(Math.ceil(testimonial?.data.length / itemsPerPage));
     };
     fetchTestimonials();
   }, []);
@@ -38,8 +38,8 @@ function TestimonialsList() {
       DeleteTestimonialSucces();
     });
     let testimonial = await testimonialsServices();
-    setTestimonials(testimonial.data);
-    setNoOfPages(Math.ceil(testimonial.data.length / itemsPerPage));
+    setTestimonials(testimonial?.data);
+    setNoOfPages(Math.ceil(testimonial?.data.length / itemsPerPage));
   };
 
   const handleEdit = async (id) => {
@@ -52,8 +52,7 @@ function TestimonialsList() {
 
   return (
     <Container>
-      {testimonials
-        .slice((page - 1) * itemsPerPage, page * itemsPerPage)
+      {testimonials?.slice((page - 1) * itemsPerPage, page * itemsPerPage)
         .map((testimonial) => (
           <Card className={classes.root}>
             <CardActionArea>

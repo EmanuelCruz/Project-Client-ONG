@@ -30,7 +30,7 @@ const AboutUsComponent = () => {
       </Typography>
       <div>
         <div>
-          <img className={classes.image} src="https://www.upload.ee/image/13032154/IMG-5838__1_.JPG" />
+          <img className='img-fluid' src="https://www.upload.ee/image/13032154/IMG-5838__1_.JPG" />
         </div>
         <Typography className={`${classes.typography} ${classes.subtitle}`} variant="h5">Historia</Typography>
         <Typography className={classes.paragraph} align="center" color="textSecondary" paragraph>

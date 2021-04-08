@@ -34,7 +34,7 @@ const LoginFormComponent = (props) => {
     <React.Fragment>
       <div className="container" style={{ marginTop: '20px' }}>
         <div className="login-wrapper">
-          <h2>Iniciar Sesion</h2>
+          <h2>Iniciar Sesión</h2>
           <Formik
             initialValues={{ email: "", password: "" }}
             validationSchema={schema}
