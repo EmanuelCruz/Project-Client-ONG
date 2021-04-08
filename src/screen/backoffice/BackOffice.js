@@ -177,16 +177,6 @@ export default function BackOffice() {
       <MenuItem className={classes.menuItem}>
         <NavLink
           className={classes.navLink}
-          exact
-          key="Editar Categoria"
-          to="/backoffice/edit-category"
-        >
-          Editar Categoría
-        </NavLink>
-      </MenuItem>
-      <MenuItem className={classes.menuItem}>
-        <NavLink
-          className={classes.navLink}
           Editar
           Categoría
           key="Categorias"
@@ -272,10 +262,10 @@ export default function BackOffice() {
                     <TestimonialsList />
                   </Route>
                   <Route exact path="/backoffice/create-category">
-                    <FormCategories dataCategory={{}} />
+                    <FormCategories />
                   </Route>
-                  <Route exact path="/backoffice/edit-category">
-                    <FormCategories dataCategory={categoryMock} />
+                  <Route exact path="/backoffice/edit-category/:id">
+                    <FormCategories />
                   </Route>
                   <Route exact path="/backoffice/categories">
                     <BackOfficeCategoriesScreen />

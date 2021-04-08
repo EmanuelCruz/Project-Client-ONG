@@ -14,8 +14,15 @@ import {
   TESTIMONIAL_CREATE_TITLE,
   TESTIMONIAL_UPDATE_TITLE,
   TESTIMONIAL_DELETE_TITLE,
+<<<<<<< HEAD
+  CATEGORIE_CREATE_TITLE,
+  CATEGORIE_UPDATE_TITLE,
+  CATEGORIE_UPDATE_SUCCESS,
+  CATEGORIE_CREATE_SUCCESS,
+=======
   SUCCESS_TITLE,
   SUCCESS_PARAGRAPH,
+>>>>>>> a7fdbde9e8a3967eadda1cd8a9faf5268aa450e2
 } from "../../const/const";
 
 export const InfoAlertComponent = () => {
@@ -91,6 +98,22 @@ export const DeleteTestimonialSucces = () => {
   return Swal.fire({
     title: TESTIMONIAL_DELETE_TITLE,
     text: TESTIMONIAL_DELETE_SUCCESS,
+    icon: "success",
+  });
+};
+
+export const CreateCategorieSuccess = () => {
+  return Swal.fire({
+    title: CATEGORIE_CREATE_TITLE,
+    text: CATEGORIE_CREATE_SUCCESS,
+    icon: "success",
+  });
+};
+
+export const UpdateCategorieSuccess = () => {
+  return Swal.fire({
+    title: CATEGORIE_UPDATE_TITLE,
+    text: CATEGORIE_UPDATE_SUCCESS,
     icon: "success",
   });
 };

@@ -23,6 +23,14 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
   },
+  cardContent: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  nameCategory: {
+    textAlign: "center",
+  },
 }));
 
 export default useStyles;
