@@ -9,7 +9,6 @@ const ProtectedUserRoute = ({
   ...rest
 }) => {
 
-  console.log(isAuth)
   return (
     <Route
       {...rest}
