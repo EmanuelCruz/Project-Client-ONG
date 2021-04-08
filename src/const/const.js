@@ -65,7 +65,7 @@ export const SERVER_URL = "http://localhost:3000"; // Complete with server url
 export const SERVER_URL_ACTIVITIES = "activities"; // Complete with server url activities
 
 // Contacts component
-export const SERVER_URL_CONTACTS = ""; // Complete with server url contacts
+export const SERVER_URL_CONTACTS = "http://localhost:3000/contacts"; // Complete with server url contacts
 
 // Members in about us component
 export const SERVER_URL_MEMBERS = "members"; // Complete with server url members

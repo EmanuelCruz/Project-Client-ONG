@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-  Paper,
   Table,
   TableBody,
   TableCell,
@@ -27,7 +26,7 @@ const BackOficceContactsComponent = () => {
   }, []);
 
   return (
-    <Paper className={classes.tableContainer}>
+    <>
       <Toolbar className={classes.rootBackOffice}>
         <Typography variant="h4" className={classes.title}>
           Contactos
@@ -42,7 +41,7 @@ const BackOficceContactsComponent = () => {
               <TableCell className={classes.tableCell}>Email</TableCell>
               <TableCell className={classes.tableCell}>Mensaje</TableCell>
               <TableCell className={classes.tableCell}>
-                Fecha de eliminación
+                Fecha de creación
               </TableCell>
             </TableRow>
           </TableHead>
@@ -54,7 +53,7 @@ const BackOficceContactsComponent = () => {
           </TableBody>
         </Table>
       </TableContainer>
-    </Paper>
+    </>
   );
 };
 

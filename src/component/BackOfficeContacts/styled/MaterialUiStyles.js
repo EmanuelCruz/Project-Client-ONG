@@ -14,9 +14,6 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 600,
     fontSize: "16px",
   },
-  tableContainer: {
-    marginTop: "3rem",
-  },
 }));
 
 export default useStyles;
