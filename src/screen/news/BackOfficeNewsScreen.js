@@ -4,9 +4,9 @@ import BackOfficeNewsComponent from "../../component/News/backOfficeNews/BackOff
 
 const BackOfficeNewsScreen = () => {
   return (
-    <Container>
+    <>
       <BackOfficeNewsComponent />
-    </Container>
+    </>
   );
 };
 

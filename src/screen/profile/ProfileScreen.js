@@ -20,7 +20,7 @@ function ProfileScreen() {
     };
 
     return (
-        <div>
+        <div style={{ marginTop: '20px' }}>
             <h3>{user_data.name}'s Profile</h3>
             <ul className="container list">
                 <li>{user_data.name} {user_data.last_name}</li>

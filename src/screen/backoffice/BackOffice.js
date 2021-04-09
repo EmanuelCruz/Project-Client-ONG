@@ -111,7 +111,7 @@ export default function BackOffice() {
           key="Users"
           to={PATH_BACKOFFICE_USERS}
         >
-          Users
+          Usuarios
         </NavLink>
       </MenuItem>
       <MenuItem className={classes.menuItem}>
@@ -210,7 +210,7 @@ export default function BackOffice() {
             justify="center"
             alignItems="center"
           >
-            <Grid item xs={12} sm={3}>
+            <Grid item xs={12} sm={5} md={3}>
               {myRoleId === 1 ? (
                 <Typography style={{ margin: "10px" }}>
                   Menu Administrador
@@ -223,7 +223,7 @@ export default function BackOffice() {
                 <MenuList>{roleId === 1 && itemsForAdmin}</MenuList>
               </Paper>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={7} md={8}>
               <Paper>
                 <Switch>
                   <Route exact path="/profile">

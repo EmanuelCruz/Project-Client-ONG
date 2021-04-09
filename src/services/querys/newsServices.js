@@ -2,6 +2,17 @@ import axios from "axios";
 import { SERVER_URL } from "../../const/const";
 import apiServices from "./apiServices";
 
+function newsServices() {
+  return axios
+    .get(SERVER_URL + "/news")
+    .then((response) => {
+      return response;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 function CreateNews(data) {
   return axios.post(SERVER_URL + "/news", data, {
   headers: {
@@ -36,4 +47,4 @@ const deleteNews = (id) => {
     });
 };
 
-export { CreateNews, UpgradeNews, getNews, deleteNews };
+export { CreateNews, UpgradeNews, getNews, deleteNews, newsServices };

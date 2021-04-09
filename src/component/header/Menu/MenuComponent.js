@@ -4,6 +4,7 @@ import useStyles from './MenuComponentStyles'
 import DropDawnActivitiesComponente from './DropDawnActivities/DropDawnActivitiesComponent'
 import HeaderItems from "./HeaderItems";
 import UsersItems from "./UsersItems";
+import AdminItems from "./AdminItems";
 
 const myItems = [
   {
@@ -29,10 +30,6 @@ const myItems = [
   {
     name: "Contacto",
     path: "/contacto",
-  },
-  {
-    name: "Backoffice",
-    path: "/backoffice",
   },
 ];
 
@@ -62,6 +59,7 @@ export default function MenuComponent({ drawerOpen }) {
     <div className={classes.menu}>
       <ul className={classes.menuUl}>
         <HeaderItems items={items} classes={classes} drawerOpen={drawerOpen} />
+        <AdminItems classes={classes} />
         <UsersItems classes={classes} />
       </ul>
     </div>
