@@ -2,21 +2,37 @@ import React, { useEffect, useState } from "react";
 import {
   createCategory,
   updateCategory,
+  getACategory,
 } from "../../services/querys/categoriesServices";
 import { Button, TextField, Container } from "@material-ui/core/";
 import useStyles from "./FormCategoriesStyles";
-import { SuccessAlertComponent } from '../Alert/AlertComponent';
+import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import {
+  CreateCategorieSuccess,
+  UpdateCategorieSuccess,
+} from "../Alert/AlertComponent";
 
-export default function FormCategories({ dataCategory }) {
+export default function FormCategories() {
   const classes = useStyles();
-  const [category, setCategory] = useState(dataCategory)
-  const [modifiedName, setModifiedName] = useState(false)
-  const [modifiedDescription, setModifiedDescription] = useState(false)
+  const [category, setCategory] = useState([]);
   const [emptyFields, setEmptyFields] = useState(true);
+  let { id } = useParams();
+  let history = useHistory();
+
+  useEffect(() => {
+    if (id) {
+      const fetchCategories = async (id) => {
+        const categorie = await getACategory(id);
+        setCategory(categorie.data);
+      };
+      fetchCategories(id);
+    }
+  }, []);
 
   useEffect(() => {
     handleEmptyFields();
-  }, [category])
+  }, [category]);
 
   const handleEmptyFields = () => {
     if (!category.name || !category.description) {
@@ -28,19 +44,20 @@ export default function FormCategories({ dataCategory }) {
 
   const handleSubmit = () => {
     if (!category.id) {
-      createCategory(category)
+      createCategory(category);
       clearForm();
-      SuccessAlertComponent();
+      setTimeout(function () {
+        history.push("/backoffice/categories");
+      }, 3000);
+      CreateCategorieSuccess();
     } else {
-      if (modifiedName && modifiedDescription) {
-        updateCategory(category, category.id);
-      } else {
-        modifiedName && updateCategory(category.name, category.id);
-        modifiedDescription && updateCategory(category.description, category.id);
-      }
-      alert("Se actualizo la categoría");
+      updateCategory(category, category.id);
+      setTimeout(function () {
+        history.push("/backoffice/categories");
+      }, 3000);
+      UpdateCategorieSuccess();
     }
-  }
+  };
 
   const clearForm = () => {
     for (const property in category) {
@@ -53,36 +70,33 @@ export default function FormCategories({ dataCategory }) {
   const changeHandler = (event) => {
     category[event.target.id] = event.target.value;
     setCategory({ ...category });
-    event.target.id === "name" ? setModifiedName(true) : setModifiedDescription(true)
   };
 
   return (
-    <div>
-      <Container>
-        <form className={classes.root}>
-          <TextField
-            id="name"
-            label="Nombre"
-            value={"" || category.name}
-            onChange={changeHandler}
-          />
-          <TextField
-            id="description"
-            label="Descripción"
-            value={"" || category.description}
-            onChange={changeHandler}
-          />
-          <Button
-            className={classes.button}
-            variant="contained"
-            component="label"
-            onClick={handleSubmit}
-            disabled={emptyFields}
-          >
-            {!category.id ? "Crear" : "Modificar"}
-          </Button>
-        </form>
-      </Container>
-    </div>
+    <Container>
+      <form className={classes.root}>
+        <TextField
+          id="name"
+          label="Nombre"
+          value={"" || category.name}
+          onChange={changeHandler}
+        />
+        <TextField
+          id="description"
+          label="Descripción"
+          value={"" || category.description}
+          onChange={changeHandler}
+        />
+        <Button
+          className={classes.button}
+          variant="contained"
+          component="label"
+          onClick={handleSubmit}
+          disabled={emptyFields}
+        >
+          {!category.id ? "Crear" : "Modificar"}
+        </Button>
+      </form>
+    </Container>
   );
-};
+}
