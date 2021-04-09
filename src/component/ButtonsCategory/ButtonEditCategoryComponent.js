@@ -19,7 +19,7 @@ function ButtonEditCategoryComponent({ category }) {
   };
 
   return (
-    <IconButton color="secondary" align="left" onClick={handleClick}>
+    <IconButton color="primary" align="left" onClick={handleClick}>
       <EditIcon />
     </IconButton>
   );
