@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import { getNews } from '../../../services/querys/newsServices';
+import React, { useState, useEffect } from "react";
+import Button from "@material-ui/core/Button";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Grid from "@material-ui/core/Grid";
+import { Typography, Box } from "@material-ui/core/";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import { getNews } from "../../../services/querys/newsServices";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -24,26 +24,25 @@ const useStyles = makeStyles((theme) => ({
   cardGrid: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
-    backgroundColor: 'whitesmoke',
+    backgroundColor: "whitesmoke",
   },
   card: {
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
   },
   cardMedia: {
-    paddingTop: '56.25%', // 16:9
+    paddingTop: "56.25%", // 16:9
   },
   cardContent: {
     flexGrow: 1,
   },
   main: {
-    backgroundColor: 'whitesmoke',
+    backgroundColor: "whitesmoke",
   },
 }));
 
 const News = () => {
-
   const [novedades, setNovedades] = useState([]);
   const [lastNovedades, setLastNovedades] = useState([]);
 
@@ -56,11 +55,10 @@ const News = () => {
   }, []);
 
   useEffect(() => {
-    setLastNovedades(novedades?.reverse())
-  }, [novedades])
+    setLastNovedades(novedades?.reverse());
+  }, [novedades]);
 
   const classes = useStyles();
-
 
   if (novedades?.length >= 1) {
     return (
@@ -81,15 +79,21 @@ const News = () => {
                       <Typography gutterBottom variant="h5" component="h2">
                         {card.name}
                       </Typography>
-                      <Typography>
-                        {card.content}
-                      </Typography>
+                      <Box
+                        component="div"
+                        my={2}
+                        textOverflow="ellipsis"
+                        overflow="hidden"
+                        bgcolor="background.paper"
+                      >
+                        {card.content.replace(/(<([^>]+)>)/gi, "")}
+                      </Box>
                     </CardContent>
-                    <CardActions style={{ justifyContent: 'center' }}>
+                    <CardActions style={{ justifyContent: "center" }}>
                       <a href={`/novedad/${card.id}`}>
                         <Button size="small" color="primary">
                           Ver
-                      </Button>
+                        </Button>
                       </a>
                     </CardActions>
                   </Card>
@@ -99,8 +103,8 @@ const News = () => {
           </Container>
         </main>
       </React.Fragment>
-    )
-  } else return null
-}
+    );
+  } else return null;
+};
 
-export default News
+export default News;
