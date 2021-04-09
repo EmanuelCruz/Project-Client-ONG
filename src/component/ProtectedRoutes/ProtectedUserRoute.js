@@ -12,17 +12,12 @@ const ProtectedUserRoute = ({
   return (
     <Route
       {...rest}
-      render={(props) => {
+      render={() => {
         if (isAuth.isAuth) {
           return <Component />;
         } else {
           return (
             <>
-              {setTimeout(() => {
-                if (props.history.location.pathname.includes('profile')) {
-                  props.history.push("/")
-                }
-              }, 5000)}
               <NotAllowedRedirect />
             </>
           );
