@@ -15,7 +15,7 @@ function CategoriesCardComponent({ category, setIsDeleted }) {
   return (
     <Container className={classes.root}>
       <Card>
-        <CardContent className={classes.root}>
+        <CardContent>
           <Typography
             className={classes.nameCategory}
             gutterBottom
