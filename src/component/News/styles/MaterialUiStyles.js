@@ -49,7 +49,13 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     width: "100%"
-  }
+  },
+  //Others
+  cardCenterStyle: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 }));
 
 export default useStyles;

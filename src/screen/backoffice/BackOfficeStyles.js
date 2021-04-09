@@ -7,10 +7,14 @@ const useStyles = makeStyles((theme) => ({
         minHeight: "100vh"
     },
     paper: {
-        marginRight: theme.spacing(2),
+        marginBottom: theme.spacing(2),
         padding: theme.spacing(2),
         textAlign: "center",
         color: theme.palette.text.secondary,
+        "@media (min-width: 600px)": {
+            marginRight: theme.spacing(2),
+            marginBottom: theme.spacing(0),
+        },
     },
     menuItem:{
         padding: "0",
@@ -27,7 +31,8 @@ const useStyles = makeStyles((theme) => ({
         },
 
     },
-
+    gridContainer: {
+    }
 }));
 
 export default useStyles;
