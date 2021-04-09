@@ -5,9 +5,10 @@ import TableContainer from '@material-ui/core/TableContainer';
 import Paper from '@material-ui/core/Paper';
 import BackOfficeActivityItem from "./BackOfficeActivitiesItem";
 
-function BackOfficeActivitiesList({activities ,handleDeleteActivity}) {
+function BackOfficeActivitiesList({ activities, handleDeleteActivity }) {
     return (
         <TableContainer component={Paper}>
+            <h3>Listado de actividades:</h3>
             <Table size="small">
                 <TableBody>
                     {activities.map((activity) => (
