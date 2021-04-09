@@ -73,7 +73,6 @@ function App() {
               <ProtectedAdminRoute
                 path={path}
                 component={Component}
-                isAdmin={true}
                 key={`par-${path}`}
               />
             ))}
@@ -81,7 +80,6 @@ function App() {
               <ProtectedAdminRoute
                 path={path}
                 component={Component}
-                isAdmin={true}
                 key={`par-${path}`}
               />
             ))}

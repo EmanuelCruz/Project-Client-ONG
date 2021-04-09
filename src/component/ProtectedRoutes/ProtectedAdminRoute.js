@@ -1,9 +1,10 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import NotAllowedRedirect from "./NotAllowedRedirect";
+import { connect } from 'react-redux'
 
 const ProtectedAdminRoute = ({
-  isAdmin: isAdmin,
+  isAdmin,
   component: Component,
   ...rest
 }) => {
@@ -12,12 +13,12 @@ const ProtectedAdminRoute = ({
     <Route
       {...rest}
       render={() => {
-        if (isAdmin) {
+        if (isAdmin.isAdmin) {
           return <Component />;
         } else {
           return (
             <>
-              <NotAllowedRedirect />
+              <NotAllowedRedirect pathname={'/backoffice'} />
             </>
           );
         }
@@ -26,4 +27,11 @@ const ProtectedAdminRoute = ({
   );
 };
 
-export default ProtectedAdminRoute;
+
+function mapStateToProps(state) {
+  return {
+    isAdmin: state.isAdmin
+  }
+}
+
+export default connect(mapStateToProps)(ProtectedAdminRoute);
