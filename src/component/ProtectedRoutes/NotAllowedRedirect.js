@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import HighlightOff from '@material-ui/icons/HighlightOff';
 
-const NotAllowedRedirect = () => {
+const NotAllowedRedirect = ({ pathname }) => {
   setTimeout(function () {
-    if (window.location.pathname === ('/profile') || ('/backoffice')) {
+    if (window.location.pathname === pathname) {
       window.location.replace('/');
     }
   }, 5000);

@@ -18,7 +18,7 @@ const ProtectedUserRoute = ({
         } else {
           return (
             <>
-              <NotAllowedRedirect />
+              <NotAllowedRedirect pathname={'/profile'} />
             </>
           );
         }
