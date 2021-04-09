@@ -212,15 +212,15 @@ export default function BackOffice() {
           >
             <Grid item xs={12} sm={5} md={3}>
               {myRoleId === 1 ? (
-                <Typography style={{ margin: '10px' }}>Menu Administrador</Typography>
+                <Typography style={{ margin: "10px" }}>
+                  Menu Administrador
+                </Typography>
               ) : (
                 <Typography>Menu Usuario</Typography>
               )}{" "}
               {/* it's just a test */}
               <Paper className={classes.paper}>
-                <MenuList>
-                  {roleId === 1 && itemsForAdmin}
-                </MenuList>
+                <MenuList>{roleId === 1 && itemsForAdmin}</MenuList>
               </Paper>
             </Grid>
             <Grid item xs={12} sm={7} md={8}>

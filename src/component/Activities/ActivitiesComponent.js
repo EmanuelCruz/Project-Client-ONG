@@ -39,7 +39,7 @@ const ActivitiesComponent = ({ toModifyActivities }) => {
       activities[property] = "";
       setActivities({ ...activities });
     }
-    setFormData(new FormData())
+    setFormData(new FormData());
     setImg([]);
     setEmptyFields(true);
   };
@@ -52,7 +52,7 @@ const ActivitiesComponent = ({ toModifyActivities }) => {
       setFormData(formData);
       if (createActivities(formData)) {
         clearForm();
-        CreateActivitiesSuccess()
+        CreateActivitiesSuccess();
         setTimeout(function () {
           history.push("/backoffice/activities");
         }, 3000);
@@ -76,6 +76,7 @@ const ActivitiesComponent = ({ toModifyActivities }) => {
 
   return (
     <Container>
+      <h1>Crear Actividad</h1>
       <form className={classes.root}>
         <TextField
           id="name"
@@ -116,7 +117,8 @@ const ActivitiesComponent = ({ toModifyActivities }) => {
           variant="contained"
           component="label"
           onClick={handleSubmit}
-          disabled={emptyFields}>
+          disabled={emptyFields}
+        >
           {!activities.id ? "Crear" : "Modificar"}
         </Button>
       </form>
