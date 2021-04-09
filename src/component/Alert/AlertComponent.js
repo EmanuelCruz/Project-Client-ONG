@@ -22,6 +22,8 @@ import {
   SUCCESS_PARAGRAPH,
   ACTIVITY_CREATE_TITLE,
   ACTIVITY_CREATE_SUCCESS,
+  ACTIVITY_DELETE_TITLE,
+  ACTIVITY_DELETE_SUCCESS,
 } from "../../const/const";
 
 export const InfoAlertComponent = () => {
@@ -120,6 +122,16 @@ export const UpdateCategorieSuccess = () => {
   return Swal.fire({
     title: CATEGORIE_UPDATE_TITLE,
     text: CATEGORIE_UPDATE_SUCCESS,
+    icon: "success",
+  });
+};
+
+
+
+export const DeleteActitivySucces = () => {
+  return Swal.fire({
+    title: ACTIVITY_DELETE_TITLE,
+    text: ACTIVITY_DELETE_SUCCESS,
     icon: "success",
   });
 };
