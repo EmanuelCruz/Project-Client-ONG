@@ -61,6 +61,9 @@ const BackOfficeNewsComponent = () => {
 
   return (
     <Container>
+      <Typography gutterBottom variant="h3" component="h2">
+        Novedades
+      </Typography>
       {newsData?.slice((page - 1) * itemsPerPage, page * itemsPerPage)
         .map((news) => (
           <Card className={classes.root}>
