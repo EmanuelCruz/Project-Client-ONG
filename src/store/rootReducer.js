@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import userReducer from './ducks/user';
+import userReducer from './user/reducer';
 import isAuthReducer from './isAuth/reducer';
 import isAdminReducer from './isAdmin/reducer';
 
