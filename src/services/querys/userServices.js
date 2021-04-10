@@ -1,3 +1,4 @@
+import { MAIN_URL } from '../../const/const';
 import apiServices from './apiServices';
 
 const userList = async () => {
@@ -28,4 +29,13 @@ const getUsers = async () => {
   }
 };
 
-export { userList, userAuth, getUsers };
+const deleteUser = async (id) => {
+  try {
+    const response = await apiServices.delete(`${MAIN_URL}users/${id}`);
+    return response.data;
+  } catch (err) {
+    return err;
+  }
+};
+
+export { userList, userAuth, getUsers, deleteUser };

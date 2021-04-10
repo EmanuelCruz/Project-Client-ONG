@@ -1,12 +1,34 @@
-import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "../store/ducks/user";
-import isAuthReducer from "../store/isAuth/reducer";
-import isAdminReducer from "../store/isAdmin/reducer";
+import { createStore } from "@reduxjs/toolkit";
+import rootReducer from "../store/rootReducer";
 
-export default configureStore({
-  reducer: {
-    user: userReducer,
-    isAuth: isAuthReducer,
-    isAdmin: isAdminReducer,
-  },
-});
+const saveToLocalStorage = (state) => {
+  try {
+    const serializedState = JSON.stringify(state)
+    localStorage.setItem('state', serializedState)
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+const loadFromLocalStorage = () => {
+  try {
+    const serializedState = localStorage.getItem('state');
+    if (serializedState === null) return undefined;
+    return JSON.parse(serializedState);
+  } catch (e) {
+    console.log(e);
+    return undefined;
+  }
+}
+
+const persistedState = loadFromLocalStorage();
+
+const store = createStore(
+  rootReducer,
+  persistedState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+store.subscribe(() => saveToLocalStorage(store.getState()))
+
+export default store;

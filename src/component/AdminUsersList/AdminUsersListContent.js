@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import DeleteButton from "./Buttons/DeleteButton";
 import EditButton from "./Buttons/EditButton";
-import { getUsers } from "../../services/querys/userServices";
+import { userList } from "../../services/querys/userServices";
 
 const useStyles = makeStyles({
   table: {
@@ -23,8 +23,17 @@ const rows = [
   { name: 'Mike', surname: 'Thompson', email: 'mikethompson@gmail.com' },
 ];
 
-export default function BasicTable() {
-  const classes = useStyles();
+export default function AdminUserListContent() {
+
+  const [usersList, setUsersList] = useState([])
+
+  useEffect(() => {
+    userList().then(function (result) {
+      setUsersList(result)
+    })
+  }, [])
+
+  const classes = useStyles()
 
   return (
     <TableContainer component={Paper}>
@@ -39,11 +48,11 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">{row.name}</TableCell>
-              <TableCell>{row.surname}</TableCell>
-              <TableCell>{row.email}</TableCell>
+          {usersList.map((user) => (
+            <TableRow key={user.id}>
+              <TableCell component="th" scope="row">{user.firstName}</TableCell>
+              <TableCell>{user.lastName}</TableCell>
+              <TableCell>{user.email}</TableCell>
               <TableCell><EditButton /><DeleteButton /></TableCell>
             </TableRow>
           ))}
