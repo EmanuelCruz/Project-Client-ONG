@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
             padding: "5% 0% 5% 0%",
         },
     },
+    description: {
+        maxWidth: "50%",
+    },
     gridImage: {
         padding: "5% 0% 0% 0%",
         minHeight: "70%",

@@ -73,6 +73,7 @@ const ActivitiesDetailsComponent = () => {
                 xl={!emptyImage ? 8 : 12}
                 container
                 className={!emptyImage ? classes.gridDescription : classes.gridDescriptionFull}
+                justify={emptyImage && "center"}
             >
                 <Grid
                     item
@@ -81,7 +82,8 @@ const ActivitiesDetailsComponent = () => {
                     container
                     direction="column"
                     justify="flex-start"
-                    alignItems={!emptyImage ? "flex-start" : "center"}
+                    alignItems="flex-start"
+                    className={emptyImage && classes.description}
                     dangerouslySetInnerHTML={{
                         __html: activity.content,
                     }}
