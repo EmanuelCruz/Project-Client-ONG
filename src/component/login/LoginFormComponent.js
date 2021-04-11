@@ -12,6 +12,7 @@ import {
 import { connect } from 'react-redux';
 import updateIsAuth from "../../store/isAuth/action";
 import updateIsAdmin from "../../store/isAdmin/action";
+import updateUser from "../../store/user/action";
 import { ErrorAlertComponent } from '../Alert/AlertComponent';
 import { login } from '../../services/querys/authService';
 import NotRegisteredUser from "./NotRegisteredUser";
@@ -30,6 +31,7 @@ const LoginFormComponent = (props) => {
     login(values.email, values.password).then(res => {
       history.push("/");
       props.updateIsAuth(true)
+      props.updateUser(res.data)
     }).catch(err => ErrorAlertComponent());
   };
 
@@ -87,4 +89,4 @@ const LoginFormComponent = (props) => {
   );
 }
 
-export default connect(null, { updateIsAuth, updateIsAdmin })(LoginFormComponent);
+export default connect(null, { updateIsAuth, updateIsAdmin, updateUser })(LoginFormComponent);
