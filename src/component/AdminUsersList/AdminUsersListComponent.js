@@ -5,9 +5,7 @@ import './AdminUsersList.css';
 
 const AdminUsersListComponent = () => {
   const { usersList } = GetUsers()
-  return (
-    <AdminUsersListContent usersList={usersList} />
-  )
+  return <AdminUsersListContent usersList={usersList} />;
 }
 
 export default AdminUsersListComponent

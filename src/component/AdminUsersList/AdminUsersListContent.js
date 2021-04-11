@@ -10,10 +10,17 @@ import Paper from '@material-ui/core/Paper';
 import DeleteButton from "./Buttons/DeleteButton";
 import EditButton from "./Buttons/EditButton";
 import { userList } from "../../services/querys/userServices";
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
+  },
+  container:{
+    marginTop: 44,
+  },
+  tableContainer:{
+    maxHeight: 475
   },
 });
 
@@ -34,28 +41,32 @@ export default function BasicTable({usersList}) {
   }
 
   return (
-    <TableContainer component={Paper}>
-      <h3>Usuarios:</h3>
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell><strong>Nombre</strong></TableCell>
-            <TableCell><strong>Apellido</strong></TableCell>
-            <TableCell><strong>Correo</strong></TableCell>
-            <TableCell><strong>Administrar</strong></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {users.map((user) => (
-            <TableRow key={user.firstName}>
-              <TableCell component="th" scope="row">{user.firstName}</TableCell>
-              <TableCell>{user.lastName}</TableCell>
-              <TableCell>{user.email}</TableCell>
-              <TableCell><EditButton /><DeleteButton id={user.id} handleDelete={handleDelete}/></TableCell>
+    <div className={classes.container}>
+      <Typography variant="h4" component="h2" align="center">
+        Usuarios
+      </Typography>
+      <TableContainer component={Paper} className={classes.tableContainer}>
+        <Table className={classes.table} aria-label="simple table"  stickyHeader >
+          <TableHead>
+            <TableRow>
+              <TableCell><strong>Nombre</strong></TableCell>
+              <TableCell><strong>Apellido</strong></TableCell>
+              <TableCell><strong>Correo</strong></TableCell>
+              <TableCell><strong>Administrar</strong></TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {users.map((user) => (
+              <TableRow key={user.firstName}>
+                <TableCell component="th" scope="row">{user.firstName}</TableCell>
+                <TableCell>{user.lastName}</TableCell>
+                <TableCell>{user.email}</TableCell>
+                <TableCell><EditButton/><DeleteButton id={user.id} handleDelete={handleDelete}/></TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   );
 }

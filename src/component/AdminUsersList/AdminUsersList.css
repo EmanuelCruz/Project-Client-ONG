@@ -13,8 +13,9 @@
 
 .btn-delete {
   background-color: lightpink;
+  margin-left: 10px;
 }
 
 .btn {
-  margin-right: 2px;
+  margin-right: 4px;
 }

@@ -9,7 +9,6 @@ import {
   DELETE_CONFIRM_TITLE_USER,
 } from "../../../const/const";
 
-
 const DeleteButton = ({ userkey, id, handleDelete }) => {
 
   const handleClick = () => {
