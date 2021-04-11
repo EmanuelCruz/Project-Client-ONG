@@ -5,8 +5,7 @@ const useStyles = makeStyles((theme) => ({
         paddingLeft: "5%",
         paddingRight: "5%",
         paddingBottom: "5%",
-        minHeight: "90vh",
-        background: "#FCFCFC",
+        minHeight: "70vh",
     },
     gridTitle: {
         height: "300px",
@@ -18,6 +17,13 @@ const useStyles = makeStyles((theme) => ({
         padding: "5% 0% 5% 0%",
         "@media (min-width: 1280px)": {
             padding: "5% 5% 5% 0%",
+        },
+    },
+    gridDescriptionFull: {
+        minHeight: "40vh",
+        padding: "5% 0% 0% 0%",
+        "@media (min-width: 1280px)": {
+            padding: "5% 0% 5% 0%",
         },
     },
     gridImage: {
