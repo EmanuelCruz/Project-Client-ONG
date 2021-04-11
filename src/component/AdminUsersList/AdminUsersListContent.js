@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import DeleteButton from "./Buttons/DeleteButton";
 import EditButton from "./Buttons/EditButton";
-import { getUsers } from "../../services/querys/userServices";
+import { userList } from "../../services/querys/userServices";
 
 const useStyles = makeStyles({
   table: {
@@ -17,14 +17,16 @@ const useStyles = makeStyles({
   },
 });
 
-const rows = [
-  { name: 'John', surname: 'Smith', email: 'johnsmith@gmail.com' },
-  { name: 'Tom', surname: 'Taylor', email: 'tomtaylor@gmail.com' },
-  { name: 'Mike', surname: 'Thompson', email: 'mikethompson@gmail.com' },
-];
-
-export default function BasicTable() {
+export default function BasicTable({usersList}) {
+  const [users, setUsers] = useState(usersList)
   const classes = useStyles();
+  useEffect(() => {
+      const fetchUsers = async () => {
+          const users = await userList();
+          setUsers(users);
+      };
+      fetchUsers();
+  }, []);
 
   return (
     <TableContainer component={Paper}>
@@ -39,11 +41,11 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">{row.name}</TableCell>
-              <TableCell>{row.surname}</TableCell>
-              <TableCell>{row.email}</TableCell>
+          {users.map((user) => (
+            <TableRow key={user.firstName}>
+              <TableCell component="th" scope="row">{user.firstName}</TableCell>
+              <TableCell>{user.lastName}</TableCell>
+              <TableCell>{user.email}</TableCell>
               <TableCell><EditButton /><DeleteButton /></TableCell>
             </TableRow>
           ))}
