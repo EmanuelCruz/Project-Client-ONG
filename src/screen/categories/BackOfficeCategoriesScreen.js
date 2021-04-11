@@ -7,7 +7,7 @@ import Pagination from "@material-ui/lab/Pagination";
 
 function BackOfficeCategoriesScreen() {
   const [categories, setCategories] = useState([]);
-  const itemsPerPage = 10;
+  const itemsPerPage = 3;
   const [page, setPage] = useState(1);
   const [noOfPages, setNoOfPages] = useState(0);
   const classes = useStyles();
@@ -40,7 +40,7 @@ function BackOfficeCategoriesScreen() {
     <Container>
       <Container>
         <h1>Categorias</h1>
-        {categories.map((category) => (
+        {categories.slice((page - 1) *itemsPerPage, page * itemsPerPage).map((category) => (
           <CategoriesCardComponent
             key={category.id}
             category={category}
