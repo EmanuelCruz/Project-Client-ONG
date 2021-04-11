@@ -1,6 +1,6 @@
 const updateIsAuth = (isAuth) => {
   return {
-    type: 'LOGIN',
+    type: 'AUTH',
     payload: isAuth
   }
 };
