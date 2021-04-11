@@ -22,11 +22,16 @@ export default function BasicTable({usersList}) {
   const classes = useStyles();
   useEffect(() => {
       const fetchUsers = async () => {
-          const users = await userList();
-          setUsers(users);
+          const dataUsers = await userList();
+          setUsers(dataUsers);
       };
       fetchUsers();
   }, []);
+
+  const handleDelete = (id) => {
+    const newUsers = users.filter((user) => user.id !== id);
+    setUsers(newUsers);
+  }
 
   return (
     <TableContainer component={Paper}>
@@ -46,7 +51,7 @@ export default function BasicTable({usersList}) {
               <TableCell component="th" scope="row">{user.firstName}</TableCell>
               <TableCell>{user.lastName}</TableCell>
               <TableCell>{user.email}</TableCell>
-              <TableCell><EditButton /><DeleteButton /></TableCell>
+              <TableCell><EditButton /><DeleteButton id={user.id} handleDelete={handleDelete}/></TableCell>
             </TableRow>
           ))}
         </TableBody>
