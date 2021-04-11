@@ -1,9 +1,24 @@
 import React from 'react'
+import { deleteUser } from "../../../services/querys/userServices";
+import { ConfirmAlertDeleteButtonComponent } from "../../Alert/AlertComponent";
+import Swal from "sweetalert2";
+import {
+  CONFIRM,
+  CONFIRM_IS_CONFIRMED,
+  CONFIRM_SUCCESS,
+  DELETE_CONFIRM_TITLE_USER,
+} from "../../../const/const";
 
-const DeleteButton = ({ userkey }) => {
+const DeleteButton = ({ userkey, id, handleDelete }) => {
 
-  const handleDeleteButtonClick = () => {
-    return false // TODO: Delete User Functionality
+  const handleClick = () => {
+    ConfirmAlertDeleteButtonComponent(DELETE_CONFIRM_TITLE_USER).then((result) => {
+      if (result.isConfirmed) {
+          Swal.fire(CONFIRM, CONFIRM_IS_CONFIRMED, CONFIRM_SUCCESS);
+          deleteUser(id);
+          handleDelete(id);
+      }
+  });
   }
 
   return (
@@ -11,7 +26,7 @@ const DeleteButton = ({ userkey }) => {
       userkey={userkey}
       type="button"
       className="btn btn-delete"
-      onClick={handleDeleteButtonClick}
+      onClick={handleClick}
     >Eliminar</button>
   )
 }

@@ -28,4 +28,15 @@ const getUsers = async () => {
   }
 };
 
-export { userList, userAuth, getUsers };
+const deleteUser = async (id) => {
+  try {
+    const response = await apiServices.delete(`/users/${id}`);
+    const { data } = response;
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
+export { userList, userAuth, getUsers, deleteUser };
