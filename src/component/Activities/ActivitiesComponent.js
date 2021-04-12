@@ -8,7 +8,10 @@ import {
   getActivityById,
 } from "../../services/querys/activitiesServices";
 import useStyles from "./ActivitiesMaterialStyles";
-import { CreateActivitiesSuccess } from "../Alert/AlertComponent";
+import {
+  CreateActivitiesSuccess,
+  UpdateActivitiesSuccess,
+} from "../Alert/AlertComponent";
 import { useHistory, useParams } from "react-router";
 
 const ActivitiesComponent = () => {
@@ -17,8 +20,8 @@ const ActivitiesComponent = () => {
   const [img, setImg] = useState();
   const [formData, setFormData] = useState(new FormData());
   const [emptyFields, setEmptyFields] = useState(true);
+  let { id } = useParams();
   let history = useHistory();
-  const { id } = useParams();
 
   useEffect(() => {
     handleEmptyFields();
@@ -26,14 +29,14 @@ const ActivitiesComponent = () => {
 
   useEffect(() => {
     if (id) {
-      const fetchActivitie = async (id) => {
-        const activitie = await getActivityById(id);
-        setActivities(activitie);
-        setImg(activitie.image);
+      const fetchActivities = async () => {
+        const activities = await getActivityById(id);
+        setActivities(activities);
+        setImg(activities.image);
       };
-      fetchActivitie(id);
+      fetchActivities();
       if (!activities.content) {
-        fetchActivitie(id);
+        fetchActivities(id);
       }
     }
   }, []);
@@ -79,6 +82,8 @@ const ActivitiesComponent = () => {
       }
       setFormData(formData);
       updateActivities(formData, activities.id);
+      UpdateActivitiesSuccess();
+      history.push("/backoffice/activities");
     }
   };
 
@@ -92,7 +97,7 @@ const ActivitiesComponent = () => {
 
   return (
     <Container>
-      <h1>{!id ? "Crear Actividad" : "Editar Actividad"}</h1>
+      {!activities.id ? <h1>Crear actividad</h1> : <h1>Modificar actividad</h1>}
       <form className={classes.root}>
         <TextField
           id="name"
@@ -122,8 +127,7 @@ const ActivitiesComponent = () => {
           <Button
             className={classes.button}
             variant="contained"
-            component="label"
-          >
+            component="label">
             Agregar Imagen
             <input type="file" onChange={handleImg} id="image" hidden />
           </Button>
@@ -133,8 +137,7 @@ const ActivitiesComponent = () => {
           variant="contained"
           component="label"
           onClick={handleSubmit}
-          disabled={emptyFields}
-        >
+          disabled={emptyFields}>
           {!activities.id ? "Crear" : "Modificar"}
         </Button>
       </form>

@@ -25,11 +25,10 @@ const createActivities = async (data) => {
 
 const updateActivities = async (data, id) => {
   try {
-    const response = await axios.patch(`${SERVER_URL_ACTIVITIES}/${id}`, data, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
+    const response = await axios.patch(
+      MAIN_URL + SERVER_URL_ACTIVITIES + "/" + id,
+      data
+    );
     return response.data;
   } catch (err) {
     return err;
@@ -39,7 +38,7 @@ const updateActivities = async (data, id) => {
 const getActivityById = async (id) => {
   try {
     const response = await axios.get(
-      `${MAIN_URL}${SERVER_URL_ACTIVITIES}/${id}`
+      MAIN_URL + SERVER_URL_ACTIVITIES + "/" + id
     );
     return response.data;
   } catch (err) {

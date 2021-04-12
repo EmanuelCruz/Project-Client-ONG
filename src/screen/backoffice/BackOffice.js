@@ -34,7 +34,7 @@ import FormCategories from "../../component/FormCategories/FormCategories";
 import BackOfficeCategoriesScreen from "../categories/BackOfficeCategoriesScreen";
 import TestimonialComponentForm from "../../component/testimonials/testimonialsComponentForm";
 import BackOfficeMembersScreen from "../../screen/members/BackOfficeMembersScreen";
-import CreateMemberComponent from '../../component/BackOfficeMembers/components/CreateMemberComponent'
+import CreateMemberComponent from "../../component/BackOfficeMembers/components/CreateMemberComponent";
 
 const myRoleId = 1;
 
@@ -48,8 +48,7 @@ export default function BackOffice() {
           className={classes.navLink}
           exact
           key="Editar Organizacion"
-          to={PATH_BACKOFFICE_PROFILE}
-        >
+          to={PATH_BACKOFFICE_PROFILE}>
           Perfil
         </NavLink>
       </MenuItem>
@@ -57,9 +56,35 @@ export default function BackOffice() {
         <NavLink
           className={classes.navLink}
           exact
+          key="Novedades"
+          to={PATH_BACKOFFICE_NEWS}>
+          Novedades
+        </NavLink>
+      </MenuItem>
+      <MenuItem className={classes.menuItem}>
+        <NavLink
+          className={classes.navLink}
+          exact
+          key="Crear Post"
+          to="/backoffice/create-news">
+          Crear Post
+        </NavLink>
+      </MenuItem>
+      <MenuItem className={classes.menuItem}>
+        <NavLink
+          className={classes.navLink}
+          exact
+          key="Actividades"
+          to={PATH_BACKOFFICE_ACTIVITIES}>
+          Actividades
+        </NavLink>
+      </MenuItem>
+      <MenuItem className={classes.menuItem}>
+        <NavLink
+          className={classes.navLink}
+          exact
           key="Users"
-          to={PATH_BACKOFFICE_USERS}
-        >
+          to={PATH_BACKOFFICE_USERS}>
           Usuarios
         </NavLink>
       </MenuItem>
@@ -68,8 +93,7 @@ export default function BackOffice() {
           className={classes.navLink}
           exact
           key="Contactos"
-          to={PATH_BACKOFFICE_CONTACTS}
-        >
+          to={PATH_BACKOFFICE_CONTACTS}>
           Contactos
         </NavLink>
       </MenuItem>
@@ -77,30 +101,9 @@ export default function BackOffice() {
         <NavLink
           className={classes.navLink}
           exact
-          key="Novedades"
-          to={PATH_BACKOFFICE_NEWS}
-        >
-          Novedades
-        </NavLink>
-      </MenuItem>
-      <MenuItem className={classes.menuItem}>
-        <NavLink
-          className={classes.navLink}
-          exact
-          key="Crear Novedad"
-          to="/backoffice/create-news"
-        >
-          Crear Novedad
-        </NavLink>
-      </MenuItem>
-      <MenuItem className={classes.menuItem}>
-        <NavLink
-          className={classes.navLink}
-          exact
-          key="Actividades"
-          to={PATH_BACKOFFICE_ACTIVITIES}
-        >
-          Actividades
+          key="Editar Organizacion"
+          to={PATH_BACKOFFICE_EDITH_ORGANIZATION}>
+          Editar Organizacion
         </NavLink>
       </MenuItem>
       <MenuItem className={classes.menuItem}>
@@ -108,8 +111,7 @@ export default function BackOffice() {
           className={classes.navLink}
           exact
           key="Crear Actividad"
-          to="/backoffice/create-activities"
-        >
+          to="/backoffice/create-activities">
           Crear Actividad
         </NavLink>
       </MenuItem>
@@ -118,8 +120,7 @@ export default function BackOffice() {
           className={classes.navLink}
           exact
           key="Testimoniales"
-          to="/backoffice/testimonios"
-        >
+          to="/backoffice/testimonios">
           Testimoniales
         </NavLink>
       </MenuItem>
@@ -127,10 +128,9 @@ export default function BackOffice() {
         <NavLink
           className={classes.navLink}
           exact
-          key="Crear Testimonios"
-          to="/backoffice/create-testimonial"
-        >
-          Crear Testimonio
+          key="Crear Categoria"
+          to="/backoffice/create-category">
+          Crear Categoría
         </NavLink>
       </MenuItem>
       <MenuItem className={classes.menuItem}>
@@ -139,8 +139,7 @@ export default function BackOffice() {
           Editar
           Categoría
           key="Categorias"
-          to="/backoffice/categories"
-        >
+          to="/backoffice/categories">
           Categorías
         </NavLink>
       </MenuItem>
@@ -148,30 +147,9 @@ export default function BackOffice() {
         <NavLink
           className={classes.navLink}
           exact
-          key="Crear Categoria"
-          to="/backoffice/create-category"
-        >
-          Crear Categoría
-        </NavLink>
-      </MenuItem>
-      <MenuItem className={classes.menuItem}>
-        <NavLink
-          className={classes.navLink}
-          exact
-          key="Miembros"
-          to="/backoffice/members"
-        >
-          Miembros
-        </NavLink>
-      </MenuItem>
-      <MenuItem className={classes.menuItem}>
-        <NavLink
-          className={classes.navLink}
-          exact
-          key="Miembros"
-          to="/backoffice/members/create"
-        >
-          Crear Miembro
+          key="Crear Testimonios"
+          to="/backoffice/create-testimonial">
+          Crear Testimonio
         </NavLink>
       </MenuItem>
     </Container>
@@ -187,9 +165,8 @@ export default function BackOffice() {
             container
             direction="row"
             justify="center"
-            alignItems="center"
-          >
-            <Grid item xs={12} sm={5} md={3}>
+            alignItems="center">
+            <Grid item xs={12} sm={3}>
               {myRoleId === 1 ? (
                 <Typography style={{ margin: "10px" }}>
                   Menu Administrador
@@ -253,11 +230,8 @@ export default function BackOffice() {
                   <Route exact path="/backoffice/edit-testimonial/:id">
                     <TestimonialComponentForm />
                   </Route>
-                  <Route exact path="/backoffice/members">
-                    <BackOfficeMembersScreen />
-                  </Route>
-                  <Route exact path="/backoffice/members/create">
-                    <CreateMemberComponent />
+                  <Route exact path="/backoffice/edit-activities/:id">
+                    <ActivitiesComponent />
                   </Route>
                 </Switch>
               </Paper>

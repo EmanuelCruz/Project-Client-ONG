@@ -12,8 +12,8 @@ export const INFO_BUTTON = "Genial!";
 export const INFO_TITLE = "Información importante";
 export const DELETE_CONFIRM_TITLE_ACTIVITY = "¿Quiere eliminar esta actividad?";
 export const DELETE_CONFIRM_TITLE_CATEGORY = "¿Quiere eliminar esta categoría?";
-export const SUCCESS_TITLE = "Confirmado!"
-export const SUCCESS_PARAGRAPH = "¡Objeto creado con éxito!"
+export const SUCCESS_TITLE = "Confirmado!";
+export const SUCCESS_PARAGRAPH = "¡Objeto creado con éxito!";
 
 //Form Login
 export const NOT_VALID_EMAIL = "El email no es valido";
@@ -112,15 +112,22 @@ export const PATH_BACKOFFICE_EDITH_ORGANIZATION =
 // Path Novedad
 export const PATH_NOVEDAD = "/novedad/";
 
-export const ACTIVITY_CREATE_TITLE = "Se creo la actividad correctamente"
-export const ACTIVITY_CREATE_SUCCESS = "Se actualizo la actividad correctamente"
+export const ACTIVITY_CREATE_TITLE = "Se creo la actividad correctamente";
+export const ACTIVITY_CREATE_SUCCESS =
+  "Se actualizo la actividad correctamente";
 
 export const ACTIVITY_DELETE_TITLE = "Se elimino la actividad correctamente";
-export const ACTIVITY_DELETE_SUCCESS = "Eliminación exitosa"
+export const ACTIVITY_DELETE_SUCCESS = "Eliminación exitosa";
 
-export const DELETE_CONFIRM_TITLE_USER = "¿Quiere eliminar este usuario?"
+export const DELETE_CONFIRM_TITLE_USER = "¿Quiere eliminar este usuario?";
 
-export const IMAGE_ACTIVITY_DEFAULT = "https://drive.google.com/drive/u/1/folders/1SI_0BN2wJuFBsaUEgMfkE-2CFXG_guvg"
+// Activities alert messages:
+export const ACTIVITIES_UPDATE_TITLE =
+  "Se actualizo la actividad correctamente";
 
-export const MEMBER_CREATE_TITLE = "Se creo el Miembro correctamente"
-export const MEMBER_CREATE_SUCCESS ="Se creo correctamente, sera ridirigido a la lista de miembros";
+export const ACTIVITIES_UPDATE_SUCCESS =
+  "Se actualizo correctamente, sera redirigido a la lista de actividades.";
+
+export const MEMBER_CREATE_TITLE = "Se creo el Miembro correctamente";
+export const MEMBER_CREATE_SUCCESS =
+  "Se creo correctamente, sera ridirigido a la lista de miembros";

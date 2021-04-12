@@ -2,7 +2,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import React, { useState, useEffect } from "react";
 import { Button, TextField, Container } from "@material-ui/core/";
-import Box from '@material-ui/core/Box';
+import Box from "@material-ui/core/Box";
 import {
   testimonialUpdate,
   testimonialCreate,
@@ -131,8 +131,7 @@ function TestimonialComponentForm() {
           <Button
             className={classes.button}
             variant="contained"
-            component="label"
-          >
+            component="label">
             Agregar Imagen
             <input type="file" onChange={handleImg} id="image" hidden />
           </Button>
@@ -145,8 +144,7 @@ function TestimonialComponentForm() {
               variant="contained"
               component="label"
               onClick={handleSubmit}
-              disabled={emptyFields}
-            >
+              disabled={emptyFields}>
               {!id ? "Crear" : "Modificar"}
             </Button>
           </Box>

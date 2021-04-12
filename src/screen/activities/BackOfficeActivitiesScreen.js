@@ -14,6 +14,7 @@ import { useHistory } from "react-router";
 import {
   activitiesServices,
   deleteActivity,
+  getAllActivities,
 } from "../../services/querys/activitiesServices";
 import { DeleteActitivySucces } from "../../component/Alert/AlertComponent";
 import useStyles from "../../style/materialUiStyle";
@@ -51,10 +52,6 @@ function BackOfficeActivitiesScreen() {
   const handlePagination = (event, value) => {
     setPage(value);
   };
-  const handleDeleteActivity = (id) => {
-    const newsActivities = activities.filter((activity) => activity.id !== id);
-    setActivities(newsActivities);
-  };
 
   return (
     <Container>
@@ -90,15 +87,13 @@ function BackOfficeActivitiesScreen() {
               <Button
                 size="small"
                 color="primary"
-                onClick={() => handleEdit(testimonial.id)}
-              >
+                onClick={() => handleEdit(testimonial.id)}>
                 Editar
               </Button>
               <Button
                 size="small"
                 color="primary"
-                onClick={() => handleDelete(testimonial.id)}
-              >
+                onClick={() => handleDelete(testimonial.id)}>
                 Borrar
               </Button>
             </CardActions>
