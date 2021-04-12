@@ -61,6 +61,7 @@ const BackOfficeMembersComponent = () => {
             title="Agregar nuevo miembro"
             name="name"
             image="image"
+            setMembers={setMembers}
           />
         </Modal>
       </Toolbar>

@@ -10,4 +10,16 @@ const getMembersList = async () => {
   }
 };
 
-export { getMembersList };
+const createMembers = async (data) => {
+  try {
+    const response = await apiServices.post(
+      MAIN_URL + SERVER_URL_MEMBERS,
+      data
+    );
+    return response.data;
+  } catch (err) {
+    throw err.response;
+  }
+};
+
+export { getMembersList, createMembers };
