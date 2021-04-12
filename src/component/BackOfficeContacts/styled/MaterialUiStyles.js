@@ -4,6 +4,9 @@ const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 750,
   },
+  tableContainer: {
+    maxHeight: 475,
+  },
   rootBackOffice: {
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(1),
