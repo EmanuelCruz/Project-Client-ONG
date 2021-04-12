@@ -9,7 +9,6 @@ const MembersTable = ({ members, setMembers, newMembers }) => {
   
   const handleDelete = async (id) => {
     await deleteMember(id);
-    console.log(members);
     const data = newMembers.filter((m) => m.id !== id);
     setMembers(data);
   };
@@ -17,8 +16,8 @@ const MembersTable = ({ members, setMembers, newMembers }) => {
   return (
     <TableRow>
       <TableCell>{name}</TableCell>
-      <TableCell align="left">{image}</TableCell>
-      <TableCell align="right" className={classes.TableCellItem}>
+      <TableCell>{image}</TableCell>
+      <TableCell align="left" className={classes.TableCellItem}>
         <button className="btn btn-delete" onClick={() => handleDelete(id)}>
           Eliminar
         </button>

@@ -3,7 +3,7 @@ import { Button, TextField, Container } from "@material-ui/core/";
 import { createMembers } from "../../../services/querys/membersServices";
 import useStyles from "../../../style/materialUiStyle";
 import { useHistory } from "react-router-dom";
-import { CreateTestimonialSuccess } from "../../Alert/AlertComponent";
+import { CreateMemberSuccess } from "../../Alert/AlertComponent";
 import { handleImg, titleHandler } from "../helpers/members";
 
 function CreateMemberComponent() {
@@ -35,7 +35,7 @@ function CreateMemberComponent() {
       setFormData(formData);
       if (createMembers(formData)) {
         clearForm();
-        CreateTestimonialSuccess();
+        CreateMemberSuccess();
         setTimeout(function () {
           history.push("/backoffice/members");
         }, 3000);
