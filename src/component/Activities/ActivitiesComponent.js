@@ -5,22 +5,38 @@ import { Button, TextField, Container } from "@material-ui/core/";
 import {
   updateActivities,
   createActivities,
+  getActivityById,
 } from "../../services/querys/activitiesServices";
 import useStyles from "./ActivitiesMaterialStyles";
 import { CreateActivitiesSuccess } from "../Alert/AlertComponent";
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 
-const ActivitiesComponent = ({ toModifyActivities }) => {
+const ActivitiesComponent = () => {
   const classes = useStyles();
-  const [activities, setActivities] = useState(toModifyActivities);
+  const [activities, setActivities] = useState([]);
   const [img, setImg] = useState();
   const [formData, setFormData] = useState(new FormData());
   const [emptyFields, setEmptyFields] = useState(true);
   let history = useHistory();
+  const { id } = useParams();
 
   useEffect(() => {
     handleEmptyFields();
   }, [activities]);
+
+  useEffect(() => {
+    if (id) {
+      const fetchActivitie = async (id) => {
+        const activitie = await getActivityById(id);
+        setActivities(activitie);
+        setImg(activitie.image);
+      };
+      fetchActivitie(id);
+      if (!activities.content) {
+        fetchActivitie(id);
+      }
+    }
+  }, []);
 
   const changeHandler = (event) => {
     activities[event.target.id] = event.target.value;
@@ -76,7 +92,7 @@ const ActivitiesComponent = ({ toModifyActivities }) => {
 
   return (
     <Container>
-      <h1>Crear Actividad</h1>
+      <h1>{!id ? "Crear Actividad" : "Editar Actividad"}</h1>
       <form className={classes.root}>
         <TextField
           id="name"
