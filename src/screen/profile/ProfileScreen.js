@@ -2,19 +2,39 @@ import React from 'react';
 import './ProfileScreen.css';
 import ButtonComponent from '../../component/profile/ButtonComponent';
 import { connect } from 'react-redux'
+import Swal from 'sweetalert2';
+import { CONFIRM, CONFIRM_IS_CONFIRMED, CONFIRM_SUCCESS, DELETE_CONFIRM_TITLE_PROFILE } from '../../const/const';
+import { useHistory } from 'react-router';
+import { ConfirmAlertDeleteButtonComponent } from '../../component/Alert/AlertComponent';
+import { deleteUser } from '../../services/querys/userServices';
+import updateIsAuth from "../../store/isAuth/action";
+import updateIsAdmin from "../../store/isAdmin/action";
 
-function ProfileScreen({ user }) {
-    const user_data = user.user
+function ProfileScreen(props) {
+    const user_data = props.user.user
+    console.log(props.user.user)
 
+    let history = useHistory();
     const onEditProfileClick = () => {
         window.alert('Profile edit not funcional.');
     };
 
     const onDeleteAccountClick = () => {
-        if (window.confirm(`Delete Account (Not implemented yet)?`)) {
-            window.alert('Account deletion not funcional.');
-        }
+        ConfirmAlertDeleteButtonComponent(DELETE_CONFIRM_TITLE_PROFILE).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(CONFIRM, CONFIRM_IS_CONFIRMED, CONFIRM_SUCCESS);
+                deleteUser(user_data.id);
+                //Deslogearse
+                // updateIsAuth(false);
+                // updateIsAdmin(false);
+                //Mandarte al Home
+                history.push("/");
+            }
+        });
     };
+
+
+    // const user_data = {firstName: "Ema", lastName: "Cruz", email: "ema@gmail.com"}
 
     return (
         <div style={{ marginTop: '20px' }}>
@@ -39,4 +59,5 @@ function mapStateToProps(state) {
     }
 }
 
+// export default connect(null, { updateIsAuth, updateIsAdmin })(ProfileScreen);
 export default connect(mapStateToProps)(ProfileScreen);

@@ -119,3 +119,5 @@ export const ACTIVITY_DELETE_TITLE = "Se elimino la actividad correctamente";
 export const ACTIVITY_DELETE_SUCCESS = "Eliminación exitosa"
 
 export const DELETE_CONFIRM_TITLE_USER = "¿Quiere eliminar este usuario?"
+
+export const DELETE_CONFIRM_TITLE_PROFILE = "¿Quiere eliminar su cuenta?"
