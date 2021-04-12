@@ -39,14 +39,14 @@ const SignupForm = () => {
   const onSignupSubmit = (values) => {
     register(values.firstName, values.lastName, values.email, values.password).then(res => {
       localStorage.setItem('token', res.data.token);
-      history.push('/');
+      history.push('/login');
     }).catch(err => ErrorAlertComponent());
   };
 
   return (
     <div className={"w-50 mx-auto"} style={{ marginTop: '20px' }}>
       {/*TODO: Responsive*/}
-      <h2>SignUp</h2>
+      <h2>Registrarse</h2>
       <Formik
         initialValues={{ email: "", firstName: "", lastName: "", password: "" }}
         validationSchema={schema}
@@ -58,7 +58,7 @@ const SignupForm = () => {
           <Form className={"container"}>
             <div className={"form-group"}>
               <label htmlFor="firstName">
-                First Name{" "}
+                Nombre{" "}
                 {errors.firstName && touched.firstName ? (
                   <small>{errors.firstName}</small>
                 ) : null}
@@ -67,7 +67,7 @@ const SignupForm = () => {
             </div>
             <div className={"form-group"}>
               <label htmlFor="lastName">
-                Last Name{" "}
+                Apellido{" "}
                 {errors.lastName && touched.lastName ? (
                   <small>{errors.lastName}</small>
                 ) : null}
@@ -85,7 +85,7 @@ const SignupForm = () => {
             </div>
             <div className={"form-group"}>
               <label htmlFor="password">
-                Password{" "}
+                Contraseña{" "}
                 {errors.password && touched.password ? (
                   <small>{errors.password}</small>
                 ) : null}
@@ -93,7 +93,7 @@ const SignupForm = () => {
               <Field name="password" type="password" className={"form-control"} />
             </div>
             <button type="submit" className={"d-block w-100 btn btn-delete"}>
-              Submit
+              Enviar
             </button>
           </Form>
         )}
