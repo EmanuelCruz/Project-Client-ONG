@@ -3,11 +3,12 @@ import CategoriesCardComponent from "../../component/Categories/CategoriesCardCo
 import { getCategories } from "../../services/querys/categoriesServices";
 import useStyles from "../../style/materialUiStyle";
 import { Container } from "@material-ui/core";
+import Grid from '@material-ui/core/Grid';
 import Pagination from "@material-ui/lab/Pagination";
 
 function BackOfficeCategoriesScreen() {
   const [categories, setCategories] = useState([]);
-  const itemsPerPage = 3;
+  const itemsPerPage = 4;
   const [page, setPage] = useState(1);
   const [noOfPages, setNoOfPages] = useState(0);
   const classes = useStyles();
@@ -40,13 +41,17 @@ function BackOfficeCategoriesScreen() {
     <Container>
       <Container>
         <h1>Categorias</h1>
-        {categories.slice((page - 1) *itemsPerPage, page * itemsPerPage).map((category) => (
-          <CategoriesCardComponent
-            key={category.id}
-            category={category}
-            setIsDeleted={setIsDeleted}
-          />
-        ))}
+        <Grid container spacing={10} direction="row" justify="center">
+          {categories.slice((page - 1) *itemsPerPage, page * itemsPerPage).map((category) => (
+            <Grid key={category.id} item zeroMinWidth>
+              <CategoriesCardComponent
+                key={category.id}
+                category={category}
+                setIsDeleted={setIsDeleted}
+              />
+            </Grid>
+          ))}
+        </Grid>
       </Container>
       <Container className={classes.cardCenterStyle}>
         <Pagination

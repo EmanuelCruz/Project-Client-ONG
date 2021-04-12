@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from "react-router-dom";
 import updateIsAuth from "../../store/isAuth/action";
 import updateIsAdmin from "../../store/isAdmin/action";
+import updateUser from "../../store/user/action";
 import { connect } from 'react-redux';
 
 const LogoutScreen = (props) => {
@@ -10,6 +11,7 @@ const LogoutScreen = (props) => {
     if (window.confirm('Deseas cerrar sesión?')) {
       props.updateIsAuth(false);
       props.updateIsAdmin(false);
+      props.updateUser([])
       history.push("/");
     }
   }
@@ -22,5 +24,5 @@ const LogoutScreen = (props) => {
 }
 
 
-export default connect(null, { updateIsAuth, updateIsAdmin })(LogoutScreen);
+export default connect(null, { updateIsAuth, updateIsAdmin, updateUser })(LogoutScreen);
 

@@ -52,64 +52,69 @@ function TestimonialsList() {
     setPage(value);
   };
 
-  return (
-    <Container>
-      {testimonials?.slice((page - 1) * itemsPerPage, page * itemsPerPage)
-        .map((testimonial) => (
-          <Card className={classes.root}>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                alt="Imagen de testimonio"
-                height="140"
-                image={testimonial.image}
-                title={testimonial.name}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  {testimonial.name}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: testimonial.content,
-                    }}
-                  />
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions className={classes.cardCenterStyle}>
-              <Button
-                size="small"
-                color="primary"
-                onClick={() => handleEdit(testimonial.id)}
-              >
-                Editar
+
+  if (testimonials?.length >= 1) {
+    return (
+      <Container>
+        {testimonials?.slice((page - 1) * itemsPerPage, page * itemsPerPage)
+          .map((testimonial) => (
+            <Card className={classes.root}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  alt="Imagen de testimonio"
+                  height="140"
+                  image={testimonial.image}
+                  title={testimonial.name}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {testimonial.name}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: testimonial.content,
+                      }}
+                    />
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions className={classes.cardCenterStyle}>
+                <Button
+                  size="small"
+                  color="primary"
+                  onClick={() => handleEdit(testimonial.id)}
+                >
+                  Editar
               </Button>
-              <Button
-                size="small"
-                color="primary"
-                onClick={() => handleDelete(testimonial.id)}
-              >
-                Borrar
+                <Button
+                  size="small"
+                  color="primary"
+                  onClick={() => handleDelete(testimonial.id)}
+                >
+                  Borrar
               </Button>
-            </CardActions>
-          </Card>
-        ))}
-      <Container className={classes.cardCenterStyle}>
-        <Pagination
-          count={noOfPages}
-          page={page}
-          onChange={handlePagination}
-          defaultPage={1}
-          color="primary"
-          size="large"
-          showFirstButton
-          showLastButton
-        />
+              </CardActions>
+            </Card>
+          ))}
+        <Container className={classes.cardCenterStyle}>
+          <Pagination
+            count={noOfPages}
+            page={page}
+            onChange={handlePagination}
+            defaultPage={1}
+            color="primary"
+            size="large"
+            showFirstButton
+            showLastButton
+          />
+        </Container>
       </Container>
-    </Container>
-  );
+    )
+  } else return (
+    <p>No hay testimoniales para mostrar.</p>
+  )
 }
 
 export default TestimonialsList;
