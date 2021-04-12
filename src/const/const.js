@@ -119,3 +119,5 @@ export const ACTIVITY_DELETE_TITLE = "Se elimino la actividad correctamente";
 export const ACTIVITY_DELETE_SUCCESS = "Eliminación exitosa"
 
 export const DELETE_CONFIRM_TITLE_USER = "¿Quiere eliminar este usuario?"
+
+export const IMAGE_ACTIVITY_DEFAULT = "https://drive.google.com/drive/u/1/folders/1SI_0BN2wJuFBsaUEgMfkE-2CFXG_guvg"

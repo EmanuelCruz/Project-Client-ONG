@@ -14,18 +14,44 @@ const ActivitiesDetailsComponent = () => {
     const classes = useStyles();
     const { id } = useParams();
     const [activity, setActivity] = useState(ERROR_PARAGRAPH);
+    const [emptyImage, setemptyImage] = useState(null)
 
     useEffect(() => {
         async function fecthActivityById() {
             const activityById = await getActivityById(id);
             setActivity(activityById);
+            activityById.image.length !== 0 ? setemptyImage(false) : setemptyImage(true)
         }
 
         fecthActivityById();
     }, [id]);
 
+    const activityImage = (
+        <Grid
+            item
+            xs={12}
+            lg={6}
+            xl={4}
+            container
+            className={classes.gridImage}
+            justify="center"
+            alignItems="center"
+        >
+            <Grid item xs={12}>
+                <Card>
+                    <CardMedia
+                        className={classes.img}
+                        image={activity.image}
+                        title="Live from space album cover"
+                        src="image"
+                    />
+                </Card>
+            </Grid>
+        </Grid>
+    );
+
     return (
-        <Grid container className={classes.grid}>
+        <Grid container className={classes.grid} >
             <Grid
                 item
                 xs={12}
@@ -43,10 +69,11 @@ const ActivitiesDetailsComponent = () => {
             <Grid
                 item
                 xs={12}
-                lg={6}
-                xl={8}
+                lg={!emptyImage ? 6 : 12}
+                xl={!emptyImage ? 8 : 12}
                 container
-                className={classes.gridDescription}
+                className={!emptyImage ? classes.gridDescription : classes.gridDescriptionFull}
+                justify={emptyImage && "center"}
             >
                 <Grid
                     item
@@ -56,32 +83,13 @@ const ActivitiesDetailsComponent = () => {
                     direction="column"
                     justify="flex-start"
                     alignItems="flex-start"
+                    className={emptyImage && classes.description}
                     dangerouslySetInnerHTML={{
                         __html: activity.content,
                     }}
                 ></Grid>
             </Grid>
-            <Grid
-                item
-                xs={12}
-                lg={6}
-                xl={4}
-                container
-                className={classes.gridImage}
-                justify="center"
-                alignItems="center"
-            >
-                <Grid item xs={12}>
-                    <Card>
-                        <CardMedia
-                            className={classes.img}
-                            image={activity.image}
-                            title="Live from space album cover"
-                            src="image"
-                        />
-                    </Card>
-                </Grid>
-            </Grid>
+            { !emptyImage && activityImage }
         </Grid>
     );
 };
