@@ -114,3 +114,8 @@ export const PATH_NOVEDAD = "/novedad/";
 
 export const ACTIVITY_CREATE_TITLE = "Se creo la actividad correctamente"
 export const ACTIVITY_CREATE_SUCCESS = "Se actualizo la actividad correctamente"
+
+export const ACTIVITY_DELETE_TITLE = "Se elimino la actividad correctamente";
+export const ACTIVITY_DELETE_SUCCESS = "Eliminación exitosa"
+
+export const DELETE_CONFIRM_TITLE_USER = "¿Quiere eliminar este usuario?"

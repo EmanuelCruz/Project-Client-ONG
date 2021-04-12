@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SERVER_URL_ACTIVITIES, ERROR_PARAGRAPH,MAIN_URL } from "../../const/const";
+import { SERVER_URL_ACTIVITIES, ERROR_PARAGRAPH,MAIN_URL, SERVER_URL } from "../../const/const";
 
 const createActivities = async (data) => {
   try {
@@ -58,10 +58,22 @@ const deleteActivity = async (id) => {
   }
 };
 
+function activitiesServices() {
+  return axios
+    .get(SERVER_URL + "/activities")
+    .then((response) => {
+      return response;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 export {
     createActivities,
     updateActivities,
     getActivityById,
     deleteActivity,
     getAllActivities,
+    activitiesServices,
 };
