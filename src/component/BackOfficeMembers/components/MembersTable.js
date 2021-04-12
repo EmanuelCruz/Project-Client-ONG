@@ -7,7 +7,10 @@ const MembersTable = ({ members }) => {
     <TableRow>
       <TableCell>{name}</TableCell>
       <TableCell>{image}</TableCell>
-      <TableCell>edit - delete</TableCell>
+      <TableCell align="right">
+        <button className="btn btn-primary">Editar</button>
+        <button className="btn btn-delete">Eliminar</button>
+      </TableCell>
     </TableRow>
   );
 };
