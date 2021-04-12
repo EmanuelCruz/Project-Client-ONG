@@ -21,11 +21,20 @@ function getModalStyle() {
   };
 }
 
-const ModalComponent = ({ title, name, setMembers }) => {
+const ModalComponent = ({ title, name, setMembers, handleClose }) => {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [nameInput, setNameInput] = useState("");
   const [imageInput, setImageInput] = useState("");
+  const [formData, setFormData] = useState(new FormData());
+
+  const handleImg = (e) => {
+    setImageInput(URL.createObjectURL(e.target.files[0]));
+    const image = e.target.files[0];
+    formData.append("image", image);
+    setFormData(formData);
+    console.log(formData)
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,6 +51,7 @@ const ModalComponent = ({ title, name, setMembers }) => {
       const { data } = response;
       const reverseData = data.sort((a, b) => parseInt(b.id) - parseInt(a.id));
       setMembers(reverseData);
+      handleClose();
     }, 2000);
   };
   return (
@@ -71,8 +81,7 @@ const ModalComponent = ({ title, name, setMembers }) => {
             fullWidth
             variant="outlined"
             className="input input-image"
-            onChange={(e) => setImageInput(e.target.value)}
-            value={imageInput}
+            onChange={handleImg}
           >
             Imagen
           </TextField>

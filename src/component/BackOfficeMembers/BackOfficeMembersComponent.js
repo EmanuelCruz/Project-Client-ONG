@@ -64,6 +64,7 @@ const BackOfficeMembersComponent = () => {
             name="name"
             image="image"
             setMembers={setMembers}
+            handleClose={handleClose}
           />
         </Modal>
       </Toolbar>
