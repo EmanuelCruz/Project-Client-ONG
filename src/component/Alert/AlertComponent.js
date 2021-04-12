@@ -26,6 +26,8 @@ import {
   ACTIVITY_DELETE_SUCCESS,
   ACTIVITIES_UPDATE_TITLE,
   ACTIVITIES_UPDATE_SUCCESS,
+  MEMBER_CREATE_TITLE,
+  MEMBER_CREATE_SUCCESS,
 } from "../../const/const";
 
 export const InfoAlertComponent = () => {
@@ -140,6 +142,13 @@ export const UpdateActivitiesSuccess = () => {
   return Swal.fire({
     title: ACTIVITIES_UPDATE_TITLE,
     text: ACTIVITIES_UPDATE_SUCCESS,
+    icon: "success",
+  });
+};
+export const CreateMemberSuccess = () => {
+  return Swal.fire({
+    title: MEMBER_CREATE_TITLE,
+    text: MEMBER_CREATE_SUCCESS,
     icon: "success",
   });
 };

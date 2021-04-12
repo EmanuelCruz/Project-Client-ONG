@@ -2,6 +2,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import React, { useState, useEffect } from "react";
 import { Button, TextField, Container } from "@material-ui/core/";
+import Box from "@material-ui/core/Box";
 import {
   testimonialUpdate,
   testimonialCreate,
@@ -96,12 +97,16 @@ function TestimonialComponentForm() {
 
   return (
     <Container>
-      <h1>Crear Testimonio</h1>
+      <div>
+        <Box m={2} p={2}>
+          <h1>{!id ? "Crear" : "Modificar"} Testimonio</h1>
+        </Box>
+      </div>
       <form className={classes.root}>
         <TextField
           id="name"
           label="Titulo"
-          value={"" || testimonials.name}
+          value={testimonials.name || ""}
           onChange={titleHandler}
         />
         <CKEditor
@@ -133,14 +138,16 @@ function TestimonialComponentForm() {
         </div>
 
         <div>
-          <Button
-            className={classes.button}
-            variant="contained"
-            component="label"
-            onClick={handleSubmit}
-            disabled={emptyFields}>
-            {!testimonials.id ? "Crear" : "Modificar"}
-          </Button>
+          <Box m={2} p={2}>
+            <Button
+              className={classes.button}
+              variant="contained"
+              component="label"
+              onClick={handleSubmit}
+              disabled={emptyFields}>
+              {!id ? "Crear" : "Modificar"}
+            </Button>
+          </Box>
         </div>
       </form>
     </Container>

@@ -20,10 +20,6 @@ const myItems = [
     path: "/activities/1",
   },
   {
-    name: "Perfil",
-    path: "/profile",
-  },
-  {
     name: "Novedades",
     path: "/novedades",
   },

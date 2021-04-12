@@ -127,3 +127,7 @@ export const ACTIVITIES_UPDATE_TITLE =
 
 export const ACTIVITIES_UPDATE_SUCCESS =
   "Se actualizo correctamente, sera redirigido a la lista de actividades.";
+
+export const MEMBER_CREATE_TITLE = "Se creo el Miembro correctamente";
+export const MEMBER_CREATE_SUCCESS =
+  "Se creo correctamente, sera ridirigido a la lista de miembros";

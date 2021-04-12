@@ -30,11 +30,20 @@ function BackOfficeActivitiesScreen() {
   useEffect(() => {
     const fetchApi = async () => {
       const dataActivities = await activitiesServices();
-      setActivities(dataActivities?.data);
-      setNoOfPages(Math.ceil(dataActivities?.data.length / itemsPerPage));
+      setActivities(dataActivities.data);
+      setNoOfPages(Math.ceil(dataActivities.data.length / itemsPerPage));
     };
     fetchApi();
   }, []);
+
+  const handleDelete = async (id) => {
+    await deleteActivity(id).then(() => {
+      DeleteActitivySucces();
+    });
+    let dataActivities = await activitiesServices();
+    setActivities(dataActivities?.data);
+    setNoOfPages(Math.ceil(dataActivities?.data.length / itemsPerPage));
+  };
 
   const handleEdit = async (id) => {
     history.push("/backoffice/edit-activities/" + id);
@@ -42,14 +51,6 @@ function BackOfficeActivitiesScreen() {
 
   const handlePagination = (event, value) => {
     setPage(value);
-  };
-  const handleDelete = async (id) => {
-    await deleteActivity(id).then(() => {
-      DeleteActitivySucces();
-    });
-    let activity = await getAllActivities();
-    setActivities(activity);
-    setNoOfPages(Math.ceil(activity?.length / itemsPerPage));
   };
 
   return (

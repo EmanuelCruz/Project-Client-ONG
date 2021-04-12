@@ -33,33 +33,12 @@ import TestimonialsList from "../testimonials/TestimonialsList";
 import FormCategories from "../../component/FormCategories/FormCategories";
 import BackOfficeCategoriesScreen from "../categories/BackOfficeCategoriesScreen";
 import TestimonialComponentForm from "../../component/testimonials/testimonialsComponentForm";
-
-const newsMock = {
-  id: 1,
-  title: "Soy un titulo Mock",
-  image: new Blob(),
-  content: "<h1>Soy un mock </h1>",
-  category: "Policiales",
-};
-
-const activitiesMock = {
-  id: 1,
-  name: "Soy Name Mock",
-  content: "<h1> Soy un Content Mock </h1>",
-};
-
-const categoryMock = {
-  id: 1,
-  name: "name",
-  description: "description",
-};
+import BackOfficeMembersScreen from "../../screen/members/BackOfficeMembersScreen";
+import CreateMemberComponent from "../../component/BackOfficeMembers/components/CreateMemberComponent";
 
 const myRoleId = 1;
 
 export default function BackOffice() {
-  //const [activeDashboard, setActiveDashboard] = useState(<ProfileScreen />);
-  const [toModifyNews, setToModifyNews] = useState(newsMock);
-  const [toModifyActivities, setToModifyActivities] = useState(activitiesMock);
   const [roleId, setRoleId] = useState(myRoleId);
   const classes = useStyles();
   const itemsForAdmin = (
@@ -229,6 +208,9 @@ export default function BackOffice() {
                   </Route>
                   <Route exact path="/backoffice/create-activities">
                     <ActivitiesComponent toModifyActivities={{}} />
+                  </Route>
+                  <Route exact path="/backoffice/edit-activities/:id">
+                    <ActivitiesComponent />
                   </Route>
                   <Route exact path="/backoffice/testimonios">
                     <TestimonialsList />
