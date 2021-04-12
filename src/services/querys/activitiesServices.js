@@ -1,16 +1,21 @@
 import axios from "axios";
-import { SERVER_URL_ACTIVITIES, ERROR_PARAGRAPH,MAIN_URL, SERVER_URL } from "../../const/const";
+import {
+  SERVER_URL_ACTIVITIES,
+  ERROR_PARAGRAPH,
+  MAIN_URL,
+  SERVER_URL,
+} from "../../const/const";
 
 const createActivities = async (data) => {
   try {
     const response = await axios.post(
-        `${MAIN_URL}${SERVER_URL_ACTIVITIES}`,
-        data,
-        {
-            headers: {
-                "Content-Type": "multipart/form-data",
-            },
-        }
+      `${MAIN_URL}${SERVER_URL_ACTIVITIES}`,
+      data,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
     );
     return response.data;
   } catch (err) {
@@ -33,25 +38,29 @@ const updateActivities = async (data, id) => {
 
 const getActivityById = async (id) => {
   try {
-    const response = await axios.get(`${MAIN_URL}${SERVER_URL_ACTIVITIES}/${id}`);
+    const response = await axios.get(
+      `${MAIN_URL}${SERVER_URL_ACTIVITIES}/${id}`
+    );
     return response.data;
   } catch (err) {
     return ERROR_PARAGRAPH;
   }
 };
 
-const getAllActivities = async ()=>{
+const getAllActivities = async () => {
   try {
-    const response = await axios.get(`${MAIN_URL}${SERVER_URL_ACTIVITIES}`)
+    const response = await axios.get(`${MAIN_URL}${SERVER_URL_ACTIVITIES}`);
     return response.data;
   } catch (err) {
     return ERROR_PARAGRAPH;
   }
-}
+};
 
 const deleteActivity = async (id) => {
   try {
-    const response = await axios.delete(`${MAIN_URL}${SERVER_URL_ACTIVITIES}/${id}`);
+    const response = await axios.delete(
+      `${MAIN_URL}${SERVER_URL_ACTIVITIES}/${id}`
+    );
     return response.data;
   } catch (err) {
     return err;
@@ -70,10 +79,10 @@ function activitiesServices() {
 }
 
 export {
-    createActivities,
-    updateActivities,
-    getActivityById,
-    deleteActivity,
-    getAllActivities,
-    activitiesServices,
+  createActivities,
+  updateActivities,
+  getActivityById,
+  deleteActivity,
+  getAllActivities,
+  activitiesServices,
 };

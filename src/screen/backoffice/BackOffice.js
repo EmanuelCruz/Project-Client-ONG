@@ -34,32 +34,9 @@ import FormCategories from "../../component/FormCategories/FormCategories";
 import BackOfficeCategoriesScreen from "../categories/BackOfficeCategoriesScreen";
 import TestimonialComponentForm from "../../component/testimonials/testimonialsComponentForm";
 
-const newsMock = {
-  id: 1,
-  title: "Soy un titulo Mock",
-  image: new Blob(),
-  content: "<h1>Soy un mock </h1>",
-  category: "Policiales",
-};
-
-const activitiesMock = {
-  id: 1,
-  name: "Soy Name Mock",
-  content: "<h1> Soy un Content Mock </h1>",
-};
-
-const categoryMock = {
-  id: 1,
-  name: "name",
-  description: "description",
-};
-
 const myRoleId = 1;
 
 export default function BackOffice() {
-  //const [activeDashboard, setActiveDashboard] = useState(<ProfileScreen />);
-  const [toModifyNews, setToModifyNews] = useState(newsMock);
-  const [toModifyActivities, setToModifyActivities] = useState(activitiesMock);
   const [roleId, setRoleId] = useState(myRoleId);
   const classes = useStyles();
   const itemsForAdmin = (
@@ -72,36 +49,6 @@ export default function BackOffice() {
           to={PATH_BACKOFFICE_PROFILE}
         >
           Perfil
-        </NavLink>
-      </MenuItem>
-      <MenuItem className={classes.menuItem}>
-        <NavLink
-          className={classes.navLink}
-          exact
-          key="Novedades"
-          to={PATH_BACKOFFICE_NEWS}
-        >
-          Novedades
-        </NavLink>
-      </MenuItem>
-      <MenuItem className={classes.menuItem}>
-        <NavLink
-          className={classes.navLink}
-          exact
-          key="Crear Post"
-          to="/backoffice/create-news"
-        >
-          Crear Post
-        </NavLink>
-      </MenuItem>
-      <MenuItem className={classes.menuItem}>
-        <NavLink
-          className={classes.navLink}
-          exact
-          key="Actividades"
-          to={PATH_BACKOFFICE_ACTIVITIES}
-        >
-          Actividades
         </NavLink>
       </MenuItem>
       <MenuItem className={classes.menuItem}>
@@ -128,10 +75,30 @@ export default function BackOffice() {
         <NavLink
           className={classes.navLink}
           exact
-          key="Editar Organizacion"
-          to={PATH_BACKOFFICE_EDITH_ORGANIZATION}
+          key="Novedades"
+          to={PATH_BACKOFFICE_NEWS}
         >
-          Editar Organizacion
+          Novedades
+        </NavLink>
+      </MenuItem>
+      <MenuItem className={classes.menuItem}>
+        <NavLink
+          className={classes.navLink}
+          exact
+          key="Crear Novedad"
+          to="/backoffice/create-news"
+        >
+          Crear Novedad
+        </NavLink>
+      </MenuItem>
+      <MenuItem className={classes.menuItem}>
+        <NavLink
+          className={classes.navLink}
+          exact
+          key="Actividades"
+          to={PATH_BACKOFFICE_ACTIVITIES}
+        >
+          Actividades
         </NavLink>
       </MenuItem>
       <MenuItem className={classes.menuItem}>
@@ -148,16 +115,6 @@ export default function BackOffice() {
         <NavLink
           className={classes.navLink}
           exact
-          key="Editar Actividad"
-          to="/backoffice/edit-activities"
-        >
-          Editar Actividad
-        </NavLink>
-      </MenuItem>
-      <MenuItem className={classes.menuItem}>
-        <NavLink
-          className={classes.navLink}
-          exact
           key="Testimoniales"
           to="/backoffice/testimonios"
         >
@@ -168,10 +125,10 @@ export default function BackOffice() {
         <NavLink
           className={classes.navLink}
           exact
-          key="Crear Categoria"
-          to="/backoffice/create-category"
+          key="Crear Testimonios"
+          to="/backoffice/create-testimonial"
         >
-          Crear Categoría
+          Crear Testimonio
         </NavLink>
       </MenuItem>
       <MenuItem className={classes.menuItem}>
@@ -189,10 +146,10 @@ export default function BackOffice() {
         <NavLink
           className={classes.navLink}
           exact
-          key="Crear Testimonios"
-          to="/backoffice/create-testimonial"
+          key="Crear Categoria"
+          to="/backoffice/create-category"
         >
-          Crear Testimonio
+          Crear Categoría
         </NavLink>
       </MenuItem>
     </Container>
@@ -253,10 +210,8 @@ export default function BackOffice() {
                   <Route exact path="/backoffice/create-activities">
                     <ActivitiesComponent toModifyActivities={{}} />
                   </Route>
-                  <Route exact path="/backoffice/edit-activities">
-                    <ActivitiesComponent
-                      toModifyActivities={toModifyActivities}
-                    />
+                  <Route exact path="/backoffice/edit-activities/:id">
+                    <ActivitiesComponent />
                   </Route>
                   <Route exact path="/backoffice/testimonios">
                     <TestimonialsList />
