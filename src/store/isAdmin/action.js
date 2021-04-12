@@ -1,6 +1,6 @@
 const updateIsAdmin = (isAdmin) => {
   return {
-    type: 'AUTH',
+    type: 'IS_ADMIN',
     payload: isAdmin
   }
 };
