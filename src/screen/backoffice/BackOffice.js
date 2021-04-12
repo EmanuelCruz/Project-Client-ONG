@@ -33,6 +33,7 @@ import TestimonialsList from "../testimonials/TestimonialsList";
 import FormCategories from "../../component/FormCategories/FormCategories";
 import BackOfficeCategoriesScreen from "../categories/BackOfficeCategoriesScreen";
 import TestimonialComponentForm from "../../component/testimonials/testimonialsComponentForm";
+import BackOfficeMembersScreen from "../../screen/members/BackOfficeMembersScreen";
 
 const newsMock = {
   id: 1,
@@ -195,6 +196,16 @@ export default function BackOffice() {
           Crear Testimonio
         </NavLink>
       </MenuItem>
+      <MenuItem className={classes.menuItem}>
+        <NavLink
+          className={classes.navLink}
+          exact
+          key="Miembros"
+          to="/backoffice/members"
+        >
+          Miembros
+        </NavLink>
+      </MenuItem>
     </Container>
   );
 
@@ -275,6 +286,9 @@ export default function BackOffice() {
                   </Route>
                   <Route exact path="/backoffice/edit-testimonial/:id">
                     <TestimonialComponentForm />
+                  </Route>
+                  <Route exact path="/backoffice/members">
+                    <BackOfficeMembersScreen />
                   </Route>
                 </Switch>
               </Paper>
