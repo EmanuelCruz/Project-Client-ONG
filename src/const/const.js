@@ -121,3 +121,6 @@ export const ACTIVITY_DELETE_SUCCESS = "Eliminación exitosa"
 export const DELETE_CONFIRM_TITLE_USER = "¿Quiere eliminar este usuario?"
 
 export const IMAGE_ACTIVITY_DEFAULT = "https://drive.google.com/drive/u/1/folders/1SI_0BN2wJuFBsaUEgMfkE-2CFXG_guvg"
+
+export const MEMBER_CREATE_TITLE = "Se creo el Miembro correctamente"
+export const MEMBER_CREATE_SUCCESS ="Se creo correctamente, sera ridirigido a la lista de miembros";

@@ -33,6 +33,8 @@ import TestimonialsList from "../testimonials/TestimonialsList";
 import FormCategories from "../../component/FormCategories/FormCategories";
 import BackOfficeCategoriesScreen from "../categories/BackOfficeCategoriesScreen";
 import TestimonialComponentForm from "../../component/testimonials/testimonialsComponentForm";
+import BackOfficeMembersScreen from "../../screen/members/BackOfficeMembersScreen";
+import CreateMemberComponent from '../../component/BackOfficeMembers/components/CreateMemberComponent'
 
 const myRoleId = 1;
 
@@ -152,6 +154,26 @@ export default function BackOffice() {
           Crear Categoría
         </NavLink>
       </MenuItem>
+      <MenuItem className={classes.menuItem}>
+        <NavLink
+          className={classes.navLink}
+          exact
+          key="Miembros"
+          to="/backoffice/members"
+        >
+          Miembros
+        </NavLink>
+      </MenuItem>
+      <MenuItem className={classes.menuItem}>
+        <NavLink
+          className={classes.navLink}
+          exact
+          key="Miembros"
+          to="/backoffice/members/create"
+        >
+          Crear Miembro
+        </NavLink>
+      </MenuItem>
     </Container>
   );
 
@@ -230,6 +252,12 @@ export default function BackOffice() {
                   </Route>
                   <Route exact path="/backoffice/edit-testimonial/:id">
                     <TestimonialComponentForm />
+                  </Route>
+                  <Route exact path="/backoffice/members">
+                    <BackOfficeMembersScreen />
+                  </Route>
+                  <Route exact path="/backoffice/members/create">
+                    <CreateMemberComponent />
                   </Route>
                 </Switch>
               </Paper>
