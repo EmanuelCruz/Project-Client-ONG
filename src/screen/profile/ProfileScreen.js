@@ -2,6 +2,7 @@ import React from 'react';
 import './ProfileScreen.css';
 import ButtonComponent from '../../component/profile/ButtonComponent';
 import { connect } from 'react-redux'
+import { Box } from '@material-ui/core';
 
 function ProfileScreen({ user }) {
     const user_data = user.user
@@ -17,7 +18,7 @@ function ProfileScreen({ user }) {
     };
 
     return (
-        <div style={{ marginTop: '20px' }}>
+        <Box m={2} p={2}>
             <h3>{`Perfil de ${user_data.firstName}`}</h3>
             <ul className="container list">
                 <li>{user_data.firstName} {user_data.lastName}</li>
@@ -29,7 +30,7 @@ function ProfileScreen({ user }) {
                 <ButtonComponent buttonText={"Borrar cuenta"}
                     buttonType={"danger"} onClickAction={onDeleteAccountClick} />
             </div>
-        </div>
+        </Box>
     )
 }
 
