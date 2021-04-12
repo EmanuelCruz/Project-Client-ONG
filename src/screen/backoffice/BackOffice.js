@@ -186,14 +186,8 @@ export default function BackOffice() {
             container
             direction="row"
             justify="center"
-<<<<<<< HEAD
             alignItems="center">
             <Grid item xs={12} sm={3}>
-=======
-            alignItems="center"
-          >
-            <Grid item xs={12} sm={5} md={3}>
->>>>>>> b7feabe925f1351bb09a36ee0855cead8b5e8b16
               {myRoleId === 1 ? (
                 <Typography style={{ margin: "10px" }}>
                   Menu Administrador
@@ -253,6 +247,9 @@ export default function BackOffice() {
                   </Route>
                   <Route exact path="/backoffice/edit-testimonial/:id">
                     <TestimonialComponentForm />
+                  </Route>
+                  <Route exact path="/backoffice/edit-activities/:id">
+                    <ActivitiesComponent />
                   </Route>
                 </Switch>
               </Paper>

@@ -126,8 +126,7 @@ function TestimonialComponentForm() {
           <Button
             className={classes.button}
             variant="contained"
-            component="label"
-          >
+            component="label">
             Agregar Imagen
             <input type="file" onChange={handleImg} id="image" hidden />
           </Button>
@@ -139,8 +138,7 @@ function TestimonialComponentForm() {
             variant="contained"
             component="label"
             onClick={handleSubmit}
-            disabled={emptyFields}
-          >
+            disabled={emptyFields}>
             {!testimonials.id ? "Crear" : "Modificar"}
           </Button>
         </div>
