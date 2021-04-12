@@ -15,10 +15,13 @@ import { getMembersList } from "../../services/querys/membersServices";
 import MembersTable from "./components/MembersTable";
 import AddIcon from "@material-ui/icons/Add";
 import useStyles from "./styled/MembersStyled";
+import Modal from "@material-ui/core/Modal";
+import ModalComponent from "./components/ModalComponent";
 
 const BackOfficeMembersComponent = () => {
-  const [members, setMembers] = useState([]);
   const classes = useStyles();
+  const [members, setMembers] = useState([]);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -27,13 +30,39 @@ const BackOfficeMembersComponent = () => {
     };
     fetchApi();
   }, []);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <>
       <Toolbar>
         <Typography variant="h4" className={classes.title} align="left">
           Miembros
         </Typography>
-        <Button endIcon={<AddIcon />} className="btn btn-primary">Agregar nuevo miembro</Button>
+        <Button
+          endIcon={<AddIcon />}
+          className="btn btn-primary"
+          onClick={handleOpen}
+        >
+          Agregar nuevo miembro
+        </Button>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+          <ModalComponent
+            title="Agregar nuevo miembro"
+            name="name"
+            image="image"
+          />
+        </Modal>
       </Toolbar>
       <TableContainer component={Paper} className={classes.tableContainer}>
         <Table className={classes.table} stickyHeader>
