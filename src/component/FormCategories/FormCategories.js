@@ -78,13 +78,13 @@ export default function FormCategories() {
         <TextField
           id="name"
           label="Nombre"
-          value={"" || category.name}
+          value={category.name || ""}
           onChange={changeHandler}
         />
         <TextField
           id="description"
           label="Descripción"
-          value={"" || category.description}
+          value={category.description || ""}
           onChange={changeHandler}
         />
         <Button
