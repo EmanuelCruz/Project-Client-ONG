@@ -26,7 +26,9 @@ const BackOfficeMembersComponent = () => {
   useEffect(() => {
     const fetchApi = async () => {
       const response = await getMembersList();
-      setMembers(response.data);
+      const { data } = response;
+      const reverseData = data.sort((a, b) => parseInt(b.id) - parseInt(a.id));
+      setMembers(reverseData);
     };
     fetchApi();
   }, []);
@@ -81,7 +83,12 @@ const BackOfficeMembersComponent = () => {
           <TableBody>
             {!!members?.length &&
               members.map((member) => (
-                <MembersTable key={member.id} members={member} />
+                <MembersTable
+                  key={member.id}
+                  members={member}
+                  newMembers={members}
+                  setMembers={setMembers}
+                />
               ))}
           </TableBody>
         </Table>

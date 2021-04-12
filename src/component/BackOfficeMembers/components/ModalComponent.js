@@ -39,7 +39,9 @@ const ModalComponent = ({ title, name, setMembers }) => {
       setNameInput("");
       setImageInput("");
       const response = await getMembersList();
-      setMembers(response.data);
+      const { data } = response;
+      const reverseData = data.sort((a, b) => parseInt(b.id) - parseInt(a.id));
+      setMembers(reverseData);
     }, 2000);
   };
   return (
