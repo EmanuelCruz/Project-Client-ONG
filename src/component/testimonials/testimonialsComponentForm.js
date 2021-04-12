@@ -106,7 +106,7 @@ function TestimonialComponentForm() {
         <TextField
           id="name"
           label="Titulo"
-          value={"" || testimonials.name}
+          value={testimonials.name || ""}
           onChange={titleHandler}
         />
         <CKEditor
