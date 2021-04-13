@@ -35,6 +35,7 @@ import BackOfficeCategoriesScreen from "../categories/BackOfficeCategoriesScreen
 import TestimonialComponentForm from "../../component/testimonials/testimonialsComponentForm";
 import BackOfficeMembersScreen from "../../screen/members/BackOfficeMembersScreen";
 import CreateMemberComponent from "../../component/BackOfficeMembers/components/CreateMemberComponent";
+import FormEditUser from "../../component/FormEditUser/FormEditUser";
 
 const myRoleId = 1;
 
@@ -182,7 +183,7 @@ export default function BackOffice() {
             <Grid item xs={12} sm={7} md={8}>
               <Paper>
                 <Switch>
-                  <Route exact path="/profile">
+                  <Route exact path="/backoffice/profile">
                     <ProfileScreen />
                   </Route>
                   <Route exact path="/backoffice/edit-organization">
@@ -232,6 +233,9 @@ export default function BackOffice() {
                   </Route>
                   <Route exact path="/backoffice/edit-activities/:id">
                     <ActivitiesComponent />
+                  </Route>
+                  <Route exact path="/backoffice/edit-user">
+                    <FormEditUser />
                   </Route>
                 </Switch>
               </Paper>

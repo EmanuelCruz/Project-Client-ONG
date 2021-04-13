@@ -91,7 +91,7 @@ export const COMPANY_FACEBOOK_URL =
 // Categories API route
 export const SERVER_URL_CATEGORIES = "categories";
 // Path Profile
-export const PATH_BACKOFFICE_PROFILE = "/profile";
+export const PATH_BACKOFFICE_PROFILE = "/backoffice/profile";
 
 // Path News
 export const PATH_BACKOFFICE_NEWS = "/backoffice/news";

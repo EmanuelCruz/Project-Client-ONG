@@ -11,13 +11,14 @@ import updateIsAdmin from "../../store/isAdmin/action";
 import updateUser from '../../store/user/action';
 import { connect } from 'react-redux'
 import { Box } from '@material-ui/core';
+import { useLocation } from 'react-router-dom'
 
 function ProfileScreen(props) {
     const user_data = props.user.user
     let history = useHistory();
-
+    let location = useLocation();
     const onEditProfileClick = () => {
-        history.push("/edit-user");
+        location.pathname==="/profile" ? history.push("/edit-user") : history.push("/backoffice/edit-user")
     };
     const onDeleteAccountClick = () => {
         ConfirmAlertDeleteButtonComponent(DELETE_CONFIRM_TITLE_PROFILE).then((result) => {
@@ -32,7 +33,7 @@ function ProfileScreen(props) {
     };
 
     return (
-        <Box m={2} p={2} className="box">
+        <Box m={2} p={2} className={ location.pathname==="/profile" ? "box" : "box-backoffice"}>
             <h3>{`Perfil de ${user_data.firstName}`}</h3>
             <ul className="container list">
                 <li>{user_data.firstName} {user_data.lastName}</li>

@@ -48,6 +48,8 @@ const backOfficeRoutes = [
   { path: "/backoffice/testimonios", Component: TestimonialsList },
   { path: "/backoffice/categories", Component: BackOfficeCategoriesScreen },
   { path: "/backoffice/members", Component: BackOfficeMembersScreen },
+  { path: "/backoffice/profile", Component: ProfileScreen },
+  { path: "/backoffice/edit-user", Component: FormEditUser }
 ];
 
 const adminRoutes = [{ path: "/backoffice", Component: BackOffice }];
