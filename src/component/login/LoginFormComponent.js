@@ -38,7 +38,7 @@ const LoginFormComponent = (props) => {
 
   return (
     <React.Fragment>
-      <div className="container" style={{ marginTop: '20px' }}>
+      <div className="container" style={{ marginTop: '20px', display: "flex", justifyContent:"center", alignItems:"center"}}>
         <div className="login-wrapper">
           <h2>Iniciar Sesión</h2>
           <Formik
