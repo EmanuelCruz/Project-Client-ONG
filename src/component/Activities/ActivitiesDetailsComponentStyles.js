@@ -8,32 +8,30 @@ const useStyles = makeStyles((theme) => ({
         minHeight: "70vh",
     },
     gridTitle: {
-        height: "300px",
-        paddingBottom: "5%",
-        paddingTop: "5%",
+        height: "200px",
     },
     gridDescription: {
         minHeight: "70%",
-        padding: "5% 0% 5% 0%",
+        padding: "2% 0% 2% 0%",
         "@media (min-width: 1280px)": {
-            padding: "5% 5% 5% 0%",
+            padding: "2% 2% 2% 0%",
         },
     },
     gridDescriptionFull: {
         minHeight: "40vh",
-        padding: "5% 0% 0% 0%",
+        padding: "2% 0% 0% 0%",
         "@media (min-width: 1280px)": {
-            padding: "5% 0% 5% 0%",
+            padding: "2% 0% 2% 0%",
         },
     },
     description: {
         maxWidth: "50%",
     },
     gridImage: {
-        padding: "5% 0% 0% 0%",
+        padding: "2% 0% 0% 0%",
         minHeight: "70%",
         "@media (min-width: 1280px)": {
-            padding: "5% 0% 5% 5%",
+            padding: "2% 0% 2% 2%",
         },
     },
     img: {
