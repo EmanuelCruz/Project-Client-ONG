@@ -10,6 +10,7 @@ import {
     Paper,
     Select,
     MenuItem,
+    Box,
 } from "@material-ui/core";
 import * as Yup from "yup";
 import useStyles from "./FormEditUserStyles";
@@ -116,11 +117,11 @@ const FormEditUser = (props) => {
     }
 
     return (
-        <div>
+        <Box m={2} p={2} className={classes.container}>
             <Container maxWidth="sm">
                 <Paper style={{ padding: 16 }} elevation={3}>
                     <Typography variant="h6" align="center">
-                            Formulario de Edición de Usuario
+                            Editar Perfil
                     </Typography>
                     <Formik
                         initialValues={{
@@ -168,17 +169,16 @@ const FormEditUser = (props) => {
                                     className={classes.button}
                                     type="submit"
                                     variant="contained"
-                                    color="primary"
                                     fullWidth
                                 >
-                                    Submit
+                                    Guardar
                                 </Button>
                             </Form>
                         )}
                     </Formik>
                 </Paper>
             </Container>
-        </div>
+        </Box>
     );
 };
 

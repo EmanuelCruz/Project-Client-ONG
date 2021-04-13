@@ -32,7 +32,7 @@ function ProfileScreen(props) {
     };
 
     return (
-        <Box m={2} p={2}>
+        <Box m={2} p={2} className="box">
             <h3>{`Perfil de ${user_data.firstName}`}</h3>
             <ul className="container list">
                 <li>{user_data.firstName} {user_data.lastName}</li>
