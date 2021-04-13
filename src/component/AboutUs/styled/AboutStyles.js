@@ -3,8 +3,8 @@ import { makeStyles } from "@material-ui/core/";
 const useStyles = makeStyles((theme) => ({
   title: {
     fontSize: "3em",
-    marginTop: ".7rem",
-    marginBottom: ".7rem",
+    marginTop: "1rem",
+    marginBottom: "1rem",
   },
   root: {
     width: 280,
