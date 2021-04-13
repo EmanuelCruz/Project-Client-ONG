@@ -1,12 +1,12 @@
 import React from "react";
-import { Container } from "@material-ui/core";
+import { Box, Container } from "@material-ui/core";
 import BackOficceContactsComponent from "../../component/BackOfficeContacts/BackOficceContactsComponent";
 
 const BackOfficeContactsScreen = () => {
   return (
-    <Container>
+    <Box m={2} p={2}>
       <BackOficceContactsComponent />
-    </Container>
+    </Box>
   );
 };
 
