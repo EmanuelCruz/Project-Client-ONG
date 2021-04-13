@@ -23,6 +23,7 @@ import BackOfficeCategoriesScreen from "./screen/categories/BackOfficeCategories
 import ProtectedAdminRoute from "./component/ProtectedRoutes/ProtectedAdminRoute";
 import ProtectedUserRoute from "./component/ProtectedRoutes/ProtectedUserRoute";
 import LogoutScreen from "./screen/logout/LogoutScreen";
+import BackOfficeMembersScreen from "./screen/members/BackOfficeMembersScreen";
 import "./App.css";
 import { FormEditUser } from "./component/FormEditUser/FormEditUser";
 
@@ -46,6 +47,7 @@ const backOfficeRoutes = [
   { path: "/backoffice/contacts", Component: BackOfficeContactsScreen },
   { path: "/backoffice/testimonios", Component: TestimonialsList },
   { path: "/backoffice/categories", Component: BackOfficeCategoriesScreen },
+  { path: "/backoffice/members", Component: BackOfficeMembersScreen },
 ];
 
 const adminRoutes = [{ path: "/backoffice", Component: BackOffice },{ path: "/edit-user", Component: FormEditUser },];

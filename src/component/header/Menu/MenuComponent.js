@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
-import useStyles from './MenuComponentStyles'
-import DropDawnActivitiesComponente from './DropDawnActivities/DropDawnActivitiesComponent'
+import useStyles from "./MenuComponentStyles";
+import DropDawnActivitiesComponente from "./DropDawnActivities/DropDawnActivitiesComponent";
 import HeaderItems from "./HeaderItems";
 import UsersItems from "./UsersItems";
 import AdminItems from "./AdminItems";
@@ -20,12 +20,8 @@ const myItems = [
     path: "/activities/1",
   },
   {
-    name: "Profile",
-    path: "/profile",
-  },
-  {
     name: "Novedades",
-    path: "/novedades"
+    path: "/novedades",
   },
   {
     name: "Contacto",
@@ -40,15 +36,18 @@ export default function MenuComponent({ drawerOpen }) {
   const renderItems = () => {
     return items.map((item, index) =>
       item.name === "Actividades" ? (
-        <DropDawnActivitiesComponente key={item.name} item={item} drawerOpen={drawerOpen} />
+        <DropDawnActivitiesComponente
+          key={item.name}
+          item={item}
+          drawerOpen={drawerOpen}
+        />
       ) : (
         <NavLink
           activeClassName={classes.menuButtonActive}
           className={classes.menuButton}
           exact
           key={item.name}
-          to={item.path}
-        >
+          to={item.path}>
           {item.name}
         </NavLink>
       )

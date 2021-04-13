@@ -32,6 +32,7 @@ const LoginFormComponent = (props) => {
       history.push("/");
       props.updateIsAuth(true)
       props.updateUser(res.data)
+      props.updateIsAdmin(res.data.roleId === 1 ? true : false)
     }).catch(err => ErrorAlertComponent());
   };
 
@@ -87,6 +88,12 @@ const LoginFormComponent = (props) => {
       </div>
     </React.Fragment>
   );
+}
+
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  }
 }
 
 export default connect(null, { updateIsAuth, updateIsAdmin, updateUser })(LoginFormComponent);

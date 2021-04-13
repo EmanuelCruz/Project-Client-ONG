@@ -105,7 +105,7 @@ function NewsComponent() {
 
   return (
     <Container>
-      <h3>Crear post:</h3>
+      <h3>{!id ? "Crear" : "Modificar"} Novedad:</h3>
       <Formik initialValues={initialValues} validationSchema={validationSchema}
         onSubmit={onSubmit} innerRef={formikRef}>
         {({ submitForm, isSubmitting, touched, errors }) => (

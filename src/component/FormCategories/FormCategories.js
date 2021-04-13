@@ -5,6 +5,7 @@ import {
   getACategory,
 } from "../../services/querys/categoriesServices";
 import { Button, TextField, Container } from "@material-ui/core/";
+import Box from '@material-ui/core/Box';
 import useStyles from "./FormCategoriesStyles";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
@@ -78,24 +79,26 @@ export default function FormCategories() {
         <TextField
           id="name"
           label="Nombre"
-          value={"" || category.name}
+          value={category.name || ""}
           onChange={changeHandler}
         />
         <TextField
           id="description"
           label="Descripción"
-          value={"" || category.description}
+          value={category.description || ""}
           onChange={changeHandler}
         />
-        <Button
-          className={classes.button}
-          variant="contained"
-          component="label"
-          onClick={handleSubmit}
-          disabled={emptyFields}
-        >
-          {!category.id ? "Crear" : "Modificar"}
-        </Button>
+        <Box m={2} p={2}>
+          <Button
+            className={classes.button}
+            variant="contained"
+            component="label"
+            onClick={handleSubmit}
+            disabled={emptyFields}
+          >
+            {!category.id ? "Crear" : "Modificar"}
+          </Button>
+        </Box>
       </form>
     </Container>
   );

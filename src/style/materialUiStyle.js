@@ -31,6 +31,10 @@ const useStyles = makeStyles((theme) => ({
   nameCategory: {
     textAlign: "center",
   },
+  containerMembers: {
+    paddingTop: "1rem",
+    paddingBottom:"1rem"
+  }
 }));
 
 export default useStyles;

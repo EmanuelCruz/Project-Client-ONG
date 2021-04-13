@@ -8,6 +8,7 @@ import {
   TableRow,
   Toolbar,
   Typography,
+  Paper
 } from "@material-ui/core";
 import useStyles from "./styled/MaterialUiStyles";
 import ContactsTable from "./components/ContactsTable";
@@ -32,8 +33,8 @@ const BackOficceContactsComponent = () => {
           Contactos
         </Typography>
       </Toolbar>
-      <TableContainer>
-        <Table className={classes.table}>
+      <TableContainer component={Paper} className={classes.tableContainer}>
+        <Table className={classes.table} stickyHeader>
           <TableHead>
             <TableRow>
               <TableCell className={classes.tableCell}>Nombre</TableCell>

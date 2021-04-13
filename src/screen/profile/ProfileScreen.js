@@ -6,10 +6,11 @@ import { CONFIRM, CONFIRM_IS_CONFIRMED, CONFIRM_SUCCESS, DELETE_CONFIRM_TITLE_PR
 import { ConfirmAlertDeleteButtonComponent } from '../../component/Alert/AlertComponent';
 import { useHistory } from 'react-router';
 import { deleteUser } from '../../services/querys/userServices';
-import { connect } from 'react-redux';
 import updateIsAuth from "../../store/isAuth/action";
 import updateIsAdmin from "../../store/isAdmin/action";
 import updateUser from '../../store/user/action';
+import { connect } from 'react-redux'
+import { Box } from '@material-ui/core';
 
 function ProfileScreen(props) {
     const user_data = props.user.user
@@ -31,7 +32,7 @@ function ProfileScreen(props) {
     };
 
     return (
-        <div style={{ marginTop: '20px' }}>
+        <Box m={2} p={2}>
             <h3>{`Perfil de ${user_data.firstName}`}</h3>
             <ul className="container list">
                 <li>{user_data.firstName} {user_data.lastName}</li>
@@ -43,7 +44,7 @@ function ProfileScreen(props) {
                 <ButtonComponent buttonText={"Borrar cuenta"}
                     buttonType={"danger"} onClickAction={onDeleteAccountClick} />
             </div>
-        </div>
+        </Box>
     )
 }
 

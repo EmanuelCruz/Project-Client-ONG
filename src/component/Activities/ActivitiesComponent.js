@@ -5,22 +5,41 @@ import { Button, TextField, Container } from "@material-ui/core/";
 import {
   updateActivities,
   createActivities,
+  getActivityById,
 } from "../../services/querys/activitiesServices";
 import useStyles from "./ActivitiesMaterialStyles";
-import { CreateActivitiesSuccess } from "../Alert/AlertComponent";
-import { useHistory } from "react-router";
+import {
+  CreateActivitiesSuccess,
+  UpdateActivitiesSuccess,
+} from "../Alert/AlertComponent";
+import { useHistory, useParams } from "react-router";
 
-const ActivitiesComponent = ({ toModifyActivities }) => {
+const ActivitiesComponent = () => {
   const classes = useStyles();
-  const [activities, setActivities] = useState(toModifyActivities);
+  const [activities, setActivities] = useState([]);
   const [img, setImg] = useState();
   const [formData, setFormData] = useState(new FormData());
   const [emptyFields, setEmptyFields] = useState(true);
+  let { id } = useParams();
   let history = useHistory();
 
   useEffect(() => {
     handleEmptyFields();
   }, [activities]);
+
+  useEffect(() => {
+    if (id) {
+      const fetchActivities = async () => {
+        const activities = await getActivityById(id);
+        setActivities(activities);
+        setImg(activities.image);
+      };
+      fetchActivities();
+      if (!activities.content) {
+        fetchActivities(id);
+      }
+    }
+  }, []);
 
   const changeHandler = (event) => {
     activities[event.target.id] = event.target.value;
@@ -63,6 +82,8 @@ const ActivitiesComponent = ({ toModifyActivities }) => {
       }
       setFormData(formData);
       updateActivities(formData, activities.id);
+      UpdateActivitiesSuccess();
+      history.push("/backoffice/activities");
     }
   };
 
@@ -76,7 +97,7 @@ const ActivitiesComponent = ({ toModifyActivities }) => {
 
   return (
     <Container>
-      <h1>Crear Actividad</h1>
+      {!activities.id ? <h1>Crear actividad</h1> : <h1>Modificar actividad</h1>}
       <form className={classes.root}>
         <TextField
           id="name"
@@ -106,8 +127,7 @@ const ActivitiesComponent = ({ toModifyActivities }) => {
           <Button
             className={classes.button}
             variant="contained"
-            component="label"
-          >
+            component="label">
             Agregar Imagen
             <input type="file" onChange={handleImg} id="image" hidden />
           </Button>
@@ -117,8 +137,7 @@ const ActivitiesComponent = ({ toModifyActivities }) => {
           variant="contained"
           component="label"
           onClick={handleSubmit}
-          disabled={emptyFields}
-        >
+          disabled={emptyFields}>
           {!activities.id ? "Crear" : "Modificar"}
         </Button>
       </form>
