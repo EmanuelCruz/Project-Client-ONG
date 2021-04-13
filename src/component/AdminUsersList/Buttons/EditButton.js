@@ -1,12 +1,13 @@
 import React from 'react'
 import { useHistory } from 'react-router';
 
-const EditButton = ({ userkey, id, handleEdit }) => {
+const EditButton = ({ userkey, dataUser, handleEdit }) => {
   let history = useHistory();
   const handleClick = () => {
+    console.log(dataUser)
     const location = {
       pathname: '/backoffice/edit-user',
-      state: { id }
+      state: dataUser
     }
     history.push(location)
   }
