@@ -9,7 +9,7 @@ function WebLinks({ webLinks }) {
           <a href="/">Inicio</a>
         </li>
         <li key={`wl-about`}>
-          <a href="/nosotros">Nostros</a>
+          <a href="/nosotros">Nosotros</a>
         </li>
         <li key={`wl-contact`}>
           <a href="/contacto">Contacto</a>

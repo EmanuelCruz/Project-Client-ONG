@@ -20,8 +20,12 @@ const useStyles = makeStyles({
     marginTop: 44,
   },
   tableContainer: {
-    maxHeight: 475
+    maxHeight: 400
   },
+  box: {
+    height: 480,
+    marginTop: 60,
+  }
 });
 
 export default function BasicTable({ usersList }) {
@@ -40,11 +44,10 @@ export default function BasicTable({ usersList }) {
     setUsers(newUsers);
   }
   const handleEdit = (id) => {
-    //Cambiar los nuevos datos de usuario a la tabla
   }
 
   return (
-    <Box m={2} p={2}>
+    <Box m={2} p={2} className={classes.box}>
       <h3>Usuarios</h3>
       <TableContainer component={Paper} className={classes.tableContainer}>
         <Table className={classes.table} aria-label="simple table" stickyHeader >
@@ -62,7 +65,7 @@ export default function BasicTable({ usersList }) {
                 <TableCell component="th" scope="row">{user.firstName}</TableCell>
                 <TableCell>{user.lastName}</TableCell>
                 <TableCell>{user.email}</TableCell>
-                <TableCell><EditButton id={user.id} handleEdit={handleEdit}/><DeleteButton id={user.id} handleDelete={handleDelete} /></TableCell>
+                <TableCell><EditButton dataUser={user} handleEdit={handleEdit}/><DeleteButton id={user.id} handleDelete={handleDelete} /></TableCell>
               </TableRow>
             ))}
           </TableBody>
