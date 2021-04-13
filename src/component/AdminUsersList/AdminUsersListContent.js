@@ -10,29 +10,29 @@ import Paper from '@material-ui/core/Paper';
 import DeleteButton from "./Buttons/DeleteButton";
 import EditButton from "./Buttons/EditButton";
 import { userList } from "../../services/querys/userServices";
-import { Typography } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
-  container:{
+  container: {
     marginTop: 44,
   },
-  tableContainer:{
+  tableContainer: {
     maxHeight: 475
   },
 });
 
-export default function BasicTable({usersList}) {
+export default function BasicTable({ usersList }) {
   const [users, setUsers] = useState(usersList)
   const classes = useStyles();
   useEffect(() => {
-      const fetchUsers = async () => {
-          const dataUsers = await userList();
-          setUsers(dataUsers);
-      };
-      fetchUsers();
+    const fetchUsers = async () => {
+      const dataUsers = await userList();
+      setUsers(dataUsers);
+    };
+    fetchUsers();
   }, []);
 
   const handleDelete = (id) => {
@@ -41,12 +41,10 @@ export default function BasicTable({usersList}) {
   }
 
   return (
-    <div className={classes.container}>
-      <Typography variant="h4" component="h2" align="center">
-        Usuarios
-      </Typography>
+    <Box m={2} p={2}>
+      <h3>Usuarios</h3>
       <TableContainer component={Paper} className={classes.tableContainer}>
-        <Table className={classes.table} aria-label="simple table"  stickyHeader >
+        <Table className={classes.table} aria-label="simple table" stickyHeader >
           <TableHead>
             <TableRow>
               <TableCell><strong>Nombre</strong></TableCell>
@@ -61,12 +59,12 @@ export default function BasicTable({usersList}) {
                 <TableCell component="th" scope="row">{user.firstName}</TableCell>
                 <TableCell>{user.lastName}</TableCell>
                 <TableCell>{user.email}</TableCell>
-                <TableCell><EditButton/><DeleteButton id={user.id} handleDelete={handleDelete}/></TableCell>
+                <TableCell><EditButton /><DeleteButton id={user.id} handleDelete={handleDelete} /></TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-    </div>
+    </Box>
   );
 }
