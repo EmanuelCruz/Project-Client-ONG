@@ -3,8 +3,8 @@ import './ProfileScreen.css';
 import ButtonComponent from '../../component/profile/ButtonComponent';
 import Swal from 'sweetalert2';
 import { CONFIRM, CONFIRM_IS_CONFIRMED, CONFIRM_SUCCESS, DELETE_CONFIRM_TITLE_PROFILE } from '../../const/const';
-import { useHistory } from 'react-router';
 import { ConfirmAlertDeleteButtonComponent } from '../../component/Alert/AlertComponent';
+import { useHistory } from 'react-router';
 import { deleteUser } from '../../services/querys/userServices';
 import { connect } from 'react-redux';
 import updateIsAuth from "../../store/isAuth/action";
@@ -16,8 +16,7 @@ function ProfileScreen(props) {
     let history = useHistory();
 
     const onEditProfileClick = () => {
-        // window.alert('Profile edit not funcional.');
-        // history.push("/edit-profile")
+        history.push("/edit-user");
     };
     const onDeleteAccountClick = () => {
         ConfirmAlertDeleteButtonComponent(DELETE_CONFIRM_TITLE_PROFILE).then((result) => {

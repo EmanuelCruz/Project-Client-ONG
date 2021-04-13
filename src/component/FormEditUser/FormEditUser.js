@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import {
     Container,
@@ -15,12 +15,20 @@ import * as Yup from "yup";
 import useStyles from "./FormEditUserStyles";
 import { REQUIRED } from "../../const/const";
 
+import { connect } from 'react-redux';
+import updateIsAuth from "../../store/isAuth/action";
+import updateIsAdmin from "../../store/isAdmin/action";
+import updateUser from '../../store/user/action';
+
+import { useHistory } from 'react-router';
+
 const myUser = {
-    firstName: "Emanuel",
-    lastName: "Cruz",
-    email: "emanuelcruz@gmail.com",
+    firstName: "firstName",
+    lastName: "lastName",
+    email: "mail@gmail.com",
 };
-const myRoleId = 1; //Change this to display different forms
+
+const myRoleId = 1;
 
 const schema = Yup.object().shape({
     firstName: Yup.string().required(REQUIRED),
@@ -29,10 +37,14 @@ const schema = Yup.object().shape({
     roleId: Yup.number().min(1).max(2),
 });
 
-const FormEditUser = () => {
+export const FormEditUser = (props) => {
     const classes = useStyles();
+    console.log(props)
+    // const dataUser = props.user.user
+    // const rol = dataUser.roleId
     const [user, setUser] = useState(myUser);
     const [roleId, setRoleId] = useState(myRoleId);
+
     function showInputForAdmin(props) {
     return (<div>
         <FormControl fullWidth margin="normal">
@@ -136,4 +148,10 @@ const FormEditUser = () => {
     );
 };
 
-export default FormEditUser;
+function mapStateToProps(state) {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps,{updateIsAdmin,updateIsAuth,updateUser})(FormEditUser);

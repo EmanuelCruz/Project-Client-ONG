@@ -24,6 +24,7 @@ import ProtectedAdminRoute from "./component/ProtectedRoutes/ProtectedAdminRoute
 import ProtectedUserRoute from "./component/ProtectedRoutes/ProtectedUserRoute";
 import LogoutScreen from "./screen/logout/LogoutScreen";
 import "./App.css";
+import { FormEditUser } from "./component/FormEditUser/FormEditUser";
 
 const routes = [
   { path: "/", Component: HomeScreen },
@@ -47,9 +48,9 @@ const backOfficeRoutes = [
   { path: "/backoffice/categories", Component: BackOfficeCategoriesScreen },
 ];
 
-const adminRoutes = [{ path: "/backoffice", Component: BackOffice }];
+const adminRoutes = [{ path: "/backoffice", Component: BackOffice },{ path: "/edit-user", Component: FormEditUser },];
 
-const userRoutes = [{ path: "/profile", Component: ProfileScreen }];
+const userRoutes = [{ path: "/profile", Component: ProfileScreen },{ path: "/edit-user", Component: FormEditUser },];
 
 function App() {
   return (
