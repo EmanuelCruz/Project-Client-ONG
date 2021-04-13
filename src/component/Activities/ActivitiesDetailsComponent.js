@@ -61,7 +61,7 @@ const ActivitiesDetailsComponent = () => {
                 alignItems="center"
             >
                 <Grid item xs={12}>
-                    <Typography variant="h3" component="h2" align="left">
+                    <Typography variant="h3" component="h2" align="center">
                         {activity.name}
                     </Typography>
                 </Grid>
