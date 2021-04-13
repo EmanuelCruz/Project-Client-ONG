@@ -195,9 +195,6 @@ export default function BackOffice() {
                   <Route exact path="/backoffice/profile">
                     <ProfileScreen />
                   </Route>
-                  <Route exact path="/backoffice/edit-organization">
-                    <EditOrganizationScreen />
-                  </Route>
                   <Route exact path="/backoffice/news">
                     <BackOfficeNewsScreen />
                   </Route>
