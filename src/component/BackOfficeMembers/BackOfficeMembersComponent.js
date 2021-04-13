@@ -9,6 +9,7 @@ import {
   Typography,
   Paper,
   Table,
+  Box,
 } from "@material-ui/core";
 import { getMembersList } from "../../services/querys/membersServices";
 import MembersTable from "./components/MembersTable";
@@ -29,12 +30,10 @@ const BackOfficeMembersComponent = () => {
   }, []);
 
   return (
-    <>
-      <Toolbar>
-        <Typography variant="h4" className={classes.title} align="center">
-          Miembros
-        </Typography>
-      </Toolbar>
+    <Box m={2} p={2}>
+      <h3>
+        Miembros
+      </h3>
       <TableContainer component={Paper} className={classes.tableContainer}>
         <Table className={classes.table} stickyHeader>
           <TableHead>
@@ -61,7 +60,7 @@ const BackOfficeMembersComponent = () => {
           </TableBody>
         </Table>
       </TableContainer>
-    </>
+    </Box>
   );
 };
 

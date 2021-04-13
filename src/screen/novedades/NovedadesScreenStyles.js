@@ -4,6 +4,9 @@ const myStyles = makeStyles((theme) => ({
     root: {
         marginTop: theme.spacing(3),
     },
+    image: { maxWidth: "100%", maxHeight: "100%", marginBottom: 40 },
+    content: { marginTop: 20 },
+    links: { marginTop: 60 },
     typography: {
         fontFamily: ['"Nunito"'].join(","),
     },
@@ -12,9 +15,6 @@ const myStyles = makeStyles((theme) => ({
         marginTop: "1rem",
         marginBottom: "1rem",
     },
-    image: { maxWidth: "100%", maxHeight: "100%", marginBottom: 40 },
-    content: { marginTop: 20 },
-    links: { marginTop: 60 },
 }));
 
 export default myStyles;

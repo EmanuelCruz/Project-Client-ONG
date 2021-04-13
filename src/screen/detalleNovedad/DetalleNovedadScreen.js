@@ -28,7 +28,7 @@ export default function DetalleNovedadScreen() {
                             <Typography
                                 align="left"
                                 variant="h3"
-                                className={classes.title}
+                                className={classes.title + ' ' + classes.typography}
                             >
                                 {detalleNovedad.name}
                             </Typography>

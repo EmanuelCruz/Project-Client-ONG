@@ -4,9 +4,11 @@ import { getNews } from "../../services/querys/newsServices";
 import Typography from '@material-ui/core/Typography';
 import NoItemsComponent from "../../component/NoItems/NoItemsComponent";
 import { Container } from "@material-ui/core";
+import myStyles from "./NovedadesScreenStyles"
 
 function NovedadesScreen() {
   const [novedades, setNovedades] = useState([]);
+  const classes = myStyles();
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -20,7 +22,10 @@ function NovedadesScreen() {
 
     return (
       <Container>
-        <Typography variant="h2">
+        <Typography
+          variant="h3"
+          className={classes.title + ' ' + classes.typography}
+        >
           Novedades
       </Typography>
         <div style={{ marginTop: '30px' }}>

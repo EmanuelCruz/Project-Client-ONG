@@ -58,7 +58,7 @@ function CreateMemberComponent() {
 
   return (
     <Container className={classes.containerMembers}>
-      <h1>Crear Miembro</h1>
+      <h3>Crear Miembro</h3>
       <form className={classes.root}>
         <TextField
           id="name"
