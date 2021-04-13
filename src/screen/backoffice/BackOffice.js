@@ -149,9 +149,18 @@ export default function BackOffice() {
         <NavLink
           className={classes.navLink}
           exact
-          key="Editar Organizacion"
-          to={PATH_BACKOFFICE_EDITH_ORGANIZATION}>
-          Editar Organizacion
+          key="Miembros"
+          to="/backoffice/members">
+          Miembros
+        </NavLink>
+      </MenuItem>
+      <MenuItem className={classes.menuItem}>
+        <NavLink
+          className={classes.navLink}
+          exact
+          key="Miembros"
+          to="/backoffice/members/create">
+          Crear Miembro
         </NavLink>
       </MenuItem>
     </Container>
@@ -186,9 +195,6 @@ export default function BackOffice() {
                 <Switch>
                   <Route exact path="/backoffice/profile">
                     <ProfileScreen />
-                  </Route>
-                  <Route exact path="/backoffice/edit-organization">
-                    <EditOrganizationScreen />
                   </Route>
                   <Route exact path="/backoffice/news">
                     <BackOfficeNewsScreen />
@@ -234,6 +240,12 @@ export default function BackOffice() {
                   </Route>
                   <Route exact path="/backoffice/edit-activities/:id">
                     <ActivitiesComponent />
+                  </Route>
+                  <Route exact path="/backoffice/members">
+                    <BackOfficeMembersScreen />
+                  </Route>
+                  <Route exact path="/backoffice/members/create">
+                    <CreateMemberComponent />
                   </Route>
                   <Route exact path="/backoffice/edit-profile">
                     <FormEditProfile />

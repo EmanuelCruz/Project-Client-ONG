@@ -1,5 +1,5 @@
-import React from 'react';
-import EditOrganizationComponent from '../../component/EditOrganization/EditOrganizationComponent';
+import React from "react";
+import EditOrganizationComponent from "../../component/EditOrganization/EditOrganizationComponent";
 
 const EditOrganizationScreen = () => {
   return <EditOrganizationComponent />;

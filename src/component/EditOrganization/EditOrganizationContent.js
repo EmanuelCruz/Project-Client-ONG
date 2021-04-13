@@ -1,24 +1,44 @@
-import React from 'react'
+import React from "react";
 import "./EditOrganization.css";
-import NameInput from './Columns/NameInput';
-import LogoInput from './Columns/LogoInput';
-import SubmitButton from './Columns/SubmitButton'
+import NameInput from "./Columns/NameInput";
+import LogoInput from "./Columns/LogoInput";
+import SubmitButton from "./Columns/SubmitButton";
 
-const EditOrganizationContent = ({ newName, setNewName, nameInputOutlineColor, newLogo, setNewLogo, logoInputOutlineColor, defaultLogo, setNameInputOutlineColor, setLogoInputOutlineColor }) => {
-
+const EditOrganizationContent = ({
+  newName,
+  setNewName,
+  nameInputOutlineColor,
+  newLogo,
+  setNewLogo,
+  logoInputOutlineColor,
+  defaultLogo,
+  setNameInputOutlineColor,
+  setLogoInputOutlineColor,
+}) => {
   return (
     <div className={"w-50 mx-auto"}>
       <h3>Editar organización:</h3>
       <div>
-        <NameInput newName={newName} setNewName={setNewName} nameInputOutlineColor={nameInputOutlineColor}
+        <NameInput
+          newName={newName}
+          setNewName={setNewName}
+          nameInputOutlineColor={nameInputOutlineColor}
         />
-        <LogoInput newLogo={newLogo} setNewLogo={setNewLogo} logoInputOutlineColor={logoInputOutlineColor}
-          defaultLogo={defaultLogo} />
-        <SubmitButton newName={newName} newLogo={newLogo}
-          setNameInputOutlineColor={setNameInputOutlineColor} setLogoInputOutlineColor={setLogoInputOutlineColor} />
+        <LogoInput
+          newLogo={newLogo}
+          setNewLogo={setNewLogo}
+          logoInputOutlineColor={logoInputOutlineColor}
+          defaultLogo={defaultLogo}
+        />
+        <SubmitButton
+          newName={newName}
+          newLogo={newLogo}
+          setNameInputOutlineColor={setNameInputOutlineColor}
+          setLogoInputOutlineColor={setLogoInputOutlineColor}
+        />
       </div>
-    </div >
-  )
+    </div>
+  );
 };
 
-export default EditOrganizationContent
+export default EditOrganizationContent;

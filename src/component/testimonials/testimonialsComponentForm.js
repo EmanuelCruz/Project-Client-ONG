@@ -64,6 +64,9 @@ function TestimonialComponentForm() {
   };
 
   const handleSubmit = () => {
+    if (img === undefined) {
+      formData.append("image", "");
+    }
     if (!testimonials.id) {
       for (const property in testimonials) {
         formData.append(property, testimonials[property]);
