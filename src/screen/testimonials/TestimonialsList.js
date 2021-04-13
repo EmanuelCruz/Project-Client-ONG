@@ -58,6 +58,7 @@ function TestimonialsList() {
   if (testimonials?.length >= 1) {
     return (
       <Box m={2} p={2}>
+        <h3>Testimoniales</h3>
         <Container>
           {testimonials?.slice((page - 1) * itemsPerPage, page * itemsPerPage)
             .map((testimonial) => (

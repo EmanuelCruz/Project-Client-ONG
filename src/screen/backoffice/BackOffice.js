@@ -56,27 +56,9 @@ export default function BackOffice() {
         <NavLink
           className={classes.navLink}
           exact
-          key="Novedades"
-          to={PATH_BACKOFFICE_NEWS}>
-          Novedades
-        </NavLink>
-      </MenuItem>
-      <MenuItem className={classes.menuItem}>
-        <NavLink
-          className={classes.navLink}
-          exact
-          key="Crear Post"
-          to="/backoffice/create-news">
-          Crear Post
-        </NavLink>
-      </MenuItem>
-      <MenuItem className={classes.menuItem}>
-        <NavLink
-          className={classes.navLink}
-          exact
-          key="Actividades"
-          to={PATH_BACKOFFICE_ACTIVITIES}>
-          Actividades
+          key="Contactos"
+          to={PATH_BACKOFFICE_CONTACTS}>
+          Contactos
         </NavLink>
       </MenuItem>
       <MenuItem className={classes.menuItem}>
@@ -92,18 +74,27 @@ export default function BackOffice() {
         <NavLink
           className={classes.navLink}
           exact
-          key="Contactos"
-          to={PATH_BACKOFFICE_CONTACTS}>
-          Contactos
+          key="Novedades"
+          to={PATH_BACKOFFICE_NEWS}>
+          Novedades
         </NavLink>
       </MenuItem>
       <MenuItem className={classes.menuItem}>
         <NavLink
           className={classes.navLink}
           exact
-          key="Editar Organizacion"
-          to={PATH_BACKOFFICE_EDITH_ORGANIZATION}>
-          Editar Organizacion
+          key="Crear Post"
+          to="/backoffice/create-news">
+          Crear Novedad
+        </NavLink>
+      </MenuItem>
+      <MenuItem className={classes.menuItem}>
+        <NavLink
+          className={classes.navLink}
+          exact
+          key="Actividades"
+          to={PATH_BACKOFFICE_ACTIVITIES}>
+          Actividades
         </NavLink>
       </MenuItem>
       <MenuItem className={classes.menuItem}>
@@ -113,24 +104,6 @@ export default function BackOffice() {
           key="Crear Actividad"
           to="/backoffice/create-activities">
           Crear Actividad
-        </NavLink>
-      </MenuItem>
-      <MenuItem className={classes.menuItem}>
-        <NavLink
-          className={classes.navLink}
-          exact
-          key="Testimoniales"
-          to="/backoffice/testimonios">
-          Testimoniales
-        </NavLink>
-      </MenuItem>
-      <MenuItem className={classes.menuItem}>
-        <NavLink
-          className={classes.navLink}
-          exact
-          key="Crear Categoria"
-          to="/backoffice/create-category">
-          Crear Categoría
         </NavLink>
       </MenuItem>
       <MenuItem className={classes.menuItem}>
@@ -147,9 +120,36 @@ export default function BackOffice() {
         <NavLink
           className={classes.navLink}
           exact
+          key="Crear Categoria"
+          to="/backoffice/create-category">
+          Crear Categoría
+        </NavLink>
+      </MenuItem>
+      <MenuItem className={classes.menuItem}>
+        <NavLink
+          className={classes.navLink}
+          exact
+          key="Testimoniales"
+          to="/backoffice/testimonios">
+          Testimoniales
+        </NavLink>
+      </MenuItem>
+      <MenuItem className={classes.menuItem}>
+        <NavLink
+          className={classes.navLink}
+          exact
           key="Crear Testimonios"
           to="/backoffice/create-testimonial">
           Crear Testimonio
+        </NavLink>
+      </MenuItem>
+      <MenuItem className={classes.menuItem}>
+        <NavLink
+          className={classes.navLink}
+          exact
+          key="Editar Organizacion"
+          to={PATH_BACKOFFICE_EDITH_ORGANIZATION}>
+          Editar Organizacion
         </NavLink>
       </MenuItem>
     </Container>
