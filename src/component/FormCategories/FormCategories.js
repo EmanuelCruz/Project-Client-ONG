@@ -84,12 +84,14 @@ export default function FormCategories() {
           label="Nombre"
           value={category.name || ""}
           onChange={changeHandler}
+          inputProps={{ maxLength: 15 }}
         />
         <TextField
           id="description"
           label="Descripción"
           value={category.description || ""}
           onChange={changeHandler}
+          inputProps={{ maxLength: 15 }}
         />
         <Box m={2} p={2}>
           <Button
