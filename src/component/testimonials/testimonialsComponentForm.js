@@ -99,7 +99,7 @@ function TestimonialComponentForm() {
     <Container>
       <div>
         <Box m={2} p={2}>
-          <h1>{!id ? "Crear" : "Modificar"} Testimonio</h1>
+          <h3>{!id ? "Crear" : "Modificar"} Testimonio</h3>
         </Box>
       </div>
       <form className={classes.root}>

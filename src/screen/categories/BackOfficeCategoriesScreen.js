@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import CategoriesCardComponent from "../../component/Categories/CategoriesCardComponent";
 import { getCategories } from "../../services/querys/categoriesServices";
 import useStyles from "../../style/materialUiStyle";
-import { Container } from "@material-ui/core";
+import { Box, Container } from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';
 import Pagination from "@material-ui/lab/Pagination";
+import NoItemsComponent from "../../component/NoItems/NoItemsComponent";
 
 function BackOfficeCategoriesScreen() {
   const [categories, setCategories] = useState([]);
@@ -37,36 +38,43 @@ function BackOfficeCategoriesScreen() {
       .catch((err) => console.log(err.message));
   }, [isDeleted]);
 
-  return (
-    <Container>
-      <Container>
-        <h1>Categorias</h1>
-        <Grid container spacing={10} direction="row" justify="center">
-          {categories.slice((page - 1) *itemsPerPage, page * itemsPerPage).map((category) => (
-            <Grid key={category.id} item zeroMinWidth>
-              <CategoriesCardComponent
-                key={category.id}
-                category={category}
-                setIsDeleted={setIsDeleted}
-              />
+
+  if (categories?.length >= 1) {
+    return (
+      <Box m={2} p={2}>
+        <Container>
+          <Container>
+            <h3>Categorias</h3>
+            <Grid container spacing={10} direction="row" justify="center">
+              {categories.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((category) => (
+                <Grid key={category.id} item zeroMinWidth>
+                  <CategoriesCardComponent
+                    key={category.id}
+                    category={category}
+                    setIsDeleted={setIsDeleted}
+                  />
+                </Grid>
+              ))}
             </Grid>
-          ))}
-        </Grid>
-      </Container>
-      <Container className={classes.cardCenterStyle}>
-        <Pagination
-          count={noOfPages}
-          page={page}
-          onChange={handlePagination}
-          defaultPage={1}
-          color="primary"
-          size="large"
-          showFirstButton
-          showLastButton
-        />
-      </Container>
-    </Container>
-  );
+          </Container>
+          <Container className={classes.cardCenterStyle}>
+            <Pagination
+              count={noOfPages}
+              page={page}
+              onChange={handlePagination}
+              defaultPage={1}
+              color="primary"
+              size="large"
+              showFirstButton
+              showLastButton
+            />
+          </Container>
+        </Container>
+      </Box>
+    )
+  } else return (
+    <NoItemsComponent item="categorías" />
+  )
 }
 
 export default BackOfficeCategoriesScreen;

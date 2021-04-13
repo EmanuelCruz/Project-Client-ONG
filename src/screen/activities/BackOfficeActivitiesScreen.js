@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Card,
   CardActionArea,
@@ -18,12 +19,13 @@ import {
 } from "../../services/querys/activitiesServices";
 import { DeleteActitivySucces } from "../../component/Alert/AlertComponent";
 import useStyles from "../../style/materialUiStyle";
+import NoItemsComponent from "../../component/NoItems/NoItemsComponent";
 
 function BackOfficeActivitiesScreen() {
   let history = useHistory();
   const [activities, setActivities] = useState([]);
   const classes = useStyles();
-  const itemsPerPage = 4;
+  const itemsPerPage = 1;
   const [page, setPage] = useState(1);
   const [noOfPages, setNoOfPages] = useState(0);
 
@@ -53,66 +55,71 @@ function BackOfficeActivitiesScreen() {
     setPage(value);
   };
 
-  return (
-    <Container>
-      <Typography gutterBottom variant="h3" component="h2">
-        Actividades
-      </Typography>
-      {activities
-        ?.slice((page - 1) * itemsPerPage, page * itemsPerPage)
-        .map((testimonial) => (
-          <Card className={classes.root}>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                alt="Imagen de testimonio"
-                height="140"
-                image={testimonial.image}
-                title={testimonial.name}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  {testimonial.name}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: testimonial.content,
-                    }}
+
+  if (activities?.length >= 1) {
+    return (
+      <Box m={2} p={2}>
+        <Container>
+          <h3>Actividades</h3>
+          {activities
+            ?.slice((page - 1) * itemsPerPage, page * itemsPerPage)
+            .map((testimonial) => (
+              <Card className={classes.root}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    alt="Imagen de testimonio"
+                    height="140"
+                    image={testimonial.image}
+                    title={testimonial.name}
                   />
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions className={classes.cardCenterStyle}>
-              <Button
-                size="small"
-                color="primary"
-                onClick={() => handleEdit(testimonial.id)}>
-                Editar
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      {testimonial.name}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: testimonial.content,
+                        }}
+                      />
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions className={classes.cardCenterStyle}>
+                  <Button
+                    size="small"
+                    color="primary"
+                    onClick={() => handleEdit(testimonial.id)}>
+                    Editar
               </Button>
-              <Button
-                size="small"
-                color="primary"
-                onClick={() => handleDelete(testimonial.id)}>
-                Borrar
+                  <Button
+                    size="small"
+                    color="primary"
+                    onClick={() => handleDelete(testimonial.id)}>
+                    Borrar
               </Button>
-            </CardActions>
-          </Card>
-        ))}
-      <Container className={classes.cardCenterStyle}>
-        <Pagination
-          count={noOfPages}
-          page={page}
-          onChange={handlePagination}
-          defaultPage={1}
-          color="primary"
-          size="large"
-          showFirstButton
-          showLastButton
-        />
-      </Container>
-    </Container>
-  );
+                </CardActions>
+              </Card>
+            ))}
+          <Container className={classes.cardCenterStyle}>
+            <Pagination
+              count={noOfPages}
+              page={page}
+              onChange={handlePagination}
+              defaultPage={1}
+              color="primary"
+              size="large"
+              showFirstButton
+              showLastButton
+            />
+          </Container>
+        </Container>
+      </Box>
+    )
+  } else return (
+    <NoItemsComponent item="actividades" />
+  )
 }
 
 export default BackOfficeActivitiesScreen;

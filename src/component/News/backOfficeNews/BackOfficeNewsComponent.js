@@ -7,25 +7,27 @@ import {
   CardMedia,
   Container,
   Typography,
-  Button
+  Button,
+  Box
 } from "@material-ui/core";
 import useStyles from "../styles/MaterialUiStyles";
 import { deleteNews, newsServices } from "../../../services/querys/newsServices";
 import { useHistory } from "react-router";
 import {
-    CONFIRM,
-    CONFIRM_IS_CONFIRMED,
-    CONFIRM_SUCCESS,
+  CONFIRM,
+  CONFIRM_IS_CONFIRMED,
+  CONFIRM_SUCCESS,
 } from "../../../const/const";
 import Swal from "sweetalert2";
 import { ConfirmAlertComponent } from "../../Alert/AlertComponent";
 import { Pagination } from "@material-ui/lab";
+import NoItemsComponent from "../../NoItems/NoItemsComponent";
 
 const BackOfficeNewsComponent = () => {
   const classes = useStyles();
   const [newsData, setNewsData] = useState([]);
   let history = useHistory();
-  const itemsPerPage = 4;
+  const itemsPerPage = 1;
   const [page, setPage] = useState(1);
   const [noOfPages, setNoOfPages] = useState(0);
 
@@ -41,9 +43,9 @@ const BackOfficeNewsComponent = () => {
   const handleDelete = (idNew) => {
     ConfirmAlertComponent().then(async (result) => {
       if (result.isConfirmed) {
-          Swal.fire(CONFIRM, CONFIRM_IS_CONFIRMED, CONFIRM_SUCCESS);
-          deleteNews(idNew);
-          setNewsData(newsData.filter((n) => n.id !== idNew));
+        Swal.fire(CONFIRM, CONFIRM_IS_CONFIRMED, CONFIRM_SUCCESS);
+        deleteNews(idNew);
+        setNewsData(newsData.filter((n) => n.id !== idNew));
       }
       let news = await newsServices();
       setNewsData(news?.data);
@@ -59,67 +61,72 @@ const BackOfficeNewsComponent = () => {
     setPage(value);
   };
 
-  return (
-    <Container>
-      <Typography gutterBottom variant="h3" component="h2">
-        Novedades
-      </Typography>
-      {newsData?.slice((page - 1) * itemsPerPage, page * itemsPerPage)
-        .map((news) => (
-          <Card className={classes.root}>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                alt="Imagen de testimonio"
-                height="140"
-                image={news.image}
-                title={news.name}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  {news.name}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: news.content,
-                    }}
+
+  if (newsData?.length >= 1) {
+    return (
+      <Box m={2} p={2}>
+        <Container>
+          <h3>Novedades</h3>
+          {newsData?.slice((page - 1) * itemsPerPage, page * itemsPerPage)
+            .map((news) => (
+              <Card className={classes.root}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    alt="Imagen de testimonio"
+                    height="140"
+                    image={news.image}
+                    title={news.name}
                   />
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions className={classes.cardCenterStyle}>
-              <Button
-                size="small"
-                color="primary"
-                onClick={() => handleEdit(news.id)}
-              >
-                Editar
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      {news.name}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: news.content,
+                        }}
+                      />
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions className={classes.cardCenterStyle}>
+                  <Button
+                    size="small"
+                    color="primary"
+                    onClick={() => handleEdit(news.id)}
+                  >
+                    Editar
               </Button>
-              <Button
-                size="small"
-                color="primary"
-                onClick={() => handleDelete(news.id)}
-              >
-                Borrar
+                  <Button
+                    size="small"
+                    color="primary"
+                    onClick={() => handleDelete(news.id)}
+                  >
+                    Borrar
               </Button>
-            </CardActions>
-          </Card>
-        ))}
-      <Container className={classes.cardCenterStyle}>
-        <Pagination
-          count={noOfPages}
-          page={page}
-          onChange={handlePagination}
-          defaultPage={1}
-          color="primary"
-          size="large"
-          showFirstButton
-          showLastButton
-        />
-      </Container>
-    </Container>
-  );
+                </CardActions>
+              </Card>
+            ))}
+          <Container className={classes.cardCenterStyle}>
+            <Pagination
+              count={noOfPages}
+              page={page}
+              onChange={handlePagination}
+              defaultPage={1}
+              color="primary"
+              size="large"
+              showFirstButton
+              showLastButton
+            />
+          </Container>
+        </Container>
+      </Box>
+    )
+  } else return (
+    <NoItemsComponent item="novedades" />
+  )
 };
 
 export default BackOfficeNewsComponent;

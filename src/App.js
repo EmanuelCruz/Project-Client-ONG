@@ -25,6 +25,7 @@ import ProtectedUserRoute from "./component/ProtectedRoutes/ProtectedUserRoute";
 import LogoutScreen from "./screen/logout/LogoutScreen";
 import BackOfficeMembersScreen from "./screen/members/BackOfficeMembersScreen";
 import "./App.css";
+import FormEditProfile from "./component/FormEditProfile/FormEditProfile";
 
 const routes = [
   { path: "/", Component: HomeScreen },
@@ -39,19 +40,21 @@ const routes = [
 ];
 
 const backOfficeRoutes = [
-  { path: "/backoffice/edit-organization", Component: EditOrganizationScreen },
-  { path: "/backoffice/news", Component: BackOfficeNewsScreen },
-  { path: "/backoffice/users", Component: AdminUsersListScreen },
-  { path: "/backoffice/activities", Component: BackOfficeActivitiesScreen },
-  { path: "/backoffice/contacts", Component: BackOfficeContactsScreen },
-  { path: "/backoffice/testimonios", Component: TestimonialsList },
-  { path: "/backoffice/categories", Component: BackOfficeCategoriesScreen },
-  { path: "/backoffice/members", Component: BackOfficeMembersScreen },
+  { path: "/backoffice/app/edit-organization", Component: EditOrganizationScreen },
+  { path: "/backoffice/app/news", Component: BackOfficeNewsScreen },
+  { path: "/backoffice/app/users", Component: AdminUsersListScreen },
+  { path: "/backoffice/app/activities", Component: BackOfficeActivitiesScreen },
+  { path: "/backoffice/app/contacts", Component: BackOfficeContactsScreen },
+  { path: "/backoffice/app/testimonios", Component: TestimonialsList },
+  { path: "/backoffice/app/categories", Component: BackOfficeCategoriesScreen },
+  { path: "/backoffice/app/members", Component: BackOfficeMembersScreen },
+  { path: "/backoffice/profile", Component: ProfileScreen },
+  { path: "/backoffice/edit-profile", Component: FormEditProfile }
 ];
 
 const adminRoutes = [{ path: "/backoffice", Component: BackOffice }];
 
-const userRoutes = [{ path: "/profile", Component: ProfileScreen }];
+const userRoutes = [{ path: "/profile", Component: ProfileScreen },{ path: "/edit-profile", Component: FormEditProfile }];
 
 function App() {
   return (

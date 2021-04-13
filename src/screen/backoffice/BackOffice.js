@@ -35,6 +35,7 @@ import BackOfficeCategoriesScreen from "../categories/BackOfficeCategoriesScreen
 import TestimonialComponentForm from "../../component/testimonials/testimonialsComponentForm";
 import BackOfficeMembersScreen from "../../screen/members/BackOfficeMembersScreen";
 import CreateMemberComponent from "../../component/BackOfficeMembers/components/CreateMemberComponent";
+import FormEditProfile from "../../component/FormEditProfile/FormEditProfile";
 
 const myRoleId = 1;
 
@@ -56,27 +57,9 @@ export default function BackOffice() {
         <NavLink
           className={classes.navLink}
           exact
-          key="Novedades"
-          to={PATH_BACKOFFICE_NEWS}>
-          Novedades
-        </NavLink>
-      </MenuItem>
-      <MenuItem className={classes.menuItem}>
-        <NavLink
-          className={classes.navLink}
-          exact
-          key="Crear Post"
-          to="/backoffice/create-news">
-          Crear Post
-        </NavLink>
-      </MenuItem>
-      <MenuItem className={classes.menuItem}>
-        <NavLink
-          className={classes.navLink}
-          exact
-          key="Actividades"
-          to={PATH_BACKOFFICE_ACTIVITIES}>
-          Actividades
+          key="Contactos"
+          to={PATH_BACKOFFICE_CONTACTS}>
+          Contactos
         </NavLink>
       </MenuItem>
       <MenuItem className={classes.menuItem}>
@@ -92,18 +75,27 @@ export default function BackOffice() {
         <NavLink
           className={classes.navLink}
           exact
-          key="Contactos"
-          to={PATH_BACKOFFICE_CONTACTS}>
-          Contactos
+          key="Novedades"
+          to={PATH_BACKOFFICE_NEWS}>
+          Novedades
         </NavLink>
       </MenuItem>
       <MenuItem className={classes.menuItem}>
         <NavLink
           className={classes.navLink}
           exact
-          key="Editar Organizacion"
-          to={PATH_BACKOFFICE_EDITH_ORGANIZATION}>
-          Editar Organizacion
+          key="Crear Post"
+          to="/backoffice/create-news">
+          Crear Novedad
+        </NavLink>
+      </MenuItem>
+      <MenuItem className={classes.menuItem}>
+        <NavLink
+          className={classes.navLink}
+          exact
+          key="Actividades"
+          to={PATH_BACKOFFICE_ACTIVITIES}>
+          Actividades
         </NavLink>
       </MenuItem>
       <MenuItem className={classes.menuItem}>
@@ -118,10 +110,11 @@ export default function BackOffice() {
       <MenuItem className={classes.menuItem}>
         <NavLink
           className={classes.navLink}
-          exact
-          key="Testimoniales"
-          to="/backoffice/testimonios">
-          Testimoniales
+          Editar
+          Categoría
+          key="Categorias"
+          to="/backoffice/categories">
+          Categorías
         </NavLink>
       </MenuItem>
       <MenuItem className={classes.menuItem}>
@@ -136,11 +129,10 @@ export default function BackOffice() {
       <MenuItem className={classes.menuItem}>
         <NavLink
           className={classes.navLink}
-          Editar
-          Categoría
-          key="Categorias"
-          to="/backoffice/categories">
-          Categorías
+          exact
+          key="Testimoniales"
+          to="/backoffice/testimonios">
+          Testimoniales
         </NavLink>
       </MenuItem>
       <MenuItem className={classes.menuItem}>
@@ -200,7 +192,7 @@ export default function BackOffice() {
             <Grid item xs={12} sm={7} md={8}>
               <Paper>
                 <Switch>
-                  <Route exact path="/profile">
+                  <Route exact path="/backoffice/profile">
                     <ProfileScreen />
                   </Route>
                   <Route exact path="/backoffice/edit-organization">
@@ -256,6 +248,9 @@ export default function BackOffice() {
                   </Route>
                   <Route exact path="/backoffice/members/create">
                     <CreateMemberComponent />
+                  </Route>
+                  <Route exact path="/backoffice/edit-profile">
+                    <FormEditProfile />
                   </Route>
                 </Switch>
               </Paper>
