@@ -35,7 +35,7 @@ import BackOfficeCategoriesScreen from "../categories/BackOfficeCategoriesScreen
 import TestimonialComponentForm from "../../component/testimonials/testimonialsComponentForm";
 import BackOfficeMembersScreen from "../../screen/members/BackOfficeMembersScreen";
 import CreateMemberComponent from "../../component/BackOfficeMembers/components/CreateMemberComponent";
-import FormEditUser from "../../component/FormEditUser/FormEditUser";
+import FormEditProfile from "../../component/FormEditProfile/FormEditProfile";
 
 const myRoleId = 1;
 
@@ -234,8 +234,8 @@ export default function BackOffice() {
                   <Route exact path="/backoffice/edit-activities/:id">
                     <ActivitiesComponent />
                   </Route>
-                  <Route exact path="/backoffice/edit-user">
-                    <FormEditUser />
+                  <Route exact path="/backoffice/edit-profile">
+                    <FormEditProfile />
                   </Route>
                 </Switch>
               </Paper>

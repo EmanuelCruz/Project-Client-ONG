@@ -13,7 +13,7 @@ import {
     Box,
 } from "@material-ui/core";
 import * as Yup from "yup";
-import useStyles from "./FormEditUserStyles";
+import useStyles from "./FormEditProfileStyles";
 import { REQUIRED } from "../../const/const";
 import { editUser } from "../../services/querys/userServices";
 import { connect } from 'react-redux';
@@ -30,7 +30,7 @@ const schema = Yup.object().shape({
     roleId: Yup.number().min(1).max(2),
 });
 
-const FormEditUser = (props) => {
+const FormEditProfile = (props) => {
     const classes = useStyles();
     const user = props.user.user
     const roleId = user.roleId
@@ -190,4 +190,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps,{updateIsAdmin,updateIsAuth,updateUser})(FormEditUser);
+export default connect(mapStateToProps,{updateIsAdmin,updateIsAuth,updateUser})(FormEditProfile);

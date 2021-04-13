@@ -10,7 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import DeleteButton from "./Buttons/DeleteButton";
 import EditButton from "./Buttons/EditButton";
 import { userList } from "../../services/querys/userServices";
-import { Box, Typography } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 
 const useStyles = makeStyles({
   table: {
@@ -39,6 +39,9 @@ export default function BasicTable({ usersList }) {
     const newUsers = users.filter((user) => user.id !== id);
     setUsers(newUsers);
   }
+  const handleEdit = (id) => {
+    //Cambiar los nuevos datos de usuario a la tabla
+  }
 
   return (
     <Box m={2} p={2}>
@@ -59,7 +62,7 @@ export default function BasicTable({ usersList }) {
                 <TableCell component="th" scope="row">{user.firstName}</TableCell>
                 <TableCell>{user.lastName}</TableCell>
                 <TableCell>{user.email}</TableCell>
-                <TableCell><EditButton /><DeleteButton id={user.id} handleDelete={handleDelete} /></TableCell>
+                <TableCell><EditButton id={user.id} handleEdit={handleEdit}/><DeleteButton id={user.id} handleDelete={handleDelete} /></TableCell>
               </TableRow>
             ))}
           </TableBody>

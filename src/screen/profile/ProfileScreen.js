@@ -18,7 +18,7 @@ function ProfileScreen(props) {
     let history = useHistory();
     let location = useLocation();
     const onEditProfileClick = () => {
-        location.pathname==="/profile" ? history.push("/edit-user") : history.push("/backoffice/edit-user")
+        location.pathname==="/profile" ? history.push("/edit-profile") : history.push("/backoffice/edit-profile")
     };
     const onDeleteAccountClick = () => {
         ConfirmAlertDeleteButtonComponent(DELETE_CONFIRM_TITLE_PROFILE).then((result) => {

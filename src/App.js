@@ -25,7 +25,7 @@ import ProtectedUserRoute from "./component/ProtectedRoutes/ProtectedUserRoute";
 import LogoutScreen from "./screen/logout/LogoutScreen";
 import BackOfficeMembersScreen from "./screen/members/BackOfficeMembersScreen";
 import "./App.css";
-import FormEditUser from "./component/FormEditUser/FormEditUser";
+import FormEditProfile from "./component/FormEditProfile/FormEditProfile";
 
 const routes = [
   { path: "/", Component: HomeScreen },
@@ -49,12 +49,12 @@ const backOfficeRoutes = [
   { path: "/backoffice/app/categories", Component: BackOfficeCategoriesScreen },
   { path: "/backoffice/app/members", Component: BackOfficeMembersScreen },
   { path: "/backoffice/profile", Component: ProfileScreen },
-  { path: "/backoffice/edit-user", Component: FormEditUser }
+  { path: "/backoffice/edit-profile", Component: FormEditProfile }
 ];
 
 const adminRoutes = [{ path: "/backoffice", Component: BackOffice }];
 
-const userRoutes = [{ path: "/profile", Component: ProfileScreen },{ path: "/edit-user", Component: FormEditUser }];
+const userRoutes = [{ path: "/profile", Component: ProfileScreen },{ path: "/edit-profile", Component: FormEditProfile }];
 
 function App() {
   return (

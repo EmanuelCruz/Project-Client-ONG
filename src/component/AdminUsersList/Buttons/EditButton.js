@@ -1,9 +1,14 @@
 import React from 'react'
+import { useHistory } from 'react-router';
 
-const EditButton = ({ userkey }) => {
-
-  const handleEditButtonClick = () => {
-    return false // TODO: Edit User Functionality
+const EditButton = ({ userkey, id, handleEdit }) => {
+  let history = useHistory();
+  const handleClick = () => {
+    const location = {
+      pathname: '/backoffice/edit-user',
+      state: { id }
+    }
+    history.push(location)
   }
 
   return (
@@ -11,7 +16,7 @@ const EditButton = ({ userkey }) => {
       userkey={userkey}
       type="button"
       className="btn btn-secondary"
-      onClick={handleEditButtonClick}
+      onClick={handleClick}
     >Editar</button>
   )
 }
