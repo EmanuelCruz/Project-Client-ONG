@@ -3,8 +3,13 @@ import NewsGridComponent from "../../component/novedades/NewsGridComponent";
 import { getNews } from "../../services/querys/newsServices";
 import Typography from '@material-ui/core/Typography';
 import NoItemsComponent from "../../component/NoItems/NoItemsComponent";
+import useStyles from "./NovedadesStyles";
+import { Container } from "@material-ui/core";
 
 function NovedadesScreen() {
+
+  const classes = useStyles();
+
   const [novedades, setNovedades] = useState([]);
 
   useEffect(() => {
@@ -18,12 +23,14 @@ function NovedadesScreen() {
   if (novedades?.length >= 1) {
 
     return (
-      <div className="container mt-5">
-        <Typography className="mt-2 mb-5" variant="h2" component="h2" align="left">
+      <Container>
+        <Typography className={classes.title + ' ' + classes.typography} variant="h2">
           Novedades
       </Typography>
-        <NewsGridComponent novedades={novedades} />
-      </div>
+        <div style={{ marginTop: '30px' }}>
+          <NewsGridComponent novedades={novedades} />
+        </div>
+      </Container>
     )
   } else return (
     <NoItemsComponent item="novedades" />
