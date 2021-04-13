@@ -10,6 +10,5 @@ const NoItemsComponent = ({ item }) => {
     </Box>
   )
 }
-//com
 
 export default NoItemsComponent
