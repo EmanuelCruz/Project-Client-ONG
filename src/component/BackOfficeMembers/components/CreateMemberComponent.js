@@ -67,7 +67,7 @@ function CreateMemberComponent() {
           onChange={(e) => titleHandler(e, members, setMembers)}
           variant="filled"
         />
-        <img src={img} alt="Agregar una imagen" />
+        <img src={img} />
         <div>
           <Button
             className={`${classes.button} btn btn-primary`}
