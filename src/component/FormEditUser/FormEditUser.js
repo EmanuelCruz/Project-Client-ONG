@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Formik, Form } from "formik";
 import {
     Container,
@@ -14,21 +14,12 @@ import {
 import * as Yup from "yup";
 import useStyles from "./FormEditUserStyles";
 import { REQUIRED } from "../../const/const";
-
+import { editUser } from "../../services/querys/userServices";
 import { connect } from 'react-redux';
 import updateIsAuth from "../../store/isAuth/action";
 import updateIsAdmin from "../../store/isAdmin/action";
 import updateUser from '../../store/user/action';
-
-import { useHistory } from 'react-router';
-
-const myUser = {
-    firstName: "firstName",
-    lastName: "lastName",
-    email: "mail@gmail.com",
-};
-
-const myRoleId = 1;
+import { SuccessAlertComponent } from "../Alert/AlertComponent";
 
 const schema = Yup.object().shape({
     firstName: Yup.string().required(REQUIRED),
@@ -37,13 +28,58 @@ const schema = Yup.object().shape({
     roleId: Yup.number().min(1).max(2),
 });
 
-export const FormEditUser = (props) => {
+const FormEditUser = (props) => {
     const classes = useStyles();
-    console.log(props)
-    // const dataUser = props.user.user
-    // const rol = dataUser.roleId
-    const [user, setUser] = useState(myUser);
-    const [roleId, setRoleId] = useState(myRoleId);
+    const user = props.user.user
+    const roleId = user.roleId
+
+    const onSubmit = async (values) => {
+        SuccessAlertComponent().then(async (result) => {
+            if (result.isConfirmed) {
+                if (user.roleId === 1) {
+                    const firstName = values.firstName;
+                    const lastName = values.lastName;
+                    const roleId = values.roleId;
+                    const userUpdate = { ...user, firstName, lastName, roleId };
+                    const resp = await editUser(userUpdate, userUpdate.id);
+                    if (resp) {
+                        props.updateUser(userUpdate);
+                        props.updateUser(userUpdate);
+                        if (userUpdate.roleId === 1) {
+                            props.updateIsAdmin(true);
+                            props.updateIsAuth(true);
+                        } else {
+                            props.updateIsAdmin(false);
+                        }
+                    }
+                } else {
+                    const firstName = values.firstName;
+                    const lastName = values.lastName;
+                    const roleId = values.roleId;
+                    const email = values.email;
+                    const userUpdate = {
+                        ...user,
+                        firstName,
+                        lastName,
+                        roleId,
+                        email,
+                    };
+                    const resp = await editUser(userUpdate, userUpdate.id);
+                    if (resp) {
+                        props.updateUser(userUpdate);
+                        props.updateUser(userUpdate);
+                        if (userUpdate.roleId === 1) {
+                            props.updateIsAdmin(true);
+                            props.updateIsAuth(true);
+                        } else {
+                            props.updateIsAdmin(false);
+                        }
+                    }
+                }
+            }
+        });
+    };
+
 
     function showInputForAdmin(props) {
     return (<div>
@@ -95,9 +131,7 @@ export const FormEditUser = (props) => {
                         }}
                         enableReinitialize={true}
                         validationSchema={schema}
-                        onSubmit={(values) => {
-                            alert(JSON.stringify(values, null, 2)); //Codigo para ver los campos que se envian
-                        }}
+                        onSubmit={onSubmit}
                     >
                         {(props) => (
                             <Form className={classes.form}>

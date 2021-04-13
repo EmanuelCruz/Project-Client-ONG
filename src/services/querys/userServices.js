@@ -38,5 +38,15 @@ const deleteUser = async (id) => {
   }
 };
 
+const editUser = async (dataUser, id) => {
+  try {
+    const response = await apiServices.patch(`/users/${id}`, dataUser);
+    const { data } = response;
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-export { userList, userAuth, getUsers, deleteUser };
+
+export { userList, userAuth, getUsers, deleteUser, editUser };

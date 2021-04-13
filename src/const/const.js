@@ -13,7 +13,7 @@ export const INFO_TITLE = "Información importante";
 export const DELETE_CONFIRM_TITLE_ACTIVITY = "¿Quiere eliminar esta actividad?";
 export const DELETE_CONFIRM_TITLE_CATEGORY = "¿Quiere eliminar esta categoría?";
 export const SUCCESS_TITLE = "Confirmado!";
-export const SUCCESS_PARAGRAPH = "¡Objeto creado con éxito!";
+export const SUCCESS_PARAGRAPH = "¡Operación éxitosa!";
 
 //Form Login
 export const NOT_VALID_EMAIL = "El email no es valido";
