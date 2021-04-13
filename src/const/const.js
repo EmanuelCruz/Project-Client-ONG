@@ -13,7 +13,7 @@ export const INFO_TITLE = "Información importante";
 export const DELETE_CONFIRM_TITLE_ACTIVITY = "¿Quiere eliminar esta actividad?";
 export const DELETE_CONFIRM_TITLE_CATEGORY = "¿Quiere eliminar esta categoría?";
 export const SUCCESS_TITLE = "Confirmado!";
-export const SUCCESS_PARAGRAPH = "¡Objeto creado con éxito!";
+export const SUCCESS_PARAGRAPH = "¡Operación éxitosa!";
 
 //Form Login
 export const NOT_VALID_EMAIL = "El email no es valido";
@@ -91,7 +91,7 @@ export const COMPANY_FACEBOOK_URL =
 // Categories API route
 export const SERVER_URL_CATEGORIES = "categories";
 // Path Profile
-export const PATH_BACKOFFICE_PROFILE = "/profile";
+export const PATH_BACKOFFICE_PROFILE = "/backoffice/profile";
 
 // Path News
 export const PATH_BACKOFFICE_NEWS = "/backoffice/news";
@@ -119,6 +119,7 @@ export const ACTIVITY_CREATE_SUCCESS =
 export const ACTIVITY_DELETE_TITLE = "Se elimino la actividad correctamente";
 export const ACTIVITY_DELETE_SUCCESS = "Eliminación exitosa";
 
+export const DELETE_CONFIRM_TITLE_PROFILE = "¿Quiere eliminar su cuenta?"
 export const DELETE_CONFIRM_TITLE_USER = "¿Quiere eliminar este usuario?";
 
 // Activities alert messages:
