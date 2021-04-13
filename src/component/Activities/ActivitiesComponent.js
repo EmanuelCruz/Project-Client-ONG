@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { Button, TextField, Container } from "@material-ui/core/";
+import { Button, TextField, Container, Box } from "@material-ui/core/";
 import {
   updateActivities,
   createActivities,
@@ -96,52 +96,54 @@ const ActivitiesComponent = () => {
   };
 
   return (
-    <Container>
-      {!activities.id ? <h1>Crear actividad</h1> : <h1>Modificar actividad</h1>}
-      <form className={classes.root}>
-        <TextField
-          id="name"
-          label="Name"
-          value={"" || activities.name}
-          onChange={changeHandler}
-        />
-        <CKEditor
-          editor={ClassicEditor}
-          data={!activities.id ? "" : activities.content}
-          config={{
-            removePlugins: [
-              "ImageCaption",
-              "ImageStyle",
-              "ImageToolbar",
-              "MediaEmbed",
-            ],
-          }}
-          onChange={(event, editor) => {
-            const data = editor.getData();
-            activities["content"] = data;
-            setActivities({ ...activities });
-          }}
-        />
-        <img src={img} />
-        <div>
+    <Box m={2} p={2}>
+      <Container>
+        {!activities.id ? <h3>Crear actividad</h3> : <h3>Modificar actividad</h3>}
+        <form className={classes.root}>
+          <TextField
+            id="name"
+            label="Name"
+            value={"" || activities.name}
+            onChange={changeHandler}
+          />
+          <CKEditor
+            editor={ClassicEditor}
+            data={!activities.id ? "" : activities.content}
+            config={{
+              removePlugins: [
+                "ImageCaption",
+                "ImageStyle",
+                "ImageToolbar",
+                "MediaEmbed",
+              ],
+            }}
+            onChange={(event, editor) => {
+              const data = editor.getData();
+              activities["content"] = data;
+              setActivities({ ...activities });
+            }}
+          />
+          <img src={img} />
+          <div>
+            <Button
+              className={classes.button}
+              variant="contained"
+              component="label">
+              Agregar Imagen
+            <input type="file" onChange={handleImg} id="image" hidden />
+            </Button>
+          </div>
           <Button
             className={classes.button}
             variant="contained"
-            component="label">
-            Agregar Imagen
-            <input type="file" onChange={handleImg} id="image" hidden />
+            component="label"
+            onClick={handleSubmit}
+            disabled={emptyFields}>
+            {!activities.id ? "Crear" : "Modificar"}
           </Button>
-        </div>
-        <Button
-          className={classes.button}
-          variant="contained"
-          component="label"
-          onClick={handleSubmit}
-          disabled={emptyFields}>
-          {!activities.id ? "Crear" : "Modificar"}
-        </Button>
-      </form>
-    </Container>
+        </form>
+      </Container>
+    </Box>
   );
 };
 

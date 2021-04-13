@@ -7,7 +7,8 @@ import {
   CardMedia,
   Container,
   Typography,
-  Button
+  Button,
+  Box
 } from "@material-ui/core";
 import useStyles from "../styles/MaterialUiStyles";
 import { deleteNews, newsServices } from "../../../services/querys/newsServices";
@@ -63,65 +64,65 @@ const BackOfficeNewsComponent = () => {
 
   if (newsData?.length >= 1) {
     return (
-      <Container>
-        <Typography gutterBottom variant="h3" component="h2">
-          Novedades
-      </Typography>
-        {newsData?.slice((page - 1) * itemsPerPage, page * itemsPerPage)
-          .map((news) => (
-            <Card className={classes.root}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  alt="Imagen de testimonio"
-                  height="140"
-                  image={news.image}
-                  title={news.name}
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    {news.name}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: news.content,
-                      }}
-                    />
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions className={classes.cardCenterStyle}>
-                <Button
-                  size="small"
-                  color="primary"
-                  onClick={() => handleEdit(news.id)}
-                >
-                  Editar
+      <Box m={2} p={2}>
+        <Container>
+          <h3>Novedades</h3>
+          {newsData?.slice((page - 1) * itemsPerPage, page * itemsPerPage)
+            .map((news) => (
+              <Card className={classes.root}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    alt="Imagen de testimonio"
+                    height="140"
+                    image={news.image}
+                    title={news.name}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      {news.name}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: news.content,
+                        }}
+                      />
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions className={classes.cardCenterStyle}>
+                  <Button
+                    size="small"
+                    color="primary"
+                    onClick={() => handleEdit(news.id)}
+                  >
+                    Editar
               </Button>
-                <Button
-                  size="small"
-                  color="primary"
-                  onClick={() => handleDelete(news.id)}
-                >
-                  Borrar
+                  <Button
+                    size="small"
+                    color="primary"
+                    onClick={() => handleDelete(news.id)}
+                  >
+                    Borrar
               </Button>
-              </CardActions>
-            </Card>
-          ))}
-        <Container className={classes.cardCenterStyle}>
-          <Pagination
-            count={noOfPages}
-            page={page}
-            onChange={handlePagination}
-            defaultPage={1}
-            color="primary"
-            size="large"
-            showFirstButton
-            showLastButton
-          />
+                </CardActions>
+              </Card>
+            ))}
+          <Container className={classes.cardCenterStyle}>
+            <Pagination
+              count={noOfPages}
+              page={page}
+              onChange={handlePagination}
+              defaultPage={1}
+              color="primary"
+              size="large"
+              showFirstButton
+              showLastButton
+            />
+          </Container>
         </Container>
-      </Container>
+      </Box>
     )
   } else return (
     <NoItemsComponent item="novedades" />

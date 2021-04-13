@@ -32,9 +32,7 @@ const BackOficceContactsComponent = () => {
     return (
       <>
         <Toolbar className={classes.rootBackOffice}>
-          <Typography variant="h4" className={classes.title}>
-            Contactos
-        </Typography>
+          <h3>Contactos</h3>
         </Toolbar>
         <TableContainer component={Paper} className={classes.tableContainer}>
           <Table className={classes.table} stickyHeader>

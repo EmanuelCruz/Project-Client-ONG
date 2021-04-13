@@ -44,7 +44,7 @@ function BackOfficeCategoriesScreen() {
       <Box m={2} p={2}>
         <Container>
           <Container>
-            <h1>Categorias</h1>
+            <h3>Categorias</h3>
             <Grid container spacing={10} direction="row" justify="center">
               {categories.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((category) => (
                 <Grid key={category.id} item zeroMinWidth>
