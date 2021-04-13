@@ -21,6 +21,7 @@ import updateIsAuth from "../../store/isAuth/action";
 import updateIsAdmin from "../../store/isAdmin/action";
 import updateUser from '../../store/user/action';
 import { SuccessAlertComponent } from "../Alert/AlertComponent";
+import { useLocation } from 'react-router-dom'
 
 const schema = Yup.object().shape({
     firstName: Yup.string().required(REQUIRED),
@@ -33,6 +34,7 @@ const FormEditUser = (props) => {
     const classes = useStyles();
     const user = props.user.user
     const roleId = user.roleId
+    let location = useLocation();
 
     const onSubmit = async (values) => {
         SuccessAlertComponent().then(async (result) => {
@@ -117,7 +119,7 @@ const FormEditUser = (props) => {
     }
 
     return (
-        <Box m={2} p={2} className={classes.container}>
+        <Box m={2} p={2} className={location.pathname==="/profile" ? classes.container : classes.containerBackoffice}>
             <Container maxWidth="sm">
                 <Paper style={{ padding: 16 }} elevation={3}>
                     <Typography variant="h6" align="center">

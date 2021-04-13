@@ -7,6 +7,13 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         alignItems: "center"
     },
+    containerBackoffice:{
+        marginTop: 60,
+        height: 480,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+    },
     form: {
         width: "100%",
     },
