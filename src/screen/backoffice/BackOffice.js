@@ -152,6 +152,24 @@ export default function BackOffice() {
           Crear Testimonio
         </NavLink>
       </MenuItem>
+      <MenuItem className={classes.menuItem}>
+        <NavLink
+          className={classes.navLink}
+          exact
+          key="Miembros"
+          to="/backoffice/members">
+          Miembros
+        </NavLink>
+      </MenuItem>
+      <MenuItem className={classes.menuItem}>
+        <NavLink
+          className={classes.navLink}
+          exact
+          key="Miembros"
+          to="/backoffice/members/create">
+          Crear Miembro
+        </NavLink>
+      </MenuItem>
     </Container>
   );
 
@@ -232,6 +250,12 @@ export default function BackOffice() {
                   </Route>
                   <Route exact path="/backoffice/edit-activities/:id">
                     <ActivitiesComponent />
+                  </Route>
+                  <Route exact path="/backoffice/members">
+                    <BackOfficeMembersScreen />
+                  </Route>
+                  <Route exact path="/backoffice/members/create">
+                    <CreateMemberComponent />
                   </Route>
                 </Switch>
               </Paper>
