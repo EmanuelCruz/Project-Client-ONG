@@ -36,6 +36,7 @@ import TestimonialComponentForm from "../../component/testimonials/testimonialsC
 import BackOfficeMembersScreen from "../../screen/members/BackOfficeMembersScreen";
 import CreateMemberComponent from "../../component/BackOfficeMembers/components/CreateMemberComponent";
 import FormEditProfile from "../../component/FormEditProfile/FormEditProfile";
+import FormEditUser from '../../component/FormEditUser/FormEditUser'
 
 const myRoleId = 1;
 
@@ -248,6 +249,9 @@ export default function BackOffice() {
                   </Route>
                   <Route exact path="/backoffice/edit-profile">
                     <FormEditProfile />
+                  </Route>
+                  <Route exact path="/backoffice/edit-user">
+                    <FormEditUser />
                   </Route>
                 </Switch>
               </Paper>
