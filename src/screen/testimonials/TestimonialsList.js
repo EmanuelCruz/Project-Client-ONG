@@ -24,7 +24,7 @@ function TestimonialsList() {
   const [testimonials, setTestimonials] = useState([]);
   const classes = useStyles();
   let history = useHistory();
-  const itemsPerPage = 4;
+  const itemsPerPage = 1;
   const [page, setPage] = useState(1);
   const [noOfPages, setNoOfPages] = useState(0);
 

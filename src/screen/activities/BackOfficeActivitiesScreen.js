@@ -25,7 +25,7 @@ function BackOfficeActivitiesScreen() {
   let history = useHistory();
   const [activities, setActivities] = useState([]);
   const classes = useStyles();
-  const itemsPerPage = 4;
+  const itemsPerPage = 1;
   const [page, setPage] = useState(1);
   const [noOfPages, setNoOfPages] = useState(0);
 

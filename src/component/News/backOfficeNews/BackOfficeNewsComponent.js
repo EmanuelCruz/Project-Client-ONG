@@ -27,7 +27,7 @@ const BackOfficeNewsComponent = () => {
   const classes = useStyles();
   const [newsData, setNewsData] = useState([]);
   let history = useHistory();
-  const itemsPerPage = 4;
+  const itemsPerPage = 1;
   const [page, setPage] = useState(1);
   const [noOfPages, setNoOfPages] = useState(0);
 
