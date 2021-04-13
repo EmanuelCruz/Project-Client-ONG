@@ -75,6 +75,9 @@ export default function FormCategories() {
 
   return (
     <Container>
+      <Box m={2} p={2}>
+          <h3>{!id ? "Crear" : "Modificar"} Categoria</h3>
+        </Box>
       <form className={classes.root}>
         <TextField
           id="name"

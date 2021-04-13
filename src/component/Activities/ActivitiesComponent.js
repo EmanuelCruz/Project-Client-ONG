@@ -96,54 +96,58 @@ const ActivitiesComponent = () => {
   };
 
   return (
-    <Box m={2} p={2}>
-      <Container>
-        {!activities.id ? <h3>Crear actividad</h3> : <h3>Modificar actividad</h3>}
-        <form className={classes.root}>
-          <TextField
-            id="name"
-            label="Name"
-            value={"" || activities.name}
-            onChange={changeHandler}
-          />
-          <CKEditor
-            editor={ClassicEditor}
-            data={!activities.id ? "" : activities.content}
-            config={{
-              removePlugins: [
-                "ImageCaption",
-                "ImageStyle",
-                "ImageToolbar",
-                "MediaEmbed",
-              ],
-            }}
-            onChange={(event, editor) => {
-              const data = editor.getData();
-              activities["content"] = data;
-              setActivities({ ...activities });
-            }}
-          />
-          <img src={img} />
-          <div>
-            <Button
-              className={classes.button}
-              variant="contained"
-              component="label">
-              Agregar Imagen
-            <input type="file" onChange={handleImg} id="image" hidden />
-            </Button>
-          </div>
+    <Container>
+      <Box p={2} m={2}>
+        <h3>
+          {!id ? "Crear" : "Modificar"} Actividad
+        </h3>
+      </Box>
+      <form className={classes.root}>
+        <TextField
+          id="name"
+          label="Name"
+          value={activities.name || ""}
+          onChange={changeHandler}
+        />
+        <CKEditor
+          editor={ClassicEditor}
+          data={!activities.id ? "" : activities.content}
+          config={{
+            removePlugins: [
+              "ImageCaption",
+              "ImageStyle",
+              "ImageToolbar",
+              "MediaEmbed",
+            ],
+          }}
+          onChange={(event, editor) => {
+            const data = editor.getData();
+            activities["content"] = data;
+            setActivities({ ...activities });
+          }}
+        />
+        <img src={img} />
+        <div>
+          <Button
+            className={classes.button}
+            variant="contained"
+            component="label">
+            Agregar Imagen
+          <input type="file" onChange={handleImg} id="image" hidden />
+          </Button>
+        </div>
+        <Box p={2} m={2}>
           <Button
             className={classes.button}
             variant="contained"
             component="label"
             onClick={handleSubmit}
             disabled={emptyFields}>
-            {!activities.id ? "Crear" : "Modificar"}
+            {!id ? "Crear" : "Modificar"}
           </Button>
-        </form>
-      </Container>
-    </Box>
+        </Box>
+      </form>
+    </Container>
   );
 };
 
