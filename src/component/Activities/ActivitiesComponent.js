@@ -64,6 +64,9 @@ const ActivitiesComponent = () => {
   };
 
   const handleSubmit = () => {
+    if (img === undefined) {
+      formData.append("image", "");
+    }
     if (!activities.id) {
       for (const property in activities) {
         formData.append(property, activities[property]);
