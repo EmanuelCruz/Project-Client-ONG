@@ -3,13 +3,9 @@ import NewsGridComponent from "../../component/novedades/NewsGridComponent";
 import { getNews } from "../../services/querys/newsServices";
 import Typography from '@material-ui/core/Typography';
 import NoItemsComponent from "../../component/NoItems/NoItemsComponent";
-import useStyles from "./NovedadesStyles";
 import { Container } from "@material-ui/core";
 
 function NovedadesScreen() {
-
-  const classes = useStyles();
-
   const [novedades, setNovedades] = useState([]);
 
   useEffect(() => {
@@ -24,7 +20,7 @@ function NovedadesScreen() {
 
     return (
       <Container>
-        <Typography className={classes.title + ' ' + classes.typography} variant="h2">
+        <Typography variant="h2">
           Novedades
       </Typography>
         <div style={{ marginTop: '30px' }}>
