@@ -77,6 +77,7 @@ const ActivitiesComponent = () => {
         CreateActivitiesSuccess();
         setTimeout(function () {
           history.push("/backoffice/activities");
+          window.location.reload();
         }, 3000);
       }
     } else {
@@ -87,6 +88,7 @@ const ActivitiesComponent = () => {
       updateActivities(formData, activities.id);
       UpdateActivitiesSuccess();
       history.push("/backoffice/activities");
+      window.location.reload();
     }
   };
 
@@ -101,9 +103,7 @@ const ActivitiesComponent = () => {
   return (
     <Container>
       <Box p={2} m={2}>
-        <h3>
-          {!id ? "Crear" : "Modificar"} Actividad
-        </h3>
+        <h3>{!id ? "Crear" : "Modificar"} Actividad</h3>
       </Box>
       <form className={classes.root}>
         <TextField
@@ -136,7 +136,7 @@ const ActivitiesComponent = () => {
             variant="contained"
             component="label">
             Agregar Imagen
-          <input type="file" onChange={handleImg} id="image" hidden />
+            <input type="file" onChange={handleImg} id="image" hidden />
           </Button>
         </div>
         <Box p={2} m={2}>
